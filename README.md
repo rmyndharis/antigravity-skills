@@ -79,56 +79,56 @@ You can easily install skills directly from the repository without cloning it ma
 Check which skills are available in the vault before installing:
 
 ```bash
-npx github:rmyndharis/antigravity-skill-vault list
+npx @rmyndharis/antigravity-skills list
 ```
 
 **2. Install a specific skill to your current project:**
 
 ```bash
-npx github:rmyndharis/antigravity-skill-vault install <skill-name>
+npx @rmyndharis/antigravity-skills install <skill-name>
 # Example:
-npx github:rmyndharis/antigravity-skill-vault install bash-pro
+npx @rmyndharis/antigravity-skills install bash-pro
 ```
 
 **3. Install a skill globally:**
 
 ```bash
-npx github:rmyndharis/antigravity-skill-vault install <skill-name> --global
+npx @rmyndharis/antigravity-skills install <skill-name> --global
 # Example:
-npx github:rmyndharis/antigravity-skill-vault install bash-pro --global
+npx @rmyndharis/antigravity-skills install bash-pro --global
 ```
 
 **4. Check installed skills:**
 
 ```bash
 # List local specific skills
-npx github:rmyndharis/antigravity-skill-vault installed
+npx @rmyndharis/antigravity-skills installed
 
 # List globally installed skills
-npx github:rmyndharis/antigravity-skill-vault installed --global
+npx @rmyndharis/antigravity-skills installed --global
 ```
 
 **5. Update installed skills:**
 
 ```bash
 # Update a specific skill
-npx github:rmyndharis/antigravity-skill-vault update <skill-name>
+npx @rmyndharis/antigravity-skills update <skill-name>
 
 # Update ALL installed skills
-npx github:rmyndharis/antigravity-skill-vault update
+npx @rmyndharis/antigravity-skills update
 
 # Update global skills
-npx github:rmyndharis/antigravity-skill-vault update --global
+npx @rmyndharis/antigravity-skills update --global
 ```
 
 **6. Install ALL skills:**
 
 ```bash
 # To your current workspace
-npx github:rmyndharis/antigravity-skill-vault install --all
+npx @rmyndharis/antigravity-skills install --all
 
 # Globally
-npx github:rmyndharis/antigravity-skill-vault install --all --global
+npx @rmyndharis/antigravity-skills install --all --global
 ```
 
 ### Manual Installation
