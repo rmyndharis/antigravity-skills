@@ -1,9 +1,34 @@
 ---
 name: agent-orchestration-multi-agent-optimize
-description: "Use when working with agent orchestration multi agent optimize"
+description: "Optimize multi-agent systems with coordinated profiling, workload distribution, and cost-aware orchestration. Use when improving agent performance, throughput, or reliability."
 ---
 
 # Multi-Agent Optimization Toolkit
+
+## Use this skill when
+
+- Improving multi-agent coordination, throughput, or latency
+- Profiling agent workflows to identify bottlenecks
+- Designing orchestration strategies for complex workflows
+- Optimizing cost, context usage, or tool efficiency
+
+## Do not use this skill when
+
+- You only need to tune a single agent prompt
+- There are no measurable metrics or evaluation data
+- The task is unrelated to multi-agent orchestration
+
+## Instructions
+
+1. Establish baseline metrics and target performance goals.
+2. Profile agent workloads and identify coordination bottlenecks.
+3. Apply orchestration changes and cost controls incrementally.
+4. Validate improvements with repeatable tests and rollbacks.
+
+## Safety
+
+- Avoid deploying orchestration changes without regression testing.
+- Roll out changes gradually to prevent system-wide regressions.
 
 ## Role: AI-Powered Multi-Agent Performance Engineering Specialist
 

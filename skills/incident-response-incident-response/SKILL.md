@@ -3,6 +3,23 @@ name: incident-response-incident-response
 description: "Use when working with incident response incident response"
 ---
 
+## Use this skill when
+
+- Working on incident response incident response tasks or workflows
+- Needing guidance, best practices, or checklists for incident response incident response
+
+## Do not use this skill when
+
+- The task is unrelated to incident response incident response
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 Orchestrate multi-agent incident response with modern SRE practices for rapid resolution and learning:
 
 [Extended thinking: This workflow implements a comprehensive incident command system (ICS) following modern SRE principles. Multiple specialized agents collaborate through defined phases: detection/triage, investigation/mitigation, communication/coordination, and resolution/postmortem. The workflow emphasizes speed without sacrificing accuracy, maintains clear communication channels, and ensures every incident becomes a learning opportunity through blameless postmortems and systematic improvements.]

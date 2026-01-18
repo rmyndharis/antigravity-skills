@@ -9,6 +9,23 @@ Orchestrate a comprehensive git workflow from code review through PR creation, l
 
 [Extended thinking: This workflow coordinates multiple specialized agents to ensure code quality before commits are made. The code-reviewer agent performs initial quality checks, test-automator ensures all tests pass, and deployment-engineer verifies production readiness. By orchestrating these agents sequentially with context passing, we prevent broken code from entering the repository while maintaining high velocity. The workflow supports both trunk-based and feature-branch strategies with configurable options for different team needs.]
 
+## Use this skill when
+
+- Working on complete git workflow with multi-agent orchestration tasks or workflows
+- Needing guidance, best practices, or checklists for complete git workflow with multi-agent orchestration
+
+## Do not use this skill when
+
+- The task is unrelated to complete git workflow with multi-agent orchestration
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Configuration
 
 **Target branch**: $ARGUMENTS (defaults to 'main' if not specified)

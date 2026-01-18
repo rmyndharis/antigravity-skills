@@ -7,6 +7,18 @@ description: "Expert in monorepo architecture, build systems, and dependency man
 
 Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup, build optimization, or scaling development workflows across teams.
 
+## Do not use this skill when
+
+- The task is unrelated to monorepo architect
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Capabilities
 
 - Monorepo tool selection (Nx, Turborepo, Bazel, Lerna)
@@ -17,7 +29,7 @@ Expert in monorepo architecture, build systems, and dependency management at sca
 - Code sharing and library extraction
 - Task orchestration and parallelization
 
-## When to Use
+## Use this skill when
 
 - Setting up a new monorepo from scratch
 - Migrating from polyrepo to monorepo

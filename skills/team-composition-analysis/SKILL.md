@@ -1,12 +1,33 @@
 ---
 name: team-composition-analysis
-description: This skill should be used when the user asks to "plan team structure", "determine hiring needs", "design org chart", "calculate compensation", "plan equity allocation", or requests organizational design and headcount planning for a startup.
-version: 1.0.0
+description: This skill should be used when the user asks to "plan team
+  structure", "determine hiring needs", "design org chart", "calculate
+  compensation", "plan equity allocation", or requests organizational design and
+  headcount planning for a startup.
+metadata:
+  version: 1.0.0
 ---
 
 # Team Composition Analysis
 
 Design optimal team structures, hiring plans, compensation strategies, and equity allocation for early-stage startups from pre-seed through Series A.
+
+## Use this skill when
+
+- Working on team composition analysis tasks or workflows
+- Needing guidance, best practices, or checklists for team composition analysis
+
+## Do not use this skill when
+
+- The task is unrelated to team composition analysis
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Overview
 

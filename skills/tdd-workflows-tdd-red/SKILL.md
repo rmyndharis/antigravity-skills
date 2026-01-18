@@ -1,11 +1,35 @@
 ---
 name: tdd-workflows-tdd-red
-description: "Use when working with tdd workflows tdd red"
+description: Generate failing tests for the TDD red phase to define expected behavior and edge cases.
 ---
 
 Write comprehensive failing tests following TDD red phase principles.
 
 [Extended thinking: Generates failing tests that properly define expected behavior using test-automator agent.]
+
+## Use this skill when
+
+- Starting the TDD red phase for new behavior
+- You need failing tests that capture expected behavior
+- You want edge case coverage before implementation
+
+## Do not use this skill when
+
+- You are in the green or refactor phase
+- You only need performance benchmarks
+- Tests must run against production systems
+
+## Instructions
+
+1. Identify behaviors, constraints, and edge cases.
+2. Generate failing tests that define expected outcomes.
+3. Ensure failures are due to missing behavior, not setup errors.
+4. Document how to run tests and verify failures.
+
+## Safety
+
+- Keep test data isolated and avoid production environments.
+- Avoid flaky external dependencies in the red phase.
 
 ## Role
 

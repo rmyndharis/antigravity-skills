@@ -7,7 +7,7 @@ description: Write and maintain Architecture Decision Records (ADRs) following b
 
 Comprehensive patterns for creating, maintaining, and managing Architecture Decision Records (ADRs) that capture the context and rationale behind significant technical decisions.
 
-## When to Use This Skill
+## Use this skill when
 
 - Making significant architectural decisions
 - Documenting technology choices
@@ -15,6 +15,19 @@ Comprehensive patterns for creating, maintaining, and managing Architecture Deci
 - Onboarding new team members
 - Reviewing historical decisions
 - Establishing decision-making processes
+
+## Do not use this skill when
+
+- You only need to document small implementation details
+- The change is a minor patch or routine maintenance
+- There is no architectural decision to capture
+
+## Instructions
+
+1. Capture the decision context, constraints, and drivers.
+2. Document considered options with tradeoffs.
+3. Record the decision, rationale, and consequences.
+4. Link related ADRs and update status over time.
 
 ## Core Concepts
 

@@ -1,12 +1,30 @@
 ---
-description: "Generate comprehensive market opportunity analysis with TAM/SAM/SOM calculations"
-allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "WebFetch"]
 name: startup-business-analyst-market-opportunity
+description: Generate comprehensive market opportunity analysis with TAM/SAM/SOM
+  calculations
+allowed-tools: Read Write Edit Glob Grep Bash WebSearch WebFetch
 ---
 
 # Market Opportunity Analysis
 
 Generate a comprehensive market opportunity analysis for a startup, including Total Addressable Market (TAM), Serviceable Available Market (SAM), and Serviceable Obtainable Market (SOM) calculations using both bottom-up and top-down methodologies.
+
+## Use this skill when
+
+- Working on market opportunity analysis tasks or workflows
+- Needing guidance, best practices, or checklists for market opportunity analysis
+
+## Do not use this skill when
+
+- The task is unrelated to market opportunity analysis
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## What This Command Does
 

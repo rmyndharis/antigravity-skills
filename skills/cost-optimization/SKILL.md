@@ -7,11 +7,23 @@ description: Optimize cloud costs through resource rightsizing, tagging strategi
 
 Strategies and patterns for optimizing cloud costs across AWS, Azure, and GCP.
 
+## Do not use this skill when
+
+- The task is unrelated to cloud cost optimization
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Purpose
 
 Implement systematic cost optimization strategies to reduce cloud spending while maintaining performance and reliability.
 
-## When to Use
+## Use this skill when
 
 - Reduce cloud spending
 - Right-size resources

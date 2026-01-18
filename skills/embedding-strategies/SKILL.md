@@ -7,7 +7,19 @@ description: Select and optimize embedding models for semantic search and RAG ap
 
 Guide to selecting and optimizing embedding models for vector search applications.
 
-## When to Use This Skill
+## Do not use this skill when
+
+- The task is unrelated to embedding strategies
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
+## Use this skill when
 
 - Choosing embedding models for RAG
 - Optimizing chunking strategies

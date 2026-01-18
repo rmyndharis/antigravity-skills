@@ -7,11 +7,23 @@ description: Define and implement Service Level Indicators (SLIs) and Service Le
 
 Framework for defining and implementing Service Level Indicators (SLIs), Service Level Objectives (SLOs), and error budgets.
 
+## Do not use this skill when
+
+- The task is unrelated to slo implementation
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Purpose
 
 Implement measurable reliability targets using SLIs, SLOs, and error budgets to balance reliability with innovation velocity.
 
-## When to Use
+## Use this skill when
 
 - Define service reliability targets
 - Measure user-perceived reliability

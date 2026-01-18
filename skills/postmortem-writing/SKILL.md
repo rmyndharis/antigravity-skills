@@ -7,7 +7,19 @@ description: Write effective blameless postmortems with root cause analysis, tim
 
 Comprehensive guide to writing effective, blameless postmortems that drive organizational learning and prevent incident recurrence.
 
-## When to Use This Skill
+## Do not use this skill when
+
+- The task is unrelated to postmortem writing
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
+## Use this skill when
 
 - Conducting post-incident reviews
 - Writing postmortem documents

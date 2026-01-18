@@ -7,11 +7,23 @@ description: Build end-to-end MLOps pipelines from data preparation through mode
 
 Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.
 
+## Do not use this skill when
+
+- The task is unrelated to ml pipeline workflow
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Overview
 
 This skill provides comprehensive guidance for building production ML pipelines that handle the full lifecycle: data ingestion → preparation → training → validation → deployment → monitoring.
 
-## When to Use This Skill
+## Use this skill when
 
 - Building new ML pipelines from scratch
 - Designing workflow orchestration for ML systems

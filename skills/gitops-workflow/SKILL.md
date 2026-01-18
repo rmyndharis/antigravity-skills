@@ -11,7 +11,7 @@ Complete guide to implementing GitOps workflows with ArgoCD and Flux for automat
 
 Implement declarative, Git-based continuous delivery for Kubernetes using ArgoCD or Flux CD, following OpenGitOps principles.
 
-## When to Use This Skill
+## Use this skill when
 
 - Set up GitOps for Kubernetes clusters
 - Automate application deployments from Git
@@ -19,6 +19,24 @@ Implement declarative, Git-based continuous delivery for Kubernetes using ArgoCD
 - Manage multi-cluster deployments
 - Configure automated sync policies
 - Set up secret management in GitOps
+
+## Do not use this skill when
+
+- You need a one-off manual deployment
+- You cannot manage cluster access or repo permissions
+- You are not deploying to Kubernetes
+
+## Instructions
+
+1. Define repo layout and desired-state conventions.
+2. Install ArgoCD or Flux and connect clusters.
+3. Configure sync policies, environments, and promotion flow.
+4. Validate rollbacks and secret handling.
+
+## Safety
+
+- Avoid auto-sync to production without approvals.
+- Keep secrets out of Git and use sealed or external secret managers.
 
 ## OpenGitOps Principles
 

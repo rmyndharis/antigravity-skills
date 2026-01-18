@@ -1,12 +1,30 @@
 ---
-description: "Git-aware undo by logical work unit (track, phase, or task)"
-argument-hint: "[track-id | track-id:phase | track-id:task]"
 name: conductor-revert
+description: Git-aware undo by logical work unit (track, phase, or task)
+metadata:
+  argument-hint: "[track-id | track-id:phase | track-id:task]"
 ---
 
 # Revert Track
 
 Revert changes by logical work unit with full git awareness. Supports reverting entire tracks, specific phases, or individual tasks.
+
+## Use this skill when
+
+- Working on revert track tasks or workflows
+- Needing guidance, best practices, or checklists for revert track
+
+## Do not use this skill when
+
+- The task is unrelated to revert track
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Pre-flight Checks
 

@@ -7,7 +7,19 @@ description: Design LLM applications using the LangChain framework with agents, 
 
 Master the LangChain framework for building sophisticated LLM applications with agents, chains, memory, and tool integration.
 
-## When to Use This Skill
+## Do not use this skill when
+
+- The task is unrelated to langchain architecture
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
+## Use this skill when
 
 - Building autonomous AI agents with tool access
 - Implementing complex multi-step LLM workflows

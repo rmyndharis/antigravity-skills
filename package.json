@@ -7,15 +7,26 @@
   },
   "files": [
     "bin",
+    "lib",
+    "scripts",
     "skills",
+    "catalog.json",
+    "CATALOG.md",
+    "validation-baseline.json",
+    "bundles.json",
+    "aliases.json",
+    "SECURITY.md",
+    "LICENSE",
     "README.md"
   ],
   "scripts": {
+    "build:catalog": "node scripts/build-catalog.js",
+    "validate:skills": "node scripts/validate-skills.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rmyndharis/antigravity-skill-vault.git"
+    "url": "git+https://github.com/rmyndharis/antigravity-skills.git"
   },
   "keywords": [
     "antigravity",
@@ -26,12 +37,13 @@
   "author": "rmyndharis",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rmyndharis/antigravity-skill-vault/issues"
+    "url": "https://github.com/rmyndharis/antigravity-skills/issues"
   },
-  "homepage": "https://github.com/rmyndharis/antigravity-skill-vault#readme",
+  "homepage": "https://github.com/rmyndharis/antigravity-skills#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "commander": "^11.1.0",
     "fs-extra": "^11.2.0",
-    "chalk": "^4.1.2"
+    "yaml": "^2.8.2"
   }
 }

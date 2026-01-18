@@ -1,12 +1,30 @@
 ---
-description: "Create detailed 3-5 year financial model with revenue, costs, cash flow, and scenarios"
-allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "WebFetch"]
 name: startup-business-analyst-financial-projections
+description: Create detailed 3-5 year financial model with revenue, costs, cash
+  flow, and scenarios
+allowed-tools: Read Write Edit Glob Grep Bash WebSearch WebFetch
 ---
 
 # Financial Projections
 
 Create a comprehensive 3-5 year financial model with revenue projections, cost structure, headcount planning, cash flow analysis, and three-scenario modeling (conservative, base, optimistic) for startup financial planning and fundraising.
+
+## Use this skill when
+
+- Working on financial projections tasks or workflows
+- Needing guidance, best practices, or checklists for financial projections
+
+## Do not use this skill when
+
+- The task is unrelated to financial projections
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## What This Command Does
 

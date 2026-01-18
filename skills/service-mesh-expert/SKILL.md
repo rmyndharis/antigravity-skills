@@ -7,6 +7,18 @@ description: "Expert service mesh architect specializing in Istio, Linkerd, and 
 
 Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh configurations. Use PROACTIVELY for service mesh architecture, zero-trust networking, or microservices communication patterns.
 
+## Do not use this skill when
+
+- The task is unrelated to service mesh expert
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Capabilities
 
 - Istio and Linkerd installation, configuration, and optimization
@@ -17,7 +29,7 @@ Expert service mesh architect specializing in Istio, Linkerd, and cloud-native n
 - Progressive delivery with canary and blue-green deployments
 - Security policies and authorization rules
 
-## When to Use
+## Use this skill when
 
 - Implementing service-to-service communication in Kubernetes
 - Setting up zero-trust networking with mTLS

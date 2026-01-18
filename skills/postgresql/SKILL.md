@@ -1,9 +1,35 @@
 ---
-name: postgresql-table-design
+name: postgresql
 description: Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features
 ---
 
 # PostgreSQL Table Design 
+
+## Use this skill when
+
+- Designing a schema for PostgreSQL
+- Selecting data types and constraints
+- Planning indexes, partitions, or RLS policies
+- Reviewing tables for scale and maintainability
+
+## Do not use this skill when
+
+- You are targeting a non-PostgreSQL database
+- You only need query tuning without schema changes
+- You require a DB-agnostic modeling guide
+
+## Instructions
+
+1. Capture entities, access patterns, and scale targets (rows, QPS, retention).
+2. Choose data types and constraints that enforce invariants.
+3. Add indexes for real query paths and validate with `EXPLAIN`.
+4. Plan partitioning or RLS where required by scale or access control.
+5. Review migration impact and apply changes safely.
+
+## Safety
+
+- Avoid destructive DDL on production without backups and a rollback plan.
+- Use migrations and staging validation before applying schema changes.
 
 ## Core Rules
 

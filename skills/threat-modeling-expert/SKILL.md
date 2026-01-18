@@ -1,6 +1,6 @@
 ---
 name: threat-modeling-expert
-description: "Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use PROACTIVELY for security archi"
+description: "Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use for security architecture reviews, threat identification, and secure-by-design planning."
 ---
 
 # Threat Modeling Expert
@@ -17,7 +17,7 @@ Expert in threat modeling methodologies, security architecture review, and risk 
 - Mitigation strategy design
 - Security control mapping
 
-## When to Use
+## Use this skill when
 
 - Designing new systems or features
 - Reviewing architecture for security gaps
@@ -27,7 +27,13 @@ Expert in threat modeling methodologies, security architecture review, and risk 
 - Creating security documentation
 - Training teams on security thinking
 
-## Workflow
+## Do not use this skill when
+
+- You lack scope or authorization for security review
+- You need legal or compliance certification
+- You only need automated scanning without human review
+
+## Instructions
 
 1. Define system scope and trust boundaries
 2. Create data flow diagrams
@@ -37,6 +43,11 @@ Expert in threat modeling methodologies, security architecture review, and risk 
 6. Score and prioritize threats
 7. Design mitigations
 8. Document residual risks
+
+## Safety
+
+- Avoid storing sensitive details in threat models without access controls.
+- Keep threat models updated after architecture changes.
 
 ## Best Practices
 

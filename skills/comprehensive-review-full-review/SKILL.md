@@ -3,6 +3,23 @@ name: comprehensive-review-full-review
 description: "Use when working with comprehensive review full review"
 ---
 
+## Use this skill when
+
+- Working on comprehensive review full review tasks or workflows
+- Needing guidance, best practices, or checklists for comprehensive review full review
+
+## Do not use this skill when
+
+- The task is unrelated to comprehensive review full review
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 Orchestrate comprehensive multi-dimensional code review using specialized review agents
 
 [Extended thinking: This workflow performs an exhaustive code review by orchestrating multiple specialized agents in sequential phases. Each phase builds upon previous findings to create a comprehensive review that covers code quality, security, performance, testing, documentation, and best practices. The workflow integrates modern AI-assisted review tools, static analysis, security scanning, and automated quality metrics. Results are consolidated into actionable feedback with clear prioritization and remediation guidance. The phased approach ensures thorough coverage while maintaining efficiency through parallel agent execution where appropriate.]

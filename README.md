@@ -22,34 +22,53 @@ The skills are derived from three types of Claude Code components, all unified i
 
 ## 📂 Categories
 
-Skills are flattening into the `skills/` directory, but cover these broad categories:
+Skills are flattened in the `skills/` directory, but cover these broad categories:
 
 ### 💻 Development & Languages
 - **Python**: `python-pro`, `fastapi-pro`, `async-python-patterns`, `uv-package-manager`
 - **JavaScript/TypeScript**: `typescript-pro`, `react-modernization`, `nextjs-app-router-patterns`
 - **Systems**: `rust-pro`, `golang-pro`, `memory-safety-patterns`
-- **Mobile**: `frontend-mobile-development`, `react-native-architecture`
+- **Mobile**: `frontend-mobile-development-component-scaffold`, `react-native-architecture`
 
 ### ☁️ Infrastructure & Operations
 - **Kubernetes**: `kubernetes-architect`, `helm-chart-scaffolding`, `gitops-workflow`
-- **Cloud**: `cloud-infrastructure`, `terraform-module-library`, `cost-optimization`
-- **CI/CD**: `cicd-automation`, `github-actions-templates`, `gitlab-ci-patterns`
+- **Cloud**: `cloud-architect`, `terraform-module-library`, `cost-optimization`
+- **CI/CD**: `cicd-automation-workflow-automate`, `github-actions-templates`, `gitlab-ci-patterns`
 
 ### 🔒 Security & Quality
-- **Security**: `security-auditor`, `sast-configuration`, `owasp-prevention`
-- **Code Quality**: `code-review-ai`, `code-refactoring`, `technical-debt-management`
-- **Testing**: `unit-testing`, `tdd-workflows`, `e2e-testing-patterns`
+- **Security**: `security-auditor`, `sast-configuration`, `security-scanning-security-hardening`
+- **Code Quality**: `code-review-ai-ai-review`, `code-refactoring-refactor-clean`, `codebase-cleanup-tech-debt`
+- **Testing**: `unit-testing-test-generate`, `tdd-workflows-tdd-cycle`, `e2e-testing-patterns`
 
 ### 🔄 Workflows & Architecture
 - **Conductor**: `conductor-implement`, `context-driven-development` (Context-Driven Development)
-- **Architecture**: `c4-architecture`, `microservices-patterns`, `api-design-principles`
-- **Orchestration**: `full-stack-orchestration`, `incident-response`
+- **Architecture**: `c4-architecture-c4-architecture`, `microservices-patterns`, `api-design-principles`
+- **Orchestration**: `full-stack-orchestration-full-stack-feature`, `incident-response-incident-response`
 
 ### 📊 Data & AI
 - **Data Engineering**: `data-engineer`, `spark-optimization`, `dbt-transformation-patterns`
 - **AI/ML**: `ml-pipeline-workflow`, `prompt-engineering-patterns`, `rag-implementation`
 
 ---
+
+## 🎯 Install Strategically (Token Efficient)
+
+Antigravity loads metadata (name + description) from every installed skill at session start. More skills means more token usage and a higher chance of irrelevant auto-activation. Prefer targeted installs via search, tags, or bundles. `install --all` is advanced and not recommended for most projects.
+
+## 🧭 Catalog & Discovery
+
+This repo ships a generated catalog for discovery:
+
+- `CATALOG.md` (human-readable index)
+- `catalog.json` (machine-readable index used by the CLI)
+- `bundles.json` (curated bundles)
+- `aliases.json` (short names that map to long skill IDs)
+
+Regenerate after adding/editing skills:
+
+```bash
+npm run build:catalog
+```
 
 ## 🛠️ How to Use
 
@@ -74,15 +93,21 @@ You can install skills in **two scopes**:
 
 You can easily install skills directly from the repository without cloning it manually.
 
-**1. List available skills:**
+**1. Search skills (recommended first):**
 
-Check which skills are available in the vault before installing:
+```bash
+npx @rmyndharis/antigravity-skills search <query>
+# Example:
+npx @rmyndharis/antigravity-skills search kubernetes
+```
+
+**2. List available skills:**
 
 ```bash
 npx @rmyndharis/antigravity-skills list
 ```
 
-**2. Install a specific skill to your current project:**
+**3. Install a specific skill to your current project:**
 
 ```bash
 npx @rmyndharis/antigravity-skills install <skill-name>
@@ -90,7 +115,19 @@ npx @rmyndharis/antigravity-skills install <skill-name>
 npx @rmyndharis/antigravity-skills install bash-pro
 ```
 
-**3. Install a skill globally:**
+**4. Install by tag or bundle (targeted sets):**
+
+```bash
+# By tag
+npx @rmyndharis/antigravity-skills install --tag kubernetes
+
+# By bundle
+npx @rmyndharis/antigravity-skills install --bundle core-dev
+```
+
+Available bundles: `core-dev`, `security-core`, `k8s-core`, `data-core`, `ops-core`.
+
+**5. Install a skill globally:**
 
 ```bash
 npx @rmyndharis/antigravity-skills install <skill-name> --global
@@ -98,7 +135,7 @@ npx @rmyndharis/antigravity-skills install <skill-name> --global
 npx @rmyndharis/antigravity-skills install bash-pro --global
 ```
 
-**4. Check installed skills:**
+**6. Check installed skills:**
 
 ```bash
 # List local specific skills
@@ -108,7 +145,7 @@ npx @rmyndharis/antigravity-skills installed
 npx @rmyndharis/antigravity-skills installed --global
 ```
 
-**5. Update installed skills:**
+**7. Update installed skills:**
 
 ```bash
 # Update a specific skill
@@ -121,7 +158,14 @@ npx @rmyndharis/antigravity-skills update
 npx @rmyndharis/antigravity-skills update --global
 ```
 
-**6. Install ALL skills:**
+**8. Doctor / stats:**
+
+```bash
+npx @rmyndharis/antigravity-skills doctor
+npx @rmyndharis/antigravity-skills stats
+```
+
+**9. Install ALL skills (advanced, not recommended):**
 
 ```bash
 # To your current workspace
@@ -129,6 +173,16 @@ npx @rmyndharis/antigravity-skills install --all
 
 # Globally
 npx @rmyndharis/antigravity-skills install --all --global
+```
+
+> **Note:** Installing all skills increases token usage and can trigger unrelated skills. Prefer targeted installs.
+
+Aliases are supported via `aliases.json` (for long skill names).
+
+Example:
+
+```bash
+npx @rmyndharis/antigravity-skills install full-stack-feature
 ```
 
 ### Manual Installation
@@ -139,14 +193,14 @@ If you prefer to clone the repository:
 
 ```bash
 mkdir -p .agent/skills
-cp -R /path/to/antigravity-skill-vault/skills/<skill-name> .agent/skills/
+cp -R /path/to/antigravity-skills/skills/<skill-name> .agent/skills/
 ```
 
 **Option B — Install globally**
 
 ```bash
 mkdir -p ~/.gemini/antigravity/skills
-cp -R /path/to/antigravity-skill-vault/skills/<skill-name> ~/.gemini/antigravity/skills/
+cp -R /path/to/antigravity-skills/skills/<skill-name> ~/.gemini/antigravity/skills/
 ```
 
 > **Note:** After copying skills, restart your agent session so Antigravity re-detects them.
@@ -158,6 +212,15 @@ cp -R /path/to/antigravity-skill-vault/skills/<skill-name> ~/.gemini/antigravity
 1.  Create a folder: `skills/<skill-name>/`
 2.  Add `SKILL.md` (required)
 3.  (Optional) Add helpers: `scripts/`, `references/`, `assets/`
+
+### Authoring Guidelines
+
+- Keep `SKILL.md` concise; move long examples to `resources/` or `examples/`.
+- Use narrow descriptions (for example: "Use when you need to ...") and include "Do not use" to reduce over-activation.
+- Add a "Safety" section for skills that propose terminal or infrastructure changes.
+- Regenerate catalog files with `npm run build:catalog` and validate with `npm run validate:skills`.
+- CI runs strict validation using `validation-baseline.json` for existing gaps; new skills must include the required sections.
+- If you backfill existing skills, refresh the baseline with `node scripts/validate-skills.js --write-baseline`.
 
 ### SKILL.md Template
 
@@ -179,6 +242,12 @@ description: <one sentence describing when to use this skill>
 1. ...
 2. ...
 ```
+
+---
+
+## 🔐 Security
+
+See [SECURITY.md](SECURITY.md) for safety expectations when writing skills that touch terminals or infrastructure.
 
 ---
 

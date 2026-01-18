@@ -7,7 +7,7 @@ description: Build Retrieval-Augmented Generation (RAG) systems for LLM applicat
 
 Master Retrieval-Augmented Generation (RAG) to build LLM applications that provide accurate, grounded responses using external knowledge sources.
 
-## When to Use This Skill
+## Use this skill when
 
 - Building Q&A systems over proprietary documents
 - Creating chatbots with current, factual information
@@ -16,6 +16,24 @@ Master Retrieval-Augmented Generation (RAG) to build LLM applications that provi
 - Enabling LLMs to access domain-specific knowledge
 - Building documentation assistants
 - Creating research tools with source citation
+
+## Do not use this skill when
+
+- You only need purely generative writing without retrieval
+- The dataset is too small to justify embeddings
+- You cannot store or process the source data safely
+
+## Instructions
+
+1. Define the corpus, update cadence, and evaluation targets.
+2. Choose embedding models and vector store based on scale.
+3. Build ingestion, chunking, and retrieval with reranking.
+4. Evaluate with grounded QA metrics and monitor drift.
+
+## Safety
+
+- Redact sensitive data and enforce access controls.
+- Avoid exposing source documents in responses when restricted.
 
 ## Core Components
 

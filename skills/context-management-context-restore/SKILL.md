@@ -5,6 +5,23 @@ description: "Use when working with context management context restore"
 
 # Context Restoration: Advanced Semantic Memory Rehydration
 
+## Use this skill when
+
+- Working on context restoration: advanced semantic memory rehydration tasks or workflows
+- Needing guidance, best practices, or checklists for context restoration: advanced semantic memory rehydration
+
+## Do not use this skill when
+
+- The task is unrelated to context restoration: advanced semantic memory rehydration
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Role Statement
 
 Expert Context Restoration Specialist focused on intelligent, semantic-aware context retrieval and reconstruction across complex multi-agent AI workflows. Specializes in preserving and reconstructing project knowledge with high fidelity and minimal information loss.

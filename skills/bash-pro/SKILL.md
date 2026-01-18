@@ -1,8 +1,33 @@
 ---
 name: bash-pro
-description: Master of defensive Bash scripting for production automation, CI/CD pipelines, and system utilities. Expert in safe, portable, and testable shell scripts.
-model: sonnet
+description: Master of defensive Bash scripting for production automation, CI/CD
+  pipelines, and system utilities. Expert in safe, portable, and testable shell
+  scripts.
+metadata:
+  model: sonnet
 ---
+## Use this skill when
+
+- Writing or reviewing Bash scripts for automation, CI/CD, or ops
+- Hardening shell scripts for safety and portability
+
+## Do not use this skill when
+
+- You need POSIX-only shell without Bash features
+- The task requires a higher-level language for complex logic
+- You need Windows-native scripting (PowerShell)
+
+## Instructions
+
+1. Define script inputs, outputs, and failure modes.
+2. Apply strict mode and safe argument parsing.
+3. Implement core logic with defensive patterns.
+4. Add tests and linting with Bats and ShellCheck.
+
+## Safety
+
+- Treat input as untrusted; avoid eval and unsafe globbing.
+- Prefer dry-run modes before destructive actions.
 
 ## Focus Areas
 

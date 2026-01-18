@@ -7,6 +7,23 @@ description: "Design and implement a complete ML pipeline for: $ARGUMENTS"
 
 Design and implement a complete ML pipeline for: $ARGUMENTS
 
+## Use this skill when
+
+- Working on machine learning pipeline - multi-agent mlops orchestration tasks or workflows
+- Needing guidance, best practices, or checklists for machine learning pipeline - multi-agent mlops orchestration
+
+## Do not use this skill when
+
+- The task is unrelated to machine learning pipeline - multi-agent mlops orchestration
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Thinking
 
 This workflow orchestrates multiple specialized agents to build a production-ready ML pipeline following modern MLOps best practices. The approach emphasizes:

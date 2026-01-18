@@ -7,6 +7,23 @@ description: Design durable workflows with Temporal for distributed systems. Cov
 
 Master workflow orchestration architecture with Temporal, covering fundamental design decisions, resilience patterns, and best practices for building reliable distributed systems.
 
+## Use this skill when
+
+- Working on workflow orchestration patterns tasks or workflows
+- Needing guidance, best practices, or checklists for workflow orchestration patterns
+
+## Do not use this skill when
+
+- The task is unrelated to workflow orchestration patterns
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## When to Use Workflow Orchestration
 
 ### Ideal Use Cases (Source: docs.temporal.io)

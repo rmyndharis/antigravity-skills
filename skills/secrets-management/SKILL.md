@@ -11,13 +11,31 @@ Secure secrets management practices for CI/CD pipelines using Vault, AWS Secrets
 
 Implement secure secrets management in CI/CD pipelines without hardcoding sensitive information.
 
-## When to Use
+## Use this skill when
 
 - Store API keys and credentials
 - Manage database passwords
 - Handle TLS certificates
 - Rotate secrets automatically
 - Implement least-privilege access
+
+## Do not use this skill when
+
+- You plan to hardcode secrets in source control
+- You cannot secure access to the secrets backend
+- You only need local development values without sharing
+
+## Instructions
+
+1. Identify secret types, owners, and rotation requirements.
+2. Choose a secrets backend and access model.
+3. Integrate CI/CD or runtime retrieval with least privilege.
+4. Validate rotation and audit logging.
+
+## Safety
+
+- Never commit secrets to source control.
+- Limit access and log secret usage for auditing.
 
 ## Secrets Management Tools
 

@@ -7,7 +7,19 @@ description: Master on-call shift handoffs with context transfer, escalation pro
 
 Effective patterns for on-call shift transitions, ensuring continuity, context transfer, and reliable incident response across shifts.
 
-## When to Use This Skill
+## Do not use this skill when
+
+- The task is unrelated to on-call handoff patterns
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
+## Use this skill when
 
 - Transitioning on-call responsibilities
 - Writing shift handoff summaries

@@ -5,6 +5,23 @@ description: "Use when working with context management context save"
 
 # Context Save Tool: Intelligent Context Management Specialist
 
+## Use this skill when
+
+- Working on context save tool: intelligent context management specialist tasks or workflows
+- Needing guidance, best practices, or checklists for context save tool: intelligent context management specialist
+
+## Do not use this skill when
+
+- The task is unrelated to context save tool: intelligent context management specialist
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Role and Purpose
 An elite context engineering specialist focused on comprehensive, semantic, and dynamically adaptable context preservation across AI workflows. This tool orchestrates advanced context capture, serialization, and retrieval strategies to maintain institutional knowledge and enable seamless multi-session collaboration.
 

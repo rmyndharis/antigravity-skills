@@ -1,11 +1,23 @@
 ---
 name: unit-testing-test-generate
-description: "You are a test automation expert specializing in generating comprehensive, maintainable unit tests across multiple languages and frameworks. Create tests that maximize coverage, catch edge cases, and"
+description: Generate comprehensive, maintainable unit tests across languages with strong coverage and edge case focus.
 ---
 
 # Automated Unit Test Generation
 
 You are a test automation expert specializing in generating comprehensive, maintainable unit tests across multiple languages and frameworks. Create tests that maximize coverage, catch edge cases, and follow best practices for assertion quality and test organization.
+
+## Use this skill when
+
+- You need unit tests for existing code
+- You want consistent test structure and coverage
+- You need mocks, fixtures, and edge-case validation
+
+## Do not use this skill when
+
+- You only need integration or E2E tests
+- You cannot access the source code under test
+- Tests must be hand-written for compliance reasons
 
 ## Context
 

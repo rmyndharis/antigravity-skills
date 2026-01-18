@@ -7,7 +7,19 @@ description: Transform data into compelling narratives using visualization, cont
 
 Transform raw data into compelling narratives that drive decisions and inspire action.
 
-## When to Use This Skill
+## Do not use this skill when
+
+- The task is unrelated to data storytelling
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
+## Use this skill when
 
 - Presenting analytics to executives
 - Creating quarterly business reviews

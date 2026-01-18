@@ -9,6 +9,23 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 
 [Extended thinking: This workflow orchestrates multiple specialized agents to ensure feature parity across platforms while maintaining platform-specific optimizations. The coordination strategy emphasizes shared contracts and parallel development with regular synchronization points. By establishing API contracts and data models upfront, teams can work independently while ensuring consistency. The workflow benefits include faster time-to-market, reduced integration issues, and maintainable cross-platform codebases.]
 
+## Use this skill when
+
+- Working on multi-platform feature development workflow tasks or workflows
+- Needing guidance, best practices, or checklists for multi-platform feature development workflow
+
+## Do not use this skill when
+
+- The task is unrelated to multi-platform feature development workflow
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Phase 1: Architecture and API Design (Sequential)
 
 ### 1. Define Feature Requirements and API Contracts

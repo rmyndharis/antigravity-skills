@@ -7,7 +7,19 @@ description: Configure and optimize Nx monorepo workspaces. Use when setting up 
 
 Production patterns for Nx monorepo management.
 
-## When to Use This Skill
+## Do not use this skill when
+
+- The task is unrelated to nx workspace patterns
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
+## Use this skill when
 
 - Setting up new Nx workspaces
 - Configuring project boundaries

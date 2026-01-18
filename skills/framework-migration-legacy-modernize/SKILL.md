@@ -9,6 +9,23 @@ Orchestrate a comprehensive legacy system modernization using the strangler fig 
 
 [Extended thinking: The strangler fig pattern, named after the tropical fig tree that gradually envelops and replaces its host, represents the gold standard for risk-managed legacy modernization. This workflow implements a systematic approach where new functionality gradually replaces legacy components, allowing both systems to coexist during transition. By orchestrating specialized agents for assessment, testing, security, and implementation, we ensure each migration phase is validated before proceeding, minimizing disruption while maximizing modernization velocity.]
 
+## Use this skill when
+
+- Working on legacy code modernization workflow tasks or workflows
+- Needing guidance, best practices, or checklists for legacy code modernization workflow
+
+## Do not use this skill when
+
+- The task is unrelated to legacy code modernization workflow
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Phase 1: Legacy Assessment and Risk Analysis
 
 ### 1. Comprehensive Legacy System Analysis

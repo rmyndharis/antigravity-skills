@@ -1,12 +1,30 @@
 ---
-description: "Display project status, active tracks, and next actions"
-argument-hint: "[track-id] [--detailed]"
 name: conductor-status
+description: Display project status, active tracks, and next actions
+metadata:
+  argument-hint: "[track-id] [--detailed]"
 ---
 
 # Conductor Status
 
 Display the current status of the Conductor project, including overall progress, active tracks, and next actions.
+
+## Use this skill when
+
+- Working on conductor status tasks or workflows
+- Needing guidance, best practices, or checklists for conductor status
+
+## Do not use this skill when
+
+- The task is unrelated to conductor status
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Pre-flight Checks
 

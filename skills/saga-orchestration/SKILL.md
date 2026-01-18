@@ -7,7 +7,19 @@ description: Implement saga patterns for distributed transactions and cross-aggr
 
 Patterns for managing distributed transactions and long-running business processes.
 
-## When to Use This Skill
+## Do not use this skill when
+
+- The task is unrelated to saga orchestration
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
+## Use this skill when
 
 - Coordinating multi-service transactions
 - Implementing compensating transactions

@@ -1,12 +1,30 @@
 ---
-description: "Generate comprehensive investor-ready business case document with market, solution, financials, and strategy"
-allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "WebFetch"]
 name: startup-business-analyst-business-case
+description: Generate comprehensive investor-ready business case document with
+  market, solution, financials, and strategy
+allowed-tools: Read Write Edit Glob Grep Bash WebSearch WebFetch
 ---
 
 # Business Case Generator
 
 Generate a comprehensive, investor-ready business case document covering market opportunity, solution, competitive landscape, financial projections, team, risks, and funding ask for startup fundraising and strategic planning.
+
+## Use this skill when
+
+- Working on business case generator tasks or workflows
+- Needing guidance, best practices, or checklists for business case generator
+
+## Do not use this skill when
+
+- The task is unrelated to business case generator
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## What This Command Does
 

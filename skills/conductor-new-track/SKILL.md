@@ -1,12 +1,30 @@
 ---
-description: "Create a new track with specification and phased implementation plan"
-argument-hint: "<feature|bug|chore|refactor> <name>"
 name: conductor-new-track
+description: Create a new track with specification and phased implementation plan
+metadata:
+  argument-hint: <feature|bug|chore|refactor> <name>
 ---
 
 # New Track
 
 Create a new track (feature, bug fix, chore, or refactor) with a detailed specification and phased implementation plan.
+
+## Use this skill when
+
+- Working on new track tasks or workflows
+- Needing guidance, best practices, or checklists for new track
+
+## Do not use this skill when
+
+- The task is unrelated to new track
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Pre-flight Checks
 

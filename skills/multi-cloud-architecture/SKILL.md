@@ -7,11 +7,23 @@ description: Design multi-cloud architectures using a decision framework to sele
 
 Decision framework and patterns for architecting applications across AWS, Azure, and GCP.
 
+## Do not use this skill when
+
+- The task is unrelated to multi-cloud architecture
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+
 ## Purpose
 
 Design cloud-agnostic architectures and make informed decisions about service selection across cloud providers.
 
-## When to Use
+## Use this skill when
 
 - Design multi-cloud strategies
 - Migrate between cloud providers

@@ -1,12 +1,31 @@
 ---
-description: "Initialize project with Conductor artifacts (product definition, tech stack, workflow, style guides)"
-argument-hint: "[--resume]"
 name: conductor-setup
+description: Initialize project with Conductor artifacts (product definition,
+  tech stack, workflow, style guides)
+metadata:
+  argument-hint: "[--resume]"
 ---
 
 # Conductor Setup
 
 Initialize or resume Conductor project setup. This command creates foundational project documentation through interactive Q&A.
+
+## Use this skill when
+
+- Working on conductor setup tasks or workflows
+- Needing guidance, best practices, or checklists for conductor setup
+
+## Do not use this skill when
+
+- The task is unrelated to conductor setup
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Pre-flight Checks
 

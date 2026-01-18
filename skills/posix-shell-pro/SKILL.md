@@ -1,8 +1,28 @@
 ---
 name: posix-shell-pro
-description: Expert in strict POSIX sh scripting for maximum portability across Unix-like systems. Specializes in shell scripts that run on any POSIX-compliant shell (dash, ash, sh, bash --posix).
-model: sonnet
+description: Expert in strict POSIX sh scripting for maximum portability across
+  Unix-like systems. Specializes in shell scripts that run on any
+  POSIX-compliant shell (dash, ash, sh, bash --posix).
+metadata:
+  model: sonnet
 ---
+
+## Use this skill when
+
+- Working on posix shell pro tasks or workflows
+- Needing guidance, best practices, or checklists for posix shell pro
+
+## Do not use this skill when
+
+- The task is unrelated to posix shell pro
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Focus Areas
 
