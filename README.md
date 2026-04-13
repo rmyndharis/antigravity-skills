@@ -221,6 +221,7 @@ cp -R /path/to/antigravity-skills/skills/<skill-name> ~/.gemini/antigravity/skil
 - Regenerate catalog files with `npm run build:catalog` and validate with `npm run validate:skills`.
 - CI runs strict validation using `validation-baseline.json` for existing gaps; new skills must include the required sections.
 - If you backfill existing skills, refresh the baseline with `node scripts/validate-skills.js --write-baseline`.
+- [CCHub](https://github.com/Moresl/cchub) - A desktop control panel for the Claude Code / Codex / Gemini CLI ecosystem. Manage MCP servers, config profiles, agent skills, CLAUDE.md, hooks, and workflow templates from a single Tauri app (Windows / macOS / Linux).
 
 ### SKILL.md Template
 
