@@ -22,7 +22,8 @@
   "scripts": {
     "build:catalog": "node scripts/build-catalog.js",
     "validate:skills": "node scripts/validate-skills.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check:catalog": "node scripts/check-catalog-drift.js",
+    "test": "node --test"
   },
   "repository": {
     "type": "git",

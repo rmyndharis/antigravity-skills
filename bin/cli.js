@@ -482,4 +482,20 @@ program
     }
   });
 
-program.parse(process.argv);
+function main() {
+  program.parse(process.argv);
+}
+
+if (require.main === module) {
+  main();
+} else {
+  module.exports = {
+    sanitizeSkillId,
+    resolveSkillId,
+    resolveSkillPath,
+    scoreSkill,
+    truncate,
+    parseLimit,
+    collectOption,
+  };
+}
