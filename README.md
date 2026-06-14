@@ -218,9 +218,9 @@ cp -R /path/to/antigravity-skills/skills/<skill-name> ~/.gemini/antigravity/skil
 - Keep `SKILL.md` concise; move long examples to `resources/` or `examples/`.
 - Use narrow descriptions (for example: "Use when you need to ...") and include "Do not use" to reduce over-activation.
 - Add a "Safety" section for skills that propose terminal or infrastructure changes.
-- Regenerate catalog files with `npm run build:catalog` and validate with `npm run validate:skills`.
-- CI runs strict validation using `validation-baseline.json` for existing gaps; new skills must include the required sections.
-- If you backfill existing skills, refresh the baseline with `node scripts/validate-skills.js --write-baseline`.
+- Regenerate catalog files with `npm run build:catalog`, then run the local gate: `npm test`, `STRICT=1 npm run validate:skills`, and `npm run check:catalog` (CI runs all three).
+- CI runs strict validation using `validation-baseline.json` for existing gaps; new skills must include the required sections, and any backticked `resources/`/`references/`/`assets/`/`scripts/` file referenced in `SKILL.md` must exist.
+- The baseline is intentionally empty. Refreshing it (`node scripts/validate-skills.js --write-baseline --yes`) grandfathers — and thus silences — current soft violations, so avoid it unless you truly need to; without `--yes` the command only previews what it would grandfather.
 
 ### SKILL.md Template
 
