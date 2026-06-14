@@ -20,6 +20,8 @@ const isStrict = process.argv.includes('--strict')
 const writeBaseline = process.argv.includes('--write-baseline')
   || process.env.WRITE_BASELINE === '1'
   || process.env.WRITE_BASELINE === 'true';
+const confirmWriteBaseline = process.argv.includes('--yes')
+  || process.env.WRITE_BASELINE_YES === '1';
 
 function isPlainObject(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -250,15 +252,27 @@ addStrictSectionErrors('Instructions', missingInstructionsSection, baselineInstr
 addStrictSectionErrors(`SKILL.md line count <= ${LIMITS.skillLines}`, longFiles, baselineLongFile);
 
 if (writeBaseline) {
-  const baselineData = {
-    generatedAt: new Date().toISOString(),
+  const toGrandfather = {
     useSection: [...missingUseSection].sort(),
     doNotUseSection: [...missingDoNotUseSection].sort(),
     instructionsSection: [...missingInstructionsSection].sort(),
     longFile: [...longFiles].sort(),
   };
-  fs.writeFileSync(BASELINE_PATH, JSON.stringify(baselineData, null, 2));
-  console.log(`Baseline written to ${BASELINE_PATH}`);
+  const totalGrandfathered = Object.values(toGrandfather).reduce((sum, arr) => sum + arr.length, 0);
+
+  console.warn('\n⚠ --write-baseline will grandfather the following soft violations,');
+  console.warn('  silencing them in strict mode (CI). Review carefully:');
+  for (const [key, arr] of Object.entries(toGrandfather)) {
+    console.warn(`  - ${key}: ${arr.length}`);
+  }
+
+  if (!confirmWriteBaseline) {
+    console.warn(`\nNot written. Re-run with --yes to grandfather ${totalGrandfathered} violation(s).`);
+  } else {
+    const baselineData = { generatedAt: new Date().toISOString(), ...toGrandfather };
+    fs.writeFileSync(BASELINE_PATH, JSON.stringify(baselineData, null, 2));
+    console.log(`Baseline written to ${BASELINE_PATH}`);
+  }
 }
 
 if (warnings.length) {
