@@ -41,3 +41,29 @@ test('doctor reports the AG_SKILLS_DIR override when set', () => {
     rmDir(dest);
   }
 });
+
+test('resolveTargetDir expands a leading ~ in AG_SKILLS_DIR', () => {
+  const os = require('node:os');
+  const { resolveTargetDir } = require('../bin/cli.js');
+  const saved = process.env.AG_SKILLS_DIR;
+  try {
+    process.env.AG_SKILLS_DIR = '~/agskills-tilde-test';
+    assert.strictEqual(resolveTargetDir(false), path.join(os.homedir(), 'agskills-tilde-test'));
+  } finally {
+    if (saved === undefined) delete process.env.AG_SKILLS_DIR;
+    else process.env.AG_SKILLS_DIR = saved;
+  }
+});
+
+test('installed shows an override header when AG_SKILLS_DIR is set', () => {
+  const dest = tmpDir();
+  const cwd = tmpDir();
+  try {
+    runCli(['install', 'python-pro'], { cwd, env: { AG_SKILLS_DIR: dest } });
+    const r = runCli(['installed'], { cwd, env: { AG_SKILLS_DIR: dest } });
+    assert.ok(/override/i.test(r.stdout), 'installed header should indicate the AG_SKILLS_DIR override');
+  } finally {
+    rmDir(dest);
+    rmDir(cwd);
+  }
+});

@@ -33,9 +33,12 @@ function appendMetadata(metadata, key, value) {
     metadata[key] = nextValue;
     return;
   }
-  const existing = metadata[key].split(',').map(part => part.trim());
-  if (existing.includes(nextValue)) return;
-  metadata[key] = `${metadata[key]}, ${nextValue}`;
+  const existing = metadata[key].split(',').map(part => part.trim()).filter(Boolean);
+  const incoming = nextValue.split(',').map(part => part.trim()).filter(Boolean);
+  const toAdd = incoming.filter(token => !existing.includes(token));
+  if (toAdd.length) {
+    metadata[key] = [...existing, ...toAdd].join(', ');
+  }
 }
 
 function collectAllowedTools(value, toolSet) {

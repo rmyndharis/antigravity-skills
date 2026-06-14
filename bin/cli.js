@@ -25,7 +25,8 @@ const LOCAL_SKILLS_DIR = path.join(process.cwd(), '.agent', 'skills');
 // The override is a destination only; the skill source stays guarded under SKILLS_SOURCE_DIR.
 function resolveTargetDir(global) {
   if (process.env.AG_SKILLS_DIR) {
-    return path.resolve(process.env.AG_SKILLS_DIR);
+    const raw = process.env.AG_SKILLS_DIR.replace(/^~(?=$|[/\\])/, os.homedir());
+    return path.resolve(raw);
   }
   return global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
 }
@@ -335,6 +336,10 @@ program
         if (skippedCount > 0) {
           console.log(chalk.gray('Use --force to overwrite already-installed skills.'));
         }
+        if (failedCount > 0) {
+          console.error(chalk.red(`${failedCount} requested skill(s) could not be installed.`));
+          process.exitCode = 1;
+        }
       } else if (failedCount > 0) {
         console.error(chalk.red('No skills were installed.'));
         process.exitCode = 1;
@@ -368,7 +373,10 @@ program
         return;
       }
 
-      console.log(chalk.bold(`\nInstalled Skills (${options.global ? 'Global' : 'Local'}):\n`));
+      const scopeLabel = process.env.AG_SKILLS_DIR
+        ? 'AG_SKILLS_DIR override'
+        : (options.global ? 'Global' : 'Local');
+      console.log(chalk.bold(`\nInstalled Skills (${scopeLabel}):\n`));
       filteredSkills.forEach(skill => {
         console.log(`- ${chalk.green(skill)}`);
       });
@@ -549,6 +557,7 @@ if (require.main === module) {
     sanitizeSkillId,
     resolveSkillId,
     resolveSkillPath,
+    resolveTargetDir,
     scoreSkill,
     truncate,
     parseLimit,
