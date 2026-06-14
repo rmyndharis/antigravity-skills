@@ -433,19 +433,6 @@ Compare key metrics to similar companies at similar stage.
 **Investor Feedback:**
 Share model with advisors or investors for feedback on assumptions.
 
-## Additional Resources
-
-### Reference Files
-
-For detailed model structures and advanced techniques:
-
-### Example Files
-
-Working financial models with formulas:
-- **`examples/saas-financial-model.md`** - Complete 3-year SaaS model with cohort analysis
-- **`examples/marketplace-model.md`** - Marketplace GMV and take rate projections
-- **`examples/scenario-analysis.md`** - Three-scenario framework with sensitivities
-
 ## Quick Start
 
 To create a startup financial model:

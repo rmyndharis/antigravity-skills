@@ -386,14 +386,6 @@ Example:
 Total: $1.1M
 ```
 
-## Additional Resources
-
-### Reference Files
-
-### Example Files
-- **`examples/seed-stage-hiring-plan.md`** - Complete hiring plan for seed-stage SaaS company
-- **`examples/org-chart-evolution.md`** - Organizational design from 5 to 50 people
-
 ## Quick Start
 
 To plan team composition:

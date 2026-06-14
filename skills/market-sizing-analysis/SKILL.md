@@ -400,8 +400,6 @@ For detailed methodologies and frameworks:
 
 Working examples with complete calculations:
 - **`examples/saas-market-sizing.md`** - Complete TAM/SAM/SOM for a B2B SaaS product
-- **`examples/marketplace-sizing.md`** - Marketplace platform market opportunity calculation
-- **`examples/value-theory-example.md`** - Value-based market sizing for disruptive innovation
 
 Use these examples as templates for your own market sizing analysis. Each includes real numbers, data sources, and assumptions documented clearly.
 

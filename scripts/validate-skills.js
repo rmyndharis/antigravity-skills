@@ -106,6 +106,8 @@ const baselineLongFile = new Set(baseline.longFile || []);
 for (const skillId of skillIds) {
   const skillPath = path.join(SKILLS_DIR, skillId, 'SKILL.md');
 
+  // Defensive TOCTOU guard only: listSkillIds now requires SKILL.md, and the raw-dir
+  // scan above is the live missing-SKILL.md detector.
   if (!fs.existsSync(skillPath)) {
     addError(`Missing SKILL.md: ${skillId}`);
     continue;
@@ -212,10 +214,12 @@ for (const skillId of skillIds) {
   }
 
   // Referenced helper files (backticked relative paths under known dirs) must exist.
-  const refRegex = /`((?:resources|references|assets|scripts)\/[A-Za-z0-9._/-]+)`/g;
+  // Strip fenced code blocks first so illustrative paths inside examples are not flagged.
+  const prose = content.replace(/```[\s\S]*?```/g, '');
+  const refRegex = /`((?:resources|references|assets|scripts|examples)\/[A-Za-z0-9._/-]+)`/g;
   const missingRefs = [];
   let refMatch;
-  while ((refMatch = refRegex.exec(content)) !== null) {
+  while ((refMatch = refRegex.exec(prose)) !== null) {
     const rel = refMatch[1];
     if (!fs.existsSync(path.join(SKILLS_DIR, skillId, rel))) {
       missingRefs.push(rel);
