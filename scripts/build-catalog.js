@@ -34,7 +34,7 @@ const CATEGORY_RULES = [
   {
     name: 'security',
     keywords: [
-      'security', 'sast', 'compliance', 'privacy', 'threat', 'vulnerability', 'owasp', 'pci', 'gdpr',
+      'security', 'sast', 'privacy', 'threat', 'vulnerability', 'owasp', 'pci', 'gdpr',
       'secrets', 'risk', 'malware', 'forensics', 'attack', 'incident', 'auth', 'mtls', 'zero', 'trust',
     ],
   },
@@ -192,14 +192,6 @@ function buildAliases(skills) {
   const used = new Set();
 
   for (const skill of skills) {
-    if (skill.name && skill.name !== skill.id) {
-      const alias = skill.name.toLowerCase();
-      if (!existingIds.has(alias) && !used.has(alias)) {
-        aliases[alias] = skill.id;
-        used.add(alias);
-      }
-    }
-
     const tokens = skill.id.split('-').filter(Boolean);
     if (skill.id.length < 28 || tokens.length < 4) continue;
 
@@ -296,11 +288,19 @@ function renderCatalogMarkdown(catalog) {
   return lines.join('\n');
 }
 
-function buildCatalog() {
+function computeArtifacts() {
   const skillIds = listSkillIds(SKILLS_DIR);
-  const skills = skillIds.map(skillId => readSkill(SKILLS_DIR, skillId));
-  const catalogSkills = [];
+  const skills = [];
+  for (const skillId of skillIds) {
+    const skill = readSkill(SKILLS_DIR, skillId);
+    // Best-effort: warn but still include errored skills (with readSkill's safe defaults) so the catalog stays complete.
+    if (skill.errors && skill.errors.length) {
+      console.warn(`[build-catalog] Warning: ${skillId}: ${skill.errors.join('; ')}`);
+    }
+    skills.push(skill);
+  }
 
+  const catalogSkills = [];
   for (const skill of skills) {
     const tags = deriveTags(skill);
     const category = detectCategory(skill, tags);
@@ -317,8 +317,9 @@ function buildCatalog() {
     });
   }
 
+  const generatedAt = new Date().toISOString();
   const catalog = {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     total: catalogSkills.length,
     skills: catalogSkills.sort((a, b) => a.id.localeCompare(b.id)),
   };
@@ -326,23 +327,23 @@ function buildCatalog() {
   const aliases = buildAliases(catalog.skills);
   const bundleData = buildBundles(catalog.skills);
 
-  const catalogPath = path.join(ROOT, 'catalog.json');
-  const catalogMarkdownPath = path.join(ROOT, 'CATALOG.md');
-  const bundlesPath = path.join(ROOT, 'bundles.json');
-  const aliasesPath = path.join(ROOT, 'aliases.json');
+  return {
+    catalog,
+    catalogMarkdown: renderCatalogMarkdown(catalog),
+    bundles: { generatedAt, ...bundleData },
+    aliases: { generatedAt, aliases },
+  };
+}
 
-  fs.writeFileSync(catalogPath, JSON.stringify(catalog, null, 2));
-  fs.writeFileSync(catalogMarkdownPath, renderCatalogMarkdown(catalog));
-  fs.writeFileSync(
-    bundlesPath,
-    JSON.stringify({ generatedAt: catalog.generatedAt, ...bundleData }, null, 2),
-  );
-  fs.writeFileSync(
-    aliasesPath,
-    JSON.stringify({ generatedAt: catalog.generatedAt, aliases }, null, 2),
-  );
+function buildCatalog() {
+  const artifacts = computeArtifacts();
 
-  return catalog;
+  fs.writeFileSync(path.join(ROOT, 'catalog.json'), JSON.stringify(artifacts.catalog, null, 2));
+  fs.writeFileSync(path.join(ROOT, 'CATALOG.md'), artifacts.catalogMarkdown);
+  fs.writeFileSync(path.join(ROOT, 'bundles.json'), JSON.stringify(artifacts.bundles, null, 2));
+  fs.writeFileSync(path.join(ROOT, 'aliases.json'), JSON.stringify(artifacts.aliases, null, 2));
+
+  return artifacts.catalog;
 }
 
 if (require.main === module) {
@@ -352,4 +353,5 @@ if (require.main === module) {
 
 module.exports = {
   buildCatalog,
+  computeArtifacts,
 };

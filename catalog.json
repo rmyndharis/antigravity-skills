@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-01-18T08:13:56.813Z",
+  "generatedAt": "2026-06-14T07:22:40.531Z",
   "total": 305,
   "skills": [
     {
       "id": "accessibility-compliance-accessibility-audit",
       "name": "accessibility-compliance-accessibility-audit",
       "description": "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance.",
-      "category": "security",
+      "category": "general",
       "tags": [
         "accessibility",
         "compliance",
@@ -1851,7 +1851,7 @@
       "id": "database-admin",
       "name": "database-admin",
       "description": "Expert database administrator specializing in modern cloud databases, automation, and reliability engineering. Masters AWS/Azure/GCP database services, Infrastructure as Code, high availability, disaster recovery, performance optimization, and compliance. Handles multi-cloud strategies, container databases, and cost optimization. Use PROACTIVELY for database architecture, operations, or reliability engineering.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "database",
         "admin"
@@ -3544,7 +3544,7 @@
       "id": "hybrid-cloud-architect",
       "name": "hybrid-cloud-architect",
       "description": "Expert hybrid cloud architect specializing in complex multi-cloud solutions across AWS/Azure/GCP and private clouds (OpenStack/VMware). Masters hybrid connectivity, workload placement optimization, edge computing, and cross-cloud automation. Handles compliance, cost optimization, disaster recovery, and migration strategies. Use PROACTIVELY for hybrid architecture, multi-cloud strategy, or complex infrastructure integration.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "hybrid",
         "cloud"
@@ -4886,7 +4886,7 @@
       "id": "openapi-spec-generation",
       "name": "openapi-spec-generation",
       "description": "Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs, or ensuring API contract compliance.",
-      "category": "security",
+      "category": "development",
       "tags": [
         "openapi",
         "spec",
@@ -7263,7 +7263,7 @@
       "id": "ui-visual-validator",
       "name": "ui-visual-validator",
       "description": "Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification. Masters screenshot analysis, visual regression testing, and component validation. Use PROACTIVELY to verify UI modifications have achieved their intended goals through comprehensive visual analysis.",
-      "category": "security",
+      "category": "testing",
       "tags": [
         "ui",
         "visual",

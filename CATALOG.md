@@ -1,6 +1,6 @@
 # Skill Catalog
 
-Generated at: 2026-01-18T08:13:56.813Z
+Generated at: 2026-06-14T07:22:40.531Z
 
 Total skills: 305
 
@@ -110,7 +110,7 @@ Total skills: 305
 | `vector-database-engineer` | Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applic... | vector, database | vector, database, engineer, databases, embedding, semantic, search, masters, pinecone, weaviate, qdrant, milvus |
 | `vector-index-tuning` | Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector sear... | vector, index, tuning | vector, index, tuning, optimize, performance, latency, recall, memory, hnsw, parameters, selecting, quantization |
 
-## development (36)
+## development (37)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -133,6 +133,7 @@ Total skills: 305
 | `mobile-developer` | Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync... | mobile | mobile, developer, develop, react, native, flutter, apps, architecture, masters, cross, platform, development |
 | `modern-javascript-patterns` | Master ES6+ features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, and functional progra... | modern, javascript | modern, javascript, es6, features, including, async, await, destructuring, spread, operators, arrow, functions |
 | `multi-platform-apps-multi-platform` | Build and deploy the same feature consistently across web, mobile, and desktop platforms using API-first architecture and parallel implementation strategies. | multi, platform, apps | multi, platform, apps, deploy, same, feature, consistently, web, mobile, desktop, platforms, api |
+| `openapi-spec-generation` | Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs... | openapi, spec, generation | openapi, spec, generation, generate, maintain, specifications, code, first, specs, validation, creating, api |
 | `python-development-python-scaffold` | You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with mode... | python | python, development, scaffold, architecture, specializing, scaffolding, applications, generate, complete, structures, tooling, uv |
 | `python-packaging` | Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python libraries, cre... | python, packaging | python, packaging, distributable, packages, proper, structure, setup, py, pyproject, toml, publishing, pypi |
 | `python-performance-optimization` | Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottleneck... | python, performance, optimization | python, performance, optimization, profile, optimize, code, cprofile, memory, profilers, debugging, slow, optimizing |
@@ -151,10 +152,11 @@ Total skills: 305
 | `typescript-pro` | Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns. Use PROACTI... | typescript | typescript, pro, types, generics, strict, type, safety, complex, decorators, enterprise, grade, proactively |
 | `uv-package-manager` | Master the uv package manager for fast Python dependency management, virtual environments, and modern Python project workflows. Use when setting up Python pr... | uv, package, manager | uv, package, manager, fast, python, dependency, virtual, environments, setting, up, managing, dependencies |
 
-## general (35)
+## general (36)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
+| `accessibility-compliance-accessibility-audit` | You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers,... | accessibility, compliance, audit | accessibility, compliance, audit, specializing, wcag, inclusive, assistive, technology, compatibility, conduct, audits, identify |
 | `angular-migration` | Migrate from AngularJS to Angular using hybrid mode, incremental component rewriting, and dependency injection updates. Use when upgrading AngularJS applicat... | angular, migration | angular, migration, migrate, angularjs, hybrid, mode, incremental, component, rewriting, dependency, injection, updates |
 | `anti-reversing-techniques` | Understand anti-reversing, obfuscation, and protection techniques encountered during software analysis. Use when analyzing protected binaries, bypassing anti... | anti, reversing, techniques | anti, reversing, techniques, understand, obfuscation, protection, encountered, during, software, analysis, analyzing, protected |
 | `arm-cortex-expert` | Senior embedded software engineer specializing in firmware and driver development for ARM Cortex-M microcontrollers (Teensy, STM32, nRF52, SAMD). Decades of ... | arm, cortex | arm, cortex, senior, embedded, software, engineer, specializing, firmware, driver, development, microcontrollers, teensy |
@@ -191,7 +193,7 @@ Total skills: 305
 | `tutorial-engineer` | Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples. U... | tutorial | tutorial, engineer, creates, step, tutorials, educational, content, code, transforms, complex, concepts, progressive |
 | `ui-ux-designer` | Create interface designs, wireframes, and design systems. Masters user research, accessibility standards, and modern design tools. Specializes in design toke... | ui, ux, designer | ui, ux, designer, interface, designs, wireframes, masters, user, research, accessibility, standards, specializes |
 
-## infrastructure (55)
+## infrastructure (57)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -208,6 +210,7 @@ Total skills: 305
 | `cost-optimization` | Optimize cloud costs through resource rightsizing, tagging strategies, reserved instances, and spending analysis. Use when reducing cloud expenses, analyzing... | cost, optimization | cost, optimization, optimize, cloud, costs, through, resource, rightsizing, tagging, reserved, instances, spending |
 | `data-engineer` | Build scalable data pipelines, modern data warehouses, and real-time streaming architectures. Implements Apache Spark, dbt, Airflow, and cloud-native data pl... | data | data, engineer, scalable, pipelines, warehouses, real, time, streaming, architectures, implements, apache, spark |
 | `data-engineering-data-pipeline` | You are a data pipeline architecture expert specializing in scalable, reliable, and cost-effective data pipelines for batch and streaming data processing. | data, engineering, pipeline | data, engineering, pipeline, architecture, specializing, scalable, reliable, cost, effective, pipelines, batch, streaming |
+| `database-admin` | Expert database administrator specializing in modern cloud databases, automation, and reliability engineering. Masters AWS/Azure/GCP database services, Infra... | database, admin | database, admin, administrator, specializing, cloud, databases, automation, reliability, engineering, masters, aws, azure |
 | `database-cloud-optimization-cost-optimize` | You are a cloud cost optimization expert specializing in reducing infrastructure expenses while maintaining performance and reliability. Analyze cloud spendi... | database, cloud, optimization, cost, optimize | database, cloud, optimization, cost, optimize, specializing, reducing, infrastructure, expenses, while, maintaining, performance |
 | `database-migrations-migration-observability` | Migration monitoring, CDC, and observability infrastructure | database, cdc, debezium, kafka, prometheus, grafana, monitoring | database, cdc, debezium, kafka, prometheus, grafana, monitoring, migrations, migration, observability, infrastructure |
 | `database-optimizer` | Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolutio... | database, optimizer | database, optimizer, specializing, performance, tuning, query, optimization, scalable, architectures, masters, indexing, resolution |
@@ -227,6 +230,7 @@ Total skills: 305
 | `gitops-workflow` | Implement GitOps workflows with ArgoCD and Flux for automated, declarative Kubernetes deployments with continuous reconciliation. Use when implementing GitOp... | gitops | gitops, argocd, flux, automated, declarative, kubernetes, deployments, continuous, reconciliation, implementing, automating, setting |
 | `grafana-dashboards` | Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visua... | grafana, dashboards | grafana, dashboards, real, time, visualization, application, metrics, building, monitoring, visualizing, creating, operational |
 | `helm-chart-scaffolding` | Design, organize, and manage Helm charts for templating and packaging Kubernetes applications with reusable configurations. Use when creating Helm charts, pa... | helm, chart | helm, chart, scaffolding, organize, charts, templating, packaging, kubernetes, applications, reusable, configurations, creating |
+| `hybrid-cloud-architect` | Expert hybrid cloud architect specializing in complex multi-cloud solutions across AWS/Azure/GCP and private clouds (OpenStack/VMware). Masters hybrid connec... | hybrid, cloud | hybrid, cloud, architect, specializing, complex, multi, solutions, aws, azure, gcp, private, clouds |
 | `hybrid-cloud-networking` | Configure secure, high-performance connectivity between on-premises infrastructure and cloud platforms using VPN and dedicated connections. Use when building... | hybrid, cloud, networking | hybrid, cloud, networking, configure, secure, high, performance, connectivity, between, premises, infrastructure, platforms |
 | `istio-traffic-management` | Configure Istio traffic management including routing, load balancing, circuit breakers, and canary deployments. Use when implementing service mesh traffic po... | istio, traffic | istio, traffic, configure, including, routing, load, balancing, circuit, breakers, canary, deployments, implementing |
 | `java-pro` | Master Java 21+ with modern features like virtual threads, pattern matching, and Spring Boot 3.x. Expert in the latest Java ecosystem including GraalVM, Proj... | java | java, pro, 21, features, like, virtual, threads, matching, spring, boot, latest, ecosystem |
@@ -251,11 +255,10 @@ Total skills: 305
 | `test-automator` | Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with a... | automator | automator, test, ai, powered, automation, frameworks, self, healing, tests, quality, engineering, scalable |
 | `unity-developer` | Build Unity games with optimized C# scripts, efficient rendering, and proper asset management. Masters Unity 6 LTS, URP/HDRP pipelines, and cross-platform de... | unity | unity, developer, games, optimized, scripts, efficient, rendering, proper, asset, masters, lts, urp |
 
-## security (62)
+## security (57)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
-| `accessibility-compliance-accessibility-audit` | You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers,... | accessibility, compliance, audit | accessibility, compliance, audit, specializing, wcag, inclusive, assistive, technology, compatibility, conduct, audits, identify |
 | `attack-tree-construction` | Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to s... | attack, tree, construction | attack, tree, construction, trees, visualize, threat, paths, mapping, scenarios, identifying, defense, gaps |
 | `auth-implementation-patterns` | Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use wh... | auth | auth, authentication, authorization, including, jwt, oauth2, session, rbac, secure, scalable, access, control |
 | `backend-security-coder` | Expert in secure backend coding practices specializing in input validation, authentication, and API security. Use PROACTIVELY for backend security implementa... | backend, security, coder | backend, security, coder, secure, coding, specializing, input, validation, authentication, api, proactively, implementations |
@@ -263,7 +266,6 @@ Total skills: 305
 | `cloud-architect` | Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and ... | cloud | cloud, architect, specializing, aws, azure, gcp, multi, infrastructure, iac, terraform, opentofu, cdk |
 | `code-reviewer` | Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Mas... | code | code, reviewer, elite, review, specializing, ai, powered, analysis, security, vulnerabilities, performance, optimization |
 | `codebase-cleanup-deps-audit` | You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for ... | codebase, cleanup, deps, audit | codebase, cleanup, deps, audit, dependency, security, specializing, vulnerability, scanning, license, compliance, supply |
-| `database-admin` | Expert database administrator specializing in modern cloud databases, automation, and reliability engineering. Masters AWS/Azure/GCP database services, Infra... | database, admin | database, admin, administrator, specializing, cloud, databases, automation, reliability, engineering, masters, aws, azure |
 | `database-migration` | Execute database migrations across ORMs and platforms with zero-downtime strategies, data transformation, and rollback procedures. Use when migrating databas... | database, migration | database, migration, execute, migrations, orms, platforms, zero, downtime, data, transformation, rollback, procedures |
 | `database-migrations-sql-migrations` | SQL database migrations with zero-downtime strategies for PostgreSQL, MySQL, SQL Server | database, sql, migrations, postgresql, mysql, flyway, liquibase, alembic, zero-downtime | database, sql, migrations, postgresql, mysql, flyway, liquibase, alembic, zero-downtime, zero, downtime, server |
 | `dependency-management-deps-audit` | You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for ... | dependency, deps, audit | dependency, deps, audit, security, specializing, vulnerability, scanning, license, compliance, supply, chain, analyze |
@@ -276,7 +278,6 @@ Total skills: 305
 | `frontend-security-coder` | Expert in secure frontend coding practices specializing in XSS prevention, output sanitization, and client-side security patterns. Use PROACTIVELY for fronte... | frontend, security, coder | frontend, security, coder, secure, coding, specializing, xss, prevention, output, sanitization, client, side |
 | `gdpr-data-handling` | Implement GDPR-compliant data handling with consent management, data subject rights, and privacy by design. Use when building systems that process EU persona... | gdpr, data, handling | gdpr, data, handling, compliant, consent, subject, rights, privacy, building, process, eu, personal |
 | `graphql-architect` | Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real... | graphql | graphql, architect, federation, performance, optimization, enterprise, security, scalable, schemas, caching, real, time |
-| `hybrid-cloud-architect` | Expert hybrid cloud architect specializing in complex multi-cloud solutions across AWS/Azure/GCP and private clouds (OpenStack/VMware). Masters hybrid connec... | hybrid, cloud | hybrid, cloud, architect, specializing, complex, multi, solutions, aws, azure, gcp, private, clouds |
 | `incident-responder` | Expert SRE incident responder specializing in rapid problem resolution, modern observability, and comprehensive incident management. Masters incident command... | incident, responder | incident, responder, sre, specializing, rapid, problem, resolution, observability, masters, command, blameless, post |
 | `incident-response-incident-response` | Use when working with incident response incident response | incident, response | incident, response, working |
 | `incident-response-smart-fix` | [Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability p... | incident, response, fix | incident, response, fix, smart, extended, thinking, implements, sophisticated, debugging, resolution, pipeline, leverages |
@@ -292,7 +293,6 @@ Total skills: 305
 | `mtls-configuration` | Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing... | mtls, configuration | mtls, configuration, configure, mutual, tls, zero, trust, communication, implementing, networking, certificate, securing |
 | `network-engineer` | Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, serv... | network | network, engineer, specializing, cloud, networking, security, architectures, performance, optimization, masters, multi, connectivity |
 | `observability-engineer` | Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response... | observability | observability, engineer, monitoring, logging, tracing, implements, sli, slo, incident, response, proactively, infrastructure |
-| `openapi-spec-generation` | Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs... | openapi, spec, generation | openapi, spec, generation, generate, maintain, specifications, code, first, specs, validation, creating, api |
 | `payment-integration` | Integrate Stripe, PayPal, and payment processors. Handles checkout flows, subscriptions, webhooks, and PCI compliance. Use PROACTIVELY when implementing paym... | payment, integration | payment, integration, integrate, stripe, paypal, processors, checkout, flows, subscriptions, webhooks, pci, compliance |
 | `pci-compliance` | Implement PCI DSS compliance requirements for secure handling of payment card data and payment systems. Use when securing payment processing, achieving PCI c... | pci, compliance | pci, compliance, dss, requirements, secure, handling, payment, card, data, securing, processing, achieving |
 | `postmortem-writing` | Write effective blameless postmortems with root cause analysis, timelines, and action items. Use when conducting incident reviews, writing postmortem documen... | postmortem, writing | postmortem, writing, write, effective, blameless, postmortems, root, cause, analysis, timelines, action, items |
@@ -316,9 +316,8 @@ Total skills: 305
 | `terraform-specialist` | Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns. Handles complex module desi... | terraform | terraform, opentofu, mastering, iac, automation, state, enterprise, infrastructure, complex, module, multi, cloud |
 | `threat-mitigation-mapping` | Map identified threats to appropriate security controls and mitigations. Use when prioritizing security investments, creating remediation plans, or validatin... | threat, mitigation, mapping | threat, mitigation, mapping, map, identified, threats, appropriate, security, controls, mitigations, prioritizing, investments |
 | `threat-modeling-expert` | Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement ext... | threat, modeling | threat, modeling, methodologies, security, architecture, review, risk, assessment, masters, stride, pasta, attack |
-| `ui-visual-validator` | Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification. Masters screenshot analysis, visual r... | ui, visual, validator | ui, visual, validator, rigorous, validation, specializing, testing, compliance, accessibility, verification, masters, screenshot |
 
-## testing (14)
+## testing (15)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -334,6 +333,7 @@ Total skills: 305
 | `tdd-workflows-tdd-green` | Implement the minimal code needed to make failing tests pass in the TDD green phase. | tdd, green | tdd, green, minimal, code, needed, failing, tests, pass, phase |
 | `tdd-workflows-tdd-red` | Generate failing tests for the TDD red phase to define expected behavior and edge cases. | tdd, red | tdd, red, generate, failing, tests, phase, define, expected, behavior, edge, cases |
 | `tdd-workflows-tdd-refactor` | Use when working with tdd workflows tdd refactor | tdd, refactor | tdd, refactor, working |
+| `ui-visual-validator` | Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification. Masters screenshot analysis, visual r... | ui, visual, validator | ui, visual, validator, rigorous, validation, specializing, testing, compliance, accessibility, verification, masters, screenshot |
 | `unit-testing-test-generate` | Generate comprehensive, maintainable unit tests across languages with strong coverage and edge case focus. | unit, generate | unit, generate, testing, test, maintainable, tests, languages, strong, coverage, edge, case |
 | `web3-testing` | Test smart contracts comprehensively using Hardhat and Foundry with unit tests, integration tests, and mainnet forking. Use when testing Solidity contracts, ... | web3 | web3, testing, test, smart, contracts, comprehensively, hardhat, foundry, unit, tests, integration, mainnet |
 
