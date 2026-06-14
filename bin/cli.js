@@ -102,7 +102,7 @@ function truncate(value, limit) {
 }
 
 function scoreSkill(skill, query, queryTokens) {
-  const haystack = `${skill.id} ${skill.name || ''} ${skill.description || ''} ${(skill.tags || []).join(' ')}`.toLowerCase();
+  const haystack = `${skill.id} ${skill.name || ''} ${skill.description || ''} ${(skill.tags || []).join(' ')} ${(skill.triggers || []).join(' ')}`.toLowerCase();
   let score = haystack.includes(query) ? 5 : 0;
 
   for (const token of queryTokens) {
