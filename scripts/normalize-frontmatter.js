@@ -2,17 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('yaml');
 const { listSkillIds, parseFrontmatter } = require('../lib/skill-utils');
+const { ALLOWED_FIELDS, FIELD_ORDER } = require('../lib/skill-schema');
 
 const ROOT = path.resolve(__dirname, '..');
 const SKILLS_DIR = path.join(ROOT, 'skills');
-const ALLOWED_FIELDS = new Set([
-  'name',
-  'description',
-  'license',
-  'compatibility',
-  'metadata',
-  'allowed-tools',
-]);
 
 function isPlainObject(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -32,6 +25,7 @@ function coerceToString(value) {
   return String(value).trim();
 }
 
+// NOTE: metadata list values are comma-joined; individual tags must not contain commas.
 function appendMetadata(metadata, key, value) {
   const nextValue = coerceToString(value);
   if (!nextValue) return;
@@ -39,7 +33,8 @@ function appendMetadata(metadata, key, value) {
     metadata[key] = nextValue;
     return;
   }
-  if (metadata[key].includes(nextValue)) return;
+  const existing = metadata[key].split(',').map(part => part.trim());
+  if (existing.includes(nextValue)) return;
   metadata[key] = `${metadata[key]}, ${nextValue}`;
 }
 
@@ -120,7 +115,7 @@ function normalizeSkill(skillId) {
   if (!modified) return false;
 
   const ordered = {};
-  for (const key of ['name', 'description', 'license', 'compatibility', 'allowed-tools', 'metadata']) {
+  for (const key of FIELD_ORDER) {
     if (updated[key] !== undefined) {
       ordered[key] = updated[key];
     }

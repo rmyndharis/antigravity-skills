@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { listSkillIds, parseFrontmatter } = require('../lib/skill-utils');
+const { ALLOWED_FIELDS, LIMITS, NAME_PATTERN } = require('../lib/skill-schema');
 
 const ROOT = path.resolve(__dirname, '..');
 const SKILLS_DIR = path.join(ROOT, 'skills');
@@ -19,20 +20,6 @@ const isStrict = process.argv.includes('--strict')
 const writeBaseline = process.argv.includes('--write-baseline')
   || process.env.WRITE_BASELINE === '1'
   || process.env.WRITE_BASELINE === 'true';
-
-const NAME_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const MAX_NAME_LENGTH = 64;
-const MAX_DESCRIPTION_LENGTH = 1024;
-const MAX_COMPATIBILITY_LENGTH = 500;
-const MAX_SKILL_LINES = 500;
-const ALLOWED_FIELDS = new Set([
-  'name',
-  'description',
-  'license',
-  'compatibility',
-  'metadata',
-  'allowed-tools',
-]);
 
 function isPlainObject(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -127,7 +114,7 @@ for (const skillId of skillIds) {
   }
 
   if (data.name !== undefined) {
-    const nameError = validateStringField('name', data.name, { min: 1, max: MAX_NAME_LENGTH });
+    const nameError = validateStringField('name', data.name, { min: 1, max: LIMITS.name });
     if (nameError) {
       addError(`${nameError} (${skillId})`);
     } else {
@@ -143,13 +130,13 @@ for (const skillId of skillIds) {
 
   const descError = data.description === undefined
     ? 'description is required.'
-    : validateStringField('description', data.description, { min: 1, max: MAX_DESCRIPTION_LENGTH });
+    : validateStringField('description', data.description, { min: 1, max: LIMITS.description });
   if (descError) {
     addError(`${descError} (${skillId})`);
   }
 
   if (data.license !== undefined) {
-    const licenseError = validateStringField('license', data.license, { min: 1, max: 128 });
+    const licenseError = validateStringField('license', data.license, { min: 1, max: LIMITS.license });
     if (licenseError) {
       addError(`${licenseError} (${skillId})`);
     }
@@ -159,7 +146,7 @@ for (const skillId of skillIds) {
     const compatibilityError = validateStringField(
       'compatibility',
       data.compatibility,
-      { min: 1, max: MAX_COMPATIBILITY_LENGTH },
+      { min: 1, max: LIMITS.compatibility },
     );
     if (compatibilityError) {
       addError(`${compatibilityError} (${skillId})`);
@@ -194,7 +181,7 @@ for (const skillId of skillIds) {
     }
   }
 
-  if (lineCount > MAX_SKILL_LINES) {
+  if (lineCount > LIMITS.skillLines) {
     longFiles.push(skillId);
   }
 
@@ -224,7 +211,7 @@ if (missingInstructionsSection.length) {
 }
 
 if (longFiles.length) {
-  addWarning(`SKILL.md over ${MAX_SKILL_LINES} lines: ${longFiles.length} skills (examples: ${longFiles.slice(0, 5).join(', ')})`);
+  addWarning(`SKILL.md over ${LIMITS.skillLines} lines: ${longFiles.length} skills (examples: ${longFiles.slice(0, 5).join(', ')})`);
 }
 
 if (unknownFieldSkills.length) {
@@ -234,7 +221,7 @@ if (unknownFieldSkills.length) {
 addStrictSectionErrors('Use this skill when', missingUseSection, baselineUse);
 addStrictSectionErrors('Do not use', missingDoNotUseSection, baselineDoNotUse);
 addStrictSectionErrors('Instructions', missingInstructionsSection, baselineInstructions);
-addStrictSectionErrors(`SKILL.md line count <= ${MAX_SKILL_LINES}`, longFiles, baselineLongFile);
+addStrictSectionErrors(`SKILL.md line count <= ${LIMITS.skillLines}`, longFiles, baselineLongFile);
 
 if (writeBaseline) {
   const baselineData = {
