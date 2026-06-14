@@ -15,4 +15,6 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
+      - run: npm test
       - run: STRICT=1 npm run validate:skills
+      - run: npm run check:catalog
