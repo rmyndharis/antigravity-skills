@@ -206,6 +206,7 @@ program
   .option('-a, --all', 'Install ALL skills')
   .option('-t, --tag <tag>', 'Install skills by tag (repeatable)', collectOption, [])
   .option('-b, --bundle <bundle>', 'Install a curated bundle')
+  .option('-f, --force', 'Overwrite skills that are already installed')
   .action(async (skillName, options) => {
     const targetDir = options.global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
     const aliases = loadAliases();
@@ -279,26 +280,54 @@ program
         return;
       }
 
+      let installedCount = 0;
+      let skippedCount = 0;
+      let failedCount = 0;
+
       for (const skill of skillsToInstall) {
         const safeSkill = sanitizeSkillId(skill);
         if (!safeSkill) {
           console.error(chalk.red(`Invalid skill name: '${skill}'`));
+          failedCount += 1;
           continue;
         }
         const sourcePath = resolveSkillPath(safeSkill);
         if (!sourcePath || !await fs.pathExists(sourcePath)) {
           console.error(chalk.red(`Skill '${safeSkill}' not found in vault.`));
+          failedCount += 1;
           continue;
         }
 
         const destPath = path.join(targetDir, safeSkill);
+        if (await fs.pathExists(destPath)) {
+          if (!options.force) {
+            console.warn(chalk.yellow(`• Skipped (already installed): ${safeSkill}`));
+            skippedCount += 1;
+            continue;
+          }
+          await fs.remove(destPath);
+        }
 
         await fs.copy(sourcePath, destPath, { overwrite: true });
         console.log(`${chalk.green('✔ Installed:')} ${safeSkill}`);
+        installedCount += 1;
       }
 
-      console.log(chalk.bold.green('\nInstallation complete!'));
-      console.log('Restart your agent session to see changes.');
+      console.log('');
+      console.log(`Installed: ${installedCount}, skipped: ${skippedCount}, not found/invalid: ${failedCount}`);
+
+      if (installedCount > 0) {
+        console.log(chalk.bold.green('Installation complete!'));
+        console.log('Restart your agent session to see changes.');
+        if (skippedCount > 0) {
+          console.log(chalk.gray('Use --force to overwrite already-installed skills.'));
+        }
+      } else if (failedCount > 0) {
+        console.error(chalk.red('No skills were installed.'));
+        process.exitCode = 1;
+      } else {
+        console.log(chalk.yellow('Nothing to do — all requested skills are already installed.'));
+      }
     } catch (err) {
       console.error(chalk.red('Installation failed:'), err.message);
       process.exit(1);
