@@ -18,7 +18,6 @@ description: "Use when working with tdd workflows tdd refactor"
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 Refactor code with confidence using comprehensive test safety net:
 

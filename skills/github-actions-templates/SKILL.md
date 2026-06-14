@@ -17,7 +17,6 @@ Production-ready GitHub Actions workflow patterns for testing, building, and dep
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -76,7 +75,6 @@ jobs:
         files: ./coverage/lcov.info
 ```
 
-**Reference:** See `assets/test-workflow.yml`
 
 ### Pattern 2: Build and Push Docker Image
 
@@ -131,7 +129,6 @@ jobs:
         cache-to: type=gha,mode=max
 ```
 
-**Reference:** See `assets/deploy-workflow.yml`
 
 ### Pattern 3: Deploy to Kubernetes
 
@@ -205,7 +202,6 @@ jobs:
       run: pytest
 ```
 
-**Reference:** See `assets/matrix-build.yml`
 
 ## Workflow Best Practices
 
@@ -330,13 +326,6 @@ jobs:
             "text": "Deployment to production completed successfully!"
           }
 ```
-
-## Reference Files
-
-- `assets/test-workflow.yml` - Testing workflow template
-- `assets/deploy-workflow.yml` - Deployment workflow template
-- `assets/matrix-build.yml` - Matrix build template
-- `references/common-workflows.md` - Common workflow patterns
 
 ## Related Skills
 

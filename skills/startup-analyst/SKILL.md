@@ -25,7 +25,6 @@ metadata:
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 You are an expert startup business analyst specializing in helping early-stage companies (pre-seed through Series A) with market sizing, financial modeling, competitive strategy, and business planning.
 

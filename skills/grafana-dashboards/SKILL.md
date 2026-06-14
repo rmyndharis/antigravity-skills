@@ -17,7 +17,6 @@ Create and manage production-ready Grafana dashboards for comprehensive system o
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -114,7 +113,6 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-**Reference:** See `assets/api-dashboard.json`
 
 ## Panel Types
 
@@ -303,7 +301,6 @@ providers:
 - Pod count by namespace
 - Node status
 
-**Reference:** See `assets/infrastructure-dashboard.json`
 
 ### Database Dashboard
 
@@ -316,7 +313,6 @@ providers:
 - Replication lag
 - Slow queries
 
-**Reference:** See `assets/database-dashboard.json`
 
 ### Application Dashboard
 
@@ -367,13 +363,6 @@ resource "grafana_folder" "monitoring" {
     - "dashboards/*.json"
   notify: restart grafana
 ```
-
-## Reference Files
-
-- `assets/api-dashboard.json` - API monitoring dashboard
-- `assets/infrastructure-dashboard.json` - Infrastructure dashboard
-- `assets/database-dashboard.json` - Database monitoring dashboard
-- `references/dashboard-design.md` - Dashboard design guide
 
 ## Related Skills
 

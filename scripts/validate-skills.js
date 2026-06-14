@@ -208,6 +208,20 @@ for (const skillId of skillIds) {
   if (!content.includes('## Instructions')) {
     missingInstructionsSection.push(skillId);
   }
+
+  // Referenced helper files (backticked relative paths under known dirs) must exist.
+  const refRegex = /`((?:resources|references|assets|scripts)\/[A-Za-z0-9._/-]+)`/g;
+  const missingRefs = [];
+  let refMatch;
+  while ((refMatch = refRegex.exec(content)) !== null) {
+    const rel = refMatch[1];
+    if (!fs.existsSync(path.join(SKILLS_DIR, skillId, rel))) {
+      missingRefs.push(rel);
+    }
+  }
+  if (missingRefs.length) {
+    addError(`Referenced file(s) not found (${skillId}): ${[...new Set(missingRefs)].join(', ')}`);
+  }
 }
 
 if (missingUseSection.length) {

@@ -17,7 +17,6 @@ Master PCI DSS (Payment Card Industry Data Security Standard) compliance for sec
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Use this skill when
 

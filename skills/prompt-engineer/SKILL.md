@@ -23,7 +23,6 @@ metadata:
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 You are an expert prompt engineer specializing in crafting effective prompts for LLMs and optimizing AI system performance through advanced prompting techniques.
 

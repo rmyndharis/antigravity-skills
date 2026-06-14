@@ -17,7 +17,6 @@ Decision framework and patterns for architecting applications across AWS, Azure,
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -61,7 +60,6 @@ Design cloud-agnostic architectures and make informed decisions about service se
 | Aurora | PostgreSQL/MySQL | Cloud Spanner | Distributed SQL |
 | ElastiCache | Cache for Redis | Memorystore | Caching |
 
-**Reference:** See `references/service-comparison.md` for complete comparison
 
 ## Multi-Cloud Patterns
 
@@ -136,7 +134,6 @@ AWS / Azure / GCP
 7. Use cost allocation tags
 8. Monitor with cloud cost tools
 
-**Reference:** See `references/multi-cloud-patterns.md`
 
 ## Migration Strategy
 
@@ -176,11 +173,6 @@ AWS / Azure / GCP
 8. **Document cloud-specific configurations**
 9. **Test disaster recovery** procedures
 10. **Train teams** on multiple clouds
-
-## Reference Files
-
-- `references/service-comparison.md` - Complete service comparison
-- `references/multi-cloud-patterns.md` - Architecture patterns
 
 ## Related Skills
 

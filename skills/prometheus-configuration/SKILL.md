@@ -17,7 +17,6 @@ Complete guide to Prometheus setup, metric collection, scrape configuration, and
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -165,7 +164,6 @@ scrape_configs:
       key_file: /etc/prometheus/client.key
 ```
 
-**Reference:** See `assets/prometheus.yml.template`
 
 ## Scrape Configurations
 
@@ -227,7 +225,6 @@ scrape_configs:
         regex: (.+)
 ```
 
-**Reference:** See `references/scrape-configs.md`
 
 ## Recording Rules
 
@@ -277,7 +274,6 @@ groups:
           100 - ((node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100)
 ```
 
-**Reference:** See `references/recording-rules.md`
 
 ## Alert Rules
 
@@ -358,7 +354,6 @@ promtool check rules /etc/prometheus/rules/*.yml
 promtool query instant http://localhost:9090 'up'
 ```
 
-**Reference:** See `scripts/validate-prometheus.sh`
 
 ## Best Practices
 
@@ -389,13 +384,6 @@ curl http://localhost:9090/api/v1/status/config
 ```bash
 curl 'http://localhost:9090/api/v1/query?query=up'
 ```
-
-## Reference Files
-
-- `assets/prometheus.yml.template` - Complete configuration template
-- `references/scrape-configs.md` - Scrape configuration patterns
-- `references/recording-rules.md` - Recording rule examples
-- `scripts/validate-prometheus.sh` - Validation script
 
 ## Related Skills
 

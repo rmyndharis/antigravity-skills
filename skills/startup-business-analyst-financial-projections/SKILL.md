@@ -24,7 +24,6 @@ Create a comprehensive 3-5 year financial model with revenue projections, cost s
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## What This Command Does
 

@@ -17,7 +17,6 @@ Strategies and patterns for optimizing cloud costs across AWS, Azure, and GCP.
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -174,7 +173,6 @@ resource "aws_instance" "example" {
 }
 ```
 
-**Reference:** See `references/tagging-standards.md`
 
 ## Cost Monitoring
 
@@ -274,11 +272,6 @@ resource "aws_cloudwatch_metric_alarm" "cpu_high" {
 - **Azure:** Cost Management, Advisor
 - **GCP:** Cost Management, Recommender
 - **Multi-cloud:** CloudHealth, Cloudability, Kubecost
-
-## Reference Files
-
-- `references/tagging-standards.md` - Tagging conventions
-- `assets/cost-analysis-template.xlsx` - Cost analysis spreadsheet
 
 ## Related Skills
 

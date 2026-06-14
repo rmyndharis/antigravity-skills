@@ -27,7 +27,6 @@ Comprehensive market sizing methodologies for calculating Total Addressable Mark
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Overview
 
@@ -395,9 +394,7 @@ TAM = Total Target Companies × Average Deal Size × Deals per Year
 ### Reference Files
 
 For detailed methodologies and frameworks:
-- **`references/methodology-deep-dive.md`** - Comprehensive guide to each methodology with step-by-step worksheets
 - **`references/data-sources.md`** - Curated list of market research sources, databases, and tools
-- **`references/industry-templates.md`** - Specific templates for SaaS, marketplace, consumer, B2B, and fintech markets
 
 ### Example Files
 

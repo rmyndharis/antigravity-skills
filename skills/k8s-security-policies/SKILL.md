@@ -17,7 +17,6 @@ Comprehensive guide for implementing NetworkPolicy, PodSecurityPolicy, RBAC, and
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -337,7 +336,6 @@ kubectl auth can-i '*' '*' --as system:serviceaccount:default:my-sa
 ## Reference Files
 
 - `assets/network-policy-template.yaml` - Network policy examples
-- `assets/pod-security-template.yaml` - Pod security policies
 - `references/rbac-patterns.md` - RBAC configuration patterns
 
 ## Related Skills

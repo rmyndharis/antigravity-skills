@@ -17,7 +17,6 @@ Architecture patterns for multi-stage CI/CD pipelines with approval gates and de
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -109,7 +108,6 @@ stages:
               instructions: 'Review staging metrics before approving'
 ```
 
-**Reference:** See `assets/approval-gate-template.yml`
 
 ## Deployment Strategies
 
@@ -358,11 +356,6 @@ kubectl rollout undo deployment/my-app --to-revision=3
       exit 1
     fi
 ```
-
-## Reference Files
-
-- `references/pipeline-orchestration.md` - Complex pipeline patterns
-- `assets/approval-gate-template.yml` - Approval workflow templates
 
 ## Related Skills
 

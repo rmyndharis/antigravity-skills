@@ -24,7 +24,6 @@ Generate comprehensive C4 architecture documentation for an existing repository/
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Overview
 

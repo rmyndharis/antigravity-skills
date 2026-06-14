@@ -17,7 +17,6 @@ Configure secure, high-performance connectivity between on-premises and cloud en
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -69,7 +68,6 @@ resource "aws_vpn_connection" "main" {
 - Lower latency, consistent bandwidth
 - More expensive, setup time required
 
-**Reference:** See `references/direct-connect.md`
 
 ### Azure Connectivity
 
@@ -226,11 +224,6 @@ az network vpn-connection show-device-config-script
 4. **Minimize data transfer** costs
 5. **Use Direct Connect** for high bandwidth
 6. **Implement caching** to reduce traffic
-
-## Reference Files
-
-- `references/vpn-setup.md` - VPN configuration guide
-- `references/direct-connect.md` - Direct Connect setup
 
 ## Related Skills
 

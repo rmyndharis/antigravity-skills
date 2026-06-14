@@ -18,7 +18,6 @@ description: "Use when working with full stack orchestration full stack feature"
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 Orchestrate full-stack feature development across backend, frontend, and infrastructure layers with modern API-first approach:
 
