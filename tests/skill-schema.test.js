@@ -8,6 +8,7 @@ test('skill-schema exposes the closed allowed field set', () => {
     assert.ok(schema.ALLOWED_FIELDS.has(f), `missing ${f}`);
   }
   assert.strictEqual(schema.ALLOWED_FIELDS.has('tags'), false);
+  assert.strictEqual(schema.ALLOWED_FIELDS.size, 6);
 });
 
 test('skill-schema exposes ordering, limits, and name pattern', () => {

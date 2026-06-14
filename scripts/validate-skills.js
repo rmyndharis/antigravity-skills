@@ -267,7 +267,11 @@ if (writeBaseline) {
   }
 
   if (!confirmWriteBaseline) {
-    console.warn(`\nNot written. Re-run with --yes to grandfather ${totalGrandfathered} violation(s).`);
+    if (totalGrandfathered === 0) {
+      console.warn('\nNothing to grandfather — no soft violations. Baseline not written.');
+    } else {
+      console.warn(`\nNot written. Re-run with --yes to grandfather ${totalGrandfathered} violation(s).`);
+    }
   } else {
     const baselineData = { generatedAt: new Date().toISOString(), ...toGrandfather };
     fs.writeFileSync(BASELINE_PATH, JSON.stringify(baselineData, null, 2));

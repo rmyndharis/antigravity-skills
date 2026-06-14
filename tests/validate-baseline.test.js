@@ -18,6 +18,6 @@ test('--write-baseline without --yes does NOT write the baseline file', () => {
   const r = runValidator(['--write-baseline']);
   const after = fs.readFileSync(BASELINE, 'utf8');
   assert.strictEqual(after, before, 'baseline must be unchanged without --yes');
-  assert.ok(/Not written/.test(r.out), 'should explain it was not written');
-  assert.ok(/--yes/.test(r.out), 'should mention the --yes flag');
+  assert.ok(/not written/i.test(r.out), 'should explain it was not written');
+  assert.ok(/grandfather/i.test(r.out), 'should mention grandfathering');
 });

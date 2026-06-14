@@ -4,17 +4,21 @@ const { computeArtifacts } = require('./build-catalog');
 
 const ROOT = path.resolve(__dirname, '..');
 
-function readJson(file) {
-  return JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+function readJson(file, root) {
+  return JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
 }
 
-function readDiskArtifacts() {
-  return {
-    catalog: readJson('catalog.json'),
-    bundles: readJson('bundles.json'),
-    aliases: readJson('aliases.json'),
-    catalogMarkdown: fs.readFileSync(path.join(ROOT, 'CATALOG.md'), 'utf8'),
-  };
+function readDiskArtifacts(root = ROOT) {
+  try {
+    return {
+      catalog: readJson('catalog.json', root),
+      bundles: readJson('bundles.json', root),
+      aliases: readJson('aliases.json', root),
+      catalogMarkdown: fs.readFileSync(path.join(root, 'CATALOG.md'), 'utf8'),
+    };
+  } catch (err) {
+    throw new Error(`check-catalog-drift: failed to read a catalog artifact (${err.message}). Run \`npm run build:catalog\` to generate them.`, { cause: err });
+  }
 }
 
 function stripGeneratedAt(obj) {

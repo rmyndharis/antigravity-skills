@@ -4,6 +4,7 @@ const { execFileSync } = require('node:child_process');
 const path = require('node:path');
 const { findDrift, readDiskArtifacts } = require('../scripts/check-catalog-drift');
 const { computeArtifacts } = require('../scripts/build-catalog');
+const { tmpDir, rmDir } = require('./helpers');
 
 const ROOT = path.resolve(__dirname, '..');
 const SCRIPT = path.join(ROOT, 'scripts', 'check-catalog-drift.js');
@@ -46,4 +47,23 @@ test('findDrift ignores the generatedAt timestamp', () => {
   tampered.bundles.generatedAt = '1999-01-01T00:00:00.000Z';
   tampered.aliases.generatedAt = '1999-01-01T00:00:00.000Z';
   assert.deepStrictEqual(findDrift(fresh, tampered), []);
+});
+
+test('findDrift detects CATALOG.md drift (markdown path)', () => {
+  const fresh = computeArtifacts();
+  const disk = readDiskArtifacts();
+  const tampered = JSON.parse(JSON.stringify(disk));
+  const before = tampered.catalogMarkdown;
+  tampered.catalogMarkdown = before.replace('# Skill Catalog', '# Skill Catalog TAMPERED');
+  assert.notStrictEqual(tampered.catalogMarkdown, before, 'replace was a no-op — the header string changed; update this test');
+  assert.ok(findDrift(fresh, tampered).includes('CATALOG.md'), 'markdown tamper should be detected');
+});
+
+test('readDiskArtifacts throws a helpful error when artifacts are missing', () => {
+  const dir = tmpDir(); // empty: no catalog.json etc.
+  try {
+    assert.throws(() => readDiskArtifacts(dir), /failed to read a catalog artifact|build:catalog/i);
+  } finally {
+    rmDir(dir);
+  }
 });
