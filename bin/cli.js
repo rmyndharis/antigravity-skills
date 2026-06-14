@@ -21,6 +21,15 @@ const ALIASES_PATH = path.join(PACKAGE_ROOT, 'aliases.json');
 const GLOBAL_SKILLS_DIR = path.join(os.homedir(), '.gemini', 'antigravity', 'skills');
 const LOCAL_SKILLS_DIR = path.join(process.cwd(), '.agent', 'skills');
 
+// Allow overriding the install location for both scopes via an env var.
+// The override is a destination only; the skill source stays guarded under SKILLS_SOURCE_DIR.
+function resolveTargetDir(global) {
+  if (process.env.AG_SKILLS_DIR) {
+    return path.resolve(process.env.AG_SKILLS_DIR);
+  }
+  return global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
+}
+
 program
   .name('ag-skills')
   .description('Manage Antigravity Skills')
@@ -212,7 +221,7 @@ program
   .option('-b, --bundle <bundle>', 'Install a curated bundle')
   .option('-f, --force', 'Overwrite skills that are already installed')
   .action(async (skillName, options) => {
-    const targetDir = options.global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
+    const targetDir = resolveTargetDir(options.global);
     const aliases = loadAliases();
     const hasSkillName = typeof skillName === 'string' && skillName.trim().length > 0;
     const bundleName = options.bundle ? options.bundle.toLowerCase().trim() : '';
@@ -343,7 +352,7 @@ program
   .description('List skills installed in your workspace')
   .option('-g, --global', 'List globally installed skills')
   .action(async (options) => {
-    const targetDir = options.global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
+    const targetDir = resolveTargetDir(options.global);
 
     try {
       if (!await fs.pathExists(targetDir)) {
@@ -374,7 +383,7 @@ program
   .description('Update installed skills from the vault')
   .option('-g, --global', 'Update globally installed skills')
   .action(async (skillName, options) => {
-    const targetDir = options.global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
+    const targetDir = resolveTargetDir(options.global);
     const aliases = loadAliases();
 
     try {
@@ -471,6 +480,16 @@ program
     console.log(`Global skills dir: ${GLOBAL_SKILLS_DIR} (${globalStatus.exists && globalStatus.isDir ? chalk.green(globalStatus.writable ? 'OK' : 'NOT WRITABLE') : chalk.red('MISSING')})`);
     if (!globalStatus.exists) {
       console.log(chalk.gray(`Create with: mkdir -p ${GLOBAL_SKILLS_DIR}`));
+    }
+
+    if (process.env.AG_SKILLS_DIR) {
+      const overrideDir = path.resolve(process.env.AG_SKILLS_DIR);
+      const overrideStatus = checkDir(overrideDir);
+      const label = overrideStatus.exists && overrideStatus.isDir
+        ? chalk.green(overrideStatus.writable ? 'OK' : 'NOT WRITABLE')
+        : chalk.red('MISSING');
+      console.log(`AG_SKILLS_DIR override: ${overrideDir} (${label})`);
+      console.log(chalk.gray('Active install/update target (overrides local/global).'));
     }
 
     if (!catalogExists || !bundlesExists || !aliasesExists) {
