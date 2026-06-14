@@ -215,7 +215,9 @@ for (const skillId of skillIds) {
 
   // Referenced helper files (backticked relative paths under known dirs) must exist.
   // Strip fenced code blocks first so illustrative paths inside examples are not flagged.
-  const prose = content.replace(/```[\s\S]*?```/g, '');
+  const prose = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/~~~[\s\S]*?~~~/g, '');
   const refRegex = /`((?:resources|references|assets|scripts|examples)\/[A-Za-z0-9._/-]+)`/g;
   const missingRefs = [];
   let refMatch;

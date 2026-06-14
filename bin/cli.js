@@ -491,7 +491,7 @@ program
     }
 
     if (process.env.AG_SKILLS_DIR) {
-      const overrideDir = path.resolve(process.env.AG_SKILLS_DIR);
+      const overrideDir = resolveTargetDir(false);
       const overrideStatus = checkDir(overrideDir);
       const label = overrideStatus.exists && overrideStatus.isDir
         ? chalk.green(overrideStatus.writable ? 'OK' : 'NOT WRITABLE')
