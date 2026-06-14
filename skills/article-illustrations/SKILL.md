@@ -1,9 +1,9 @@
 ---
 name: article-illustrations
 description: "Generate hand-drawn 16:9 article illustrations featuring the Grav character IP. Turns article concepts into memorable whiteboard-sketch explanations with a recurring floating character, sparse annotations, and absurd metaphors."
-risk: safe
-source: "https://github.com/vipin-si/article-illustrations"
-date_added: "2026-06-06"
+metadata:
+  source: "https://github.com/vipin-si/article-illustrations"
+  date_added: "2026-06-06"
 ---
 
 # Article Illustrations — Grav Hand-Drawn Style
@@ -16,14 +16,20 @@ The skill uses a recurring character IP called **Grav**: a small, round, always-
 
 **Repository:** [vipin-si/article-illustrations](https://github.com/vipin-si/article-illustrations)
 
-## When to Use This Skill
+## Use this skill when
 
 - Use when writing articles, blog posts, or documentation that need inline illustrations
 - Use when you want to turn abstract concepts into concrete visual metaphors
 - Use when you want a consistent visual language across multiple articles
 - Use when you need hand-drawn explanation sketches, not PPT infographics
 
-## How It Works
+## Do not use this skill when
+
+- You need polished, corporate-style PPT infographics or formal flowcharts
+- You do not want a recurring character IP (Grav) featured in the illustrations
+- You require animated, 3D, or realistic interface mockups instead of whiteboard sketches
+
+## Instructions
 
 ### Step 1: Digest the Article
 

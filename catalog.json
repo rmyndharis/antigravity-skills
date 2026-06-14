@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-14T07:22:40.531Z",
-  "total": 305,
+  "generatedAt": "2026-06-14T17:50:31.666Z",
+  "total": 306,
   "skills": [
     {
       "id": "accessibility-compliance-accessibility-audit",
@@ -376,6 +376,31 @@
         "teensy"
       ],
       "path": "skills/arm-cortex-expert/SKILL.md"
+    },
+    {
+      "id": "article-illustrations",
+      "name": "article-illustrations",
+      "description": "Generate hand-drawn 16:9 article illustrations featuring the Grav character IP. Turns article concepts into memorable whiteboard-sketch explanations with a recurring floating character, sparse annotations, and absurd metaphors.",
+      "category": "general",
+      "tags": [
+        "article",
+        "illustrations"
+      ],
+      "triggers": [
+        "article",
+        "illustrations",
+        "generate",
+        "hand",
+        "drawn",
+        "16",
+        "featuring",
+        "grav",
+        "character",
+        "ip",
+        "turns",
+        "concepts"
+      ],
+      "path": "skills/article-illustrations/SKILL.md"
     },
     {
       "id": "async-python-patterns",
