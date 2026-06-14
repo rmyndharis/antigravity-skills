@@ -83,6 +83,18 @@ function addStrictSectionErrors(label, missing, baselineSet) {
 }
 
 const skillIds = listSkillIds(SKILLS_DIR);
+
+// listSkillIds intentionally skips dirs without SKILL.md; flag them here so the
+// validator still catches a skill directory that forgot its SKILL.md.
+const allDirs = fs.readdirSync(SKILLS_DIR)
+  .filter(entry => !entry.startsWith('.') && fs.statSync(path.join(SKILLS_DIR, entry)).isDirectory());
+const skillIdSet = new Set(skillIds);
+for (const dir of allDirs) {
+  if (!skillIdSet.has(dir)) {
+    addError(`Missing SKILL.md: ${dir}`);
+  }
+}
+
 const baseline = loadBaseline();
 const baselineUse = new Set(baseline.useSection || []);
 const baselineDoNotUse = new Set(baseline.doNotUseSection || []);
