@@ -26,16 +26,20 @@ program
   .description('Manage Antigravity Skills')
   .version(version);
 
-function loadJson(filePath) {
+function loadJson(filePath, label) {
+  if (!fs.existsSync(filePath)) return null;
   try {
-    if (!fs.existsSync(filePath)) return null;
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
   } catch (err) {
+    if (label) {
+      console.warn(chalk.yellow(`Warning: ${label} is present but could not be parsed (${err.message}).`));
+    }
     return null;
   }
 }
 
 function loadCatalog() {
+  // No label: a corrupt catalog.json already warns via the _fallback path below; avoid a double warning.
   const catalog = loadJson(CATALOG_PATH);
   if (catalog && Array.isArray(catalog.skills)) {
     return catalog;
@@ -62,13 +66,13 @@ function loadCatalog() {
 }
 
 function loadBundles() {
-  const bundles = loadJson(BUNDLES_PATH);
+  const bundles = loadJson(BUNDLES_PATH, 'bundles.json');
   if (bundles && bundles.bundles) return bundles;
   return { bundles: {}, common: [] };
 }
 
 function loadAliases() {
-  const aliases = loadJson(ALIASES_PATH);
+  const aliases = loadJson(ALIASES_PATH, 'aliases.json');
   if (aliases && aliases.aliases) return aliases.aliases;
   return {};
 }
@@ -376,6 +380,7 @@ program
     try {
       if (!await fs.pathExists(targetDir)) {
         console.error(chalk.red(`No installation found at: ${targetDir}`));
+        process.exitCode = 1;
         return;
       }
 
@@ -384,12 +389,14 @@ program
         const resolved = resolveSkillId(skillName, aliases);
         if (!resolved) {
           console.error(chalk.red(`Invalid skill name: '${skillName}'`));
+          process.exitCode = 1;
           return;
         }
         if (await fs.pathExists(path.join(targetDir, resolved))) {
           skillsToUpdate.push(resolved);
         } else {
           console.error(chalk.red(`Skill '${skillName}' is not installed.`));
+          process.exitCode = 1;
           return;
         }
       } else {
@@ -519,6 +526,7 @@ if (require.main === module) {
   main();
 } else {
   module.exports = {
+    loadJson,
     sanitizeSkillId,
     resolveSkillId,
     resolveSkillPath,
