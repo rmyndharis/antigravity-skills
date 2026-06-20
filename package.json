@@ -1,6 +1,6 @@
 {
   "name": "@rmyndharis/antigravity-skills",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "The Antigravity Skill Vault CLI - Install agent skills to your workspace",
   "bin": {
     "ag-skills": "./bin/cli.js"

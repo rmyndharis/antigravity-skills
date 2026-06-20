@@ -4,6 +4,11 @@ All notable changes to this project are documented here. This project adheres to
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-06-21
+
+### Added
+- `article-illustrations` skill — generates hand-drawn 16:9 article illustrations in the Grav whiteboard-sketch style, turning article concepts into memorable visuals with a recurring floating character, sparse annotations, and absurd metaphors. (Contributed via #8.)
+
 ## [1.1.0] - 2026-06-14
 
 ### Added
@@ -33,5 +38,6 @@ All notable changes to this project are documented here. This project adheres to
 - `normalize-frontmatter` deduplicates metadata at token granularity (no duplicates for comma-containing values); `validate-skills` and `normalize-frontmatter` now share a single frontmatter field-set.
 - Removed dead code: the `parseInlineList`/`stripQuotes` exports and the unreachable `name !== id` alias branch.
 
-[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.2.0
 [1.1.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.1.0
