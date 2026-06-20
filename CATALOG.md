@@ -1,8 +1,8 @@
 # Skill Catalog
 
-Generated at: 2026-06-14T07:22:40.531Z
+Generated at: 2026-06-14T17:50:31.666Z
 
-Total skills: 305
+Total skills: 306
 
 ## architecture (30)
 
@@ -152,7 +152,7 @@ Total skills: 305
 | `typescript-pro` | Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns. Use PROACTI... | typescript | typescript, pro, types, generics, strict, type, safety, complex, decorators, enterprise, grade, proactively |
 | `uv-package-manager` | Master the uv package manager for fast Python dependency management, virtual environments, and modern Python project workflows. Use when setting up Python pr... | uv, package, manager | uv, package, manager, fast, python, dependency, virtual, environments, setting, up, managing, dependencies |
 
-## general (36)
+## general (37)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -160,6 +160,7 @@ Total skills: 305
 | `angular-migration` | Migrate from AngularJS to Angular using hybrid mode, incremental component rewriting, and dependency injection updates. Use when upgrading AngularJS applicat... | angular, migration | angular, migration, migrate, angularjs, hybrid, mode, incremental, component, rewriting, dependency, injection, updates |
 | `anti-reversing-techniques` | Understand anti-reversing, obfuscation, and protection techniques encountered during software analysis. Use when analyzing protected binaries, bypassing anti... | anti, reversing, techniques | anti, reversing, techniques, understand, obfuscation, protection, encountered, during, software, analysis, analyzing, protected |
 | `arm-cortex-expert` | Senior embedded software engineer specializing in firmware and driver development for ARM Cortex-M microcontrollers (Teensy, STM32, nRF52, SAMD). Decades of ... | arm, cortex | arm, cortex, senior, embedded, software, engineer, specializing, firmware, driver, development, microcontrollers, teensy |
+| `article-illustrations` | Generate hand-drawn 16:9 article illustrations featuring the Grav character IP. Turns article concepts into memorable whiteboard-sketch explanations with a r... | article, illustrations | article, illustrations, generate, hand, drawn, 16, featuring, grav, character, ip, turns, concepts |
 | `backtesting-frameworks` | Build robust backtesting systems for trading strategies with proper handling of look-ahead bias, survivorship bias, and transaction costs. Use when developin... | backtesting, frameworks | backtesting, frameworks, robust, trading, proper, handling, look, ahead, bias, survivorship, transaction, costs |
 | `bazel-build-optimization` | Optimize Bazel builds for large-scale monorepos. Use when configuring Bazel, implementing remote execution, or optimizing build performance for enterprise co... | bazel, build, optimization | bazel, build, optimization, optimize, large, scale, monorepos, configuring, implementing, remote, execution, optimizing |
 | `blockchain-developer` | Build production-ready Web3 applications, smart contracts, and decentralized systems. Implements DeFi protocols, NFT platforms, DAOs, and enterprise blockcha... | blockchain | blockchain, developer, web3, applications, smart, contracts, decentralized, implements, defi, protocols, nft, platforms |
