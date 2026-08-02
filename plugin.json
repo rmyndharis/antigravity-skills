@@ -1,16 +1,41 @@
 {
-  "name": "antigravity-skills",
+  "name": "antigravity-skills-manager",
   "version": "1.2.0",
   "description": "Antigravity Skill Manager - Global agy plugin to browse, search, install, and manage 300+ agent skills from the rmyndharis/antigravity-skills catalog.",
   "author": "tonicofonico",
-  "repository": "https://github.com/tonicofonico/antigravity-skills",
-  "homepage": "https://github.com/tonicofonico/antigravity-skills#readme",
+  "repository": "https://github.com/rmyndharis/antigravity-skills",
+  "homepage": "https://github.com/rmyndharis/antigravity-skills#readme",
   "license": "MIT",
   "entry": "skills_cli.py",
   "skills": [
     "skills/antigravity-skills-manager/SKILL.md"
   ],
   "commands": [
+    {
+      "name": "skills-manager",
+      "description": "Browse, search, install, and manage Antigravity agent skills",
+      "entry": "skills_cli.py",
+      "subcommands": [
+        {
+          "name": "list",
+          "description": "List all available skills in the catalog"
+        },
+        {
+          "name": "search",
+          "description": "Search skills by keyword in name, category, or tags",
+          "args": "<term>"
+        },
+        {
+          "name": "install",
+          "description": "Install a skill to ~/.gemini/config/skills/<skill_id>/",
+          "args": "<skill_id>"
+        },
+        {
+          "name": "installed",
+          "description": "List all locally installed skills"
+        }
+      ]
+    },
     {
       "name": "skills",
       "description": "Browse, search, install, and manage Antigravity agent skills",
@@ -38,3 +63,4 @@
     }
   ]
 }
+

@@ -27,7 +27,7 @@ The `antigravity-skills-manager` skill empowers Google Antigravity agents and us
 
 ## Instructions
 
-- Execute commands via `skills_cli.py` or through `/skills` slash commands in the CLI chat interface.
+- Execute commands via `skills_cli.py` or through `/skills-manager` (or `/skills`) slash commands in the CLI chat interface.
 - Ensure skill installations save to `~/.gemini/config/skills/<skill_id>/SKILL.md`.
 - All underlying commands must use standard Python library features (`urllib.request`, `json`, `os`, `sys`) without third-party dependencies.
 
@@ -46,7 +46,7 @@ Lists all 300+ available skills with their categories and descriptions:
 ```bash
 python skills_cli.py list
 ```
-*Slash command equivalent*: `/skills list`
+*Slash command equivalent*: `/skills-manager list` (or `/skills list`)
 
 ### 2. Search Catalog Skills
 Filters skills by matching keywords in skill name, description, category, or tags:
@@ -57,7 +57,7 @@ python skills_cli.py search <term>
 ```bash
 python skills_cli.py search flutter
 ```
-*Slash command equivalent*: `/skills search flutter`
+*Slash command equivalent*: `/skills-manager search flutter` (or `/skills search flutter`)
 
 ### 3. Install Skill
 Downloads target skill folder and `SKILL.md` directly into local configuration path (`~/.gemini/config/skills/<skill_id>/`):
@@ -68,14 +68,14 @@ python skills_cli.py install <skill_id>
 ```bash
 python skills_cli.py install flutter-expert
 ```
-*Slash command equivalent*: `/skills install flutter-expert`
+*Slash command equivalent*: `/skills-manager install flutter-expert` (or `/skills install flutter-expert`)
 
 ### 4. List Installed Skills
 Inspects local `~/.gemini/config/skills/` directory and lists installed skills:
 ```bash
 python skills_cli.py installed
 ```
-*Slash command equivalent*: `/skills installed`
+*Slash command equivalent*: `/skills-manager installed` (or `/skills installed`)
 
 ---
 
