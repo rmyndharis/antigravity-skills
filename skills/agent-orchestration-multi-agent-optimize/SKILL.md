@@ -175,10 +175,10 @@ class CostOptimizer:
     def __init__(self):
         self.token_budget = 100000  # Monthly budget
         self.token_usage = 0
-        self.model_costs = {
+        self.model_costs = {  # USD per 1K input tokens
             'gpt-5': 0.03,
-            'claude-4-sonnet': 0.015,
-            'claude-4-haiku': 0.0025
+            'claude-sonnet-4-6': 0.003,
+            'claude-haiku-4-5': 0.001
         }
 
     def select_optimal_model(self, complexity):

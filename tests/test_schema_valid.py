@@ -26,6 +26,16 @@ class TestSchemaValid(unittest.TestCase):
         self.assertIsInstance(data["version"], str)
         self.assertTrue(re.match(r"^\d+\.\d+\.\d+$", data["version"]), f"Invalid semantic version: {data['version']}")
 
+        # plugin.json's version is maintained by hand and nothing else cross-checks it,
+        # so a release that bumps package.json and forgets this file stays green
+        # forever. Fail loudly at release time instead.
+        with open(os.path.join(REPO_ROOT, "package.json"), "r", encoding="utf-8") as f:
+            pkg_version = json.load(f)["version"]
+        self.assertEqual(
+            data["version"], pkg_version,
+            f"plugin.json version {data['version']} does not match package.json {pkg_version}",
+        )
+
         # Validate description
         self.assertIn("description", data, "plugin.json missing 'description'")
         self.assertIsInstance(data["description"], str)
