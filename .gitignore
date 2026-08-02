@@ -1,4 +1,5 @@
 node_modules/
+__pycache__/
 .DS_Store
 *.log
 .agent/

@@ -15,7 +15,11 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - run: npm ci
       - run: npm test
+      - run: npm run test:python
       - run: STRICT=1 npm run validate:skills
       - run: npm run check:catalog

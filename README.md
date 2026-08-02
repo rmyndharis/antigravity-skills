@@ -89,6 +89,43 @@ You can install skills in **two scopes**:
 -   **Workspace scope** (project-specific): `<workspace-root>/.agent/skills/`
 -   **Global scope** (available in all projects): `~/.gemini/antigravity/skills/`
 
+### Using `agy plugin install` (Native AGY CLI) — experimental
+
+> **Experimental.** The plugin manifest below has not yet been verified end-to-end against a
+> released `agy` CLI. If `agy plugin install` does not pick it up, use the `npx` or manual
+> instructions below, which are the supported paths. Reports are welcome in the issue tracker.
+
+You can install this repository directly as a native Antigravity plugin:
+
+```bash
+agy plugin install https://github.com/rmyndharis/antigravity-skills
+```
+
+This registers the `antigravity-skills-manager` plugin and enables `/skills-manager` (or `/skills`) slash commands inside Antigravity:
+
+- **List available catalog skills:**
+  ```bash
+  /skills-manager list
+  ```
+- **Search skills by keyword:**
+  ```bash
+  /skills-manager search <term>
+  # Example:
+  /skills-manager search flutter
+  ```
+- **Install a skill to `~/.gemini/antigravity/skills/`:**
+  ```bash
+  /skills-manager install <skill_id>
+  # Example:
+  /skills-manager install flutter-expert
+  ```
+- **List locally installed skills:**
+  ```bash
+  /skills-manager installed
+  ```
+
+*(Note: `/skills` is also available as a short command alias.)*
+
 ### Using `npx` (Recommended)
 
 You can easily install skills directly from the repository without cloning it manually.

@@ -1,0 +1,275 @@
+import unittest
+from unittest.mock import patch
+import sys
+import os
+import io
+import tempfile
+
+# Ensure repository root is in sys.path
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
+
+import skills_cli
+
+MOCK_CATALOG = {
+    "generatedAt": "2026-08-02T00:00:00.000Z",
+    "total": 2,
+    "skills": [
+        {
+            "id": "antigravity-skills-manager",
+            "name": "antigravity-skills-manager",
+            "description": "Global skills manager for Google Antigravity.",
+            "category": "workflow",
+            "tags": ["skills", "installer", "manager"],
+            "triggers": ["skills", "skill"],
+            "path": "skills/antigravity-skills-manager/SKILL.md"
+        },
+        {
+            "id": "agent-orchestration-improve-agent",
+            "name": "agent-orchestration-improve-agent",
+            "description": "Systematic improvement of existing agents.",
+            "category": "workflow",
+            "tags": ["agent", "improve"],
+            "triggers": ["agent", "improve"],
+            "path": "skills/agent-orchestration-improve-agent/SKILL.md"
+        }
+    ]
+}
+
+class TestSkillsCLI(unittest.TestCase):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        os.environ["AG_SKILLS_DIR"] = self.temp_dir.name
+
+    def tearDown(self):
+        self.temp_dir.cleanup()
+        if "AG_SKILLS_DIR" in os.environ:
+            del os.environ["AG_SKILLS_DIR"]
+
+    def run_cli(self, args):
+        stdout_capture = io.StringIO()
+        stderr_capture = io.StringIO()
+        with patch.object(sys, 'argv', ['skills_cli.py'] + args):
+            with patch('sys.stdout', stdout_capture), patch('sys.stderr', stderr_capture):
+                exit_code = 0
+                try:
+                    skills_cli.main()
+                except SystemExit as e:
+                    exit_code = e.code if isinstance(e.code, int) else 1
+        return exit_code, stdout_capture.getvalue(), stderr_capture.getvalue()
+
+    # TC-CLI-LIST-01: List catalog skills
+    def test_list_skills(self):
+        code, out, err = self.run_cli(['list'])
+        self.assertEqual(code, 0)
+        self.assertIn("Found", out)
+
+    # TC-CLI-LIST-02: Empty catalog handling
+    @patch('skills_cli.load_catalog', return_value={'skills': []})
+    def test_list_empty_catalog(self, mock_catalog):
+        code, out, err = self.run_cli(['list'])
+        self.assertEqual(code, 0)
+        self.assertIn("Found 0 skill(s)", out)
+        self.assertIn("No skills available in catalog", out)
+
+    # TC-CLI-LIST-03: Malformed catalog error
+    @patch('skills_cli.load_catalog', return_value=None)
+    def test_list_malformed_catalog(self, mock_catalog):
+        code, out, err = self.run_cli(['list'])
+        self.assertEqual(code, 1)
+        self.assertIn("Failed to load catalog", err)
+
+    # TC-CLI-SEARCH-01: Match by ID/Name
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_search_manager(self, mock_catalog):
+        code, out, err = self.run_cli(['search', 'manager'])
+        self.assertEqual(code, 0)
+        self.assertIn("antigravity-skills-manager", out)
+
+    # TC-CLI-SEARCH-02: Case-insensitive search
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_search_case_insensitive(self, mock_catalog):
+        code, out, err = self.run_cli(['search', 'MANAGER'])
+        self.assertEqual(code, 0)
+        self.assertIn("antigravity-skills-manager", out)
+
+    # TC-CLI-SEARCH-03: Tag/Category match
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_search_workflow(self, mock_catalog):
+        code, out, err = self.run_cli(['search', 'workflow'])
+        self.assertEqual(code, 0)
+        self.assertIn("Found 2 skill(s)", out)
+
+    # TC-CLI-SEARCH-04: No matching results
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_search_no_match(self, mock_catalog):
+        code, out, err = self.run_cli(['search', 'nonexistent_xyz_999'])
+        self.assertEqual(code, 0)
+        self.assertIn("Found 0 skill(s)", out)
+        self.assertIn("No skills found matching filter", out)
+
+    # TC-CLI-SEARCH-05: Missing search term
+    def test_search_missing_term(self):
+        code, out, err = self.run_cli(['search'])
+        self.assertEqual(code, 1)
+        self.assertIn("Usage:", err)
+
+    # TC-CLI-INST-01: Valid skill installation
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_install_valid_skill(self, mock_catalog):
+        code, out, err = self.run_cli(['install', 'antigravity-skills-manager'])
+        self.assertEqual(code, 0)
+        self.assertIn("[OK] Successfully installed", out)
+        installed_file = os.path.join(self.temp_dir.name, 'antigravity-skills-manager', 'SKILL.md')
+        self.assertTrue(os.path.exists(installed_file))
+        with open(installed_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        self.assertIn("name: antigravity-skills-manager", content)
+
+    # TC-CLI-INST-02: Re-installation / Overwrite
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_install_overwrite(self, mock_catalog):
+        code1, out1, err1 = self.run_cli(['install', 'antigravity-skills-manager'])
+        self.assertEqual(code1, 0)
+        code2, out2, err2 = self.run_cli(['install', 'antigravity-skills-manager'])
+        self.assertEqual(code2, 0)
+        self.assertIn("[OK] Successfully installed", out2)
+
+    # TC-CLI-INST-03: Non-existent skill ID
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_install_nonexistent_skill(self, mock_catalog):
+        code, out, err = self.run_cli(['install', 'unknown-skill-999'])
+        self.assertEqual(code, 1)
+        self.assertIn("Skill 'unknown-skill-999' not found in catalog", err)
+
+    # TC-CLI-INST-04: Unmocked skill installation from disk catalog.json
+    def test_install_unmocked(self):
+        code, out, err = self.run_cli(['install', 'antigravity-skills-manager'])
+        self.assertEqual(code, 0, f"Unmocked install failed: {err}")
+        self.assertIn("[OK] Successfully installed", out)
+        installed_file = os.path.join(self.temp_dir.name, 'antigravity-skills-manager', 'SKILL.md')
+        self.assertTrue(os.path.exists(installed_file))
+
+    # TC-CLI-INSTD-01: Clean directory state
+    def test_installed_empty(self):
+        code, out, err = self.run_cli(['installed'])
+        self.assertEqual(code, 0)
+        self.assertIn("No skills currently installed", out)
+
+    # TC-CLI-INSTD-02: Multiple installed skills
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_installed_multiple(self, mock_catalog):
+        self.run_cli(['install', 'antigravity-skills-manager'])
+        code, out, err = self.run_cli(['installed'])
+        self.assertEqual(code, 0)
+        self.assertIn("antigravity-skills-manager", out)
+        self.assertIn("[OK] SKILL.md", out)
+
+    # TC-CLI-INSTD-03: Non-skill folder ignore/flag
+    def test_installed_folder_without_skill_md(self):
+        fake_folder = os.path.join(self.temp_dir.name, 'dummy-folder')
+        os.makedirs(fake_folder, exist_ok=True)
+        code, out, err = self.run_cli(['installed'])
+        self.assertEqual(code, 0)
+        self.assertIn("dummy-folder", out)
+        self.assertIn("[X] No SKILL.md", out)
+
+    # TC-CLI-DIR-01: Default destination is the same global dir bin/cli.js uses
+    def test_default_skills_dir_matches_node_cli(self):
+        del os.environ["AG_SKILLS_DIR"]
+        expected = os.path.join(os.path.expanduser("~"), ".gemini", "antigravity", "skills")
+        self.assertEqual(skills_cli.get_skills_dir(), os.path.abspath(expected))
+
+    # TC-CLI-DIR-02: AG_SKILLS_DIR expands a leading ~, as bin/cli.js does
+    def test_ag_skills_dir_expands_tilde(self):
+        os.environ["AG_SKILLS_DIR"] = "~/some-skills-dir"
+        resolved = skills_cli.get_skills_dir()
+        self.assertEqual(resolved, os.path.join(os.path.expanduser("~"), "some-skills-dir"))
+        self.assertNotIn("~", resolved)
+
+    # TC-CLI-INST-05: A failed install must exit non-zero, not report soft success
+    @patch('skills_cli.fetch_bytes', return_value=None)
+    @patch('skills_cli.fetch_json', return_value=None)
+    @patch('skills_cli.load_catalog', return_value={'skills': [
+        {'id': 'ghost-skill', 'name': 'ghost-skill', 'path': 'skills/ghost-skill/SKILL.md'}
+    ]})
+    def test_install_failure_exits_nonzero(self, mock_catalog, mock_json, mock_bytes):
+        code, out, err = self.run_cli(['install', 'ghost-skill'])
+        self.assertEqual(code, 1)
+        self.assertIn("Installation incomplete", err)
+
+    # TC-CLI-INST-06: A catalog id must not be able to write outside the skills dir
+    @patch('skills_cli.load_catalog', return_value={'skills': [
+        {'id': '../escaped', 'name': '../escaped', 'path': 'skills/api-design-principles/SKILL.md'}
+    ]})
+    def test_install_refuses_path_escape(self, mock_catalog):
+        code, out, err = self.run_cli(['install', '../escaped'])
+        self.assertEqual(code, 1)
+        self.assertIn("refusing to write outside", err)
+        escaped = os.path.join(os.path.dirname(self.temp_dir.name), 'escaped')
+        self.assertFalse(os.path.exists(escaped))
+
+    # TC-CLI-INST-07: Reinstalling replaces the folder so upstream deletions do not survive
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_reinstall_removes_stale_files(self, mock_catalog):
+        self.run_cli(['install', 'antigravity-skills-manager'])
+        stale = os.path.join(self.temp_dir.name, 'antigravity-skills-manager', 'stale-upstream-file.md')
+        with open(stale, 'w', encoding='utf-8') as f:
+            f.write('removed upstream')
+        code, out, err = self.run_cli(['install', 'antigravity-skills-manager'])
+        self.assertEqual(code, 0)
+        self.assertFalse(os.path.exists(stale))
+
+    # TC-CLI-INST-08: A catalog path must not read from outside the package
+    @patch('skills_cli.load_catalog')
+    def test_install_refuses_catalog_path_traversal(self, mock_catalog):
+        secrets = tempfile.mkdtemp()
+        with open(os.path.join(secrets, 'id_rsa'), 'w', encoding='utf-8') as f:
+            f.write('private key material')
+        with open(os.path.join(secrets, 'SKILL.md'), 'w', encoding='utf-8') as f:
+            f.write('decoy')
+        rel = os.path.relpath(secrets, REPO_ROOT).replace(os.sep, '/')
+        mock_catalog.return_value = {'skills': [
+            {'id': 'innocent', 'name': 'innocent', 'path': f'{rel}/SKILL.md'}
+        ]}
+        code, out, err = self.run_cli(['install', 'innocent'])
+        self.assertEqual(code, 1)
+        self.assertIn("unsafe skill path", err)
+        self.assertFalse(os.path.exists(os.path.join(self.temp_dir.name, 'innocent', 'id_rsa')))
+
+    # TC-CLI-INST-09: A catalog path must not walk the pinned repo prefix off the URL
+    @patch('skills_cli.fetch_json')
+    @patch('skills_cli.load_catalog')
+    def test_install_refuses_url_repo_substitution(self, mock_catalog, mock_fetch):
+        mock_catalog.return_value = {'skills': [{
+            'id': 'innocent',
+            'name': 'innocent',
+            'path': 'skills/../../../../attacker-org/malicious-repo/contents/x/SKILL.md',
+        }]}
+        code, out, err = self.run_cli(['install', 'innocent'])
+        self.assertEqual(code, 1)
+        self.assertIn("unsafe skill path", err)
+        mock_fetch.assert_not_called()
+
+    # TC-CLI-INST-10: API items pointing outside the requested folder are skipped
+    def test_download_skips_items_outside_requested_folder(self):
+        target = os.path.join(self.temp_dir.name, 'out')
+        items = [{'name': 'evil.md', 'path': 'skills/other-skill/evil.md', 'type': 'file'}]
+        with patch('skills_cli.fetch_json', return_value=items), \
+             patch('skills_cli.fetch_bytes', return_value=b'x') as mock_bytes:
+            ok = skills_cli.download_folder_recursive('skills/innocent', target)
+        self.assertFalse(ok)
+        mock_bytes.assert_not_called()
+        self.assertFalse(os.path.exists(os.path.join(target, 'evil.md')))
+
+    # TC-CLI-SEARCH-06: Multi-word queries match on every term, not the exact phrase
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_search_multi_word(self, mock_catalog):
+        code, out, err = self.run_cli(['search', 'improve agent'])
+        self.assertEqual(code, 0)
+        self.assertIn("agent-orchestration-improve-agent", out)
+        self.assertIn("Found 1 skill(s)", out)
+
+if __name__ == '__main__':
+    unittest.main()
