@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 import json
 import shutil
 import urllib.request
@@ -26,6 +27,24 @@ def get_skills_dir():
             override = os.path.expanduser("~") + override[1:]
         return os.path.abspath(override)
     return os.path.abspath(GLOBAL_SKILLS_DIR)
+
+
+# A catalog entry's path is used three ways: as a local directory to read from, as a
+# suffix on the pinned GitHub API and raw URLs, and as a destination folder name. A
+# ".." segment therefore escapes far more than the filesystem — in a URL it walks off
+# the pinned repo prefix entirely, so
+#   API_BASE_URL + "../../../../other-org/other-repo/contents/x"
+# resolves to a repository we do not control. Match the exact shape build-catalog.js
+# emits instead of scrubbing, and reject everything else.
+SKILL_PATH_RE = re.compile(r'^skills/([A-Za-z0-9._-]+)/SKILL\.md$')
+
+
+def skill_folder_from_catalog(cat_path, skill_id):
+    candidate = cat_path or f"skills/{skill_id}/SKILL.md"
+    match = SKILL_PATH_RE.match(candidate)
+    if not match or match.group(1) in ('.', '..'):
+        raise ValueError(f"unsafe skill path in catalog entry: {candidate!r}")
+    return candidate[:-len('/SKILL.md')]
 
 
 # Keep every write under the install root, so a catalog entry can never place files
@@ -167,8 +186,19 @@ def download_folder_recursive(remote_path, local_target_dir):
         item_type = item.get('type', '')
         target_item_path = contained_join(local_target_dir, item_name)
 
+        # The API response also feeds URLs and recursion, so hold it to the same rule as
+        # the catalog: everything must stay under the folder we asked for, on our host.
+        if not item_path.startswith(remote_path + "/"):
+            print(f"  └─ Skipped (outside {remote_path}): {item_path}", file=sys.stderr)
+            success = False
+            continue
+
         if item_type == 'file':
             download_url = item.get('download_url') or (RAW_BASE_URL + item_path)
+            if not download_url.startswith(RAW_BASE_URL):
+                print(f"  └─ Skipped (unexpected download host): {download_url}", file=sys.stderr)
+                success = False
+                continue
             data = fetch_bytes(download_url)
             if data is not None:
                 with open(target_item_path, "wb") as f:
@@ -206,6 +236,7 @@ def cmd_install(skill_id):
 
     skills_dir = get_skills_dir()
     try:
+        remote_skill_path = skill_folder_from_catalog(found.get('path', ''), found['id'])
         target_skill_dir = contained_join(skills_dir, found['id'])
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
@@ -217,16 +248,8 @@ def cmd_install(skill_id):
         print("  └─ Replacing existing installation")
         shutil.rmtree(target_skill_dir)
 
-    cat_path = found.get('path', '')
-    if cat_path and cat_path.endswith('/SKILL.md'):
-        remote_skill_path = cat_path[:-len('/SKILL.md')]
-    elif cat_path:
-        remote_skill_path = os.path.dirname(cat_path)
-    else:
-        remote_skill_path = f"skills/{found['id']}"
-
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    local_skill_src = os.path.join(script_dir, remote_skill_path)
+    local_skill_src = contained_join(script_dir, remote_skill_path)
 
     try:
         if os.path.exists(local_skill_src) and os.path.isdir(local_skill_src):

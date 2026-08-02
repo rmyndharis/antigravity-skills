@@ -221,6 +221,48 @@ class TestSkillsCLI(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertFalse(os.path.exists(stale))
 
+    # TC-CLI-INST-08: A catalog path must not read from outside the package
+    @patch('skills_cli.load_catalog')
+    def test_install_refuses_catalog_path_traversal(self, mock_catalog):
+        secrets = tempfile.mkdtemp()
+        with open(os.path.join(secrets, 'id_rsa'), 'w', encoding='utf-8') as f:
+            f.write('private key material')
+        with open(os.path.join(secrets, 'SKILL.md'), 'w', encoding='utf-8') as f:
+            f.write('decoy')
+        rel = os.path.relpath(secrets, REPO_ROOT).replace(os.sep, '/')
+        mock_catalog.return_value = {'skills': [
+            {'id': 'innocent', 'name': 'innocent', 'path': f'{rel}/SKILL.md'}
+        ]}
+        code, out, err = self.run_cli(['install', 'innocent'])
+        self.assertEqual(code, 1)
+        self.assertIn("unsafe skill path", err)
+        self.assertFalse(os.path.exists(os.path.join(self.temp_dir.name, 'innocent', 'id_rsa')))
+
+    # TC-CLI-INST-09: A catalog path must not walk the pinned repo prefix off the URL
+    @patch('skills_cli.fetch_json')
+    @patch('skills_cli.load_catalog')
+    def test_install_refuses_url_repo_substitution(self, mock_catalog, mock_fetch):
+        mock_catalog.return_value = {'skills': [{
+            'id': 'innocent',
+            'name': 'innocent',
+            'path': 'skills/../../../../attacker-org/malicious-repo/contents/x/SKILL.md',
+        }]}
+        code, out, err = self.run_cli(['install', 'innocent'])
+        self.assertEqual(code, 1)
+        self.assertIn("unsafe skill path", err)
+        mock_fetch.assert_not_called()
+
+    # TC-CLI-INST-10: API items pointing outside the requested folder are skipped
+    def test_download_skips_items_outside_requested_folder(self):
+        target = os.path.join(self.temp_dir.name, 'out')
+        items = [{'name': 'evil.md', 'path': 'skills/other-skill/evil.md', 'type': 'file'}]
+        with patch('skills_cli.fetch_json', return_value=items), \
+             patch('skills_cli.fetch_bytes', return_value=b'x') as mock_bytes:
+            ok = skills_cli.download_folder_recursive('skills/innocent', target)
+        self.assertFalse(ok)
+        mock_bytes.assert_not_called()
+        self.assertFalse(os.path.exists(os.path.join(target, 'evil.md')))
+
     # TC-CLI-SEARCH-06: Multi-word queries match on every term, not the exact phrase
     @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
     def test_search_multi_word(self, mock_catalog):
