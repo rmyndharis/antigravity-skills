@@ -28,7 +28,7 @@ function stripGeneratedAt(obj) {
 }
 
 function stripMarkdownTimestamp(md) {
-  return md.replace(/^Generated at: .*$/m, 'Generated at: <timestamp>');
+  return md.replace(/\r\n/g, '\n').replace(/^Generated at: .*$/m, 'Generated at: <timestamp>');
 }
 
 // Pure comparison: returns the list of artifact names that differ between the

@@ -313,7 +313,7 @@ function computeArtifacts() {
       category,
       tags,
       triggers,
-      path: path.relative(ROOT, skill.path),
+      path: path.relative(ROOT, skill.path).replace(/\\/g, '/'),
     });
   }
 

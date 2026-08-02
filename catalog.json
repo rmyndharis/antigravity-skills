@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-14T17:50:31.666Z",
-  "total": 306,
+  "generatedAt": "2026-08-02T00:22:52.027Z",
+  "total": 307,
   "skills": [
     {
       "id": "accessibility-compliance-accessibility-audit",
@@ -178,6 +178,32 @@
         "protected"
       ],
       "path": "skills/anti-reversing-techniques/SKILL.md"
+    },
+    {
+      "id": "antigravity-skills-manager",
+      "name": "antigravity-skills-manager",
+      "description": "Global skills manager for Google Antigravity. Explore, search, install, and manage 300+ agent skills from the rmyndharis/antigravity-skills catalog using pure stdlib CLI tools.",
+      "category": "general",
+      "tags": [
+        "antigravity",
+        "skills",
+        "manager"
+      ],
+      "triggers": [
+        "antigravity",
+        "skills",
+        "manager",
+        "global",
+        "google",
+        "explore",
+        "search",
+        "install",
+        "300",
+        "agent",
+        "rmyndharis",
+        "catalog"
+      ],
+      "path": "skills/antigravity-skills-manager/SKILL.md"
     },
     {
       "id": "api-design-principles",
