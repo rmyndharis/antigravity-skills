@@ -4,6 +4,20 @@ All notable changes to this project are documented here. This project adheres to
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-08-03
+
+### Added
+- `antigravity-skills-manager` skill — browse, search, install, and list catalog skills from inside an Antigravity session. (Contributed via #9.)
+- `skills_cli.py`, a dependency-free Python entrypoint covering the same four operations, packaged at the root of the published tarball. It resolves its destination exactly as `ag-skills` does (`AG_SKILLS_DIR`, else `~/.gemini/antigravity/skills`), replaces an existing install rather than merging into it, and exits non-zero when files could not be retrieved.
+- `plugin.json` manifest exposing the `/skills-manager` and `/skills` commands. The `agy plugin install` path is marked experimental — it has not yet been verified end-to-end against a released `agy` CLI.
+- Python test suite (`npm run test:python`), wired into CI alongside the Node suite.
+
+### Fixed
+- Replaced the retired `claude-3-5-sonnet-20241022` model id in the two AI-review skills with `claude-sonnet-4-6`; the retired id had not been served since 28 October 2025. (Contributed via #10.)
+- Replaced the never-valid `claude-4-sonnet` and `claude-4-haiku` ids in `agent-orchestration-multi-agent-optimize` with `claude-sonnet-4-6` and `claude-haiku-4-5`, and corrected the accompanying per-1K input prices.
+- `build-catalog` normalizes path separators and `check-catalog-drift` tolerates CRLF, so the catalog gate no longer reports false drift for contributors on Windows.
+- `skills-manager` instructions now state where `skills_cli.py` actually lives — installing the skill copies only `SKILL.md` — invoke `python3` rather than `python`, and describe the real install destination when `AG_SKILLS_DIR` is set.
+
 ## [1.2.0] - 2026-06-21
 
 ### Added
@@ -38,6 +52,7 @@ All notable changes to this project are documented here. This project adheres to
 - `normalize-frontmatter` deduplicates metadata at token granularity (no duplicates for comma-containing values); `validate-skills` and `normalize-frontmatter` now share a single frontmatter field-set.
 - Removed dead code: the `parseInlineList`/`stripQuotes` exports and the unreachable `name !== id` alias branch.
 
-[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.3.0
 [1.2.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.2.0
 [1.1.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.1.0

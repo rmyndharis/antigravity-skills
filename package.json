@@ -1,6 +1,6 @@
 {
   "name": "@rmyndharis/antigravity-skills",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "The Antigravity Skill Vault CLI - Install agent skills to your workspace",
   "bin": {
     "ag-skills": "./bin/cli.js"
@@ -26,7 +26,8 @@
     "validate:skills": "node scripts/validate-skills.js",
     "check:catalog": "node scripts/check-catalog-drift.js",
     "test": "node --test",
-    "test:python": "python3 -m unittest discover -s tests -p \"test_*.py\""
+    "test:python": "python3 -m unittest discover -s tests -p \"test_*.py\"",
+    "prepublishOnly": "npm test && npm run test:python && npm run check:catalog"
   },
   "repository": {
     "type": "git",
