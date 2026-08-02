@@ -45,14 +45,16 @@ class TestSchemaValid(unittest.TestCase):
         self.assertIn("commands", data)
         self.assertIsInstance(data["commands"], list)
         self.assertTrue(len(data["commands"]) > 0)
-        skills_cmd = data["commands"][0]
-        self.assertEqual(skills_cmd.get("name"), "skills")
-        self.assertIn("subcommands", skills_cmd)
-        sub_names = [sc["name"] for sc in skills_cmd["subcommands"]]
-        self.assertIn("list", sub_names)
-        self.assertIn("search", sub_names)
-        self.assertIn("install", sub_names)
-        self.assertIn("installed", sub_names)
+        cmds_by_name = {c["name"]: c for c in data["commands"] if isinstance(c, dict) and "name" in c}
+        for cmd_name in ["skills-manager", "skills"]:
+            self.assertIn(cmd_name, cmds_by_name, f"Command '{cmd_name}' missing from commands in plugin.json")
+            cmd = cmds_by_name[cmd_name]
+            self.assertIn("subcommands", cmd)
+            sub_names = [sc["name"] for sc in cmd["subcommands"] if isinstance(sc, dict) and "name" in sc]
+            self.assertIn("list", sub_names)
+            self.assertIn("search", sub_names)
+            self.assertIn("install", sub_names)
+            self.assertIn("installed", sub_names)
 
     def test_skill_md_schema(self):
         skill_md_path = os.path.join(REPO_ROOT, "skills", "antigravity-skills-manager", "SKILL.md")
