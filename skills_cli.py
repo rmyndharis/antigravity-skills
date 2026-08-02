@@ -1,24 +1,44 @@
 import sys
 import os
 import json
+import shutil
 import urllib.request
 import urllib.error
 
-# ponytail: reconfigure sys.stdout/stderr to UTF-8 for Windows terminal compatibility
+# Reconfigure sys.stdout/stderr to UTF-8 for Windows terminal compatibility.
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
     sys.stderr.reconfigure(encoding='utf-8')
 
 CATALOG_URL = "https://raw.githubusercontent.com/rmyndharis/antigravity-skills/main/catalog.json"
-BUNDLES_URL = "https://raw.githubusercontent.com/rmyndharis/antigravity-skills/main/bundles.json"
 RAW_BASE_URL = "https://raw.githubusercontent.com/rmyndharis/antigravity-skills/main/"
 API_BASE_URL = "https://api.github.com/repos/rmyndharis/antigravity-skills/contents/"
 
-# ponytail: environment variable override allows isolated testing without polluting ~/.gemini/config/skills
-def get_skills_dir():
-    return os.environ.get("GEMINI_SKILLS_DIR") or os.path.abspath(os.path.join(os.path.expanduser("~"), ".gemini", "config", "skills"))
+GLOBAL_SKILLS_DIR = os.path.join(os.path.expanduser("~"), ".gemini", "antigravity", "skills")
 
-# ponytail: stdlib urllib fetcher with user-agent and timeout handling
+
+# Mirrors resolveTargetDir() in bin/cli.js: AG_SKILLS_DIR overrides the destination and a
+# leading ~ is expanded, so this CLI and ag-skills always agree on where skills live.
+def get_skills_dir():
+    override = os.environ.get("AG_SKILLS_DIR")
+    if override:
+        if override == "~" or override.startswith(("~/", "~\\")):
+            override = os.path.expanduser("~") + override[1:]
+        return os.path.abspath(override)
+    return os.path.abspath(GLOBAL_SKILLS_DIR)
+
+
+# Keep every write under the install root, so a catalog entry can never place files
+# elsewhere on disk via .. or an absolute path. Mirrors the guard in bin/cli.js.
+def contained_join(base, *parts):
+    base_abs = os.path.abspath(base)
+    target = os.path.abspath(os.path.join(base_abs, *parts))
+    if target != base_abs and not target.startswith(base_abs + os.sep):
+        raise ValueError(f"refusing to write outside {base_abs}: {target}")
+    return target
+
+
+# Stdlib urllib fetcher with user-agent and timeout handling.
 def fetch_json(url):
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "AntigravitySkillsInstaller/1.0"})
@@ -28,7 +48,7 @@ def fetch_json(url):
         print(f"Error fetching {url}: {e}", file=sys.stderr)
         return None
 
-# ponytail: stdlib binary fetcher for raw files
+# Stdlib binary fetcher for raw files.
 def fetch_bytes(url):
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "AntigravitySkillsInstaller/1.0"})
@@ -38,7 +58,7 @@ def fetch_bytes(url):
         print(f"Error downloading {url}: {e}", file=sys.stderr)
         return None
 
-# ponytail: prefer local catalog.json if available in script directory, fallback to raw github
+# Prefer the catalog.json shipped next to this script; fall back to raw GitHub.
 def load_catalog():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     local_catalog = os.path.join(script_dir, "catalog.json")
@@ -53,20 +73,18 @@ def load_catalog():
 def skill_matches(s, query):
     if not query:
         return True
-    q = query.lower()
-    if q in s.get('id', '').lower():
-        return True
-    if q in s.get('name', '').lower():
-        return True
-    if q in s.get('description', '').lower():
-        return True
-    if q in s.get('category', '').lower():
-        return True
-    if any(q in t.lower() for t in s.get('tags', [])):
-        return True
-    if any(q in tr.lower() for tr in s.get('triggers', [])):
-        return True
-    return False
+    haystack = " ".join([
+        s.get('id', ''),
+        s.get('name', ''),
+        s.get('description', ''),
+        s.get('category', ''),
+        " ".join(s.get('tags', [])),
+        " ".join(s.get('triggers', [])),
+    ]).lower()
+    # Match on every whitespace-separated token rather than the whole string, so
+    # "kubernetes helm" finds skills mentioning both instead of requiring that
+    # exact adjacent phrase (which no catalog entry contains).
+    return all(token in haystack for token in query.lower().split())
 
 def cmd_list(category=None, query=None):
     catalog = load_catalog()
@@ -90,14 +108,17 @@ def cmd_list(category=None, query=None):
         print("No skills found matching filter.")
         return
 
-    for s in skills[:40]:  # Limit display to 40 items
+    # Cap only the unfiltered listing; a filtered result set is small enough to show
+    # in full, and truncating it would let a caller conclude a skill does not exist.
+    limit = None if (category or query) else 40
+    for s in (skills if limit is None else skills[:limit]):
         cat = f"[{s.get('category', 'general')}]"
         print(f"* {s.get('id', ''):<50} {cat:<12}")
         if s.get('description'):
             desc = s['description'][:80] + "..." if len(s['description']) > 80 else s['description']
             print(f"  └─ {desc}")
-    if len(skills) > 40:
-        print(f"\n... and {len(skills) - 40} more. Use --query <term> or search <term> to filter.")
+    if limit is not None and len(skills) > limit:
+        print(f"\n... and {len(skills) - limit} more. Use --query <term> or search <term> to filter.")
 
 def cmd_search(query):
     if not query or not query.strip():
@@ -105,37 +126,38 @@ def cmd_search(query):
         sys.exit(1)
     cmd_list(query=query.strip())
 
-# ponytail: local repo fallback for offline/test reliability
+# Local source copy, used whenever the repo's skills/ tree sits beside this script.
 def copy_folder_local(local_src, local_dst):
     os.makedirs(local_dst, exist_ok=True)
-    for root, dirs, files in os.walk(local_src):
+    for root, _dirs, files in os.walk(local_src):
         rel_path = os.path.relpath(root, local_src)
-        target_dir = os.path.join(local_dst, rel_path) if rel_path != "." else local_dst
+        target_dir = local_dst if rel_path == "." else contained_join(local_dst, rel_path)
         os.makedirs(target_dir, exist_ok=True)
         for f in files:
             src_file = os.path.join(root, f)
-            dst_file = os.path.join(target_dir, f)
+            dst_file = contained_join(target_dir, f)
             with open(src_file, "rb") as rf:
                 content = rf.read()
             with open(dst_file, "wb") as wf:
                 wf.write(content)
-            print(f"  └─ Downloaded: {f}")
+            print(f"  └─ Copied: {f}")
     return True
 
-# ponytail: recursive directory fetcher using github api with raw fallback
+# Recursive directory fetcher using the GitHub contents API, with a raw fallback.
 def download_folder_recursive(remote_path, local_target_dir):
     os.makedirs(local_target_dir, exist_ok=True)
     api_url = API_BASE_URL + remote_path
     items = fetch_json(api_url)
     if not items or not isinstance(items, list):
-        # ponytail: fallback to direct SKILL.md download if GitHub API fails or rate limited
+        # The contents API is unavailable (commonly an unauthenticated rate limit), so the
+        # folder cannot be enumerated. Fetch SKILL.md alone and report the install as
+        # incomplete rather than claiming success for files that were never listed.
         raw_url = RAW_BASE_URL + remote_path + "/SKILL.md"
         content = fetch_bytes(raw_url)
         if content:
-            with open(os.path.join(local_target_dir, "SKILL.md"), "wb") as f:
+            with open(contained_join(local_target_dir, "SKILL.md"), "wb") as f:
                 f.write(content)
-            print("  └─ Downloaded: SKILL.md (fallback)")
-            return True
+            print("  └─ Downloaded: SKILL.md (folder listing unavailable, other files skipped)")
         return False
 
     success = True
@@ -143,7 +165,7 @@ def download_folder_recursive(remote_path, local_target_dir):
         item_name = item.get('name', '')
         item_path = item.get('path', '')
         item_type = item.get('type', '')
-        target_item_path = os.path.join(local_target_dir, item_name)
+        target_item_path = contained_join(local_target_dir, item_name)
 
         if item_type == 'file':
             download_url = item.get('download_url') or (RAW_BASE_URL + item_path)
@@ -183,8 +205,17 @@ def cmd_install(skill_id):
         sys.exit(1)
 
     skills_dir = get_skills_dir()
-    target_skill_dir = os.path.join(skills_dir, found['id'])
+    try:
+        target_skill_dir = contained_join(skills_dir, found['id'])
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
     print(f"[*] Installing skill '{found['id']}' into: {target_skill_dir}")
+
+    # Replace rather than merge, so files removed upstream do not survive a reinstall.
+    if os.path.isdir(target_skill_dir):
+        print("  └─ Replacing existing installation")
+        shutil.rmtree(target_skill_dir)
 
     cat_path = found.get('path', '')
     if cat_path and cat_path.endswith('/SKILL.md'):
@@ -197,15 +228,22 @@ def cmd_install(skill_id):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     local_skill_src = os.path.join(script_dir, remote_skill_path)
 
-    if os.path.exists(local_skill_src) and os.path.isdir(local_skill_src):
-        ok = copy_folder_local(local_skill_src, target_skill_dir)
-    else:
-        ok = download_folder_recursive(remote_skill_path, target_skill_dir)
+    try:
+        if os.path.exists(local_skill_src) and os.path.isdir(local_skill_src):
+            ok = copy_folder_local(local_skill_src, target_skill_dir)
+        else:
+            ok = download_folder_recursive(remote_skill_path, target_skill_dir)
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
 
     if ok and os.path.exists(os.path.join(target_skill_dir, "SKILL.md")):
         print(f"[OK] Successfully installed '{found['id']}'!")
     else:
-        print(f"[!] Installation completed with potential missing files for '{found['id']}'.")
+        # Exit non-zero so callers and wrappers can tell a partial install from a clean one,
+        # matching how bin/cli.js sets process.exitCode on a failed install.
+        print(f"[!] Installation incomplete for '{found['id']}' - some files could not be retrieved.", file=sys.stderr)
+        sys.exit(1)
 
 def cmd_installed():
     skills_dir = get_skills_dir()

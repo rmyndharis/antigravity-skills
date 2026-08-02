@@ -40,12 +40,12 @@ MOCK_CATALOG = {
 class TestSkillsCLI(unittest.TestCase):
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
-        os.environ["GEMINI_SKILLS_DIR"] = self.temp_dir.name
+        os.environ["AG_SKILLS_DIR"] = self.temp_dir.name
 
     def tearDown(self):
         self.temp_dir.cleanup()
-        if "GEMINI_SKILLS_DIR" in os.environ:
-            del os.environ["GEMINI_SKILLS_DIR"]
+        if "AG_SKILLS_DIR" in os.environ:
+            del os.environ["AG_SKILLS_DIR"]
 
     def run_cli(self, args):
         stdout_capture = io.StringIO()
@@ -174,6 +174,60 @@ class TestSkillsCLI(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("dummy-folder", out)
         self.assertIn("[X] No SKILL.md", out)
+
+    # TC-CLI-DIR-01: Default destination is the same global dir bin/cli.js uses
+    def test_default_skills_dir_matches_node_cli(self):
+        del os.environ["AG_SKILLS_DIR"]
+        expected = os.path.join(os.path.expanduser("~"), ".gemini", "antigravity", "skills")
+        self.assertEqual(skills_cli.get_skills_dir(), os.path.abspath(expected))
+
+    # TC-CLI-DIR-02: AG_SKILLS_DIR expands a leading ~, as bin/cli.js does
+    def test_ag_skills_dir_expands_tilde(self):
+        os.environ["AG_SKILLS_DIR"] = "~/some-skills-dir"
+        resolved = skills_cli.get_skills_dir()
+        self.assertEqual(resolved, os.path.join(os.path.expanduser("~"), "some-skills-dir"))
+        self.assertNotIn("~", resolved)
+
+    # TC-CLI-INST-05: A failed install must exit non-zero, not report soft success
+    @patch('skills_cli.fetch_bytes', return_value=None)
+    @patch('skills_cli.fetch_json', return_value=None)
+    @patch('skills_cli.load_catalog', return_value={'skills': [
+        {'id': 'ghost-skill', 'name': 'ghost-skill', 'path': 'skills/ghost-skill/SKILL.md'}
+    ]})
+    def test_install_failure_exits_nonzero(self, mock_catalog, mock_json, mock_bytes):
+        code, out, err = self.run_cli(['install', 'ghost-skill'])
+        self.assertEqual(code, 1)
+        self.assertIn("Installation incomplete", err)
+
+    # TC-CLI-INST-06: A catalog id must not be able to write outside the skills dir
+    @patch('skills_cli.load_catalog', return_value={'skills': [
+        {'id': '../escaped', 'name': '../escaped', 'path': 'skills/api-design-principles/SKILL.md'}
+    ]})
+    def test_install_refuses_path_escape(self, mock_catalog):
+        code, out, err = self.run_cli(['install', '../escaped'])
+        self.assertEqual(code, 1)
+        self.assertIn("refusing to write outside", err)
+        escaped = os.path.join(os.path.dirname(self.temp_dir.name), 'escaped')
+        self.assertFalse(os.path.exists(escaped))
+
+    # TC-CLI-INST-07: Reinstalling replaces the folder so upstream deletions do not survive
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_reinstall_removes_stale_files(self, mock_catalog):
+        self.run_cli(['install', 'antigravity-skills-manager'])
+        stale = os.path.join(self.temp_dir.name, 'antigravity-skills-manager', 'stale-upstream-file.md')
+        with open(stale, 'w', encoding='utf-8') as f:
+            f.write('removed upstream')
+        code, out, err = self.run_cli(['install', 'antigravity-skills-manager'])
+        self.assertEqual(code, 0)
+        self.assertFalse(os.path.exists(stale))
+
+    # TC-CLI-SEARCH-06: Multi-word queries match on every term, not the exact phrase
+    @patch('skills_cli.load_catalog', return_value=MOCK_CATALOG)
+    def test_search_multi_word(self, mock_catalog):
+        code, out, err = self.run_cli(['search', 'improve agent'])
+        self.assertEqual(code, 0)
+        self.assertIn("agent-orchestration-improve-agent", out)
+        self.assertIn("Found 1 skill(s)", out)
 
 if __name__ == '__main__':
     unittest.main()

@@ -15,6 +15,8 @@
     "validation-baseline.json",
     "bundles.json",
     "aliases.json",
+    "plugin.json",
+    "skills_cli.py",
     "SECURITY.md",
     "LICENSE",
     "README.md"
@@ -23,7 +25,8 @@
     "build:catalog": "node scripts/build-catalog.js",
     "validate:skills": "node scripts/validate-skills.js",
     "check:catalog": "node scripts/check-catalog-drift.js",
-    "test": "node --test"
+    "test": "node --test",
+    "test:python": "python3 -m unittest discover -s tests -p \"test_*.py\""
   },
   "repository": {
     "type": "git",

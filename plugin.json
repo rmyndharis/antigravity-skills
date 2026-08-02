@@ -1,8 +1,8 @@
 {
   "name": "antigravity-skills-manager",
   "version": "1.2.0",
-  "description": "Antigravity Skill Manager - Global agy plugin to browse, search, install, and manage 300+ agent skills from the rmyndharis/antigravity-skills catalog.",
-  "author": "tonicofonico",
+  "description": "Antigravity Skill Manager - Global agy plugin to browse, search, install, and manage 300+ agent skills from the rmyndharis/antigravity-skills catalog. Experimental: not yet verified end-to-end against a released agy CLI.",
+  "author": "rmyndharis",
   "repository": "https://github.com/rmyndharis/antigravity-skills",
   "homepage": "https://github.com/rmyndharis/antigravity-skills#readme",
   "license": "MIT",
@@ -27,7 +27,7 @@
         },
         {
           "name": "install",
-          "description": "Install a skill to ~/.gemini/config/skills/<skill_id>/",
+          "description": "Install a skill to ~/.gemini/antigravity/skills/<skill_id>/",
           "args": "<skill_id>"
         },
         {
@@ -52,7 +52,7 @@
         },
         {
           "name": "install",
-          "description": "Install a skill to ~/.gemini/config/skills/<skill_id>/",
+          "description": "Install a skill to ~/.gemini/antigravity/skills/<skill_id>/",
           "args": "<skill_id>"
         },
         {
