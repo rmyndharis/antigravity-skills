@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T00:22:52.027Z",
-  "total": 307,
+  "generatedAt": "2026-09-08T12:43:20.100Z",
+  "total": 308,
   "skills": [
     {
       "id": "accessibility-compliance-accessibility-audit",
@@ -7434,6 +7434,30 @@
         "dependencies"
       ],
       "path": "skills/uv-package-manager/SKILL.md"
+    },
+    {
+      "id": "vcp",
+      "name": "vcp",
+      "description": "Visual Click Prompt (VCP) integration skill for AI agents. Autonomously inspects and executes in-browser visual feedback tasks, element selections, and DOM annotations generated from live websites via the VCP Chrome extension and local bridge daemon.",
+      "category": "data-ai",
+      "tags": [
+        "vcp"
+      ],
+      "triggers": [
+        "vcp",
+        "visual",
+        "click",
+        "prompt",
+        "integration",
+        "skill",
+        "ai",
+        "agents",
+        "autonomously",
+        "inspects",
+        "executes",
+        "browser"
+      ],
+      "path": "skills/vcp/SKILL.md"
     },
     {
       "id": "vector-database-engineer",
