@@ -1,5 +1,7 @@
 # Antigravity Skill Vault
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/rmyndharis)
+
 A curated collection of **Agent Skills** for **Google Antigravity**, ported from the [Claude Code Agents](https://github.com/wshobson/agents) repository.
 
 This vault transforms the extensive Claude Code ecosystem into **Antigravity Skills**, providing your agent with repeatable workflows, domain expertise, and specialized tools.
@@ -285,6 +287,14 @@ description: <one sentence describing when to use this skill>
 ## 🔐 Security
 
 See [SECURITY.md](SECURITY.md) for safety expectations when writing skills that touch terminals or infrastructure.
+
+---
+
+## ☕ Support
+
+If this vault saves you time, you can support its maintenance by buying me a coffee.
+
+<a href="https://buymeacoffee.com/rmyndharis"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="50"/></a>
 
 ---
 
