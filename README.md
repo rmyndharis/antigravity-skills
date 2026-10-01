@@ -46,6 +46,7 @@ Skills are flattened in the `skills/` directory, but cover these broad categorie
 - **Conductor**: `conductor-implement`, `context-driven-development` (Context-Driven Development)
 - **Architecture**: `c4-architecture-c4-architecture`, `microservices-patterns`, `api-design-principles`
 - **Orchestration**: `full-stack-orchestration-full-stack-feature`, `incident-response-incident-response`
+- **Skill Porting & Optimization**: `skill-porter` ([antigravity-skill-porter](https://github.com/Pranav-Nexus/antigravity-skill-porter)) - Ingests, translates, and optimizes agent skills from Claude Code and Cursor into native Antigravity plugins.
 
 ### 📊 Data & AI
 - **Data Engineering**: `data-engineer`, `spark-optimization`, `dbt-transformation-patterns`
