@@ -1,8 +1,8 @@
 # Skill Catalog
 
-Generated at: 2026-08-02T00:22:52.027Z
+Generated at: 2026-09-08T12:43:20.100Z
 
-Total skills: 307
+Total skills: 308
 
 ## architecture (30)
 
@@ -67,7 +67,7 @@ Total skills: 307
 | `startup-financial-modeling` | This skill should be used when the user asks to "create financial projections", "build a financial model", "forecast revenue", "calculate burn rate", "estima... | startup, financial, modeling | startup, financial, modeling, skill, should, used, user, asks, projections, model, forecast, revenue |
 | `team-composition-analysis` | This skill should be used when the user asks to "plan team structure", "determine hiring needs", "design org chart", "calculate compensation", "plan equity a... | team, composition | team, composition, analysis, skill, should, used, user, asks, plan, structure, determine, hiring |
 
-## data-ai (38)
+## data-ai (39)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -107,6 +107,7 @@ Total skills: 307
 | `tdd-orchestrator` | Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices... | tdd, orchestrator | tdd, orchestrator, specializing, red, green, refactor, discipline, multi, agent, coordination, test, driven |
 | `team-collaboration-standup-notes` | You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remo... | team, collaboration, standup, notes | team, collaboration, standup, notes, communication, async, first, ai, assisted, note, generation, commit |
 | `unity-ecs-patterns` | Master Unity ECS (Entity Component System) with DOTS, Jobs, and Burst for high-performance game development. Use when building data-oriented games, optimizin... | unity, ecs | unity, ecs, entity, component, dots, jobs, burst, high, performance, game, development, building |
+| `vcp` | Visual Click Prompt (VCP) integration skill for AI agents. Autonomously inspects and executes in-browser visual feedback tasks, element selections, and DOM a... | vcp | vcp, visual, click, prompt, integration, skill, ai, agents, autonomously, inspects, executes, browser |
 | `vector-database-engineer` | Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applic... | vector, database | vector, database, engineer, databases, embedding, semantic, search, masters, pinecone, weaviate, qdrant, milvus |
 | `vector-index-tuning` | Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector sear... | vector, index, tuning | vector, index, tuning, optimize, performance, latency, recall, memory, hnsw, parameters, selecting, quantization |
 
