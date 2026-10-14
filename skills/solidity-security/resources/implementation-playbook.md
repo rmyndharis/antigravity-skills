@@ -493,18 +493,6 @@ contract WellDocumentedContract {
     }
 }
 ```
-
-## Resources
-
-- **references/reentrancy.md**: Comprehensive reentrancy prevention
-- **references/access-control.md**: Role-based access patterns
-- **references/overflow-underflow.md**: SafeMath and integer safety
-- **references/gas-optimization.md**: Gas saving techniques
-- **references/vulnerability-patterns.md**: Common vulnerability catalog
-- **assets/solidity-contracts-templates.sol**: Secure contract templates
-- **assets/security-checklist.md**: Pre-audit checklist
-- **scripts/analyze-contract.sh**: Static analysis tools
-
 ## Tools for Security Analysis
 
 - **Slither**: Static analysis tool

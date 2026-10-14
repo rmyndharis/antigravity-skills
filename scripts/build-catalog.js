@@ -5,6 +5,7 @@ const {
   readSkill,
   tokenize,
   unique,
+  truncate,
 } = require('../lib/skill-utils');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -19,15 +20,15 @@ const STOPWORDS = new Set([
   'design', 'implement', 'implementation', 'strategy', 'strategies', 'patterns', 'pattern', 'workflow',
   'workflows', 'guide', 'template', 'templates', 'tool', 'tools', 'project', 'projects', 'support',
   'manage', 'management', 'system', 'systems', 'services', 'service', 'across', 'end', 'end-to-end',
-  'using', 'based', 'ensure', 'ensure', 'help', 'needs', 'need', 'focuses', 'handles', 'builds', 'make',
+  'using', 'based', 'ensure', 'help', 'needs', 'need', 'focuses', 'handles', 'builds', 'make',
 ]);
 
 const TAG_STOPWORDS = new Set([
   'pro', 'expert', 'patterns', 'pattern', 'workflow', 'workflows', 'templates', 'template', 'toolkit',
   'tools', 'tool', 'project', 'projects', 'guide', 'management', 'engineer', 'architect', 'developer',
   'specialist', 'assistant', 'analysis', 'review', 'reviewer', 'automation', 'orchestration', 'scaffold',
-  'scaffolding', 'implementation', 'strategy', 'context', 'management', 'feature', 'features', 'smart',
-  'system', 'systems', 'design', 'development', 'development', 'test', 'testing', 'workflow',
+  'scaffolding', 'implementation', 'strategy', 'context', 'feature', 'features', 'smart',
+  'system', 'systems', 'design', 'development', 'test', 'testing',
 ]);
 
 const CATEGORY_RULES = [
@@ -35,7 +36,8 @@ const CATEGORY_RULES = [
     name: 'security',
     keywords: [
       'security', 'sast', 'privacy', 'threat', 'vulnerability', 'owasp', 'pci', 'gdpr',
-      'secrets', 'risk', 'malware', 'forensics', 'attack', 'incident', 'auth', 'mtls', 'zero', 'trust',
+      'secrets', 'malware', 'forensics', 'attack', 'auth', 'mtls', 'stride', 'reverse', 'firmware',
+      'reversing', 'binary',
     ],
   },
   {
@@ -43,14 +45,15 @@ const CATEGORY_RULES = [
     keywords: [
       'kubernetes', 'k8s', 'helm', 'terraform', 'cloud', 'network', 'devops', 'gitops', 'prometheus',
       'grafana', 'observability', 'monitoring', 'logging', 'tracing', 'deployment', 'istio', 'linkerd',
-      'service', 'mesh', 'slo', 'sre', 'oncall', 'incident', 'pipeline', 'cicd', 'ci', 'cd', 'kafka',
+      'mesh', 'slo', 'sre', 'oncall', 'handoff', 'incident', 'cicd', 'ci', 'cd',
     ],
   },
   {
     name: 'data-ai',
     keywords: [
       'data', 'database', 'db', 'sql', 'postgres', 'mysql', 'analytics', 'etl', 'warehouse', 'dbt',
-      'ml', 'ai', 'llm', 'rag', 'vector', 'embedding', 'spark', 'airflow', 'cdc', 'pipeline',
+      'ml', 'mlops', 'ai', 'llm', 'rag', 'vector', 'embedding', 'spark', 'airflow', 'cdc', 'pipeline',
+      'postgresql', 'langchain', 'prompt', 'similarity',
     ],
   },
   {
@@ -58,14 +61,18 @@ const CATEGORY_RULES = [
     keywords: [
       'python', 'javascript', 'typescript', 'java', 'golang', 'go', 'rust', 'csharp', 'dotnet', 'php',
       'ruby', 'node', 'react', 'frontend', 'backend', 'mobile', 'ios', 'android', 'flutter', 'fastapi',
-      'django', 'nextjs', 'vue', 'api',
+      'django', 'nextjs', 'vue', 'api', 'unity', 'unreal', 'godot', 'game', 'minecraft', 'swift',
+      'kotlin', 'dart', 'elixir', 'haskell', 'julia', 'scala', 'cpp', 'bash', 'shell', 'memory',
+      'code', 'codebase', 'refactoring', 'debug', 'debugging', 'diagnostics', 'deps', 'dependency',
+      'framework', 'documentation', 'doc',
+      'arm', 'cortex', 'error', 'git', 'tailwind', 'ui', 'ux', 'graphql', 'bazel',
     ],
   },
   {
     name: 'architecture',
     keywords: [
-      'architecture', 'c4', 'microservices', 'event', 'cqrs', 'saga', 'domain', 'ddd', 'patterns',
-      'decision', 'adr',
+      'architecture', 'c4', 'microservices', 'event', 'cqrs', 'saga', 'domain', 'ddd',
+      'decision', 'adr', 'monorepo',
     ],
   },
   {
@@ -76,7 +83,7 @@ const CATEGORY_RULES = [
     name: 'business',
     keywords: [
       'business', 'market', 'sales', 'finance', 'startup', 'legal', 'hr', 'product', 'customer', 'seo',
-      'marketing', 'kpi', 'contract', 'employment',
+      'marketing', 'marketer', 'kpi', 'contract', 'employment', 'quant', 'trading', 'portfolio', 'risk',
     ],
   },
   {
@@ -91,31 +98,32 @@ const BUNDLE_RULES = {
     keywords: [
       'python', 'javascript', 'typescript', 'go', 'golang', 'rust', 'java', 'node', 'frontend', 'backend',
       'react', 'fastapi', 'django', 'nextjs', 'api', 'mobile', 'ios', 'android', 'flutter', 'php', 'ruby',
+      'dotnet', 'csharp', 'openapi', 'uv',
     ],
   },
   'security-core': {
     description: 'Security, privacy, and compliance essentials.',
     keywords: [
-      'security', 'sast', 'compliance', 'threat', 'risk', 'privacy', 'secrets', 'owasp', 'gdpr', 'pci',
-      'vulnerability', 'auth',
+      'security', 'sast', 'threat', 'privacy', 'secrets', 'owasp', 'gdpr', 'pci',
+      'vulnerability', 'auth', 'attack', 'stride', 'malware', 'reverse', 'firmware',
     ],
   },
   'k8s-core': {
     description: 'Kubernetes and service mesh essentials.',
-    keywords: ['kubernetes', 'k8s', 'helm', 'istio', 'linkerd', 'service', 'mesh'],
+    keywords: ['kubernetes', 'k8s', 'helm', 'istio', 'linkerd', 'mesh', 'gitops', 'mtls'],
   },
   'data-core': {
     description: 'Data engineering and analytics foundations.',
     keywords: [
       'data', 'database', 'sql', 'dbt', 'airflow', 'spark', 'analytics', 'etl', 'warehouse', 'postgres',
-      'mysql', 'kafka',
+      'mysql', 'kafka', 'postgresql', 'ml', 'mlops', 'llm', 'vector', 'embedding',
     ],
   },
   'ops-core': {
     description: 'Operations, observability, and delivery pipelines.',
     keywords: [
       'observability', 'monitoring', 'logging', 'tracing', 'prometheus', 'grafana', 'devops', 'gitops',
-      'deployment', 'cicd', 'pipeline', 'slo', 'sre', 'incident',
+      'deployment', 'cicd', 'slo', 'sre', 'incident', 'ci', 'cd', 'terraform', 'kubernetes', 'k8s', 'postmortem',
     ],
   },
 };
@@ -162,18 +170,15 @@ function deriveTags(skill) {
 }
 
 function detectCategory(skill, tags) {
-  const haystack = normalizeTokens([
-    ...tags,
-    ...tokenize(skill.name),
-    ...tokenize(skill.description),
-  ]);
-  const haystackSet = new Set(haystack);
-
-  for (const rule of CATEGORY_RULES) {
-    for (const keyword of rule.keywords) {
-      if (haystackSet.has(keyword)) {
-        return rule.name;
-      }
+  if (['antigravity-skills-manager', 'context-driven-development', 'mermaid-expert'].includes(skill.id)) return 'workflow';
+  if (skill.id.startsWith('c4-') || skill.id === 'architect-review') return 'architecture';
+  if (skill.id === 'comprehensive-review-full-review') return 'development';
+  if (skill.id.startsWith('startup-')) return 'business';
+  // Prefer the skill's identity to incidental examples in its description.
+  for (const tokens of [tokenize(skill.id), tags, tokenize(skill.description)]) {
+    const haystack = new Set(tokens);
+    for (const rule of CATEGORY_RULES) {
+      if (rule.keywords.some(keyword => haystack.has(keyword))) return rule.name;
     }
   }
 
@@ -226,7 +231,6 @@ function buildBundles(skills) {
     const tokens = normalizeTokens([
       ...skill.tags,
       ...tokenize(skill.name),
-      ...tokenize(skill.description),
     ]);
     skillTokens.set(skill.id, new Set(tokens));
   }
@@ -251,11 +255,6 @@ function buildBundles(skills) {
   const common = CURATED_COMMON.filter(skillId => skillTokens.has(skillId));
 
   return { bundles, common };
-}
-
-function truncate(value, limit) {
-  if (!value || value.length <= limit) return value || '';
-  return `${value.slice(0, limit - 3)}...`;
 }
 
 function renderCatalogMarkdown(catalog) {

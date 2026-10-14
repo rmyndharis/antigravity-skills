@@ -30,3 +30,12 @@ test('resolveSkillPath rejects path traversal', () => {
   assert.strictEqual(resolveSkillPath('..'), null);
   assert.notStrictEqual(resolveSkillPath('python-pro'), null);
 });
+
+test('resolveSkillId rejects malformed alias targets and ignores inherited properties', () => {
+  const { resolveSkillId } = require('../bin/cli.js');
+  for (const target of ['../outside', '/absolute', '', [], {}, 123, null]) {
+    assert.strictEqual(resolveSkillId('sample', { sample: target }), null);
+  }
+  assert.strictEqual(resolveSkillId('constructor', {}), 'constructor');
+  assert.strictEqual(resolveSkillId('sample', Object.create({ sample: '../outside' })), 'sample');
+});

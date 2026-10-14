@@ -610,12 +610,3 @@ pnpm changeset publish
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
-
-## Resources
-
-- **references/turborepo-guide.md**: Comprehensive Turborepo documentation
-- **references/nx-guide.md**: Nx monorepo patterns
-- **references/pnpm-workspaces.md**: pnpm workspace features
-- **assets/monorepo-checklist.md**: Setup checklist
-- **assets/migration-guide.md**: Multi-repo to monorepo migration
-- **scripts/dependency-graph.ts**: Visualize package dependencies

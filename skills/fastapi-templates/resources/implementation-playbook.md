@@ -537,15 +537,6 @@ async def test_create_user(client):
     assert data["email"] == "test@example.com"
     assert "id" in data
 ```
-
-## Resources
-
-- **references/fastapi-architecture.md**: Detailed architecture guide
-- **references/async-best-practices.md**: Async/await patterns
-- **references/testing-strategies.md**: Comprehensive testing guide
-- **assets/project-template/**: Complete FastAPI project
-- **assets/docker-compose.yml**: Development environment setup
-
 ## Best Practices
 
 1. **Async All The Way**: Use async for database, external APIs

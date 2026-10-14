@@ -9,6 +9,7 @@ metadata:
   color: cyan
 ---
 
+```bash
 # Check if conductor directory exists
 ls -la conductor/
 

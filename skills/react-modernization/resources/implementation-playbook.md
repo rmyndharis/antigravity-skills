@@ -481,17 +481,6 @@ function List<T>({ items, renderItem }: ListProps<T>) {
 - [ ] Check for warnings in console
 - [ ] Performance testing
 ```
-
-## Resources
-
-- **references/breaking-changes.md**: Version-specific breaking changes
-- **references/codemods.md**: Codemod usage guide
-- **references/hooks-migration.md**: Comprehensive hooks patterns
-- **references/concurrent-features.md**: React 18 concurrent features
-- **assets/codemod-config.json**: Codemod configurations
-- **assets/migration-checklist.md**: Step-by-step checklist
-- **scripts/apply-codemods.sh**: Automated codemod script
-
 ## Best Practices
 
 1. **Incremental Migration**: Don't migrate everything at once

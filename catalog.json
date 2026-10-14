@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T00:22:52.027Z",
+  "generatedAt": "2026-10-14T11:52:04.843Z",
   "total": 307,
   "skills": [
     {
@@ -107,7 +107,7 @@
       "id": "airflow-dag-patterns",
       "name": "airflow-dag-patterns",
       "description": "Build production Apache Airflow DAGs with best practices for operators, sensors, testing, and deployment. Use when creating data pipelines, orchestrating workflows, or scheduling batch jobs.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "airflow",
         "dag"
@@ -132,7 +132,7 @@
       "id": "angular-migration",
       "name": "angular-migration",
       "description": "Migrate from AngularJS to Angular using hybrid mode, incremental component rewriting, and dependency injection updates. Use when upgrading AngularJS applications, planning framework migrations, or modernizing legacy Angular code.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "angular",
         "migration"
@@ -157,7 +157,7 @@
       "id": "anti-reversing-techniques",
       "name": "anti-reversing-techniques",
       "description": "Understand anti-reversing, obfuscation, and protection techniques encountered during software analysis. Use when analyzing protected binaries, bypassing anti-debugging for authorized analysis, or understanding software protection mechanisms.",
-      "category": "general",
+      "category": "security",
       "tags": [
         "anti",
         "reversing",
@@ -182,8 +182,8 @@
     {
       "id": "antigravity-skills-manager",
       "name": "antigravity-skills-manager",
-      "description": "Global skills manager for Google Antigravity. Explore, search, install, and manage 300+ agent skills from the rmyndharis/antigravity-skills catalog using pure stdlib CLI tools.",
-      "category": "general",
+      "description": "Searches, installs, updates, and lists skills from the Antigravity Skill Vault. Use when choosing or managing workspace or global skills through the npm CLI.",
+      "category": "workflow",
       "tags": [
         "antigravity",
         "skills",
@@ -193,15 +193,15 @@
         "antigravity",
         "skills",
         "manager",
-        "global",
-        "google",
-        "explore",
-        "search",
-        "install",
-        "300",
-        "agent",
-        "rmyndharis",
-        "catalog"
+        "searches",
+        "installs",
+        "updates",
+        "lists",
+        "skill",
+        "vault",
+        "choosing",
+        "managing",
+        "workspace"
       ],
       "path": "skills/antigravity-skills-manager/SKILL.md"
     },
@@ -234,7 +234,7 @@
       "id": "api-documenter",
       "name": "api-documenter",
       "description": "Master API documentation with OpenAPI 3.1, AI-powered tools, and modern developer experience practices. Create interactive docs, generate SDKs, and build comprehensive developer portals. Use PROACTIVELY for API documentation or developer portal creation.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "api",
         "documenter"
@@ -358,7 +358,7 @@
       "id": "architecture-patterns",
       "name": "architecture-patterns",
       "description": "Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use when architecting complex backend systems or refactoring existing applications for better maintainability.",
-      "category": "development",
+      "category": "architecture",
       "tags": [
         "architecture"
       ],
@@ -382,7 +382,7 @@
       "id": "arm-cortex-expert",
       "name": "arm-cortex-expert",
       "description": "Senior embedded software engineer specializing in firmware and driver development for ARM Cortex-M microcontrollers (Teensy, STM32, nRF52, SAMD). Decades of experience writing reliable, optimized, and maintainable embedded code with deep expertise in memory barriers, DMA/cache coherency, interrupt-driven I/O, and peripheral drivers.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "arm",
         "cortex"
@@ -507,7 +507,7 @@
       "id": "backend-architect",
       "name": "backend-architect",
       "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems. Masters REST/GraphQL/gRPC APIs, event-driven architectures, service mesh patterns, and modern backend frameworks. Handles service boundary definition, inter-service communication, resilience patterns, and observability. Use PROACTIVELY when creating new backend services or APIs.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "backend"
       ],
@@ -531,7 +531,7 @@
       "id": "backend-development-feature-development",
       "name": "backend-development-feature-development",
       "description": "Orchestrate end-to-end backend feature development from requirements to deployment. Use when coordinating multi-phase feature delivery across teams and services.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "backend"
       ],
@@ -580,7 +580,7 @@
       "id": "backtesting-frameworks",
       "name": "backtesting-frameworks",
       "description": "Build robust backtesting systems for trading strategies with proper handling of look-ahead bias, survivorship bias, and transaction costs. Use when developing trading algorithms, validating strategies, or building backtesting infrastructure.",
-      "category": "general",
+      "category": "business",
       "tags": [
         "backtesting",
         "frameworks"
@@ -605,7 +605,7 @@
       "id": "bash-defensive-patterns",
       "name": "bash-defensive-patterns",
       "description": "Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "bash",
         "defensive"
@@ -630,7 +630,7 @@
       "id": "bash-pro",
       "name": "bash-pro",
       "description": "Master of defensive Bash scripting for production automation, CI/CD pipelines, and system utilities. Expert in safe, portable, and testable shell scripts.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "bash"
       ],
@@ -654,7 +654,7 @@
       "id": "bats-testing-patterns",
       "name": "bats-testing-patterns",
       "description": "Master Bash Automated Testing System (Bats) for comprehensive shell script testing. Use when writing tests for shell scripts, CI/CD pipelines, or requiring test-driven development of shell utilities.",
-      "category": "infrastructure",
+      "category": "testing",
       "tags": [
         "bats"
       ],
@@ -678,7 +678,7 @@
       "id": "bazel-build-optimization",
       "name": "bazel-build-optimization",
       "description": "Optimize Bazel builds for large-scale monorepos. Use when configuring Bazel, implementing remote execution, or optimizing build performance for enterprise codebases.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "bazel",
         "build",
@@ -728,7 +728,7 @@
       "id": "binary-analysis-patterns",
       "name": "binary-analysis-patterns",
       "description": "Master binary analysis patterns including disassembly, decompilation, control flow analysis, and code pattern recognition. Use when analyzing executables, understanding compiled code, or performing static analysis on binaries.",
-      "category": "architecture",
+      "category": "security",
       "tags": [
         "binary"
       ],
@@ -776,7 +776,7 @@
       "id": "business-analyst",
       "name": "business-analyst",
       "description": "Master modern business analysis with AI-powered analytics, real-time dashboards, and data-driven insights. Build comprehensive KPI frameworks, predictive models, and strategic recommendations. Use PROACTIVELY for business intelligence or strategic analysis.",
-      "category": "data-ai",
+      "category": "business",
       "tags": [
         "business",
         "analyst"
@@ -801,7 +801,7 @@
       "id": "c-pro",
       "name": "c-pro",
       "description": "Write efficient C code with proper memory management, pointer arithmetic, and system calls. Handles embedded systems, kernel modules, and performance-critical code. Use PROACTIVELY for C optimization, memory issues, or system programming.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "c"
       ],
@@ -899,7 +899,7 @@
       "id": "c4-container",
       "name": "c4-container",
       "description": "Expert C4 Container-level documentation specialist. Synthesizes Component-level documentation into Container-level architecture, mapping components to deployment units, documenting container interfaces as APIs, and creating container diagrams. Use when synthesizing components into deployment containers and documenting system deployment architecture.",
-      "category": "infrastructure",
+      "category": "architecture",
       "tags": [
         "c4",
         "container"
@@ -972,7 +972,7 @@
       "id": "cicd-automation-workflow-automate",
       "name": "cicd-automation-workflow-automate",
       "description": "You are a workflow automation expert specializing in creating efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes. Design automation that reduces manual work, improves consistency, and accelerates delivery while maintaining quality and security.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "cicd",
         "automate"
@@ -997,7 +997,7 @@
       "id": "cloud-architect",
       "name": "cloud-architect",
       "description": "Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and modern architectural patterns. Masters serverless, microservices, security, compliance, and disaster recovery. Use PROACTIVELY for cloud architecture, cost optimization, migration planning, or multi-cloud strategies.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "cloud"
       ],
@@ -1021,7 +1021,7 @@
       "id": "code-documentation-code-explain",
       "name": "code-documentation-code-explain",
       "description": "You are a code education expert specializing in explaining complex code through clear narratives, visual diagrams, and step-by-step breakdowns. Transform difficult concepts into understandable explanations.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "code",
         "documentation",
@@ -1047,7 +1047,7 @@
       "id": "code-documentation-doc-generate",
       "name": "code-documentation-doc-generate",
       "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "code",
         "documentation",
@@ -1073,8 +1073,8 @@
     {
       "id": "code-refactoring-context-restore",
       "name": "code-refactoring-context-restore",
-      "description": "Use when working with code refactoring context restore",
-      "category": "general",
+      "description": "Restore saved project context, architectural decisions, and work state. Use when resuming interrupted work, retrieving prior context, or merging context across sessions.",
+      "category": "development",
       "tags": [
         "code",
         "refactoring",
@@ -1085,7 +1085,14 @@
         "refactoring",
         "restore",
         "context",
-        "working"
+        "saved",
+        "architectural",
+        "decisions",
+        "work",
+        "state",
+        "resuming",
+        "interrupted",
+        "retrieving"
       ],
       "path": "skills/code-refactoring-context-restore/SKILL.md"
     },
@@ -1093,7 +1100,7 @@
       "id": "code-refactoring-refactor-clean",
       "name": "code-refactoring-refactor-clean",
       "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "code",
         "refactoring",
@@ -1119,8 +1126,8 @@
     {
       "id": "code-refactoring-tech-debt",
       "name": "code-refactoring-tech-debt",
-      "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
-      "category": "general",
+      "description": "Identify and prioritize technical debt by maintenance cost, delivery impact, and risk. Use when assessing code health or planning a measurable remediation roadmap.",
+      "category": "development",
       "tags": [
         "code",
         "refactoring",
@@ -1132,22 +1139,22 @@
         "refactoring",
         "tech",
         "debt",
+        "identify",
+        "prioritize",
         "technical",
-        "specializing",
-        "identifying",
-        "quantifying",
-        "prioritizing",
-        "software",
-        "analyze",
-        "codebase"
+        "maintenance",
+        "cost",
+        "delivery",
+        "impact",
+        "risk"
       ],
       "path": "skills/code-refactoring-tech-debt/SKILL.md"
     },
     {
       "id": "code-review-ai-ai-review",
       "name": "code-review-ai-ai-review",
-      "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
-      "category": "infrastructure",
+      "description": "Combine static analysis with model-assisted code review to assess security, performance, correctness, and architecture. Use when designing review automation or reviewing complex changes.",
+      "category": "data-ai",
       "tags": [
         "code",
         "ai"
@@ -1156,15 +1163,15 @@
         "code",
         "ai",
         "review",
-        "powered",
-        "combining",
-        "automated",
+        "combine",
         "static",
         "analysis",
-        "intelligent",
-        "recognition",
-        "devops",
-        "leverage"
+        "model",
+        "assisted",
+        "assess",
+        "security",
+        "performance",
+        "correctness"
       ],
       "path": "skills/code-review-ai-ai-review/SKILL.md"
     },
@@ -1172,7 +1179,7 @@
       "id": "code-review-excellence",
       "name": "code-review-excellence",
       "description": "Master effective code review practices to provide constructive feedback, catch bugs early, and foster knowledge sharing while maintaining team morale. Use when reviewing pull requests, establishing review standards, or mentoring developers.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "code",
         "excellence"
@@ -1197,7 +1204,7 @@
       "id": "code-reviewer",
       "name": "code-reviewer",
       "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance.",
-      "category": "security",
+      "category": "development",
       "tags": [
         "code"
       ],
@@ -1221,7 +1228,7 @@
       "id": "codebase-cleanup-deps-audit",
       "name": "codebase-cleanup-deps-audit",
       "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies.",
-      "category": "security",
+      "category": "development",
       "tags": [
         "codebase",
         "cleanup",
@@ -1248,7 +1255,7 @@
       "id": "codebase-cleanup-refactor-clean",
       "name": "codebase-cleanup-refactor-clean",
       "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "codebase",
         "cleanup",
@@ -1274,8 +1281,8 @@
     {
       "id": "codebase-cleanup-tech-debt",
       "name": "codebase-cleanup-tech-debt",
-      "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
-      "category": "general",
+      "description": "Identify and prioritize technical debt by maintenance cost, delivery impact, and risk. Use when assessing code health or planning a measurable remediation roadmap.",
+      "category": "development",
       "tags": [
         "codebase",
         "cleanup",
@@ -1287,14 +1294,14 @@
         "cleanup",
         "tech",
         "debt",
+        "identify",
+        "prioritize",
         "technical",
-        "specializing",
-        "identifying",
-        "quantifying",
-        "prioritizing",
-        "software",
-        "analyze",
-        "uncover"
+        "maintenance",
+        "cost",
+        "delivery",
+        "impact",
+        "risk"
       ],
       "path": "skills/codebase-cleanup-tech-debt/SKILL.md"
     },
@@ -1326,8 +1333,8 @@
     {
       "id": "comprehensive-review-full-review",
       "name": "comprehensive-review-full-review",
-      "description": "Use when working with comprehensive review full review",
-      "category": "general",
+      "description": "Coordinate code quality, architecture, security, performance, testing, and documentation reviews. Use when a change or codebase needs a consolidated assessment across these areas.",
+      "category": "development",
       "tags": [
         "comprehensive",
         "full"
@@ -1336,7 +1343,15 @@
         "comprehensive",
         "full",
         "review",
-        "working"
+        "coordinate",
+        "code",
+        "quality",
+        "architecture",
+        "security",
+        "performance",
+        "testing",
+        "documentation",
+        "reviews"
       ],
       "path": "skills/comprehensive-review-full-review/SKILL.md"
     },
@@ -1344,7 +1359,7 @@
       "id": "comprehensive-review-pr-enhance",
       "name": "comprehensive-review-pr-enhance",
       "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensure PRs follow best practices for clarity, size, and reviewability.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "comprehensive",
         "pr",
@@ -1370,7 +1385,7 @@
       "id": "conductor-implement",
       "name": "conductor-implement",
       "description": "Execute tasks from a track's implementation plan following TDD workflow",
-      "category": "testing",
+      "category": "workflow",
       "tags": [
         "conductor",
         "implement"
@@ -1433,7 +1448,7 @@
       "id": "conductor-revert",
       "name": "conductor-revert",
       "description": "Git-aware undo by logical work unit (track, phase, or task)",
-      "category": "testing",
+      "category": "workflow",
       "tags": [
         "conductor",
         "revert"
@@ -1457,7 +1472,7 @@
       "id": "conductor-setup",
       "name": "conductor-setup",
       "description": "Initialize project with Conductor artifacts (product definition, tech stack, workflow, style guides)",
-      "category": "business",
+      "category": "workflow",
       "tags": [
         "conductor",
         "setup"
@@ -1525,7 +1540,7 @@
       "id": "content-marketer",
       "name": "content-marketer",
       "description": "Elite content marketing strategist specializing in AI-powered content creation, omnichannel distribution, SEO optimization, and data-driven performance marketing. Masters modern content tools, social media automation, and conversion optimization with 2024/2025 best practices. Use PROACTIVELY for comprehensive content marketing.",
-      "category": "data-ai",
+      "category": "business",
       "tags": [
         "content",
         "marketer"
@@ -1550,7 +1565,7 @@
       "id": "context-driven-development",
       "name": "context-driven-development",
       "description": "Use this skill when working with Conductor's context-driven development methodology, managing project context artifacts, or understanding the relationship between product.md, tech-stack.md, and workflow.md files.",
-      "category": "business",
+      "category": "workflow",
       "tags": [
         "driven"
       ],
@@ -1573,7 +1588,7 @@
     {
       "id": "context-management-context-restore",
       "name": "context-management-context-restore",
-      "description": "Use when working with context management context restore",
+      "description": "Restore saved project context, architectural decisions, and work state. Use when resuming interrupted work, retrieving prior context, or merging context across sessions.",
       "category": "general",
       "tags": [
         "restore"
@@ -1581,14 +1596,23 @@
       "triggers": [
         "restore",
         "context",
-        "working"
+        "saved",
+        "architectural",
+        "decisions",
+        "work",
+        "state",
+        "resuming",
+        "interrupted",
+        "retrieving",
+        "prior",
+        "merging"
       ],
       "path": "skills/context-management-context-restore/SKILL.md"
     },
     {
       "id": "context-management-context-save",
       "name": "context-management-context-save",
-      "description": "Use when working with context management context save",
+      "description": "Capture and serialize project state, architectural decisions, and working context. Use when preserving knowledge for later sessions, handoffs, or searchable context retrieval.",
       "category": "general",
       "tags": [
         "save"
@@ -1596,7 +1620,16 @@
       "triggers": [
         "save",
         "context",
-        "working"
+        "capture",
+        "serialize",
+        "state",
+        "architectural",
+        "decisions",
+        "working",
+        "preserving",
+        "knowledge",
+        "later",
+        "sessions"
       ],
       "path": "skills/context-management-context-save/SKILL.md"
     },
@@ -1653,7 +1686,7 @@
       "id": "cpp-pro",
       "name": "cpp-pro",
       "description": "Write idiomatic C++ code with modern features, RAII, smart pointers, and STL algorithms. Handles templates, move semantics, and performance optimization. Use PROACTIVELY for C++ refactoring, memory safety, or complex C++ patterns.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "cpp"
       ],
@@ -1725,7 +1758,7 @@
       "id": "customer-support",
       "name": "customer-support",
       "description": "Elite AI-powered customer support specialist mastering conversational AI, automated ticketing, sentiment analysis, and omnichannel support experiences. Integrates modern support tools, chatbot platforms, and CX optimization with 2024/2025 best practices. Use PROACTIVELY for comprehensive customer experience management.",
-      "category": "data-ai",
+      "category": "business",
       "tags": [
         "customer",
         "support"
@@ -1750,7 +1783,7 @@
       "id": "data-engineer",
       "name": "data-engineer",
       "description": "Build scalable data pipelines, modern data warehouses, and real-time streaming architectures. Implements Apache Spark, dbt, Airflow, and cloud-native data platforms. Use PROACTIVELY for data pipeline design, analytics infrastructure, or modern data stack implementation.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "data"
       ],
@@ -1800,7 +1833,7 @@
       "id": "data-engineering-data-pipeline",
       "name": "data-engineering-data-pipeline",
       "description": "You are a data pipeline architecture expert specializing in scalable, reliable, and cost-effective data pipelines for batch and streaming data processing.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "data",
         "engineering",
@@ -1902,7 +1935,7 @@
       "id": "database-admin",
       "name": "database-admin",
       "description": "Expert database administrator specializing in modern cloud databases, automation, and reliability engineering. Masters AWS/Azure/GCP database services, Infrastructure as Code, high availability, disaster recovery, performance optimization, and compliance. Handles multi-cloud strategies, container databases, and cost optimization. Use PROACTIVELY for database architecture, operations, or reliability engineering.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "database",
         "admin"
@@ -1979,7 +2012,7 @@
       "id": "database-migration",
       "name": "database-migration",
       "description": "Execute database migrations across ORMs and platforms with zero-downtime strategies, data transformation, and rollback procedures. Use when migrating databases, changing schemas, performing data transformations, or implementing zero-downtime deployment strategies.",
-      "category": "security",
+      "category": "data-ai",
       "tags": [
         "database",
         "migration"
@@ -2033,7 +2066,7 @@
       "id": "database-migrations-sql-migrations",
       "name": "database-migrations-sql-migrations",
       "description": "SQL database migrations with zero-downtime strategies for PostgreSQL, MySQL, SQL Server",
-      "category": "security",
+      "category": "data-ai",
       "tags": [
         "database",
         "sql",
@@ -2065,7 +2098,7 @@
       "id": "database-optimizer",
       "name": "database-optimizer",
       "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolution, multi-tier caching, partitioning strategies, and cloud database optimization. Handles complex query analysis, migration strategies, and performance monitoring. Use PROACTIVELY for database optimization, performance issues, or scalability challenges.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "database",
         "optimizer"
@@ -2115,7 +2148,7 @@
       "id": "debugger",
       "name": "debugger",
       "description": "Debugging specialist for errors, test failures, and unexpected behavior. Use proactively when encountering any issues.",
-      "category": "testing",
+      "category": "development",
       "tags": [
         "debugger"
       ],
@@ -2138,7 +2171,7 @@
       "id": "debugging-strategies",
       "name": "debugging-strategies",
       "description": "Master systematic debugging techniques, profiling tools, and root cause analysis to efficiently track down bugs across any codebase or technology stack. Use when investigating bugs, performance issues, or unexpected behavior.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "debugging",
         "strategies"
@@ -2162,8 +2195,8 @@
     {
       "id": "debugging-toolkit-smart-debug",
       "name": "debugging-toolkit-smart-debug",
-      "description": "Use when working with debugging toolkit smart debug",
-      "category": "general",
+      "description": "Diagnose software failures using observability data, ranked hypotheses, and targeted instrumentation. Use when the cause is unclear or an issue requires systematic investigation.",
+      "category": "development",
       "tags": [
         "debugging",
         "debug"
@@ -2173,7 +2206,14 @@
         "debug",
         "toolkit",
         "smart",
-        "working"
+        "diagnose",
+        "software",
+        "failures",
+        "observability",
+        "data",
+        "ranked",
+        "hypotheses",
+        "targeted"
       ],
       "path": "skills/debugging-toolkit-smart-debug/SKILL.md"
     },
@@ -2206,7 +2246,7 @@
       "id": "dependency-management-deps-audit",
       "name": "dependency-management-deps-audit",
       "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies.",
-      "category": "security",
+      "category": "development",
       "tags": [
         "dependency",
         "deps",
@@ -2232,7 +2272,7 @@
       "id": "dependency-upgrade",
       "name": "dependency-upgrade",
       "description": "Manage major dependency version upgrades with compatibility analysis, staged rollout, and comprehensive testing. Use when upgrading framework versions, updating major dependencies, or managing breaking changes in libraries.",
-      "category": "testing",
+      "category": "development",
       "tags": [
         "dependency",
         "upgrade"
@@ -2257,7 +2297,7 @@
       "id": "deployment-engineer",
       "name": "deployment-engineer",
       "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation. Masters GitHub Actions, ArgoCD/Flux, progressive delivery, container security, and platform engineering. Handles zero-downtime deployments, security scanning, and developer experience optimization. Use PROACTIVELY for CI/CD design, GitOps implementation, or deployment automation.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "deployment"
       ],
@@ -2281,7 +2321,7 @@
       "id": "deployment-pipeline-design",
       "name": "deployment-pipeline-design",
       "description": "Design multi-stage CI/CD pipelines with approval gates, security checks, and deployment orchestration. Use when architecting deployment workflows, setting up continuous delivery, or implementing GitOps practices.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "deployment",
         "pipeline"
@@ -2305,7 +2345,7 @@
     {
       "id": "deployment-validation-config-validate",
       "name": "deployment-validation-config-validate",
-      "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat",
+      "description": "Validate application configuration with schemas, environment checks, and runtime tests. Use when preventing configuration errors, checking deployment settings, or detecting configuration drift.",
       "category": "infrastructure",
       "tags": [
         "deployment",
@@ -2318,14 +2358,14 @@
         "validation",
         "config",
         "validate",
-        "configuration",
-        "specializing",
-        "validating",
-        "testing",
-        "ensuring",
-        "correctness",
         "application",
-        "configurations"
+        "configuration",
+        "schemas",
+        "environment",
+        "checks",
+        "runtime",
+        "tests",
+        "preventing"
       ],
       "path": "skills/deployment-validation-config-validate/SKILL.md"
     },
@@ -2333,7 +2373,7 @@
       "id": "devops-troubleshooter",
       "name": "devops-troubleshooter",
       "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability. Masters log analysis, distributed tracing, Kubernetes debugging, performance optimization, and root cause analysis. Handles production outages, system reliability, and preventive monitoring. Use PROACTIVELY for debugging, incident response, or system troubleshooting.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "devops",
         "troubleshooter"
@@ -2358,7 +2398,7 @@
       "id": "distributed-debugging-debug-trace",
       "name": "distributed-debugging-debug-trace",
       "description": "You are a debugging expert specializing in setting up comprehensive debugging environments, distributed tracing, and diagnostic tools. Configure debugging workflows, implement tracing solutions, and establish troubleshooting practices for development and production environments.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "distributed",
         "debugging",
@@ -2410,7 +2450,7 @@
       "id": "django-pro",
       "name": "django-pro",
       "description": "Master Django 5.x with async views, DRF, Celery, and Django Channels. Build scalable web applications with proper architecture, testing, and deployment. Use PROACTIVELY for Django development, ORM optimization, or complex Django patterns.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "django"
       ],
@@ -2434,7 +2474,7 @@
       "id": "docs-architect",
       "name": "docs-architect",
       "description": "Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals and ebooks. Use PROACTIVELY for system documentation, architecture guides, or technical deep-dives.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "docs"
       ],
@@ -2458,7 +2498,7 @@
       "id": "documentation-generation-doc-generate",
       "name": "documentation-generation-doc-generate",
       "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "documentation",
         "generation",
@@ -2559,7 +2599,7 @@
       "id": "e2e-testing-patterns",
       "name": "e2e-testing-patterns",
       "description": "Master end-to-end testing with Playwright and Cypress to build reliable test suites that catch bugs, improve confidence, and enable fast deployment. Use when implementing E2E tests, debugging flaky tests, or establishing testing standards.",
-      "category": "infrastructure",
+      "category": "testing",
       "tags": [
         "e2e"
       ],
@@ -2583,7 +2623,7 @@
       "id": "elixir-pro",
       "name": "elixir-pro",
       "description": "Write idiomatic Elixir code with OTP patterns, supervision trees, and Phoenix LiveView. Masters concurrency, fault tolerance, and distributed systems. Use PROACTIVELY for Elixir refactoring, OTP design, or complex BEAM optimizations.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "elixir"
       ],
@@ -2657,7 +2697,7 @@
       "id": "error-debugging-error-analysis",
       "name": "error-debugging-error-analysis",
       "description": "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "error",
         "debugging"
@@ -2681,7 +2721,7 @@
       "id": "error-debugging-error-trace",
       "name": "error-debugging-error-trace",
       "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging, and ensure teams can quickly identify and resolve production issues.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "error",
         "debugging",
@@ -2706,8 +2746,8 @@
     {
       "id": "error-debugging-multi-agent-review",
       "name": "error-debugging-multi-agent-review",
-      "description": "Use when working with error debugging multi agent review",
-      "category": "general",
+      "description": "Coordinate specialized code, security, architecture, and performance reviewers and consolidate their results. Use when a codebase needs parallel review across multiple disciplines.",
+      "category": "development",
       "tags": [
         "error",
         "debugging",
@@ -2720,7 +2760,13 @@
         "multi",
         "agent",
         "review",
-        "working"
+        "coordinate",
+        "specialized",
+        "code",
+        "security",
+        "architecture",
+        "performance",
+        "reviewers"
       ],
       "path": "skills/error-debugging-multi-agent-review/SKILL.md"
     },
@@ -2728,7 +2774,7 @@
       "id": "error-detective",
       "name": "error-detective",
       "description": "Search logs and codebases for error patterns, stack traces, and anomalies. Correlates errors across systems and identifies root causes. Use PROACTIVELY when debugging issues, analyzing logs, or investigating production errors.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "error",
         "detective"
@@ -2753,7 +2799,7 @@
       "id": "error-diagnostics-error-analysis",
       "name": "error-diagnostics-error-analysis",
       "description": "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "error",
         "diagnostics"
@@ -2777,8 +2823,8 @@
     {
       "id": "error-diagnostics-error-trace",
       "name": "error-diagnostics-error-trace",
-      "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging,",
-      "category": "infrastructure",
+      "description": "Implement error tracking, structured logging, grouping, and alert routing. Use when improving production error detection, triage, or integration with monitoring services.",
+      "category": "development",
       "tags": [
         "error",
         "diagnostics",
@@ -2789,22 +2835,22 @@
         "diagnostics",
         "trace",
         "tracking",
-        "observability",
-        "specializing",
-        "implementing",
-        "monitoring",
-        "solutions",
-        "set",
-        "up",
-        "configure"
+        "structured",
+        "logging",
+        "grouping",
+        "alert",
+        "routing",
+        "improving",
+        "detection",
+        "triage"
       ],
       "path": "skills/error-diagnostics-error-trace/SKILL.md"
     },
     {
       "id": "error-diagnostics-smart-debug",
       "name": "error-diagnostics-smart-debug",
-      "description": "Use when working with error diagnostics smart debug",
-      "category": "general",
+      "description": "Diagnose software failures using observability data, ranked hypotheses, and targeted instrumentation. Use when the cause is unclear or an issue requires systematic investigation.",
+      "category": "development",
       "tags": [
         "error",
         "diagnostics",
@@ -2815,7 +2861,14 @@
         "diagnostics",
         "debug",
         "smart",
-        "working"
+        "diagnose",
+        "software",
+        "failures",
+        "observability",
+        "data",
+        "ranked",
+        "hypotheses",
+        "targeted"
       ],
       "path": "skills/error-diagnostics-smart-debug/SKILL.md"
     },
@@ -2823,7 +2876,7 @@
       "id": "error-handling-patterns",
       "name": "error-handling-patterns",
       "description": "Master error handling patterns across languages including exceptions, Result types, error propagation, and graceful degradation to build resilient applications. Use when implementing error handling, designing APIs, or improving application reliability.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "error",
         "handling"
@@ -2970,7 +3023,7 @@
       "id": "flutter-expert",
       "name": "flutter-expert",
       "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Handles state management, animations, testing, and performance optimization for mobile, web, desktop, and embedded platforms. Use PROACTIVELY for Flutter architecture, UI implementation, or cross-platform features.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "flutter"
       ],
@@ -2993,8 +3046,8 @@
     {
       "id": "framework-migration-code-migrate",
       "name": "framework-migration-code-migrate",
-      "description": "You are a code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generate comprehensive migration plans, automated migration scripts, and",
-      "category": "general",
+      "description": "Plan and execute migrations across frameworks, languages, APIs, and databases. Use when assessing compatibility, generating migration steps, and verifying behavior during a transition.",
+      "category": "development",
       "tags": [
         "framework",
         "migration",
@@ -3006,22 +3059,22 @@
         "migration",
         "code",
         "migrate",
-        "specializing",
-        "transitioning",
-        "codebases",
-        "between",
+        "plan",
+        "execute",
+        "migrations",
         "frameworks",
         "languages",
-        "versions",
-        "platforms"
+        "apis",
+        "databases",
+        "assessing"
       ],
       "path": "skills/framework-migration-code-migrate/SKILL.md"
     },
     {
       "id": "framework-migration-deps-upgrade",
       "name": "framework-migration-deps-upgrade",
-      "description": "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa",
-      "category": "security",
+      "description": "Plan incremental dependency upgrades with breaking-change analysis, migration guidance, and regression testing. Use when updating packages while controlling compatibility risk.",
+      "category": "development",
       "tags": [
         "framework",
         "migration",
@@ -3033,22 +3086,22 @@
         "migration",
         "deps",
         "upgrade",
-        "dependency",
-        "specializing",
-        "safe",
-        "incremental",
-        "upgrades",
-        "dependencies",
         "plan",
-        "execute"
+        "incremental",
+        "dependency",
+        "upgrades",
+        "breaking",
+        "change",
+        "analysis",
+        "guidance"
       ],
       "path": "skills/framework-migration-deps-upgrade/SKILL.md"
     },
     {
       "id": "framework-migration-legacy-modernize",
       "name": "framework-migration-legacy-modernize",
-      "description": "Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through ex",
-      "category": "business",
+      "description": "Modernize legacy systems incrementally using the strangler fig pattern. Use when replacing components while preserving business operations, test coverage, and integration contracts.",
+      "category": "development",
       "tags": [
         "framework",
         "migration",
@@ -3060,14 +3113,14 @@
         "migration",
         "legacy",
         "modernize",
-        "orchestrate",
-        "modernization",
+        "incrementally",
         "strangler",
         "fig",
-        "enabling",
-        "gradual",
-        "replacement",
-        "outdated"
+        "replacing",
+        "components",
+        "while",
+        "preserving",
+        "business"
       ],
       "path": "skills/framework-migration-legacy-modernize/SKILL.md"
     },
@@ -3098,7 +3151,7 @@
     {
       "id": "frontend-mobile-development-component-scaffold",
       "name": "frontend-mobile-development-component-scaffold",
-      "description": "You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, s",
+      "description": "Scaffold React and React Native components with TypeScript, accessibility, styles, and tests. Use when building reusable UI components or establishing component structure.",
       "category": "development",
       "tags": [
         "frontend",
@@ -3112,19 +3165,19 @@
         "development",
         "scaffold",
         "react",
-        "architecture",
-        "specializing",
-        "scaffolding",
-        "accessible",
-        "performant",
-        "components"
+        "native",
+        "components",
+        "typescript",
+        "accessibility",
+        "styles",
+        "tests"
       ],
       "path": "skills/frontend-mobile-development-component-scaffold/SKILL.md"
     },
     {
       "id": "frontend-mobile-security-xss-scan",
       "name": "frontend-mobile-security-xss-scan",
-      "description": "You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection poi",
+      "description": "Detect and remediate XSS risks in React, Vue, Angular, and browser JavaScript. Use when inspecting injection sinks, untrusted markup, sanitization, or frontend security checks.",
       "category": "security",
       "tags": [
         "frontend",
@@ -3139,13 +3192,13 @@
         "security",
         "xss",
         "scan",
-        "focusing",
-        "cross",
-        "site",
-        "scripting",
-        "vulnerability",
-        "detection",
-        "prevention"
+        "detect",
+        "remediate",
+        "risks",
+        "react",
+        "vue",
+        "angular",
+        "browser"
       ],
       "path": "skills/frontend-mobile-security-xss-scan/SKILL.md"
     },
@@ -3178,7 +3231,7 @@
     {
       "id": "full-stack-orchestration-full-stack-feature",
       "name": "full-stack-orchestration-full-stack-feature",
-      "description": "Use when working with full stack orchestration full stack feature",
+      "description": "Coordinate database, backend, frontend, testing, and deployment work for a complete feature. Use when implementing changes that span multiple application layers.",
       "category": "workflow",
       "tags": [
         "full",
@@ -3189,7 +3242,14 @@
         "stack",
         "orchestration",
         "feature",
-        "working"
+        "coordinate",
+        "database",
+        "backend",
+        "frontend",
+        "testing",
+        "deployment",
+        "work",
+        "complete"
       ],
       "path": "skills/full-stack-orchestration-full-stack-feature/SKILL.md"
     },
@@ -3223,7 +3283,7 @@
       "id": "git-advanced-workflows",
       "name": "git-advanced-workflows",
       "description": "Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use when managing complex Git histories, collaborating on feature branches, or troubleshooting repository issues.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "git",
         "advanced"
@@ -3247,8 +3307,8 @@
     {
       "id": "git-pr-workflows-git-workflow",
       "name": "git-pr-workflows-git-workflow",
-      "description": "Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g",
-      "category": "infrastructure",
+      "description": "Guide changes through code checks, testing, commits, and pull request preparation. Use when coordinating a complete Git workflow and verifying readiness for collaboration.",
+      "category": "development",
       "tags": [
         "git",
         "pr"
@@ -3256,24 +3316,24 @@
       "triggers": [
         "git",
         "pr",
-        "orchestrate",
-        "code",
-        "review",
+        "changes",
         "through",
-        "creation",
-        "leveraging",
-        "specialized",
-        "agents",
-        "quality",
-        "assurance"
+        "code",
+        "checks",
+        "testing",
+        "commits",
+        "pull",
+        "request",
+        "preparation",
+        "coordinating"
       ],
       "path": "skills/git-pr-workflows-git-workflow/SKILL.md"
     },
     {
       "id": "git-pr-workflows-onboard",
       "name": "git-pr-workflows-onboard",
-      "description": "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You",
-      "category": "general",
+      "description": "Plan technical onboarding with environment setup, codebase orientation, team integration, and learning milestones. Use when helping developers join a project or preparing onboarding materials.",
+      "category": "development",
       "tags": [
         "git",
         "pr",
@@ -3283,23 +3343,23 @@
         "git",
         "pr",
         "onboard",
+        "plan",
+        "technical",
         "onboarding",
-        "knowledge",
-        "transfer",
-        "architect",
-        "deep",
-        "experience",
-        "remote",
-        "first",
-        "organizations"
+        "environment",
+        "setup",
+        "codebase",
+        "orientation",
+        "team",
+        "integration"
       ],
       "path": "skills/git-pr-workflows-onboard/SKILL.md"
     },
     {
       "id": "git-pr-workflows-pr-enhance",
       "name": "git-pr-workflows-pr-enhance",
-      "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu",
-      "category": "general",
+      "description": "Improve pull request descriptions, change summaries, validation details, and review workflows. Use when preparing a pull request or making an existing proposal easier to evaluate.",
+      "category": "development",
       "tags": [
         "git",
         "pr",
@@ -3309,15 +3369,15 @@
         "git",
         "pr",
         "enhance",
-        "optimization",
-        "specializing",
-        "creating",
-        "high",
-        "quality",
+        "improve",
         "pull",
-        "requests",
-        "facilitate",
-        "efficient"
+        "request",
+        "descriptions",
+        "change",
+        "summaries",
+        "validation",
+        "details",
+        "review"
       ],
       "path": "skills/git-pr-workflows-pr-enhance/SKILL.md"
     },
@@ -3424,7 +3484,7 @@
       "id": "godot-gdscript-patterns",
       "name": "godot-gdscript-patterns",
       "description": "Master Godot 4 GDScript patterns including signals, scenes, state machines, and optimization. Use when building Godot games, implementing game systems, or learning GDScript best practices.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "godot",
         "gdscript"
@@ -3498,7 +3558,7 @@
       "id": "graphql-architect",
       "name": "graphql-architect",
       "description": "Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems. Use PROACTIVELY for GraphQL architecture or performance optimization.",
-      "category": "security",
+      "category": "development",
       "tags": [
         "graphql"
       ],
@@ -3522,7 +3582,7 @@
       "id": "haskell-pro",
       "name": "haskell-pro",
       "description": "Expert Haskell engineer specializing in advanced type systems, pure functional design, and high-reliability software. Use PROACTIVELY for type-level programming, concurrency, and architecture guidance.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "haskell"
       ],
@@ -3671,7 +3731,7 @@
       "id": "incident-responder",
       "name": "incident-responder",
       "description": "Expert SRE incident responder specializing in rapid problem resolution, modern observability, and comprehensive incident management. Masters incident command, blameless post-mortems, error budget management, and system reliability patterns. Handles critical outages, communication strategies, and continuous improvement. Use IMMEDIATELY for production incidents or SRE practices.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "incident",
         "responder"
@@ -3695,8 +3755,8 @@
     {
       "id": "incident-response-incident-response",
       "name": "incident-response-incident-response",
-      "description": "Use when working with incident response incident response",
-      "category": "security",
+      "description": "Coordinate production incident triage, mitigation, investigation, recovery, and follow-up. Use when responding to outages or other incidents that require structured operational coordination.",
+      "category": "infrastructure",
       "tags": [
         "incident",
         "response"
@@ -3704,15 +3764,24 @@
       "triggers": [
         "incident",
         "response",
-        "working"
+        "coordinate",
+        "triage",
+        "mitigation",
+        "investigation",
+        "recovery",
+        "follow",
+        "up",
+        "responding",
+        "outages",
+        "other"
       ],
       "path": "skills/incident-response-incident-response/SKILL.md"
     },
     {
       "id": "incident-response-smart-fix",
       "name": "incident-response-smart-fix",
-      "description": "[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and res",
-      "category": "security",
+      "description": "Investigate production issues, isolate root causes, implement focused fixes, and verify recovery with regression tests. Use when resolving failures across application or infrastructure components.",
+      "category": "infrastructure",
       "tags": [
         "incident",
         "response",
@@ -3723,14 +3792,14 @@
         "response",
         "fix",
         "smart",
-        "extended",
-        "thinking",
-        "implements",
-        "sophisticated",
-        "debugging",
-        "resolution",
-        "pipeline",
-        "leverages"
+        "investigate",
+        "issues",
+        "isolate",
+        "root",
+        "causes",
+        "fixes",
+        "verify",
+        "recovery"
       ],
       "path": "skills/incident-response-smart-fix/SKILL.md"
     },
@@ -3738,7 +3807,7 @@
       "id": "incident-runbook-templates",
       "name": "incident-runbook-templates",
       "description": "Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use when building runbooks, responding to incidents, or establishing incident response procedures.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "incident",
         "runbook"
@@ -3763,7 +3832,7 @@
       "id": "ios-developer",
       "name": "ios-developer",
       "description": "Develop native iOS applications with Swift/SwiftUI. Masters iOS 18, SwiftUI, UIKit integration, Core Data, networking, and App Store optimization. Use PROACTIVELY for iOS-specific features, App Store optimization, or native iOS development.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "ios"
       ],
@@ -3812,7 +3881,7 @@
       "id": "java-pro",
       "name": "java-pro",
       "description": "Master Java 21+ with modern features like virtual threads, pattern matching, and Spring Boot 3.x. Expert in the latest Java ecosystem including GraalVM, Project Loom, and cloud-native patterns. Use PROACTIVELY for Java development, microservices architecture, or performance optimization.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "java"
       ],
@@ -3883,7 +3952,7 @@
     {
       "id": "javascript-typescript-typescript-scaffold",
       "name": "javascript-typescript-typescript-scaffold",
-      "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N",
+      "description": "Scaffold TypeScript applications with project structure, build tools, type checking, and tests. Use when starting a Node.js or frontend project or standardizing its development setup.",
       "category": "development",
       "tags": [
         "javascript",
@@ -3893,15 +3962,15 @@
         "javascript",
         "typescript",
         "scaffold",
-        "architecture",
-        "specializing",
-        "scaffolding",
+        "applications",
+        "structure",
+        "type",
+        "checking",
+        "tests",
+        "starting",
         "node",
         "js",
-        "frontend",
-        "applications",
-        "generate",
-        "complete"
+        "frontend"
       ],
       "path": "skills/javascript-typescript-typescript-scaffold/SKILL.md"
     },
@@ -3909,7 +3978,7 @@
       "id": "julia-pro",
       "name": "julia-pro",
       "description": "Master Julia 1.10+ with modern features, performance optimization, multiple dispatch, and production-ready practices. Expert in the Julia ecosystem including package management, scientific computing, and high-performance numerical code. Use PROACTIVELY for Julia development, optimization, or advanced Julia patterns.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "julia"
       ],
@@ -3933,7 +4002,7 @@
       "id": "k8s-manifest-generator",
       "name": "k8s-manifest-generator",
       "description": "Create production-ready Kubernetes manifests for Deployments, Services, ConfigMaps, and Secrets following best practices and security standards. Use when generating Kubernetes YAML manifests, creating K8s resources, or implementing production-grade Kubernetes configurations.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "k8s",
         "manifest",
@@ -3985,7 +4054,7 @@
       "id": "kpi-dashboard-design",
       "name": "kpi-dashboard-design",
       "description": "Design effective KPI dashboards with metrics selection, visualization best practices, and real-time monitoring patterns. Use when building business dashboards, selecting metrics, or designing data visualization layouts.",
-      "category": "infrastructure",
+      "category": "business",
       "tags": [
         "kpi",
         "dashboard"
@@ -4010,7 +4079,7 @@
       "id": "kubernetes-architect",
       "name": "kubernetes-architect",
       "description": "Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration. Masters EKS/AKS/GKE, service mesh (Istio/Linkerd), progressive delivery, multi-tenancy, and platform engineering. Handles security, observability, cost optimization, and developer experience. Use PROACTIVELY for K8s architecture, GitOps implementation, or cloud-native platform design.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "kubernetes"
       ],
@@ -4059,7 +4128,7 @@
       "id": "legacy-modernizer",
       "name": "legacy-modernizer",
       "description": "Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility. Use PROACTIVELY for legacy system updates, framework migrations, or technical debt reduction.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "legacy",
         "modernizer"
@@ -4084,7 +4153,7 @@
       "id": "legal-advisor",
       "name": "legal-advisor",
       "description": "Draft privacy policies, terms of service, disclaimers, and legal notices. Creates GDPR-compliant texts, cookie policies, and data processing agreements. Use PROACTIVELY for legal documentation, compliance texts, or regulatory requirements.",
-      "category": "security",
+      "category": "business",
       "tags": [
         "legal",
         "advisor"
@@ -4109,7 +4178,7 @@
       "id": "linkerd-patterns",
       "name": "linkerd-patterns",
       "description": "Implement Linkerd service mesh patterns for lightweight, security-focused service mesh deployments. Use when setting up Linkerd, configuring traffic policies, or implementing zero-trust networking with minimal overhead.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "linkerd"
       ],
@@ -4132,7 +4201,7 @@
     {
       "id": "llm-application-dev-ai-assistant",
       "name": "llm-application-dev-ai-assistant",
-      "description": "You are an AI assistant development expert specializing in creating intelligent conversational interfaces, chatbots, and AI-powered applications. Design comprehensive AI assistant solutions with natur",
+      "description": "Design conversational assistants with context management, response generation, and LLM integration. Use when building chatbots or planning assistant application architecture.",
       "category": "data-ai",
       "tags": [
         "llm",
@@ -4146,13 +4215,13 @@
         "dev",
         "ai",
         "assistant",
-        "development",
-        "specializing",
-        "creating",
-        "intelligent",
         "conversational",
-        "interfaces",
-        "chatbots"
+        "assistants",
+        "context",
+        "response",
+        "generation",
+        "integration",
+        "building"
       ],
       "path": "skills/llm-application-dev-ai-assistant/SKILL.md"
     },
@@ -4185,7 +4254,7 @@
     {
       "id": "llm-application-dev-prompt-optimize",
       "name": "llm-application-dev-prompt-optimize",
-      "description": "You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimizati",
+      "description": "Evaluate and improve LLM prompts using examples, structured instructions, and measured comparisons. Use when refining prompt reliability, output quality, or model-specific behavior.",
       "category": "data-ai",
       "tags": [
         "llm",
@@ -4200,13 +4269,13 @@
         "dev",
         "prompt",
         "optimize",
-        "engineer",
-        "specializing",
-        "crafting",
-        "effective",
+        "evaluate",
+        "improve",
         "prompts",
-        "llms",
-        "through"
+        "examples",
+        "structured",
+        "instructions",
+        "measured"
       ],
       "path": "skills/llm-application-dev-prompt-optimize/SKILL.md"
     },
@@ -4238,8 +4307,8 @@
     {
       "id": "machine-learning-ops-ml-pipeline",
       "name": "machine-learning-ops-ml-pipeline",
-      "description": "Design and implement a complete ML pipeline for: $ARGUMENTS",
-      "category": "infrastructure",
+      "description": "Design ML pipelines covering data preparation, model training, deployment, monitoring, and continuous improvement. Use when coordinating an end-to-end MLOps workflow.",
+      "category": "data-ai",
       "tags": [
         "machine",
         "learning",
@@ -4253,8 +4322,13 @@
         "ops",
         "ml",
         "pipeline",
-        "complete",
-        "arguments"
+        "pipelines",
+        "covering",
+        "data",
+        "preparation",
+        "model",
+        "training",
+        "deployment"
       ],
       "path": "skills/machine-learning-ops-ml-pipeline/SKILL.md"
     },
@@ -4386,7 +4460,7 @@
       "id": "microservices-patterns",
       "name": "microservices-patterns",
       "description": "Design microservices architectures with service boundaries, event-driven communication, and resilience patterns. Use when building distributed systems, decomposing monoliths, or implementing microservices.",
-      "category": "infrastructure",
+      "category": "architecture",
       "tags": [
         "microservices"
       ],
@@ -4410,7 +4484,7 @@
       "id": "minecraft-bukkit-pro",
       "name": "minecraft-bukkit-pro",
       "description": "Master Minecraft server plugin development with Bukkit, Spigot, and Paper APIs. Specializes in event-driven architecture, command systems, world manipulation, player management, and performance optimization. Use PROACTIVELY for plugin architecture, gameplay mechanics, server-side features, or cross-version compatibility.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "minecraft",
         "bukkit"
@@ -4435,7 +4509,7 @@
       "id": "ml-engineer",
       "name": "ml-engineer",
       "description": "Build production ML systems with PyTorch 2.x, TensorFlow, and modern ML frameworks. Implements model serving, feature engineering, A/B testing, and monitoring. Use PROACTIVELY for ML model deployment, inference optimization, or production ML infrastructure.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "ml"
       ],
@@ -4459,7 +4533,7 @@
       "id": "ml-pipeline-workflow",
       "name": "ml-pipeline-workflow",
       "description": "Build end-to-end MLOps pipelines from data preparation through model training, validation, and production deployment. Use when creating ML pipelines, implementing MLOps practices, or automating model training and deployment workflows.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "ml",
         "pipeline"
@@ -4484,7 +4558,7 @@
       "id": "mlops-engineer",
       "name": "mlops-engineer",
       "description": "Build comprehensive ML pipelines, experiment tracking, and model registries with MLflow, Kubeflow, and modern MLOps tools. Implements automated training, deployment, and monitoring across cloud platforms. Use PROACTIVELY for ML infrastructure, experiment management, or pipeline automation.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "mlops"
       ],
@@ -4582,7 +4656,7 @@
     {
       "id": "monorepo-architect",
       "name": "monorepo-architect",
-      "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,",
+      "description": "Design monorepo structure, build systems, and dependency boundaries using Nx, Turborepo, Bazel, or Lerna. Use when setting up a monorepo, optimizing builds, or scaling development workflows.",
       "category": "architecture",
       "tags": [
         "monorepo"
@@ -4590,16 +4664,16 @@
       "triggers": [
         "monorepo",
         "architect",
-        "architecture",
+        "structure",
         "dependency",
-        "scale",
-        "masters",
+        "boundaries",
         "nx",
         "turborepo",
         "bazel",
         "lerna",
-        "efficient",
-        "multi"
+        "setting",
+        "up",
+        "optimizing"
       ],
       "path": "skills/monorepo-architect/SKILL.md"
     },
@@ -4607,7 +4681,7 @@
       "id": "monorepo-management",
       "name": "monorepo-management",
       "description": "Master monorepo management with Turborepo, Nx, and pnpm workspaces to build efficient, scalable multi-package repositories with optimized builds and dependency management. Use when setting up monorepos, optimizing builds, or managing shared dependencies.",
-      "category": "general",
+      "category": "architecture",
       "tags": [
         "monorepo"
       ],
@@ -4708,7 +4782,7 @@
       "id": "network-engineer",
       "name": "network-engineer",
       "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, global load balancing, and advanced troubleshooting. Handles CDN optimization, network automation, and compliance. Use PROACTIVELY for network design, connectivity issues, or performance optimization.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "network"
       ],
@@ -4732,7 +4806,7 @@
       "id": "nextjs-app-router-patterns",
       "name": "nextjs-app-router-patterns",
       "description": "Master Next.js 14+ App Router with Server Components, streaming, parallel routes, and advanced data fetching. Use when building Next.js applications, implementing SSR/SSG, or optimizing React Server Components.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "nextjs",
         "app",
@@ -4783,7 +4857,7 @@
       "id": "nodejs-backend-patterns",
       "name": "nodejs-backend-patterns",
       "description": "Build production-ready Node.js backend services with Express/Fastify, implementing middleware patterns, error handling, authentication, database integration, and API design best practices. Use when creating Node.js servers, REST APIs, GraphQL backends, or microservices architectures.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "nodejs",
         "backend"
@@ -4833,7 +4907,7 @@
       "id": "observability-engineer",
       "name": "observability-engineer",
       "description": "Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response workflows. Use PROACTIVELY for monitoring infrastructure, performance optimization, or production reliability.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "observability"
       ],
@@ -4856,7 +4930,7 @@
     {
       "id": "observability-monitoring-monitor-setup",
       "name": "observability-monitoring-monitor-setup",
-      "description": "You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful da",
+      "description": "Set up metrics, dashboards, distributed tracing, log aggregation, and alerting. Use when implementing observability or improving visibility into application and infrastructure health.",
       "category": "infrastructure",
       "tags": [
         "observability",
@@ -4869,14 +4943,14 @@
         "monitoring",
         "monitor",
         "setup",
-        "specializing",
-        "implementing",
-        "solutions",
         "set",
         "up",
         "metrics",
-        "collection",
-        "distributed"
+        "dashboards",
+        "distributed",
+        "tracing",
+        "log",
+        "aggregation"
       ],
       "path": "skills/observability-monitoring-monitor-setup/SKILL.md"
     },
@@ -4911,7 +4985,7 @@
       "id": "on-call-handoff-patterns",
       "name": "on-call-handoff-patterns",
       "description": "Master on-call shift handoffs with context transfer, escalation procedures, and documentation. Use when transitioning on-call responsibilities, documenting shift summaries, or improving on-call processes.",
-      "category": "architecture",
+      "category": "infrastructure",
       "tags": [
         "on",
         "call",
@@ -5061,8 +5135,8 @@
     {
       "id": "performance-testing-review-ai-review",
       "name": "performance-testing-review-ai-review",
-      "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
-      "category": "infrastructure",
+      "description": "Combine static analysis with model-assisted code review to assess security, performance, correctness, and architecture. Use when designing review automation or reviewing complex changes.",
+      "category": "data-ai",
       "tags": [
         "performance",
         "ai"
@@ -5072,21 +5146,21 @@
         "ai",
         "testing",
         "review",
-        "powered",
-        "code",
-        "combining",
-        "automated",
+        "combine",
         "static",
         "analysis",
-        "intelligent",
-        "recognition"
+        "model",
+        "assisted",
+        "code",
+        "assess",
+        "security"
       ],
       "path": "skills/performance-testing-review-ai-review/SKILL.md"
     },
     {
       "id": "performance-testing-review-multi-agent-review",
       "name": "performance-testing-review-multi-agent-review",
-      "description": "Use when working with performance testing review multi agent review",
+      "description": "Coordinate specialized code, security, architecture, and performance reviewers and consolidate their results. Use when a codebase needs parallel review across multiple disciplines.",
       "category": "testing",
       "tags": [
         "performance",
@@ -5099,7 +5173,13 @@
         "agent",
         "testing",
         "review",
-        "working"
+        "coordinate",
+        "specialized",
+        "code",
+        "security",
+        "architecture",
+        "reviewers",
+        "consolidate"
       ],
       "path": "skills/performance-testing-review-multi-agent-review/SKILL.md"
     },
@@ -5107,7 +5187,7 @@
       "id": "php-pro",
       "name": "php-pro",
       "description": "Write idiomatic PHP code with generators, iterators, SPL data structures, and modern OOP features. Use PROACTIVELY for high-performance PHP applications.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "php"
       ],
@@ -5131,7 +5211,7 @@
       "id": "posix-shell-pro",
       "name": "posix-shell-pro",
       "description": "Expert in strict POSIX sh scripting for maximum portability across Unix-like systems. Specializes in shell scripts that run on any POSIX-compliant shell (dash, ash, sh, bash --posix).",
-      "category": "general",
+      "category": "development",
       "tags": [
         "posix",
         "shell"
@@ -5178,7 +5258,7 @@
       "id": "postmortem-writing",
       "name": "postmortem-writing",
       "description": "Write effective blameless postmortems with root cause analysis, timelines, and action items. Use when conducting incident reviews, writing postmortem documents, or improving incident response processes.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "postmortem",
         "writing"
@@ -5301,7 +5381,7 @@
       "id": "protocol-reverse-engineering",
       "name": "protocol-reverse-engineering",
       "description": "Master network protocol reverse engineering including packet analysis, protocol dissection, and custom protocol documentation. Use when analyzing network traffic, understanding proprietary protocols, or debugging network communication.",
-      "category": "infrastructure",
+      "category": "security",
       "tags": [
         "protocol",
         "reverse",
@@ -5326,7 +5406,7 @@
     {
       "id": "python-development-python-scaffold",
       "name": "python-development-python-scaffold",
-      "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint",
+      "description": "Scaffold Python projects with uv, package structure, type checking, and tests. Use when starting applications, services, or libraries with a consistent development setup.",
       "category": "development",
       "tags": [
         "python"
@@ -5335,15 +5415,15 @@
         "python",
         "development",
         "scaffold",
-        "architecture",
-        "specializing",
-        "scaffolding",
+        "uv",
+        "package",
+        "structure",
+        "type",
+        "checking",
+        "tests",
+        "starting",
         "applications",
-        "generate",
-        "complete",
-        "structures",
-        "tooling",
-        "uv"
+        "libraries"
       ],
       "path": "skills/python-development-python-scaffold/SKILL.md"
     },
@@ -5450,7 +5530,7 @@
       "id": "quant-analyst",
       "name": "quant-analyst",
       "description": "Build financial models, backtest trading strategies, and analyze market data. Implements risk metrics, portfolio optimization, and statistical arbitrage. Use PROACTIVELY for quantitative finance, trading algorithms, or risk analysis.",
-      "category": "security",
+      "category": "business",
       "tags": [
         "quant",
         "analyst"
@@ -5624,7 +5704,7 @@
       "id": "risk-manager",
       "name": "risk-manager",
       "description": "Monitor portfolio risk, R-multiples, and position limits. Creates hedging strategies, calculates expectancy, and implements stop-losses. Use PROACTIVELY for risk assessment, trade tracking, or portfolio protection.",
-      "category": "security",
+      "category": "business",
       "tags": [
         "risk",
         "manager"
@@ -5649,7 +5729,7 @@
       "id": "risk-metrics-calculation",
       "name": "risk-metrics-calculation",
       "description": "Calculate portfolio risk metrics including VaR, CVaR, Sharpe, Sortino, and drawdown analysis. Use when measuring portfolio risk, implementing risk limits, or building risk monitoring systems.",
-      "category": "security",
+      "category": "business",
       "tags": [
         "risk",
         "metrics",
@@ -5822,7 +5902,7 @@
       "id": "scala-pro",
       "name": "scala-pro",
       "description": "Master enterprise-grade Scala development with functional programming, distributed systems, and big data processing. Expert in Apache Pekko, Akka, Spark, ZIO/Cats Effect, and reactive architectures. Use PROACTIVELY for Scala system design, performance optimization, or enterprise integration.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "scala"
       ],
@@ -6072,7 +6152,7 @@
       "id": "seo-authority-builder",
       "name": "seo-authority-builder",
       "description": "Analyzes content for E-E-A-T signals and suggests improvements to build authority and trust. Identifies missing credibility elements. Use PROACTIVELY for YMYL topics.",
-      "category": "security",
+      "category": "business",
       "tags": [
         "seo",
         "authority",
@@ -6330,8 +6410,8 @@
     {
       "id": "service-mesh-expert",
       "name": "service-mesh-expert",
-      "description": "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con",
-      "category": "security",
+      "description": "Design service meshes with Istio or Linkerd, including traffic management, security, and observability. Use when configuring service communication, mesh policies, or multi-cluster networking.",
+      "category": "infrastructure",
       "tags": [
         "service",
         "mesh"
@@ -6339,16 +6419,16 @@
       "triggers": [
         "service",
         "mesh",
-        "architect",
-        "specializing",
+        "meshes",
         "istio",
         "linkerd",
-        "cloud",
-        "native",
-        "networking",
-        "masters",
+        "including",
         "traffic",
-        "security"
+        "security",
+        "observability",
+        "configuring",
+        "communication",
+        "policies"
       ],
       "path": "skills/service-mesh-expert/SKILL.md"
     },
@@ -6382,7 +6462,7 @@
       "id": "shellcheck-configuration",
       "name": "shellcheck-configuration",
       "description": "Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "shellcheck",
         "configuration"
@@ -6531,7 +6611,7 @@
       "id": "sql-pro",
       "name": "sql-pro",
       "description": "Master modern SQL with cloud-native databases, OLTP/OLAP optimization, and advanced query techniques. Expert in performance tuning, data modeling, and hybrid analytical systems. Use PROACTIVELY for database optimization or complex analysis.",
-      "category": "infrastructure",
+      "category": "data-ai",
       "tags": [
         "sql"
       ],
@@ -6555,7 +6635,7 @@
       "id": "startup-analyst",
       "name": "startup-analyst",
       "description": "Expert startup business analyst specializing in market sizing, financial modeling, competitive analysis, and strategic planning for early-stage companies. Use PROACTIVELY when the user asks about market opportunity, TAM/SAM/SOM, financial projections, unit economics, competitive landscape, team planning, startup metrics, or business strategy for pre-seed through Series A startups.",
-      "category": "testing",
+      "category": "business",
       "tags": [
         "startup",
         "analyst"
@@ -6686,7 +6766,7 @@
       "id": "startup-metrics-framework",
       "name": "startup-metrics-framework",
       "description": "This skill should be used when the user asks about \"key startup metrics\", \"SaaS metrics\", \"CAC and LTV\", \"unit economics\", \"burn multiple\", \"rule of 40\", \"marketplace metrics\", or requests guidance on tracking and optimizing business performance metrics.",
-      "category": "testing",
+      "category": "business",
       "tags": [
         "startup",
         "metrics",
@@ -6760,7 +6840,7 @@
     {
       "id": "systems-programming-rust-project",
       "name": "systems-programming-rust-project",
-      "description": "You are a Rust project architecture expert specializing in scaffolding production-ready Rust applications. Generate complete project structures with cargo tooling, proper module organization, testing",
+      "description": "Scaffold Rust projects with Cargo, module organization, testing, and development tooling. Use when starting Rust applications or libraries and establishing their project structure.",
       "category": "development",
       "tags": [
         "programming",
@@ -6769,16 +6849,16 @@
       "triggers": [
         "programming",
         "rust",
-        "architecture",
-        "specializing",
-        "scaffolding",
-        "applications",
-        "generate",
-        "complete",
-        "structures",
+        "scaffold",
         "cargo",
+        "module",
+        "organization",
+        "testing",
+        "development",
         "tooling",
-        "proper"
+        "starting",
+        "applications",
+        "libraries"
       ],
       "path": "skills/systems-programming-rust-project/SKILL.md"
     },
@@ -6786,7 +6866,7 @@
       "id": "tailwind-design-system",
       "name": "tailwind-design-system",
       "description": "Build scalable design systems with Tailwind CSS, design tokens, component libraries, and responsive patterns. Use when creating component libraries, implementing design systems, or standardizing UI patterns.",
-      "category": "architecture",
+      "category": "development",
       "tags": [
         "tailwind"
       ],
@@ -6809,7 +6889,7 @@
       "id": "tdd-orchestrator",
       "name": "tdd-orchestrator",
       "description": "Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices. Enforces TDD best practices across teams with AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD implementation and governance.",
-      "category": "data-ai",
+      "category": "testing",
       "tags": [
         "tdd",
         "orchestrator"
@@ -6833,7 +6913,7 @@
     {
       "id": "tdd-workflows-tdd-cycle",
       "name": "tdd-workflows-tdd-cycle",
-      "description": "Use when working with tdd workflows tdd cycle",
+      "description": "Coordinate the test-driven development cycle from requirements and failing tests through implementation, refactoring, and validation. Use when building a feature with a structured TDD workflow.",
       "category": "testing",
       "tags": [
         "tdd",
@@ -6842,7 +6922,16 @@
       "triggers": [
         "tdd",
         "cycle",
-        "working"
+        "coordinate",
+        "test",
+        "driven",
+        "development",
+        "requirements",
+        "failing",
+        "tests",
+        "through",
+        "refactoring",
+        "validation"
       ],
       "path": "skills/tdd-workflows-tdd-cycle/SKILL.md"
     },
@@ -6895,7 +6984,7 @@
     {
       "id": "tdd-workflows-tdd-refactor",
       "name": "tdd-workflows-tdd-refactor",
-      "description": "Use when working with tdd workflows tdd refactor",
+      "description": "Refactor code while preserving passing tests and behavior. Use during the TDD refactor phase to remove duplication, improve design, and verify each structural change.",
       "category": "testing",
       "tags": [
         "tdd",
@@ -6904,14 +6993,23 @@
       "triggers": [
         "tdd",
         "refactor",
-        "working"
+        "code",
+        "while",
+        "preserving",
+        "passing",
+        "tests",
+        "behavior",
+        "during",
+        "phase",
+        "remove",
+        "duplication"
       ],
       "path": "skills/tdd-workflows-tdd-refactor/SKILL.md"
     },
     {
       "id": "team-collaboration-issue",
       "name": "team-collaboration-issue",
-      "description": "You are a GitHub issue resolution expert specializing in systematic bug investigation, feature implementation, and collaborative development workflows. Your expertise spans issue triage, root cause an",
+      "description": "Resolve GitHub issues through triage, reproduction, implementation, testing, and collaboration. Use when investigating a reported bug or delivering a feature described in an issue.",
       "category": "workflow",
       "tags": [
         "team",
@@ -6922,15 +7020,15 @@
         "team",
         "collaboration",
         "issue",
+        "resolve",
         "github",
-        "resolution",
-        "specializing",
-        "systematic",
-        "bug",
-        "investigation",
-        "feature",
-        "collaborative",
-        "development"
+        "issues",
+        "through",
+        "triage",
+        "reproduction",
+        "testing",
+        "investigating",
+        "reported"
       ],
       "path": "skills/team-collaboration-issue/SKILL.md"
     },
@@ -6938,7 +7036,7 @@
       "id": "team-collaboration-standup-notes",
       "name": "team-collaboration-standup-notes",
       "description": "You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remote team coordination patterns.",
-      "category": "data-ai",
+      "category": "workflow",
       "tags": [
         "team",
         "collaboration",
@@ -6990,7 +7088,7 @@
       "id": "temporal-python-pro",
       "name": "temporal-python-pro",
       "description": "Master Temporal workflow orchestration with Python SDK. Implements durable workflows, saga patterns, and distributed transactions. Covers async/await, testing strategies, and production deployment. Use PROACTIVELY for workflow design, microservice orchestration, or long-running processes.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "temporal",
         "python"
@@ -7066,7 +7164,7 @@
       "id": "terraform-specialist",
       "name": "terraform-specialist",
       "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns. Handles complex module design, multi-cloud deployments, GitOps workflows, policy as code, and CI/CD integration. Covers migration strategies, security best practices, and modern IaC ecosystems. Use PROACTIVELY for advanced IaC, state management, or infrastructure automation.",
-      "category": "security",
+      "category": "infrastructure",
       "tags": [
         "terraform"
       ],
@@ -7090,7 +7188,7 @@
       "id": "test-automator",
       "name": "test-automator",
       "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance.",
-      "category": "infrastructure",
+      "category": "testing",
       "tags": [
         "automator"
       ],
@@ -7189,7 +7287,7 @@
       "id": "turborepo-caching",
       "name": "turborepo-caching",
       "description": "Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching.",
-      "category": "general",
+      "category": "architecture",
       "tags": [
         "turborepo",
         "caching"
@@ -7214,7 +7312,7 @@
       "id": "tutorial-engineer",
       "name": "tutorial-engineer",
       "description": "Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples. Use PROACTIVELY for onboarding guides, feature tutorials, or concept explanations.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "tutorial"
       ],
@@ -7288,7 +7386,7 @@
       "id": "ui-ux-designer",
       "name": "ui-ux-designer",
       "description": "Create interface designs, wireframes, and design systems. Masters user research, accessibility standards, and modern design tools. Specializes in design tokens, component libraries, and inclusive design. Use PROACTIVELY for design systems, user flows, or interface optimization.",
-      "category": "general",
+      "category": "development",
       "tags": [
         "ui",
         "ux",
@@ -7314,7 +7412,7 @@
       "id": "ui-visual-validator",
       "name": "ui-visual-validator",
       "description": "Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification. Masters screenshot analysis, visual regression testing, and component validation. Use PROACTIVELY to verify UI modifications have achieved their intended goals through comprehensive visual analysis.",
-      "category": "testing",
+      "category": "development",
       "tags": [
         "ui",
         "visual",
@@ -7364,7 +7462,7 @@
       "id": "unity-developer",
       "name": "unity-developer",
       "description": "Build Unity games with optimized C# scripts, efficient rendering, and proper asset management. Masters Unity 6 LTS, URP/HDRP pipelines, and cross-platform deployment. Handles gameplay systems, UI implementation, and platform optimization. Use PROACTIVELY for Unity performance issues, game mechanics, or cross-platform builds.",
-      "category": "infrastructure",
+      "category": "development",
       "tags": [
         "unity"
       ],
@@ -7388,7 +7486,7 @@
       "id": "unity-ecs-patterns",
       "name": "unity-ecs-patterns",
       "description": "Master Unity ECS (Entity Component System) with DOTS, Jobs, and Burst for high-performance game development. Use when building data-oriented games, optimizing performance, or working with large entity counts.",
-      "category": "data-ai",
+      "category": "development",
       "tags": [
         "unity",
         "ecs"
@@ -7438,7 +7536,7 @@
     {
       "id": "vector-database-engineer",
       "name": "vector-database-engineer",
-      "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similar",
+      "description": "Design vector storage, indexing, and semantic retrieval with Pinecone, Weaviate, Qdrant, Milvus, or pgvector. Use when implementing RAG, similarity search, or recommendation systems.",
       "category": "data-ai",
       "tags": [
         "vector",
@@ -7448,15 +7546,15 @@
         "vector",
         "database",
         "engineer",
-        "databases",
-        "embedding",
+        "storage",
+        "indexing",
         "semantic",
-        "search",
-        "masters",
+        "retrieval",
         "pinecone",
         "weaviate",
         "qdrant",
-        "milvus"
+        "milvus",
+        "pgvector"
       ],
       "path": "skills/vector-database-engineer/SKILL.md"
     },
@@ -7490,7 +7588,7 @@
       "id": "wcag-audit-patterns",
       "name": "wcag-audit-patterns",
       "description": "Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.",
-      "category": "architecture",
+      "category": "testing",
       "tags": [
         "wcag",
         "audit"
@@ -7539,7 +7637,7 @@
       "id": "workflow-orchestration-patterns",
       "name": "workflow-orchestration-patterns",
       "description": "Design durable workflows with Temporal for distributed systems. Covers workflow vs activity separation, saga patterns, state management, and determinism constraints. Use when building long-running processes, distributed transactions, or microservice orchestration.",
-      "category": "architecture",
+      "category": "workflow",
       "tags": [],
       "triggers": [
         "orchestration",
@@ -7561,7 +7659,7 @@
       "id": "workflow-patterns",
       "name": "workflow-patterns",
       "description": "Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol.",
-      "category": "architecture",
+      "category": "workflow",
       "tags": [],
       "triggers": [
         "skill",

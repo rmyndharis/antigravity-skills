@@ -1,6 +1,6 @@
 ---
 name: tdd-workflows-tdd-refactor
-description: "Use when working with tdd workflows tdd refactor"
+description: "Refactor code while preserving passing tests and behavior. Use during the TDD refactor phase to remove duplication, improve design, and verify each structural change."
 ---
 
 ## Use this skill when

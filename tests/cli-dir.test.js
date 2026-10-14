@@ -67,3 +67,43 @@ test('installed shows an override header when AG_SKILLS_DIR is set', () => {
     rmDir(cwd);
   }
 });
+
+test('installed lists only visible real directories', () => {
+  const dest = tmpDir();
+  try {
+    fs.mkdirSync(path.join(dest, 'sample'));
+    fs.mkdirSync(path.join(dest, '.hidden'));
+    fs.writeFileSync(path.join(dest, 'notes.txt'), 'notes');
+    fs.symlinkSync(path.join(dest, 'sample'), path.join(dest, 'linked'), 'junction');
+    const r = runCli(['installed'], { env: { AG_SKILLS_DIR: dest } });
+    assert.strictEqual(r.code, 0);
+    assert.match(r.stdout, /- sample/);
+    assert.doesNotMatch(r.stdout, /notes.txt|\.hidden|linked/);
+  } finally {
+    rmDir(dest);
+  }
+});
+
+test('runCli isolates inherited AG_SKILLS_DIR while permitting explicit overrides', () => {
+  const dest = tmpDir();
+  const cwd = tmpDir();
+  const saved = process.env.AG_SKILLS_DIR;
+  try {
+    fs.mkdirSync(path.join(dest, 'golang-pro'));
+    const sentinel = path.join(dest, 'golang-pro', 'SKILL.md');
+    fs.writeFileSync(sentinel, 'local instructions');
+    process.env.AG_SKILLS_DIR = dest;
+    const r = runCli(['install', 'python-pro'], { cwd });
+    assert.strictEqual(r.code, 0);
+    assert.ok(fs.existsSync(path.join(cwd, '.agent', 'skills', 'python-pro', 'SKILL.md')));
+    assert.strictEqual(runCli(['update', 'golang-pro'], { cwd }).code, 1);
+    assert.strictEqual(fs.readFileSync(sentinel, 'utf8'), 'local instructions');
+    assert.deepStrictEqual(fs.readdirSync(dest), ['golang-pro']);
+    assert.match(runCli(['installed'], { cwd, env: { AG_SKILLS_DIR: dest } }).stdout, /golang-pro/);
+  } finally {
+    if (saved === undefined) delete process.env.AG_SKILLS_DIR;
+    else process.env.AG_SKILLS_DIR = saved;
+    rmDir(dest);
+    rmDir(cwd);
+  }
+});

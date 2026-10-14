@@ -1,6 +1,6 @@
 ---
 name: code-refactoring-context-restore
-description: "Use when working with code refactoring context restore"
+description: "Restore saved project context, architectural decisions, and work state. Use when resuming interrupted work, retrieving prior context, or merging context across sessions."
 ---
 
 # Context Restoration: Advanced Semantic Memory Rehydration

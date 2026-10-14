@@ -397,17 +397,6 @@ Phase 4: Cleanup (1-2 weeks)
 - Optimize bundle
 - Final testing
 ```
-
-## Resources
-
-- **references/hybrid-mode.md**: Hybrid app patterns
-- **references/component-migration.md**: Component conversion guide
-- **references/dependency-injection.md**: DI migration strategies
-- **references/routing.md**: Routing migration
-- **assets/hybrid-bootstrap.ts**: Hybrid app template
-- **assets/migration-timeline.md**: Project planning
-- **scripts/analyze-angular-app.sh**: App analysis script
-
 ## Best Practices
 
 1. **Start with Services**: Migrate services first (easier)

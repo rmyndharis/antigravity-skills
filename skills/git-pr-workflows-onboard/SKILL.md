@@ -1,6 +1,6 @@
 ---
 name: git-pr-workflows-onboard
-description: "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You"
+description: "Plan technical onboarding with environment setup, codebase orientation, team integration, and learning milestones. Use when helping developers join a project or preparing onboarding materials."
 ---
 
 # Onboard

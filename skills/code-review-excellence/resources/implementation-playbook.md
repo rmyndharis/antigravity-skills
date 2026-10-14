@@ -504,12 +504,3 @@ When author disagrees with your feedback:
 ## Verdict
 ✅ Approve after addressing required changes
 ```
-
-## Resources
-
-- **references/code-review-best-practices.md**: Comprehensive review guidelines
-- **references/common-bugs-checklist.md**: Language-specific bugs to watch for
-- **references/security-review-guide.md**: Security-focused review checklist
-- **assets/pr-review-template.md**: Standard review comment template
-- **assets/review-checklist.md**: Quick reference checklist
-- **scripts/pr-analyzer.py**: Analyze PR complexity and suggest reviewers

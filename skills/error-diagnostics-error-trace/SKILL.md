@@ -1,6 +1,6 @@
 ---
 name: error-diagnostics-error-trace
-description: "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging,"
+description: "Implement error tracking, structured logging, grouping, and alert routing. Use when improving production error detection, triage, or integration with monitoring services."
 ---
 
 # Error Tracking and Monitoring

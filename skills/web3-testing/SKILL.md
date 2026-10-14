@@ -399,19 +399,6 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
 ```
-
-## Resources
-
-- **references/hardhat-setup.md**: Hardhat configuration guide
-- **references/foundry-setup.md**: Foundry testing framework
-- **references/test-patterns.md**: Testing best practices
-- **references/mainnet-forking.md**: Fork testing strategies
-- **references/contract-verification.md**: Etherscan verification
-- **assets/hardhat-config.js**: Complete Hardhat configuration
-- **assets/test-suite.js**: Comprehensive test examples
-- **assets/foundry.toml**: Foundry configuration
-- **scripts/test-contract.sh**: Automated testing script
-
 ## Best Practices
 
 1. **Test Coverage**: Aim for >90% coverage

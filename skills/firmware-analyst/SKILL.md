@@ -9,6 +9,7 @@ metadata:
   model: opus
 ---
 
+```bash
 # Download from vendor
 wget http://vendor.com/firmware/update.bin
 

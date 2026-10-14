@@ -1,6 +1,6 @@
 ---
 name: full-stack-orchestration-full-stack-feature
-description: "Use when working with full stack orchestration full stack feature"
+description: "Coordinate database, backend, frontend, testing, and deployment work for a complete feature. Use when implementing changes that span multiple application layers."
 ---
 
 ## Use this skill when

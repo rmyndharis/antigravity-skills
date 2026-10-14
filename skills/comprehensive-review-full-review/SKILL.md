@@ -1,6 +1,6 @@
 ---
 name: comprehensive-review-full-review
-description: "Use when working with comprehensive review full review"
+description: "Coordinate code quality, architecture, security, performance, testing, and documentation reviews. Use when a change or codebase needs a consolidated assessment across these areas."
 ---
 
 ## Use this skill when

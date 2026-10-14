@@ -513,18 +513,6 @@ class UsageBillingEngine:
 
         return charge
 ```
-
-## Resources
-
-- **references/billing-cycles.md**: Billing cycle management
-- **references/dunning-management.md**: Failed payment recovery
-- **references/proration.md**: Prorated charge calculations
-- **references/tax-calculation.md**: Tax/VAT/GST handling
-- **references/invoice-lifecycle.md**: Invoice state management
-- **assets/billing-state-machine.yaml**: Billing workflow
-- **assets/invoice-template.html**: Invoice templates
-- **assets/dunning-policy.yaml**: Dunning configuration
-
 ## Best Practices
 
 1. **Automate Everything**: Minimize manual intervention

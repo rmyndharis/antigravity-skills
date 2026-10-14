@@ -20,7 +20,6 @@ metadata:
 - unicorn (CPU emulator framework)
 - angr (symbolic execution)
 - Triton (dynamic binary analysis)
-```
 
 ## Use this skill when
 
