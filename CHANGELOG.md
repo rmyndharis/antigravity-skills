@@ -4,6 +4,22 @@ All notable changes to this project are documented here. This project adheres to
 
 ## [Unreleased]
 
+## [1.3.1] - 2026-10-14
+
+### Changed
+
+- Package the manager as a dedicated plugin under `plugins/antigravity-skills-manager`, with the `/antigravity-skills-manager` command and documented npm installation paths.
+- Replace selected skill directories completely during `update` or `install --force`, removing obsolete files and local edits; ordinary `install` still skips existing skills.
+- Upgrade `yaml` to 2.9.1.
+
+### Fixed
+
+- Stage Node and Python skill replacements before activation, restore previous installations on failure, and retain recovery backups if restoration fails.
+- Reject unsafe catalog paths, invalid aliases, symlinked skill trees, and overlapping installation paths.
+- Correct catalog categories and metadata descriptions, remove references to absent helpers, and validate helper links and required headings outside code examples.
+- Return schema-valid FastAPI errors and reject explicit null user updates in the REST API template.
+- Keep the final evaluated winner in prompt optimization, export its results, and calculate metrics without NumPy.
+
 ## [1.3.0] - 2026-08-03
 
 ### Added
@@ -52,7 +68,8 @@ All notable changes to this project are documented here. This project adheres to
 - `normalize-frontmatter` deduplicates metadata at token granularity (no duplicates for comma-containing values); `validate-skills` and `normalize-frontmatter` now share a single frontmatter field-set.
 - Removed dead code: the `parseInlineList`/`stripQuotes` exports and the unreachable `name !== id` alias branch.
 
-[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.3.1
 [1.3.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.3.0
 [1.2.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.2.0
 [1.1.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.1.0
