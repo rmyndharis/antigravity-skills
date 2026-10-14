@@ -384,6 +384,21 @@ CPC up 35% while conversion flat.
 - Reduce time-to-value to < 7 days
 ```
 
+### Framework 4: The Cinematic Scrollytelling Framework (The Marigold Approach)
+
+When presenting massive, interactive data narratives on the web, linear scrolling creates fatigue. This framework separates the *Builder Workflow* from the *Published Output* to create an immersive, NYT-style data experience.
+
+#### The Architectural Split
+1. **The Builder View:** Maintain a linear, top-to-bottom layout for authors. It should be fast, highly functional, and fit easily into split-pane workflows.
+2. **The Published View:** Transform the DOM for the end-user. Utilize a 12-column grid where text is constrained (e.g., 5 columns) and the data visualization becomes a massive, sticky element (7 columns) or a full-bleed fixed background on mobile.
+
+#### The Interaction Triggers
+Never rely on `onMouseEnter` for scrolling data stories, as it fails on touch devices and tablets. 
+Use a native `IntersectionObserver`:
+- **The Physics:** As the user scrolls and a text card crosses the 50% threshold of the viewport (`rootMargin: '-40% 0px -40% 0px'`), intercept the event.
+- **The Transition:** Instantly swap the data state of the sticky chart.
+- **The Aesthetic:** Instead of fading out the old chart, morph the data points utilizing `framer-motion` springs or native SVG transitions. This creates a deeply tactile, magnetic feeling where the data "reacts" to the narrative.
+
 ## Writing Techniques
 
 ### Headlines That Work
