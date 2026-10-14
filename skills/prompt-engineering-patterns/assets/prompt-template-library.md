@@ -41,12 +41,12 @@ Extract all named entities from the text and categorize them.
 Text: {text}
 
 Entities (JSON format):
-{
+{{
   "persons": [],
   "organizations": [],
   "locations": [],
   "dates": []
-}
+}}
 ```
 
 ### Structured Data Extraction
@@ -57,14 +57,14 @@ Job Posting:
 {posting}
 
 Extracted Information (JSON):
-{
+{{
   "title": "",
   "company": "",
   "location": "",
   "salary_range": "",
   "requirements": [],
   "responsibilities": []
-}
+}}
 ```
 
 ## Generation Templates
@@ -244,3 +244,5 @@ Documentation (follow {doc_format} format):
 ```
 
 ## Use these templates by filling in the {variables}
+
+Render templates with Python's `str.format(**variables)`. Double braces represent literal JSON braces; missing variables raise `KeyError`.

@@ -10,7 +10,7 @@ import time
 from typing import List, Dict, Any
 from dataclasses import dataclass
 from concurrent.futures import ThreadPoolExecutor
-import numpy as np
+from statistics import fmean
 
 
 @dataclass
@@ -35,6 +35,8 @@ class PromptOptimizer:
         """Evaluate a prompt template against test cases in parallel."""
         if test_cases is None:
             test_cases = self.test_suite
+        if not test_cases:
+            raise ValueError("At least one test case is required")
 
         metrics = {
             'accuracy': [],
@@ -51,14 +53,16 @@ class PromptOptimizer:
 
             # Get LLM response
             response = self.client.complete(prompt)
+            if not isinstance(response, str):
+                raise TypeError("LLM responses must be strings")
 
             # Measure latency
             latency = time.time() - start_time
 
             # Calculate individual metrics
             token_count = len(prompt.split()) + len(response.split())
-            success = 1 if response else 0
-            accuracy = self.calculate_accuracy(response, test_case.expected_output)
+            success = 1 if response.strip() else 0
+            accuracy = self.calculate_accuracy(response, test_case.expected_output) if success else 0.0
 
             return {
                 'latency': latency,
@@ -77,12 +81,18 @@ class PromptOptimizer:
             metrics['success_rate'].append(result['success_rate'])
             metrics['accuracy'].append(result['accuracy'])
 
+        latencies = sorted(metrics['latency'])
+        position = (len(latencies) - 1) * 0.95
+        lower = int(position)
+        upper = min(lower + 1, len(latencies) - 1)
+        p95_latency = latencies[lower] + (latencies[upper] - latencies[lower]) * (position - lower)
+
         return {
-            'avg_accuracy': np.mean(metrics['accuracy']),
-            'avg_latency': np.mean(metrics['latency']),
-            'p95_latency': np.percentile(metrics['latency'], 95),
-            'avg_tokens': np.mean(metrics['token_count']),
-            'success_rate': np.mean(metrics['success_rate'])
+            'avg_accuracy': fmean(metrics['accuracy']),
+            'avg_latency': fmean(metrics['latency']),
+            'p95_latency': p95_latency,
+            'avg_tokens': fmean(metrics['token_count']),
+            'success_rate': fmean(metrics['success_rate'])
         }
 
     def calculate_accuracy(self, response: str, expected: str) -> float:
@@ -102,7 +112,10 @@ class PromptOptimizer:
         return overlap / len(expected_words)
 
     def optimize(self, base_prompt: str, max_iterations: int = 5) -> Dict[str, Any]:
-        """Iteratively optimize a prompt."""
+        """Optimize a prompt and retain selected evaluations from the latest run."""
+        if not isinstance(max_iterations, int) or max_iterations < 1:
+            raise ValueError("max_iterations must be a positive integer")
+        self.results_history = []
         current_prompt = base_prompt
         best_prompt = base_prompt
         best_score = 0
@@ -112,7 +125,7 @@ class PromptOptimizer:
             print(f"\nIteration {iteration + 1}/{max_iterations}")
 
             # Evaluate current prompt
-            # Bolt Optimization: Avoid re-evaluating if we already have metrics from previous iteration
+            # Reuse metrics for the selected variation.
             if current_metrics:
                 metrics = current_metrics
             else:
@@ -154,6 +167,19 @@ class PromptOptimizer:
 
             current_prompt = best_variation
             current_metrics = best_variation_metrics
+            if best_variation_score > best_score:
+                best_score = best_variation_score
+                best_prompt = best_variation
+
+        last_evaluation = self.results_history[-1]
+        if current_metrics is not None and (
+            last_evaluation['prompt'] != current_prompt or last_evaluation['metrics'] != current_metrics
+        ):
+            self.results_history.append({
+                'iteration': last_evaluation['iteration'] + 1,
+                'prompt': current_prompt,
+                'metrics': current_metrics
+            })
 
         return {
             'best_prompt': best_prompt,
@@ -162,7 +188,7 @@ class PromptOptimizer:
         }
 
     def generate_variations(self, prompt: str, current_metrics: Dict) -> List[str]:
-        """Generate prompt variations to test."""
+        """Generate up to five prompt variations to test."""
         variations = []
 
         # Variation 1: Add explicit format instruction
@@ -183,7 +209,7 @@ class PromptOptimizer:
         if "example" not in prompt.lower():
             variations.append(self.add_examples(prompt))
 
-        return variations[:3]  # Return top 3 variations
+        return variations
 
     def make_concise(self, prompt: str) -> str:
         """Remove redundant words to make prompt more concise."""
@@ -225,7 +251,7 @@ Output: Sample output
         }
 
     def export_results(self, filename: str):
-        """Export optimization results to JSON."""
+        """Export evaluation history from the latest optimization run to JSON."""
         with open(filename, 'w') as f:
             json.dump(self.results_history, f, indent=2)
 

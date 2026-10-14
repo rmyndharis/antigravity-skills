@@ -26,8 +26,9 @@
     "validate:skills": "node scripts/validate-skills.js",
     "check:catalog": "node scripts/check-catalog-drift.js",
     "test": "node --test",
-    "test:python": "python3 -m unittest discover -s tests -p \"test_*.py\"",
-    "prepublishOnly": "npm test && npm run test:python && npm run check:catalog"
+    "test:python": "python3 -c \"import fastapi, httpx, email_validator; import pydantic; assert int(pydantic.__version__.split('.')[0]) >= 2\" && python3 -m unittest discover -s tests -p \"test_*.py\"",
+    "prepublishOnly": "npm test && npm run test:python && npm run validate:skills -- --strict && npm run check:catalog",
+    "test:assets": "python3 -c \"import fastapi, httpx, email_validator; import pydantic; assert int(pydantic.__version__.split('.')[0]) >= 2\" && python3 -m unittest discover -s tests -p \"test_skill_assets.py\""
   },
   "repository": {
     "type": "git",
