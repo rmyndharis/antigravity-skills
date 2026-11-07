@@ -50,11 +50,17 @@ Comprehensive guide to using uv, an extremely fast Python package installer and 
 ### Quick Install
 
 ```bash
-# macOS/Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
+# macOS/Linux: run a pinned installer only if its SHA-256 matches the digest
+# shown for uv-installer.sh on https://github.com/astral-sh/uv/releases
+UV_VERSION=0.13.7
+UV_INSTALLER_SHA256=d263ee68314cf5bea36b08e6bd9e2c4563240d7adb73756cf33af5c199b92db4
+curl --proto '=https' --tlsv1.2 -LsSfO \
+  "https://github.com/astral-sh/uv/releases/download/${UV_VERSION}/uv-installer.sh"
+echo "${UV_INSTALLER_SHA256}  uv-installer.sh" | sha256sum --strict -c - \
+  && sh uv-installer.sh
 
-# Windows (PowerShell)
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+# Windows
+winget install --id=astral-sh.uv -e
 
 # Using pip (if you already have Python)
 pip install uv

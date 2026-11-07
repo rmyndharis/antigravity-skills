@@ -134,8 +134,16 @@ spec:
 ### 1. Installation
 
 ```bash
-# Install Flux CLI
-curl -s https://fluxcd.io/install.sh | sudo bash
+# Install Flux CLI: pin a release and install it only if its SHA-256 matches the
+# entry in that release's checksums file (or: brew install fluxcd/tap/flux)
+FLUX_VERSION=2.10.0
+FLUX_ASSET="flux_${FLUX_VERSION}_linux_amd64.tar.gz"  # or darwin_arm64, linux_arm64
+FLUX_SHA256=208dd7012c04fedeed5b2d0b6e63df3b15b1c34a381527811685c098bc9f8659
+curl --proto '=https' --tlsv1.2 -sSfLO \
+  "https://github.com/fluxcd/flux2/releases/download/v${FLUX_VERSION}/${FLUX_ASSET}"
+echo "${FLUX_SHA256}  ${FLUX_ASSET}" | sha256sum --strict -c - \
+  && tar -xzf "${FLUX_ASSET}" flux \
+  && sudo install -m 0755 flux /usr/local/bin/flux
 
 # Bootstrap Flux
 flux bootstrap github \

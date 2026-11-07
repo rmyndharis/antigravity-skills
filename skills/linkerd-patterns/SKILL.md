@@ -65,8 +65,16 @@ Production patterns for Linkerd service mesh - the lightweight, security-first s
 ### Template 1: Mesh Installation
 
 ```bash
-# Install CLI
-curl --proto '=https' --tlsv1.2 -sSfL https://run.linkerd.io/install | sh
+# Install CLI: pin a release and install it only if its SHA-256 matches the digest
+# shown for that asset on https://github.com/linkerd/linkerd2/releases
+# (or use a package manager: brew install linkerd)
+LINKERD_VERSION=edge-26.11.1
+LINKERD_ASSET="linkerd2-cli-${LINKERD_VERSION}-linux-amd64"  # or -darwin-arm64, -linux-arm64
+LINKERD_SHA256=f69701bec37964905d1cb06097e201ddf71e136824c3817f9a94a405fcbb6a07
+curl --proto '=https' --tlsv1.2 -sSfLO \
+  "https://github.com/linkerd/linkerd2/releases/download/${LINKERD_VERSION}/${LINKERD_ASSET}"
+echo "${LINKERD_SHA256}  ${LINKERD_ASSET}" | sha256sum --strict -c - \
+  && sudo install -m 0755 "${LINKERD_ASSET}" /usr/local/bin/linkerd
 
 # Validate cluster
 linkerd check --pre
