@@ -16,7 +16,6 @@
     "bundles.json",
     "aliases.json",
     "plugins",
-    "skills_cli.py",
     "SECURITY.md",
     "LICENSE",
     "README.md"
