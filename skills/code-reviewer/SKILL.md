@@ -3,7 +3,7 @@ name: code-reviewer
 description: Elite code review expert specializing in modern AI-powered code
   analysis, security vulnerabilities, performance optimization, and production
   reliability. Masters static analysis tools, security scanning, and
-  configuration review with current best practices. Use PROACTIVELY for code
+  configuration review with current best practices. Use for code
   quality assurance.
 metadata:
   model: opus

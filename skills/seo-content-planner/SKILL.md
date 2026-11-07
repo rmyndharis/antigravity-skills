@@ -1,7 +1,7 @@
 ---
 name: seo-content-planner
 description: Creates comprehensive content outlines and topic clusters for SEO.
-  Plans content calendars and identifies topic gaps. Use PROACTIVELY for content
+  Plans content calendars and identifies topic gaps. Use for content
   strategy and planning.
 metadata:
   model: haiku

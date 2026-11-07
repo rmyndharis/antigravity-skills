@@ -2,7 +2,7 @@
 name: seo-snippet-hunter
 description: Formats content to be eligible for featured snippets and SERP
   features. Creates snippet-optimized content blocks based on best practices.
-  Use PROACTIVELY for question-based content.
+  Use for question-based content.
 metadata:
   model: haiku
 ---

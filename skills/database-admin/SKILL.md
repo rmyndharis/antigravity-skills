@@ -4,7 +4,7 @@ description: Expert database administrator specializing in modern cloud
   databases, automation, and reliability engineering. Masters AWS/Azure/GCP
   database services, Infrastructure as Code, high availability, disaster
   recovery, performance optimization, and compliance. Handles multi-cloud
-  strategies, container databases, and cost optimization. Use PROACTIVELY for
+  strategies, container databases, and cost optimization. Use for
   database architecture, operations, or reliability engineering.
 metadata:
   model: sonnet

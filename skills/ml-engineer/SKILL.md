@@ -2,7 +2,7 @@
 name: ml-engineer
 description: Build production ML systems with PyTorch 2.x, TensorFlow, and
   modern ML frameworks. Implements model serving, feature engineering, A/B
-  testing, and monitoring. Use PROACTIVELY for ML model deployment, inference
+  testing, and monitoring. Use for ML model deployment, inference
   optimization, or production ML infrastructure.
 metadata:
   model: inherit

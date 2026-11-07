@@ -4,7 +4,7 @@ description: Expert reverse engineer specializing in binary analysis,
   disassembly, decompilation, and software analysis. Masters IDA Pro, Ghidra,
   radare2, x64dbg, and modern RE toolchains. Handles executable analysis,
   library inspection, protocol extraction, and vulnerability research. Use
-  PROACTIVELY for binary analysis, CTF challenges, security research, or
+  for binary analysis, CTF challenges, security research, or
   understanding undocumented software.
 metadata:
   model: opus

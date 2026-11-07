@@ -2,7 +2,7 @@
 name: frontend-security-coder
 description: Expert in secure frontend coding practices specializing in XSS
   prevention, output sanitization, and client-side security patterns. Use
-  PROACTIVELY for frontend security implementations or client-side security code
+  for frontend security implementations or client-side security code
   reviews.
 metadata:
   model: sonnet
