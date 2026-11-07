@@ -251,6 +251,7 @@ function log(level, message, context = {}) {
 ```python
 import uuid
 import logging
+from datetime import datetime, timezone
 from flask import request, g
 import json
 
@@ -279,7 +280,7 @@ logger.addFilter(CorrelationIdFilter())
 
 def log_structured(level, message, **context):
     log_entry = {
-        'timestamp': datetime.utcnow().isoformat() + 'Z',
+        'timestamp': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
         'level': level,
         'correlation_id': g.correlation_id,
         'service': 'payment-service',

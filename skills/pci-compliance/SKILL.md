@@ -307,7 +307,7 @@ def get_payment_methods():
 
 ```python
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 
 class PCIAuditLogger:
     """PCI-compliant audit logging."""
@@ -319,7 +319,7 @@ class PCIAuditLogger:
     def log_access(self, user_id, resource, action, result):
         """Log access to cardholder data."""
         entry = {
-            'timestamp': datetime.utcnow().isoformat(),
+            'timestamp': datetime.now(timezone.utc).isoformat(),
             'user_id': user_id,
             'resource': resource,
             'action': action,
@@ -332,7 +332,7 @@ class PCIAuditLogger:
     def log_authentication(self, user_id, success, method):
         """Log authentication attempt."""
         entry = {
-            'timestamp': datetime.utcnow().isoformat(),
+            'timestamp': datetime.now(timezone.utc).isoformat(),
             'user_id': user_id,
             'event': 'authentication',
             'success': success,

@@ -63,7 +63,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 import uuid
 
 class SagaState(Enum):
@@ -94,8 +94,8 @@ class Saga:
     data: Dict[str, Any]
     steps: List[SagaStep]
     current_step: int = 0
-    created_at: datetime = field(default_factory=datetime.utcnow)
-    updated_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class SagaOrchestrator(ABC):
@@ -138,11 +138,11 @@ class SagaOrchestrator(ABC):
             if step.name == step_name:
                 step.status = "completed"
                 step.result = result
-                step.executed_at = datetime.utcnow()
+                step.executed_at = datetime.now(timezone.utc)
                 break
 
         saga.current_step += 1
-        saga.updated_at = datetime.utcnow()
+        saga.updated_at = datetime.now(timezone.utc)
 
         # Check if saga is complete
         if saga.current_step >= len(saga.steps):
@@ -166,7 +166,7 @@ class SagaOrchestrator(ABC):
                 break
 
         saga.state = SagaState.COMPENSATING
-        saga.updated_at = datetime.utcnow()
+        saga.updated_at = datetime.now(timezone.utc)
         await self.saga_store.save(saga)
 
         # Start compensation from current step backwards
@@ -217,7 +217,7 @@ class SagaOrchestrator(ABC):
         for step in saga.steps:
             if step.name == step_name:
                 step.status = "compensated"
-                step.compensated_at = datetime.utcnow()
+                step.compensated_at = datetime.now(timezone.utc)
                 break
 
         # Check if all compensations complete
@@ -442,7 +442,7 @@ class TimeoutSagaOrchestrator(SagaOrchestrator):
 
         step = saga.steps[saga.current_step]
         step.status = "executing"
-        step.timeout_at = datetime.utcnow() + timedelta(minutes=5)
+        step.timeout_at = datetime.now(timezone.utc) + timedelta(minutes=5)
         await self.saga_store.save(saga)
 
         # Schedule timeout check

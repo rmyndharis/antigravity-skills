@@ -183,7 +183,7 @@ class ConsentManager {
 ### Pattern 2: Data Subject Access Request (DSAR)
 
 ```python
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 import json
 
@@ -209,12 +209,12 @@ class DSARHandler:
             'type': request_type,
             'user_id': user_id,
             'status': 'pending_verification' if not verified else 'processing',
-            'submitted_at': datetime.utcnow(),
-            'deadline': datetime.utcnow() + timedelta(days=self.RESPONSE_DEADLINE_DAYS),
+            'submitted_at': datetime.now(timezone.utc),
+            'deadline': datetime.now(timezone.utc) + timedelta(days=self.RESPONSE_DEADLINE_DAYS),
             'details': details or {},
             'audit_log': [{
                 'action': 'submitted',
-                'timestamp': datetime.utcnow(),
+                'timestamp': datetime.now(timezone.utc),
                 'details': 'Request received'
             }]
         }
@@ -243,7 +243,7 @@ class DSARHandler:
         # Format response
         response = {
             'request_id': request_id,
-            'generated_at': datetime.utcnow().isoformat(),
+            'generated_at': datetime.now(timezone.utc).isoformat(),
             'data_categories': list(user_data.keys()),
             'data': user_data,
             'retention_info': await self.get_retention_info(),
@@ -285,7 +285,7 @@ class DSARHandler:
 
         response = {
             'request_id': request_id,
-            'completed_at': datetime.utcnow().isoformat(),
+            'completed_at': datetime.now(timezone.utc).isoformat(),
             'results': results,
             'exceptions': exceptions
         }
@@ -301,7 +301,7 @@ class DSARHandler:
 
         # Convert to machine-readable format (JSON)
         portable_data = {
-            'export_date': datetime.utcnow().isoformat(),
+            'export_date': datetime.now(timezone.utc).isoformat(),
             'format_version': '1.0',
             'data': user_data['data']
         }
@@ -312,7 +312,7 @@ class DSARHandler:
 ### Pattern 3: Data Retention
 
 ```python
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from enum import Enum
 
 class RetentionBasis(Enum):
@@ -362,7 +362,7 @@ class DataRetentionPolicy:
     async def apply_retention_policies(self):
         """Run retention policy enforcement."""
         for data_type, policy in self.POLICIES.items():
-            cutoff_date = datetime.utcnow() - timedelta(
+            cutoff_date = datetime.now(timezone.utc) - timedelta(
                 days=policy['retention_period_days']
             )
 
@@ -386,7 +386,7 @@ class DataRetentionPolicy:
                     'ip_address': None,
                     'device_id': None,
                     'anonymized': True,
-                    'anonymized_date': datetime.utcnow()
+                    'anonymized_date': datetime.now(timezone.utc)
                 }}
             )
 ```
@@ -459,7 +459,7 @@ class DataMinimization:
 ### Pattern 5: Breach Notification
 
 ```python
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 
 class BreachSeverity(Enum):
@@ -484,7 +484,7 @@ class BreachNotificationHandler:
         """Report and handle a data breach."""
         breach = {
             'id': self.generate_breach_id(),
-            'reported_at': datetime.utcnow(),
+            'reported_at': datetime.now(timezone.utc),
             'description': description,
             'data_types_affected': data_types,
             'affected_individuals_count': affected_count,
@@ -492,7 +492,7 @@ class BreachNotificationHandler:
             'status': 'investigating',
             'timeline': [{
                 'event': 'breach_reported',
-                'timestamp': datetime.utcnow(),
+                'timestamp': datetime.now(timezone.utc),
                 'details': description
             }]
         }
@@ -506,7 +506,7 @@ class BreachNotificationHandler:
         # Authority notification required within 72 hours
         if self.requires_authority_notification(severity, data_types):
             breach['authority_notification_deadline'] = (
-                datetime.utcnow() + timedelta(hours=self.AUTHORITY_NOTIFICATION_HOURS)
+                datetime.now(timezone.utc) + timedelta(hours=self.AUTHORITY_NOTIFICATION_HOURS)
             )
             await self.schedule_authority_notification(breach)
 
@@ -549,7 +549,7 @@ class BreachNotificationHandler:
                 'measures_proposed': await self.get_proposed_measures(breach_id)
             },
             'timeline': breach['timeline'],
-            'submitted_at': datetime.utcnow().isoformat()
+            'submitted_at': datetime.now(timezone.utc).isoformat()
         }
 ```
 

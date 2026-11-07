@@ -270,7 +270,7 @@ export class TracingSetup {
 # structured_logging.py
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
 class StructuredLogger:
@@ -286,7 +286,7 @@ class StructuredLogger:
 
     def _format_log(self, level: str, message: str, context: Dict[str, Any]) -> str:
         log_entry = {
-            '@timestamp': datetime.utcnow().isoformat() + 'Z',
+            '@timestamp': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
             'level': level,
             'message': message,
             **self.default_context,

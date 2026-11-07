@@ -122,7 +122,7 @@ CREATE TABLE subscription_checkpoints (
 
 ```python
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Optional, List
 from uuid import UUID, uuid4
 import json
@@ -137,7 +137,7 @@ class Event:
     event_id: UUID = field(default_factory=uuid4)
     version: Optional[int] = None
     global_position: Optional[int] = None
-    created_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class EventStore:
@@ -369,7 +369,7 @@ def read_category(category: str):
 ```python
 import boto3
 from boto3.dynamodb.conditions import Key
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 import uuid
 
@@ -387,13 +387,13 @@ class DynamoEventStore:
                     'PK': f"STREAM#{stream_id}",
                     'SK': f"VERSION#{version:020d}",
                     'GSI1PK': 'EVENTS',
-                    'GSI1SK': datetime.utcnow().isoformat(),
+                    'GSI1SK': datetime.now(timezone.utc).isoformat(),
                     'event_id': str(uuid.uuid4()),
                     'stream_id': stream_id,
                     'event_type': event['type'],
                     'event_data': json.dumps(event['data']),
                     'version': version,
-                    'created_at': datetime.utcnow().isoformat()
+                    'created_at': datetime.now(timezone.utc).isoformat()
                 }
                 batch.put_item(Item=item)
         return events
