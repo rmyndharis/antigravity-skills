@@ -117,13 +117,21 @@ function resolveSkillPath(skillId) {
   return resolved;
 }
 
-function scoreSkill(skill, query, queryTokens) {
-  const haystack = `${skill.id} ${skill.name || ''} ${skill.description || ''} ${(skill.tags || []).join(' ')} ${(skill.triggers || []).join(' ')}`.toLowerCase();
-  let score = haystack.includes(query) ? 5 : 0;
+// Whole words keep short queries precise ("ai" no longer matches "airflow");
+// tokens of four or more characters also match word prefixes ("kube" finds "kubernetes").
+function hasWord(words, token) {
+  return words.includes(token) || (token.length >= 4 && words.some(word => word.startsWith(token)));
+}
+
+function scoreSkill(skill, queryTokens) {
+  if (!queryTokens.length) return 0;
+  const words = tokenize(`${skill.id} ${skill.name || ''} ${skill.description || ''} ${(skill.tags || []).join(' ')} ${(skill.triggers || []).join(' ')}`);
+  const idWords = tokenize(skill.id);
+  let score = ` ${words.join(' ')} `.includes(` ${queryTokens.join(' ')} `) ? 5 : 0;
 
   for (const token of queryTokens) {
-    if (skill.id.toLowerCase().includes(token)) score += 3;
-    if (haystack.includes(token)) score += 2;
+    if (hasWord(idWords, token)) score += 3;
+    if (hasWord(words, token)) score += 2;
   }
 
   return score;
@@ -205,7 +213,7 @@ program
     const results = (catalog.skills || [])
       .map(skill => ({
         skill,
-        score: scoreSkill(skill, queryText, queryTokens),
+        score: scoreSkill(skill, queryTokens),
       }))
       .filter(result => result.score > 0)
       .sort((a, b) => b.score - a.score || a.skill.id.localeCompare(b.skill.id))
