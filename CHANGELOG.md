@@ -24,6 +24,7 @@ All notable changes to this project are documented here. This project adheres to
 - `linkerd-patterns` uses HTTPRoute and AuthorizationPolicy instead of the deprecated TrafficSplit and ServerAuthorization, and `k8s-security-policies` no longer advertises the removed PodSecurityPolicy.
 - Python examples use `datetime.now(timezone.utc)` instead of the deprecated `datetime.utcnow()`.
 - Skill text no longer carries year stamps such as "2024/2025".
+- Skills drop Claude Code-only syntax: persona and "PROACTIVELY" descriptions now say what the skill does and when to use it, `$ARGUMENTS` placeholders and Task tool steps become plain instructions, and validation rejects all of them.
 
 ## [1.3.1] - 2026-10-14
 
