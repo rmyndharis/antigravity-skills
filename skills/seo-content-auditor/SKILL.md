@@ -2,7 +2,7 @@
 name: seo-content-auditor
 description: Analyzes provided content for quality, E-E-A-T signals, and SEO
   best practices. Scores content and provides improvement recommendations based
-  on established guidelines. Use PROACTIVELY for content review.
+  on established guidelines. Use for content review.
 metadata:
   model: sonnet
 ---

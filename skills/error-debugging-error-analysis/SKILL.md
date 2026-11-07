@@ -1,6 +1,6 @@
 ---
 name: error-debugging-error-analysis
-description: "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions."
+description: "Analyze errors in distributed systems by debugging production incidents, tracing root causes, and implementing observability that surfaces failures early. Use when investigating errors or production incidents."
 ---
 
 # Error Analysis and Resolution

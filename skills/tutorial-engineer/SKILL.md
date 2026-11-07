@@ -2,7 +2,7 @@
 name: tutorial-engineer
 description: Creates step-by-step tutorials and educational content from code.
   Transforms complex concepts into progressive learning experiences with
-  hands-on examples. Use PROACTIVELY for onboarding guides, feature tutorials,
+  hands-on examples. Use for onboarding guides, feature tutorials,
   or concept explanations.
 metadata:
   model: sonnet

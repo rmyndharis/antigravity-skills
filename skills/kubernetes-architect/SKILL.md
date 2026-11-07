@@ -5,7 +5,7 @@ description: Expert Kubernetes architect specializing in cloud-native
   container orchestration. Masters EKS/AKS/GKE, service mesh (Istio/Linkerd),
   progressive delivery, multi-tenancy, and platform engineering. Handles
   security, observability, cost optimization, and developer experience. Use
-  PROACTIVELY for K8s architecture, GitOps implementation, or cloud-native
+  for K8s architecture, GitOps implementation, or cloud-native
   platform design.
 metadata:
   model: opus

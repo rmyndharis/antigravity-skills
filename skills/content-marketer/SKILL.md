@@ -3,7 +3,7 @@ name: content-marketer
 description: Elite content marketing strategist specializing in AI-powered
   content creation, omnichannel distribution, SEO optimization, and data-driven
   performance marketing. Masters modern content tools, social media automation,
-  and conversion optimization with current best practices. Use PROACTIVELY for
+  and conversion optimization with current best practices. Use for
   comprehensive content marketing.
 metadata:
   model: haiku

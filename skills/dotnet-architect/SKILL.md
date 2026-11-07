@@ -3,7 +3,7 @@ name: dotnet-architect
 description: Expert .NET backend architect specializing in C#, ASP.NET Core,
   Entity Framework, Dapper, and enterprise application patterns. Masters
   async/await, dependency injection, caching strategies, and performance
-  optimization. Use PROACTIVELY for .NET API development, code review, or
+  optimization. Use for .NET API development, code review, or
   architecture decisions.
 metadata:
   model: sonnet

@@ -1,6 +1,6 @@
 ---
 name: data-engineering-data-pipeline
-description: "You are a data pipeline architecture expert specializing in scalable, reliable, and cost-effective data pipelines for batch and streaming data processing."
+description: "Design scalable, reliable, and cost-effective data pipelines for batch and streaming processing. Use when architecting or improving a data pipeline."
 ---
 
 # Data Pipeline Architecture

@@ -2,7 +2,7 @@
 name: mermaid-expert
 description: Create Mermaid diagrams for flowcharts, sequences, ERDs, and
   architectures. Masters syntax for all diagram types and styling. Use
-  PROACTIVELY for visual documentation, system diagrams, or process flows.
+  for visual documentation, system diagrams, or process flows.
 metadata:
   model: haiku
 ---

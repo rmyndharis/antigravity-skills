@@ -1,6 +1,6 @@
 ---
 name: accessibility-compliance-accessibility-audit
-description: "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance."
+description: "Audit applications for WCAG compliance, inclusive design, and assistive technology compatibility, then identify barriers and provide remediation guidance. Use when running an accessibility audit or fixing accessibility issues."
 ---
 
 # Accessibility Audit and Testing

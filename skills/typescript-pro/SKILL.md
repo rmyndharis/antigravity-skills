@@ -2,7 +2,7 @@
 name: typescript-pro
 description: Master TypeScript with advanced types, generics, and strict type
   safety. Handles complex type systems, decorators, and enterprise-grade
-  patterns. Use PROACTIVELY for TypeScript architecture, type inference
+  patterns. Use for TypeScript architecture, type inference
   optimization, or advanced typing patterns.
 metadata:
   model: opus

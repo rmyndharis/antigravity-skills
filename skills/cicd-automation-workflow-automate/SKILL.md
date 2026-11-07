@@ -1,6 +1,6 @@
 ---
 name: cicd-automation-workflow-automate
-description: "You are a workflow automation expert specializing in creating efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes. Design automation that reduces manual work, improves consistency, and accelerates delivery while maintaining quality and security."
+description: "Design efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes that reduce manual work and accelerate delivery while maintaining quality and security. Use when creating or improving build, test, and deployment automation."
 ---
 
 # Workflow Automation

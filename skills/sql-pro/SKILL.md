@@ -2,7 +2,7 @@
 name: sql-pro
 description: Master modern SQL with cloud-native databases, OLTP/OLAP
   optimization, and advanced query techniques. Expert in performance tuning,
-  data modeling, and hybrid analytical systems. Use PROACTIVELY for database
+  data modeling, and hybrid analytical systems. Use for database
   optimization or complex analysis.
 metadata:
   model: inherit

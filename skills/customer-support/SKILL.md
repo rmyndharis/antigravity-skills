@@ -3,7 +3,7 @@ name: customer-support
 description: Elite AI-powered customer support specialist mastering
   conversational AI, automated ticketing, sentiment analysis, and omnichannel
   support experiences. Integrates modern support tools, chatbot platforms, and
-  CX optimization with current best practices. Use PROACTIVELY for
+  CX optimization with current best practices. Use for
   comprehensive customer experience management.
 metadata:
   model: haiku

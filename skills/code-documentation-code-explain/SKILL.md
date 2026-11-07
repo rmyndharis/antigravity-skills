@@ -1,6 +1,6 @@
 ---
 name: code-documentation-code-explain
-description: "You are a code education expert specializing in explaining complex code through clear narratives, visual diagrams, and step-by-step breakdowns. Transform difficult concepts into understandable explanations."
+description: "Explain complex code through clear narratives, visual diagrams, and step-by-step breakdowns that make difficult concepts understandable. Use when someone needs to understand how unfamiliar or complex code works."
 ---
 
 # Code Explanation and Analysis

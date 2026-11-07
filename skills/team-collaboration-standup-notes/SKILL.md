@@ -1,6 +1,6 @@
 ---
 name: team-collaboration-standup-notes
-description: "You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remote team coordination patterns."
+description: "Run async-first standups by generating standup notes from commit history and coordinating remote teams. Use when writing standup updates or setting up an async standup process."
 ---
 
 # Standup Notes Generator

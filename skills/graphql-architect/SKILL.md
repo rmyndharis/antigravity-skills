@@ -2,7 +2,7 @@
 name: graphql-architect
 description: Master modern GraphQL with federation, performance optimization,
   and enterprise security. Build scalable schemas, implement advanced caching,
-  and design real-time systems. Use PROACTIVELY for GraphQL architecture or
+  and design real-time systems. Use for GraphQL architecture or
   performance optimization.
 metadata:
   model: opus
