@@ -22,12 +22,12 @@
   ],
   "scripts": {
     "build:catalog": "node scripts/build-catalog.js && node scripts/build-plugin.js",
-    "validate:skills": "node scripts/validate-skills.js",
+    "validate:skills": "node scripts/validate-skills.js --strict",
     "check:catalog": "node scripts/check-catalog-drift.js && node scripts/build-plugin.js --check",
     "test": "node --test",
     "test:python": "python3 -c \"import fastapi, httpx, email_validator; import pydantic; assert int(pydantic.__version__.split('.')[0]) >= 2\" && python3 -m unittest discover -s tests -p \"test_*.py\"",
     "test:assets": "python3 -c \"import fastapi, httpx, email_validator; import pydantic; assert int(pydantic.__version__.split('.')[0]) >= 2\" && python3 -m unittest discover -s tests -p \"test_skill_assets.py\"",
-    "prepublishOnly": "npm test && npm run test:python && npm run validate:skills -- --strict && npm run check:catalog"
+    "prepublishOnly": "npm test && npm run test:python && npm run validate:skills && npm run check:catalog"
   },
   "repository": {
     "type": "git",
