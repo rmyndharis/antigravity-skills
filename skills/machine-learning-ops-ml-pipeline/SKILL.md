@@ -5,7 +5,7 @@ description: "Design ML pipelines covering data preparation, model training, dep
 
 # Machine Learning Pipeline - Multi-Agent MLOps Orchestration
 
-Design and implement a complete ML pipeline for: $ARGUMENTS
+Design and implement a complete ML pipeline for: [user request]
 
 ## Use this skill when
 
@@ -22,6 +22,8 @@ Design and implement a complete ML pipeline for: $ARGUMENTS
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
+
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
 
 ## Thinking
 
@@ -42,10 +44,10 @@ The multi-agent approach ensures each aspect is handled by domain experts:
 
 ## Phase 1: Data & Requirements Analysis
 
-<Task>
-subagent_type: data-engineer
+```yaml
+role: data-engineer
 prompt: |
-  Analyze and design data pipeline for ML system with requirements: $ARGUMENTS
+  Analyze and design data pipeline for ML system with requirements: [user request]
 
   Deliverables:
   1. Data source audit and ingestion strategy:
@@ -67,12 +69,12 @@ prompt: |
      - Cost optimization
 
   Provide implementation code for critical components and integration patterns.
-</Task>
+```
 
-<Task>
-subagent_type: data-scientist
+```yaml
+role: data-scientist
 prompt: |
-  Design feature engineering and model requirements for: $ARGUMENTS
+  Design feature engineering and model requirements for: [user request]
   Using data architecture from: {phase1.data-engineer.output}
 
   Deliverables:
@@ -95,12 +97,12 @@ prompt: |
      - Bias detection approach
 
   Include feature transformation code and statistical validation logic.
-</Task>
+```
 
 ## Phase 2: Model Development & Training
 
-<Task>
-subagent_type: ml-engineer
+```yaml
+role: ml-engineer
 prompt: |
   Implement training pipeline based on requirements: {phase1.data-scientist.output}
   Using data pipeline: {phase1.data-engineer.output}
@@ -125,10 +127,10 @@ prompt: |
      - Rollback procedures
 
   Provide complete training code with configuration management.
-</Task>
+```
 
-<Task>
-subagent_type: python-pro
+```yaml
+role: python-pro
 prompt: |
   Optimize and productionize ML code from: {phase2.ml-engineer.output}
 
@@ -152,12 +154,12 @@ prompt: |
      - Performance regression tests
 
   Deliver production-ready, maintainable code with full test coverage.
-</Task>
+```
 
 ## Phase 3: Production Deployment & Serving
 
-<Task>
-subagent_type: mlops-engineer
+```yaml
+role: mlops-engineer
 prompt: |
   Design production deployment for models from: {phase2.ml-engineer.output}
   With optimized code from: {phase2.python-pro.output}
@@ -188,10 +190,10 @@ prompt: |
      - Secret management with Vault/Secrets Manager
 
   Provide complete deployment configuration and automation scripts.
-</Task>
+```
 
-<Task>
-subagent_type: kubernetes-architect
+```yaml
+role: kubernetes-architect
 prompt: |
   Design Kubernetes infrastructure for ML workloads from: {phase3.mlops-engineer.output}
 
@@ -215,12 +217,12 @@ prompt: |
      - Cache layers for inference optimization
 
   Provide Kubernetes manifests and Helm charts for entire ML platform.
-</Task>
+```
 
 ## Phase 4: Monitoring & Continuous Improvement
 
-<Task>
-subagent_type: observability-engineer
+```yaml
+role: observability-engineer
 prompt: |
   Implement comprehensive monitoring for ML system deployed in: {phase3.mlops-engineer.output}
   Using Kubernetes infrastructure: {phase3.kubernetes-architect.output}
@@ -257,7 +259,7 @@ prompt: |
      - Budget alerts and controls
 
   Deliver monitoring configuration, dashboards, and alert rules.
-</Task>
+```
 
 ## Configuration Options
 

@@ -37,7 +37,7 @@ The Multi-Agent Review Tool leverages a distributed, specialized agent network t
 ## Tool Arguments and Configuration
 
 ### Input Parameters
-- `$ARGUMENTS`: Target code/project for review
+- `[user request]`: Target code/project for review
   - Supports: File paths, Git repositories, code snippets
   - Handles multiple input formats
   - Enables context extraction and agent routing
@@ -212,4 +212,4 @@ The tool is designed with a plugin-based architecture, allowing easy addition of
 
 ## Invocation
 
-Target for review: $ARGUMENTS
+Target for review: [user request]

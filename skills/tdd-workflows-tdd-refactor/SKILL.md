@@ -23,11 +23,13 @@ Refactor code with confidence using comprehensive test safety net:
 
 [Extended thinking: This tool uses the tdd-orchestrator agent (opus model) for sophisticated refactoring while maintaining all tests green. It applies design patterns, improves code quality, and optimizes performance with the safety of comprehensive test coverage.]
 
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
+
 ## Usage
 
-Use Task tool with subagent_type="tdd-orchestrator" to perform safe refactoring.
+Use the `tdd-orchestrator` role to perform safe refactoring.
 
-Prompt: "Refactor this code while keeping all tests green: $ARGUMENTS. Apply TDD refactor phase:
+Prompt: "Refactor this code while keeping all tests green: [user request]. Apply TDD refactor phase:
 
 ## Core Process
 
@@ -183,4 +185,4 @@ class OrderProcessor {
 
 **Applied:** Extract Method, Value Objects, Dependency Injection, Async patterns
 
-Code to refactor: $ARGUMENTS"
+Code to refactor: [user request]"

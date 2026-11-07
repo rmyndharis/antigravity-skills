@@ -23,7 +23,7 @@ Transform basic instructions into production-ready prompts. Effective prompt eng
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

@@ -24,7 +24,7 @@ You are a PR optimization expert specializing in creating high-quality pull requ
 The user needs to create or improve pull requests with detailed descriptions, proper documentation, test coverage analysis, and review facilitation. Focus on making PRs that are easy to review, well-documented, and include all necessary context.
 
 ## Requirements
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

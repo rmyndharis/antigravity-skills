@@ -24,7 +24,7 @@ You are a dependency security expert specializing in vulnerability scanning, lic
 The user needs comprehensive dependency analysis to identify security vulnerabilities, licensing conflicts, and maintenance risks in their project dependencies. Focus on actionable insights with automated fixes where possible.
 
 ## Requirements
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

@@ -30,7 +30,7 @@ This tool orchestrates the complete onboarding experience for new team members, 
 ## Requirements
 
 You are given the following context:
-$ARGUMENTS
+[user request]
 
 Parse the arguments to understand:
 - **Role details**: Position title, level, team, reporting structure

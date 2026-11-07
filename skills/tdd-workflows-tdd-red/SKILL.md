@@ -26,6 +26,8 @@ Write comprehensive failing tests following TDD red phase principles.
 3. Ensure failures are due to missing behavior, not setup errors.
 4. Document how to run tests and verify failures.
 
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
+
 ## Safety
 
 - Keep test data isolated and avoid production environments.
@@ -33,11 +35,11 @@ Write comprehensive failing tests following TDD red phase principles.
 
 ## Role
 
-Generate failing tests using Task tool with subagent_type="unit-testing::test-automator".
+Generate failing tests using the `test-automator` role.
 
 ## Prompt Template
 
-"Generate comprehensive FAILING tests for: $ARGUMENTS
+"Generate comprehensive FAILING tests for: [user request]
 
 ## Core Requirements
 
@@ -161,4 +163,4 @@ describe('AuthService', () => {
 });
 ```
 
-Test requirements: $ARGUMENTS
+Test requirements: [user request]

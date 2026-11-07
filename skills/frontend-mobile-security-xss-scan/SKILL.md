@@ -23,7 +23,7 @@ The user needs comprehensive XSS vulnerability scanning for client-side code, id
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

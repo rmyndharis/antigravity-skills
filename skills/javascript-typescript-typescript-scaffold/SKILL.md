@@ -23,7 +23,7 @@ The user needs automated TypeScript project scaffolding that creates consistent,
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

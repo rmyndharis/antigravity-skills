@@ -31,7 +31,7 @@ The user needs to create mock APIs for development, testing, or demonstration pu
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

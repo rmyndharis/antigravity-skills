@@ -23,7 +23,7 @@ The user needs automated Python project scaffolding that creates consistent, typ
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

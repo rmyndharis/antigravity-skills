@@ -42,7 +42,7 @@ Comprehensive analysis of agent performance using context-manager for historical
 
 ```
 Use: context-manager
-Command: analyze-agent-performance $ARGUMENTS --days 30
+Command: analyze-agent-performance [agent name] --days 30
 ```
 
 Collect metrics including:

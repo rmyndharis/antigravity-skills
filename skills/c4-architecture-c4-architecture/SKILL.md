@@ -25,6 +25,8 @@ Generate comprehensive C4 architecture documentation for an existing repository/
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
 
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
+
 ## Overview
 
 This workflow creates comprehensive C4 architecture documentation following the [official C4 model](https://c4model.com/diagrams) by:
@@ -51,7 +53,7 @@ All documentation is written to a new `C4-Documentation/` directory in the repos
 
 For each directory, starting from the deepest:
 
-- Use Task tool with subagent_type="c4-architecture::c4-code"
+- Role: `c4-code`
 - Prompt: |
   Analyze the code in directory: [directory_path]
 
@@ -107,7 +109,7 @@ For each directory, starting from the deepest:
 
 For each identified component:
 
-- Use Task tool with subagent_type="c4-architecture::c4-component"
+- Role: `c4-component`
 - Prompt: |
   Synthesize the following C4 Code-level documentation files into a logical component:
 
@@ -150,7 +152,7 @@ For each identified component:
 
 ### 2.3 Create Master Component Index
 
-- Use Task tool with subagent_type="c4-architecture::c4-component"
+- Role: `c4-component`
 - Prompt: |
   Create a master component index that lists all components in the system.
 
@@ -185,7 +187,7 @@ For each identified component:
 
 ### 3.2 Map Components to Containers
 
-- Use Task tool with subagent_type="c4-architecture::c4-container"
+- Role: `c4-container`
 - Prompt: |
   Synthesize components into containers based on deployment definitions.
 
@@ -258,7 +260,7 @@ For each identified component:
 
 ### 4.2 Create Context Documentation
 
-- Use Task tool with subagent_type="c4-architecture::c4-context"
+- Role: `c4-context`
 - Prompt: |
   Create comprehensive C4 Context-level documentation for the system.
 

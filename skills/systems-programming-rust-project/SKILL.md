@@ -23,7 +23,7 @@ The user needs automated Rust project scaffolding that creates idiomatic, safe, 
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

@@ -12,7 +12,7 @@ Modern remote-first teams rely on async standup notes to maintain visibility, co
 
 ## Requirements
 
-**Arguments:** `$ARGUMENTS` (optional)
+**Arguments:** `[user request]` (optional)
 - If provided: Use as context about specific work areas, projects, or tickets to highlight
 - If empty: Automatically discover work from all available sources
 

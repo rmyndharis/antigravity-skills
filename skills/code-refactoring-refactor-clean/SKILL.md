@@ -24,7 +24,7 @@ You are a code refactoring expert specializing in clean code principles, SOLID d
 The user needs help refactoring code to make it cleaner, more maintainable, and aligned with best practices. Focus on practical improvements that enhance code quality without over-engineering.
 
 ## Requirements
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

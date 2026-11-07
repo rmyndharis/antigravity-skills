@@ -28,7 +28,7 @@ You are a security expert specializing in dependency vulnerability analysis, SBO
 The user needs comprehensive dependency security analysis to identify vulnerable packages, outdated dependencies, and license compliance issues. Focus on multi-ecosystem support, vulnerability database integration, SBOM generation, and automated remediation using modern tools.
 
 ## Requirements
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

@@ -23,7 +23,7 @@ The user needs automated component scaffolding that creates consistent, type-saf
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 
