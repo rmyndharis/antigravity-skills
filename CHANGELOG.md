@@ -19,6 +19,11 @@ All notable changes to this project are documented here. This project adheres to
 ### Fixed
 
 - `search` matches whole words, so short queries such as `ai` and `go` no longer match fragments of unrelated words.
+- Linkerd, Flux, and uv install snippets pin a release and verify its SHA-256 instead of piping a script into a shell.
+- Workflow examples use `actions/upload-artifact@v4`; v3 no longer runs on GitHub.com.
+- `linkerd-patterns` uses HTTPRoute and AuthorizationPolicy instead of the deprecated TrafficSplit and ServerAuthorization, and `k8s-security-policies` no longer advertises the removed PodSecurityPolicy.
+- Python examples use `datetime.now(timezone.utc)` instead of the deprecated `datetime.utcnow()`.
+- Skill text no longer carries year stamps such as "2024/2025".
 
 ## [1.3.1] - 2026-10-14
 
