@@ -319,13 +319,14 @@ jobs:
           docker push ${{ github.repository }}:${{ matrix.environment }}-latest
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.environment }}
           path: |
             dist/
             build/
             .next/
+          include-hidden-files: true
           retention-days: 7
 
   # Deploy
