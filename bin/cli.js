@@ -18,8 +18,10 @@ const CATALOG_PATH = path.join(PACKAGE_ROOT, 'catalog.json');
 const BUNDLES_PATH = path.join(PACKAGE_ROOT, 'bundles.json');
 const ALIASES_PATH = path.join(PACKAGE_ROOT, 'aliases.json');
 
-// Define destinations
-const GLOBAL_SKILLS_DIR = path.join(os.homedir(), '.gemini', 'antigravity', 'skills');
+// Define destinations. The Antigravity App, CLI, and IDE all read global skills from ~/.gemini/config/skills.
+const GLOBAL_SKILLS_DIR = path.join(os.homedir(), '.gemini', 'config', 'skills');
+// Earlier versions installed global skills here; only the standalone IDE still reads it.
+const LEGACY_GLOBAL_SKILLS_DIR = path.join(os.homedir(), '.gemini', 'antigravity', 'skills');
 const LOCAL_SKILLS_DIR = path.join(process.cwd(), '.agent', 'skills');
 
 // Allow overriding the install location for both scopes via an env var.
@@ -30,6 +32,12 @@ function resolveTargetDir(global) {
     return path.resolve(raw);
   }
   return global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
+}
+
+function noteLegacyGlobalDir(global) {
+  if (global && !process.env.AG_SKILLS_DIR && fs.existsSync(LEGACY_GLOBAL_SKILLS_DIR)) {
+    console.log(chalk.gray(`Global skills installed by earlier versions remain in ${LEGACY_GLOBAL_SKILLS_DIR}. Set AG_SKILLS_DIR to that path to list or update them.`));
+  }
 }
 
 program
@@ -222,7 +230,7 @@ program
 program
   .command('install [skillName]')
   .description('Install a skill to your workspace or globally')
-  .option('-g, --global', 'Install to global workspace (~/.gemini/antigravity/skills)')
+  .option('-g, --global', 'Install to the global skills directory (~/.gemini/config/skills)')
   .option('-a, --all', 'Install ALL skills')
   .option('-t, --tag <tag>', 'Install skills by tag (repeatable)', collectOption, [])
   .option('-b, --bundle <bundle>', 'Install a curated bundle')
@@ -363,6 +371,7 @@ program
   .option('-g, --global', 'List globally installed skills')
   .action(async (options) => {
     const targetDir = resolveTargetDir(options.global);
+    noteLegacyGlobalDir(options.global);
 
     try {
       if (!await fs.pathExists(targetDir)) {
@@ -397,6 +406,7 @@ program
   .option('-g, --global', 'Update globally installed skills')
   .action(async (skillName, options) => {
     const targetDir = resolveTargetDir(options.global);
+    noteLegacyGlobalDir(options.global);
     const aliases = loadAliases();
 
     try {
@@ -507,6 +517,9 @@ program
     console.log(`Global skills dir: ${GLOBAL_SKILLS_DIR} (${globalStatus.exists && globalStatus.isDir ? chalk.green(globalStatus.writable ? 'OK' : 'NOT WRITABLE') : chalk.red('MISSING')})`);
     if (!globalStatus.exists) {
       console.log(chalk.gray(`Create with: mkdir -p ${GLOBAL_SKILLS_DIR}`));
+    }
+    if (fs.existsSync(LEGACY_GLOBAL_SKILLS_DIR)) {
+      console.log(`Legacy global dir: ${LEGACY_GLOBAL_SKILLS_DIR} (read only by the standalone IDE; manage it with AG_SKILLS_DIR)`);
     }
 
     if (process.env.AG_SKILLS_DIR) {
