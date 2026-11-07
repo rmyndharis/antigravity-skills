@@ -4,6 +4,10 @@ All notable changes to this project are documented here. This project adheres to
 
 ## [Unreleased]
 
+### Removed
+
+- `skills_cli.py`, the Python CLI. Use the npm CLI to search, install, and update skills.
+
 ## [1.3.1] - 2026-10-14
 
 ### Changed

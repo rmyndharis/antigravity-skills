@@ -71,6 +71,6 @@ AG_SKILLS_DIR="$HOME/.gemini/antigravity-cli/skills" npx @rmyndharis/antigravity
 - Explain that replacement discards local edits before proceeding unless the user has already authorized that replacement. An ordinary install preserves existing directories by skipping them.
 - Keep the destination separate from the package's source skills. File or symlink destinations and source overlap are rejected.
 - Failed copies leave the previous installation intact. If activation or restoration fails, follow the reported recovery path and preserve any backup. Remove a stale installation lock only after verifying that no installer is running.
-- The plugin contains this skill's instructions only. Use the npm commands above; do not assume that `skills_cli.py` or another executable is beside this file.
+- The plugin contains this skill's instructions only. Use the npm commands above; do not assume that another executable is beside this file.
 
 See the official [skill locations](https://www.antigravity.google/docs/skills/) and [plugin documentation](https://www.antigravity.google/docs/plugins?tab=cli) when selecting the host-specific scope.

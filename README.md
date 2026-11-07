@@ -240,7 +240,7 @@ node /absolute/path/to/antigravity-skills/bin/cli.js installed
 
 ### Using `agy plugin install` (experimental)
 
-Local plugin installation, enable/disable, and manager invocation have been verified in the Antigravity app on macOS with `agy 1.3.3`. With an npm package packed from this checkout and installed into an isolated workspace, the manager searched the catalog, installed and listed a skill, preserved local files during an ordinary reinstall, and updated only the selected skill. These results apply to the checkout payload, not to an earlier npm release. The npm and Python CLIs can also be used independently.
+Local plugin installation, enable/disable, and manager invocation have been verified in the Antigravity app on macOS with `agy 1.3.3`. With an npm package packed from this checkout and installed into an isolated workspace, the manager searched the catalog, installed and listed a skill, preserved local files during an ordinary reinstall, and updated only the selected skill. These results apply to the checkout payload, not to an earlier npm release. The npm CLI can also be used independently.
 
 The dedicated plugin contains only the manager skill. Install its directory following the official [plugin installation instructions](https://www.antigravity.google/docs/plugins?tab=cli):
 
@@ -260,19 +260,7 @@ Inspect the manager in the app's Customizations view, then invoke its displayed 
 /antigravity-skills-manager list installed skills
 ```
 
-The manager uses the npm CLI commands above, so Node.js and npm must be available. The plugin does not bundle a Python executable or register separate command aliases. The package contains one skill, `antigravity-skills-manager`. On `agy 1.3.3`, `agy plugin list --json` lists imported plugins without component names or enabled state; use the Customizations view to inspect activation and command discovery.
-
-### Using Python
-
-The `skills_cli.py` entrypoint uses only the Python standard library and supports `list`, `search`, `install`, and `installed`. Run the script from a checkout or the installed npm package; it is not copied alongside an installed manager skill:
-
-```bash
-python3 /path/to/antigravity-skills/skills_cli.py search flutter
-python3 /path/to/antigravity-skills/skills_cli.py install flutter-expert
-python3 /path/to/antigravity-skills/skills_cli.py installed
-```
-
-Python defaults to `~/.gemini/antigravity/skills/`; use `AG_SKILLS_DIR` for the host-specific destinations described above. Its `install` command replaces an existing installation, including local edits, and recognizes catalog aliases. It copies the local vault when available. A standalone copy retrieves the catalog, aliases, and skill files from one GitHub commit per command and requires network access. Use the npm CLI's `update` command for updates by name or in bulk.
+The manager uses the npm CLI commands above, so Node.js and npm must be available. The plugin does not register separate command aliases. The package contains one skill, `antigravity-skills-manager`. On `agy 1.3.3`, `agy plugin list --json` lists imported plugins without component names or enabled state; use the Customizations view to inspect activation and command discovery.
 
 ### Manual Installation
 
@@ -318,7 +306,7 @@ npm run validate:skills -- --strict
 npm run check:catalog
 ```
 
-`npm run test:python` includes tests for shipped helper scripts and requires the packages in `requirements-test-assets.txt`. `npm run test:assets` runs only those helper-script tests. The Python CLI itself still has no third-party runtime dependencies. Activate the virtual environment before running these commands; on Windows, use `.venv\Scripts\Activate.ps1` in PowerShell.
+`npm run test:python` includes tests for shipped helper scripts and requires the packages in `requirements-test-assets.txt`. `npm run test:assets` runs only those helper-script tests. Activate the virtual environment before running these commands; on Windows, use `.venv\Scripts\Activate.ps1` in PowerShell.
 
 Edit the canonical manager skill at `skills/antigravity-skills-manager/SKILL.md`. `npm run build:catalog` copies it into `plugins/antigravity-skills-manager/skills/antigravity-skills-manager/SKILL.md`; `npm run check:catalog` checks that the copy is current without changing it.
 
