@@ -1,6 +1,6 @@
 ---
 name: performance-testing-review-multi-agent-review
-description: "Use when working with performance testing review multi agent review"
+description: "Coordinate specialized code, security, architecture, and performance reviewers and consolidate their results. Use when a codebase needs parallel review across multiple disciplines."
 ---
 
 # Multi-Agent Code Review Orchestration Tool

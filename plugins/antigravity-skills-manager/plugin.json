@@ -1,0 +1,4 @@
+{
+  "name": "antigravity-skills-manager",
+  "description": "Search, install, and update selected Antigravity skills from the skill vault using the npm CLI."
+}

@@ -472,18 +472,6 @@ Burn: $180K/mo | Runway: 18 months
 - Growth rate or trend
 - Context (target, benchmark)
 
-## Additional Resources
-
-### Reference Files
-- **`references/metric-definitions.md`** - Complete definitions and formulas for 50+ metrics
-- **`references/benchmarks-by-stage.md`** - Target ranges for each metric by company stage
-- **`references/calculation-examples.md`** - Step-by-step calculation examples
-
-### Example Files
-- **`examples/saas-metrics-dashboard.md`** - Complete metrics suite for B2B SaaS company
-- **`examples/marketplace-metrics.md`** - Marketplace-specific metrics with examples
-- **`examples/investor-metrics-deck.md`** - How to present metrics for fundraising
-
 ## Quick Start
 
 To implement startup metrics framework:
@@ -496,5 +484,3 @@ To implement startup metrics framework:
 6. **Review regularly** - Weekly for core metrics
 7. **Share with team** - Align on goals and progress
 8. **Update investors** - Monthly/quarterly reporting
-
-For detailed definitions, benchmarks, and examples, see `references/` and `examples/`.

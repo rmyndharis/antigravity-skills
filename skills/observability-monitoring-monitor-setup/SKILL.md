@@ -1,6 +1,6 @@
 ---
 name: observability-monitoring-monitor-setup
-description: "You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful da"
+description: "Set up metrics, dashboards, distributed tracing, log aggregation, and alerting. Use when implementing observability or improving visibility into application and infrastructure health."
 ---
 
 # Monitoring and Observability Setup

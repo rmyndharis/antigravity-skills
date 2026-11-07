@@ -8,7 +8,7 @@ const CLI = path.resolve(__dirname, '..', 'bin', 'cli.js');
 function runCli(args, opts = {}) {
   const res = spawnSync('node', [CLI, ...args], {
     encoding: 'utf8',
-    env: { ...process.env, ...(opts.env || {}) },
+    env: { ...process.env, AG_SKILLS_DIR: '', ...(opts.env || {}) },
     cwd: opts.cwd || process.cwd(),
   });
   return {

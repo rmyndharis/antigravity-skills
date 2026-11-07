@@ -315,18 +315,6 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 llm = OpenAI(streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
 ```
-
-## Resources
-
-- **references/agents.md**: Deep dive on agent architectures
-- **references/memory.md**: Memory system patterns
-- **references/chains.md**: Chain composition strategies
-- **references/document-processing.md**: Document loading and indexing
-- **references/callbacks.md**: Monitoring and observability
-- **assets/agent-template.py**: Production-ready agent template
-- **assets/memory-config.yaml**: Memory configuration examples
-- **assets/chain-example.py**: Complex chain examples
-
 ## Common Pitfalls
 
 1. **Memory Overflow**: Not managing conversation history length

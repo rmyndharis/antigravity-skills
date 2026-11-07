@@ -360,17 +360,6 @@ npm install --workspaces
 # Update specific workspace
 npm install package@latest --workspace=packages/app
 ```
-
-## Resources
-
-- **references/semver.md**: Semantic versioning guide
-- **references/compatibility-matrix.md**: Common compatibility issues
-- **references/staged-upgrades.md**: Incremental upgrade strategies
-- **references/testing-strategy.md**: Comprehensive testing approaches
-- **assets/upgrade-checklist.md**: Step-by-step checklist
-- **assets/compatibility-matrix.csv**: Version compatibility table
-- **scripts/audit-dependencies.sh**: Dependency audit script
-
 ## Best Practices
 
 1. **Read Changelogs**: Understand what changed

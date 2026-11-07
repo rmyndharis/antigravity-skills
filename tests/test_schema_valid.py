@@ -1,70 +1,62 @@
 import unittest
 import os
 import json
-import re
+import shutil
+import subprocess
+import tempfile
+from pathlib import Path
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PLUGIN_ROOT = Path(REPO_ROOT, "plugins", "antigravity-skills-manager")
 
 class TestSchemaValid(unittest.TestCase):
     def test_plugin_json_schema(self):
-        plugin_path = os.path.join(REPO_ROOT, "plugin.json")
-        self.assertTrue(os.path.exists(plugin_path), "plugin.json does not exist at repo root")
-        
-        with open(plugin_path, "r", encoding="utf-8") as f:
-            content = f.read()
-
-        data = json.loads(content)
-        self.assertIsInstance(data, dict, "plugin.json must contain a JSON object")
-
-        # Validate name
-        self.assertIn("name", data, "plugin.json missing 'name'")
+        data = json.loads((PLUGIN_ROOT / "plugin.json").read_text(encoding="utf-8"))
+        self.assertIsInstance(data, dict)
+        self.assertEqual(set(data), {"name", "description"})
         self.assertIsInstance(data["name"], str)
-        self.assertTrue(re.match(r"^[a-z0-9]+(?:-[a-z0-9]+)*$", data["name"]), f"Invalid plugin name format: {data['name']}")
-
-        # Validate version
-        self.assertIn("version", data, "plugin.json missing 'version'")
-        self.assertIsInstance(data["version"], str)
-        self.assertTrue(re.match(r"^\d+\.\d+\.\d+$", data["version"]), f"Invalid semantic version: {data['version']}")
-
-        # plugin.json's version is maintained by hand and nothing else cross-checks it,
-        # so a release that bumps package.json and forgets this file stays green
-        # forever. Fail loudly at release time instead.
-        with open(os.path.join(REPO_ROOT, "package.json"), "r", encoding="utf-8") as f:
-            pkg_version = json.load(f)["version"]
-        self.assertEqual(
-            data["version"], pkg_version,
-            f"plugin.json version {data['version']} does not match package.json {pkg_version}",
-        )
-
-        # Validate description
-        self.assertIn("description", data, "plugin.json missing 'description'")
+        self.assertRegex(data["name"], r"^[a-zA-Z0-9_-]+$")
+        self.assertEqual(data["name"], PLUGIN_ROOT.name)
         self.assertIsInstance(data["description"], str)
-        self.assertTrue(len(data["description"].strip()) > 0, "description cannot be empty")
-        self.assertLessEqual(len(data["description"]), 256, "description exceeds 256 chars")
+        self.assertTrue(data["description"].strip())
 
-        # Validate entry
-        self.assertIn("entry", data, "plugin.json missing 'entry'")
-        self.assertEqual(data["entry"], "skills_cli.py")
+    def test_repository_root_is_not_a_plugin(self):
+        self.assertFalse(Path(REPO_ROOT, "plugin.json").exists())
 
-        # Validate skills list
-        self.assertIn("skills", data)
-        self.assertIsInstance(data["skills"], list)
-        self.assertIn("skills/antigravity-skills-manager/SKILL.md", data["skills"])
+    def test_plugin_contains_only_the_synchronized_manager_skill(self):
+        skills = sorted(path.relative_to(PLUGIN_ROOT).as_posix() for path in PLUGIN_ROOT.rglob("SKILL.md"))
+        self.assertEqual(skills, ["skills/antigravity-skills-manager/SKILL.md"])
+        canonical = Path(REPO_ROOT, "skills", "antigravity-skills-manager", "SKILL.md")
+        self.assertEqual((PLUGIN_ROOT / skills[0]).read_bytes(), canonical.read_bytes())
+        content = canonical.read_text(encoding="utf-8")
+        self.assertIn("/antigravity-skills-manager", content)
+        self.assertIn("npx @rmyndharis/antigravity-skills", content)
+        self.assertNotRegex(content, r"(?<![\w-])/skills(?:-manager)?\b")
 
-        # Validate commands
-        self.assertIn("commands", data)
-        self.assertIsInstance(data["commands"], list)
-        self.assertTrue(len(data["commands"]) > 0)
-        cmds_by_name = {c["name"]: c for c in data["commands"] if isinstance(c, dict) and "name" in c}
-        for cmd_name in ["skills-manager", "skills"]:
-            self.assertIn(cmd_name, cmds_by_name, f"Command '{cmd_name}' missing from commands in plugin.json")
-            cmd = cmds_by_name[cmd_name]
-            self.assertIn("subcommands", cmd)
-            sub_names = [sc["name"] for sc in cmd["subcommands"] if isinstance(sc, dict) and "name" in sc]
-            self.assertIn("list", sub_names)
-            self.assertIn("search", sub_names)
-            self.assertIn("install", sub_names)
-            self.assertIn("installed", sub_names)
+    def test_plugin_build_sync_and_read_only_check(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            script = root / "scripts" / "build-plugin.js"
+            script.parent.mkdir()
+            shutil.copyfile(Path(REPO_ROOT, "scripts", "build-plugin.js"), script)
+            canonical = root / "skills" / "antigravity-skills-manager" / "SKILL.md"
+            canonical.parent.mkdir(parents=True)
+            canonical.write_text("first version\n", encoding="utf-8")
+            destination = root / "plugins" / "antigravity-skills-manager" / "skills" / "antigravity-skills-manager" / "SKILL.md"
+
+            def run(*args):
+                return subprocess.run(["node", str(script), *args], cwd=root, capture_output=True, text=True)
+
+            self.assertEqual(run("--check").returncode, 1)
+            self.assertFalse(destination.exists())
+            self.assertEqual(run().returncode, 0)
+            self.assertEqual(destination.read_bytes(), canonical.read_bytes())
+            self.assertEqual(run("--check").returncode, 0)
+            canonical.write_text("second version\n", encoding="utf-8")
+            self.assertEqual(run("--check").returncode, 1)
+            self.assertEqual(destination.read_text(encoding="utf-8"), "first version\n")
+            self.assertEqual(run().returncode, 0)
+            self.assertEqual(destination.read_bytes(), canonical.read_bytes())
 
     def test_skill_md_schema(self):
         skill_md_path = os.path.join(REPO_ROOT, "skills", "antigravity-skills-manager", "SKILL.md")

@@ -1,6 +1,6 @@
 ---
 name: machine-learning-ops-ml-pipeline
-description: "Design and implement a complete ML pipeline for: $ARGUMENTS"
+description: "Design ML pipelines covering data preparation, model training, deployment, monitoring, and continuous improvement. Use when coordinating an end-to-end MLOps workflow."
 ---
 
 # Machine Learning Pipeline - Multi-Agent MLOps Orchestration

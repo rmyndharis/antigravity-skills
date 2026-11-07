@@ -433,19 +433,6 @@ contract FlashLoanReceiver is IFlashLoanReceiver {
     }
 }
 ```
-
-## Resources
-
-- **references/staking.md**: Staking mechanics and reward distribution
-- **references/liquidity-pools.md**: AMM mathematics and pricing
-- **references/governance-tokens.md**: Governance and voting systems
-- **references/lending-protocols.md**: Lending/borrowing implementation
-- **references/flash-loans.md**: Flash loan security and use cases
-- **assets/staking-contract.sol**: Production staking template
-- **assets/amm-contract.sol**: Full AMM implementation
-- **assets/governance-token.sol**: Governance system
-- **assets/lending-protocol.sol**: Lending platform template
-
 ## Best Practices
 
 1. **Use Established Libraries**: OpenZeppelin, Solmate

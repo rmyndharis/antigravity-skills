@@ -7,7 +7,7 @@ from fastapi import FastAPI, HTTPException, Query, Path, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field, EmailStr, ConfigDict
+from pydantic import BaseModel, Field, EmailStr, ConfigDict, field_validator
 from typing import Optional, List, Any
 from datetime import datetime
 from enum import Enum
@@ -52,6 +52,13 @@ class UserUpdate(BaseModel):
     email: Optional[EmailStr] = None
     name: Optional[str] = Field(None, min_length=1, max_length=100)
     status: Optional[UserStatus] = None
+
+    @field_validator('email', 'name', 'status')
+    @classmethod
+    def reject_explicit_null(cls, value):
+        if value is None:
+            raise ValueError('Field cannot be null')
+        return value
 
 class User(UserBase):
     id: str
@@ -145,7 +152,10 @@ async def get_user(user_id: str = Path(..., description="User ID")):
     if user_id == "999":
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail={"message": "User not found", "details": {"id": user_id}}
+            detail={
+                "message": "User not found",
+                "details": [{"field": "id", "message": f"User '{user_id}' not found", "code": "NOT_FOUND"}]
+            }
         )
 
     return User(

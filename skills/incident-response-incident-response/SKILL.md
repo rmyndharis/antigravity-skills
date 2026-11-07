@@ -1,6 +1,6 @@
 ---
 name: incident-response-incident-response
-description: "Use when working with incident response incident response"
+description: "Coordinate production incident triage, mitigation, investigation, recovery, and follow-up. Use when responding to outages or other incidents that require structured operational coordination."
 ---
 
 ## Use this skill when

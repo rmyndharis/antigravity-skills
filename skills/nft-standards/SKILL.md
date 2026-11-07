@@ -364,18 +364,6 @@ contract OptimizedNFT is ERC721A {
     }
 }
 ```
-
-## Resources
-
-- **references/erc721.md**: ERC-721 specification details
-- **references/erc1155.md**: ERC-1155 multi-token standard
-- **references/metadata-standards.md**: Metadata best practices
-- **references/enumeration.md**: Token enumeration patterns
-- **assets/erc721-contract.sol**: Production ERC-721 template
-- **assets/erc1155-contract.sol**: Production ERC-1155 template
-- **assets/metadata-schema.json**: Standard metadata format
-- **assets/metadata-uploader.py**: IPFS upload utility
-
 ## Best Practices
 
 1. **Use OpenZeppelin**: Battle-tested implementations

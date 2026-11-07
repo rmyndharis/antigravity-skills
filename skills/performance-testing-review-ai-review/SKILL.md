@@ -1,6 +1,6 @@
 ---
 name: performance-testing-review-ai-review
-description: "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C"
+description: "Combine static analysis with model-assisted code review to assess security, performance, correctness, and architecture. Use when designing review automation or reviewing complex changes."
 ---
 
 # AI-Powered Code Review Specialist
@@ -86,9 +86,12 @@ Format as JSON array.
 - **Multi-language**: Qodo or CodeAnt AI (30+ languages)
 
 ### Review Routing
+
+Pass a model ID enabled for your account as `securityModel` when configuring security-focused reviews.
+
 ```typescript
 interface ReviewRoutingStrategy {
-  async routeReview(pr: PullRequest): Promise<ReviewEngine> {
+  async routeReview(pr: PullRequest, securityModel: string): Promise<ReviewEngine> {
     const metrics = await this.analyzePRComplexity(pr);
 
     if (metrics.filesChanged > 50 || metrics.linesChanged > 1000) {
@@ -96,7 +99,7 @@ interface ReviewRoutingStrategy {
     }
 
     if (metrics.securitySensitive || metrics.affectsAuth) {
-      return new AIEngine("claude-3.7-sonnet", {
+      return new AIEngine(securityModel, {
         temperature: 0.1,
         maxTokens: 4000,
         systemPrompt: SECURITY_FOCUSED_PROMPT

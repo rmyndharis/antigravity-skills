@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { listSkillIds, parseFrontmatter } = require('../lib/skill-utils');
+const { listSkillIds, parseFrontmatter, isPlainObject, stripCodeFences, findHelperReferences } = require('../lib/skill-utils');
 const { ALLOWED_FIELDS, LIMITS, NAME_PATTERN } = require('../lib/skill-schema');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -22,10 +22,6 @@ const writeBaseline = process.argv.includes('--write-baseline')
   || process.env.WRITE_BASELINE === 'true';
 const confirmWriteBaseline = process.argv.includes('--yes')
   || process.env.WRITE_BASELINE_YES === '1';
-
-function isPlainObject(value) {
-  return value && typeof value === 'object' && !Array.isArray(value);
-}
 
 function validateStringField(fieldName, value, { min = 1, max = Infinity } = {}) {
   if (typeof value !== 'string') {
@@ -88,8 +84,12 @@ const skillIds = listSkillIds(SKILLS_DIR);
 
 // listSkillIds intentionally skips dirs without SKILL.md; flag them here so the
 // validator still catches a skill directory that forgot its SKILL.md.
-const allDirs = fs.readdirSync(SKILLS_DIR)
-  .filter(entry => !entry.startsWith('.') && fs.statSync(path.join(SKILLS_DIR, entry)).isDirectory());
+const rootEntries = fs.readdirSync(SKILLS_DIR, { withFileTypes: true })
+  .filter(entry => !entry.name.startsWith('.'));
+for (const entry of rootEntries.filter(entry => entry.isSymbolicLink())) {
+  addError(`Skill directories must not be symbolic links: ${entry.name}`);
+}
+const allDirs = rootEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
 const skillIdSet = new Set(skillIds);
 for (const dir of allDirs) {
   if (!skillIdSet.has(dir)) {
@@ -114,7 +114,8 @@ for (const skillId of skillIds) {
   }
 
   const content = fs.readFileSync(skillPath, 'utf8');
-  const { data, errors: fmErrors, hasFrontmatter } = parseFrontmatter(content);
+  const { data, body, errors: fmErrors, hasFrontmatter } = parseFrontmatter(content);
+  const prose = stripCodeFences(body);
   const lineCount = content.split(/\r?\n/).length;
 
   if (!hasFrontmatter) {
@@ -149,6 +150,8 @@ for (const skillId of skillIds) {
     : validateStringField('description', data.description, { min: 1, max: LIMITS.description });
   if (descError) {
     addError(`${descError} (${skillId})`);
+  } else if (/\$ARGUMENTS|\[Extended thinking:/i.test(data.description)) {
+    addError(`description must describe the skill without command placeholders. (${skillId})`);
   }
 
   if (data.license !== undefined) {
@@ -201,35 +204,38 @@ for (const skillId of skillIds) {
     longFiles.push(skillId);
   }
 
-  if (!content.includes('## Use this skill when')) {
+  if (!/^ {0,3}## Use this skill when(?:[ \t]+#+)?[ \t]*$/m.test(prose)) {
     missingUseSection.push(skillId);
   }
 
-  if (!content.includes('## Do not use')) {
+  if (!/^ {0,3}## Do not use(?: this skill when)?(?:[ \t]+#+)?[ \t]*$/m.test(prose)) {
     missingDoNotUseSection.push(skillId);
   }
 
-  if (!content.includes('## Instructions')) {
+  if (!/^ {0,3}## Instructions(?:[ \t]+#+)?[ \t]*$/m.test(prose)) {
     missingInstructionsSection.push(skillId);
   }
 
-  // Referenced helper files (backticked relative paths under known dirs) must exist.
-  // Strip fenced code blocks first so illustrative paths inside examples are not flagged.
-  const prose = content
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/~~~[\s\S]*?~~~/g, '');
-  const refRegex = /`((?:resources|references|assets|scripts|examples)\/[A-Za-z0-9._/-]+)`/g;
-  const missingRefs = [];
-  let refMatch;
-  while ((refMatch = refRegex.exec(prose)) !== null) {
-    const rel = refMatch[1];
-    if (!fs.existsSync(path.join(SKILLS_DIR, skillId, rel))) {
-      missingRefs.push(rel);
+  const skillDir = path.join(SKILLS_DIR, skillId);
+  function checkReferences(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const file = path.join(dir, entry.name);
+      if (entry.isSymbolicLink()) {
+        addError(`Skill files must not be symbolic links: ${path.relative(ROOT, file)}`);
+      } else if (entry.isDirectory()) {
+        checkReferences(file);
+      } else if (entry.isFile() && entry.name.endsWith('.md')) {
+        const document = file === skillPath ? body : fs.readFileSync(file, 'utf8');
+        for (const rel of findHelperReferences(document)) {
+          const target = path.resolve(skillDir, rel);
+          if (!target.startsWith(skillDir + path.sep) || !fs.existsSync(target)) {
+            addError(`Referenced file not found or outside skill (${path.relative(ROOT, file)}): ${rel}`);
+          }
+        }
+      }
     }
   }
-  if (missingRefs.length) {
-    addError(`Referenced file(s) not found (${skillId}): ${[...new Set(missingRefs)].join(', ')}`);
-  }
+  checkReferences(skillDir);
 }
 
 if (missingUseSection.length) {

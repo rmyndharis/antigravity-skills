@@ -5,7 +5,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
 const os = require('os');
-const { listSkillIds, readSkill, tokenize, unique } = require('../lib/skill-utils');
+const { listSkillIds, readSkill, tokenize, unique, truncate } = require('../lib/skill-utils');
+const { installSkill } = require('../lib/install-skill');
 const { version } = require('../package.json');
 
 const program = new Command();
@@ -96,19 +97,16 @@ function sanitizeSkillId(value) {
 function resolveSkillId(input, aliases) {
   const sanitized = sanitizeSkillId(input);
   if (!sanitized) return null;
-  return aliases[sanitized] || sanitized;
+  const resolved = Object.prototype.hasOwnProperty.call(aliases, sanitized)
+    ? aliases[sanitized]
+    : sanitized;
+  return typeof resolved === 'string' ? sanitizeSkillId(resolved) : null;
 }
 
 function resolveSkillPath(skillId) {
   const resolved = path.resolve(SKILLS_SOURCE_DIR, skillId);
   if (!resolved.startsWith(SKILLS_SOURCE_DIR + path.sep)) return null;
   return resolved;
-}
-
-function truncate(value, limit) {
-  if (!value) return '';
-  if (value.length <= limit) return value;
-  return `${value.slice(0, limit - 3)}...`;
 }
 
 function scoreSkill(skill, query, queryTokens) {
@@ -153,6 +151,14 @@ function checkDir(dirPath) {
   } catch (err) {
     return { exists: true, isDir: true, writable: false };
   }
+}
+
+async function listInstalledSkills(targetDir) {
+  const entries = await fs.readdir(targetDir, { withFileTypes: true });
+  return entries
+    .filter(entry => !entry.name.startsWith('.') && entry.isDirectory())
+    .map(entry => entry.name)
+    .sort();
 }
 
 program
@@ -242,7 +248,6 @@ program
     }
 
     try {
-      await fs.ensureDir(targetDir);
       console.log(chalk.gray(`Target directory: ${targetDir}`));
 
       let skillsToInstall = [];
@@ -313,25 +318,25 @@ program
         }
 
         const destPath = path.join(targetDir, safeSkill);
-        if (await fs.pathExists(destPath)) {
-          if (!options.force) {
-            console.warn(chalk.yellow(`• Skipped (already installed): ${safeSkill}`));
+        try {
+          if (await installSkill(sourcePath, destPath, options.force)) {
+            console.log(`${chalk.green('✔ Installed:')} ${safeSkill}`);
+            installedCount += 1;
+          } else {
+            console.warn(chalk.yellow(`Skipped (already installed): ${safeSkill}`));
             skippedCount += 1;
-            continue;
           }
-          await fs.remove(destPath);
+        } catch (err) {
+          console.error(chalk.red(`Failed to install '${safeSkill}':`), err.message);
+          failedCount += 1;
         }
-
-        await fs.copy(sourcePath, destPath, { overwrite: true });
-        console.log(`${chalk.green('✔ Installed:')} ${safeSkill}`);
-        installedCount += 1;
       }
 
       console.log('');
-      console.log(`Installed: ${installedCount}, skipped: ${skippedCount}, not found/invalid: ${failedCount}`);
+      console.log(`Installed: ${installedCount}, skipped: ${skippedCount}, failed: ${failedCount}`);
 
       if (installedCount > 0) {
-        console.log(chalk.bold.green('Installation complete!'));
+        if (!failedCount) console.log(chalk.bold.green('Installation complete!'));
         console.log('Restart your agent session to see changes.');
         if (skippedCount > 0) {
           console.log(chalk.gray('Use --force to overwrite already-installed skills.'));
@@ -344,7 +349,7 @@ program
         console.error(chalk.red('No skills were installed.'));
         process.exitCode = 1;
       } else {
-        console.log(chalk.yellow('Nothing to do — all requested skills are already installed.'));
+        console.log(chalk.yellow('Nothing to do: all requested skills are already installed.'));
       }
     } catch (err) {
       console.error(chalk.red('Installation failed:'), err.message);
@@ -365,8 +370,7 @@ program
         return;
       }
 
-      const installedSkills = await fs.readdir(targetDir);
-      const filteredSkills = installedSkills.filter(f => !f.startsWith('.'));
+      const filteredSkills = await listInstalledSkills(targetDir);
 
       if (filteredSkills.length === 0) {
         console.log(chalk.yellow('No skills installed.'));
@@ -383,6 +387,7 @@ program
       console.log(chalk.gray(`\nLocation: ${targetDir}`));
     } catch (err) {
       console.error(chalk.red('Error listing installed skills:'), err.message);
+      process.exitCode = 1;
     }
   });
 
@@ -409,7 +414,7 @@ program
           process.exitCode = 1;
           return;
         }
-        if (await fs.pathExists(path.join(targetDir, resolved))) {
+        if ((await listInstalledSkills(targetDir)).includes(resolved)) {
           skillsToUpdate.push(resolved);
         } else {
           console.error(chalk.red(`Skill '${skillName}' is not installed.`));
@@ -417,8 +422,7 @@ program
           return;
         }
       } else {
-        const installed = await fs.readdir(targetDir);
-        skillsToUpdate = installed.filter(f => !f.startsWith('.'));
+        skillsToUpdate = await listInstalledSkills(targetDir);
       }
 
       if (skillsToUpdate.length === 0) {
@@ -428,10 +432,14 @@ program
 
       console.log(chalk.bold(`Updating ${skillsToUpdate.length} skills...\n`));
 
+      let updatedCount = 0;
+      let skippedCount = 0;
+      let failedCount = 0;
       for (const skill of skillsToUpdate) {
         const safeSkill = sanitizeSkillId(skill);
-        if (!safeSkill) {
+        if (!safeSkill || safeSkill !== skill) {
           console.warn(chalk.yellow(`Warning: invalid skill name '${skill}'. Skipping.`));
+          skippedCount += 1;
           continue;
         }
 
@@ -440,14 +448,25 @@ program
 
         if (!sourcePath || !await fs.pathExists(sourcePath)) {
           console.warn(chalk.yellow(`⚠ Warning: Skill '${safeSkill}' no longer exists in vault. Skipping.`));
+          if (skillName) failedCount += 1;
+          else skippedCount += 1;
           continue;
         }
 
-        await fs.copy(sourcePath, destPath, { overwrite: true });
-        console.log(`${chalk.green('✔ Updated:')} ${safeSkill}`);
+        try {
+          await installSkill(sourcePath, destPath, true);
+          console.log(`${chalk.green('✔ Updated:')} ${safeSkill}`);
+          updatedCount += 1;
+        } catch (err) {
+          console.error(chalk.red(`Failed to update '${safeSkill}':`), err.message);
+          failedCount += 1;
+        }
       }
 
-      console.log(chalk.bold.green('\nUpdate complete!'));
+      console.log(`\nUpdated: ${updatedCount}, skipped: ${skippedCount}, failed: ${failedCount}`);
+      if (failedCount) process.exitCode = 1;
+      else if (updatedCount && !skippedCount) console.log(chalk.bold.green('Update complete!'));
+      else if (!updatedCount) console.log(chalk.yellow('No skills were updated.'));
     } catch (err) {
       console.error(chalk.red('Update failed:'), err.message);
       process.exit(1);

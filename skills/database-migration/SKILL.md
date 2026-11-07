@@ -403,17 +403,6 @@ module.exports = {
   }
 };
 ```
-
-## Resources
-
-- **references/orm-switching.md**: ORM migration guides
-- **references/schema-migration.md**: Schema transformation patterns
-- **references/data-transformation.md**: Data migration scripts
-- **references/rollback-strategies.md**: Rollback procedures
-- **assets/schema-migration-template.sql**: SQL migration templates
-- **assets/data-migration-script.py**: Data migration utilities
-- **scripts/test-migration.sh**: Migration testing script
-
 ## Best Practices
 
 1. **Always Provide Rollback**: Every up() needs a down()

@@ -1,6 +1,6 @@
 ---
 name: context-management-context-save
-description: "Use when working with context management context save"
+description: "Capture and serialize project state, architectural decisions, and working context. Use when preserving knowledge for later sessions, handoffs, or searchable context retrieval."
 ---
 
 # Context Save Tool: Intelligent Context Management Specialist

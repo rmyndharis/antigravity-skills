@@ -42,6 +42,42 @@ test('readSkill surfaces frontmatter parse errors', () => {
   }
 });
 
+test('readSkill preserves tag precedence and optional name fallback', () => {
+  const root = tmpDir();
+  try {
+    fs.mkdirSync(path.join(root, 'sample'));
+    for (const [frontmatter, expected] of [
+      ['tags: [python, api]\nmetadata:\n  tags: [ignored]', ['python', 'api']],
+      ['tags: []\nmetadata:\n  tags: [ignored]', []],
+      ['tags: ""\nmetadata:\n  tags: "python, api"', ['python', 'api']],
+      ['metadata:\n  tags: "python api"', ['python', 'api']],
+      ['metadata:\n  tags: [python, " "]', ['python']],
+    ]) {
+      fs.writeFileSync(path.join(root, 'sample', 'SKILL.md'), `---\ndescription: Test skill\n${frontmatter}\n---\n`);
+      const skill = readSkill(root, 'sample');
+      assert.deepStrictEqual(skill.tags, expected);
+      assert.strictEqual(skill.name, 'sample');
+    }
+  } finally {
+    rmDir(root);
+  }
+});
+
+test('listSkillIds excludes symlinks and non-file manifests', () => {
+  const root = tmpDir();
+  try {
+    fs.mkdirSync(path.join(root, 'sample'));
+    fs.writeFileSync(path.join(root, 'sample', 'SKILL.md'), 'content');
+    fs.symlinkSync(path.join(root, 'sample'), path.join(root, 'linked'), 'dir');
+    fs.mkdirSync(path.join(root, 'linked-manifest'));
+    fs.symlinkSync(path.join(root, 'sample', 'SKILL.md'), path.join(root, 'linked-manifest', 'SKILL.md'));
+    fs.mkdirSync(path.join(root, 'directory-manifest', 'SKILL.md'), { recursive: true });
+    assert.deepStrictEqual(listSkillIds(root), ['sample']);
+  } finally {
+    rmDir(root);
+  }
+});
+
 test('dead exports are removed', () => {
   const utils = require('../lib/skill-utils');
   assert.strictEqual(utils.parseInlineList, undefined);

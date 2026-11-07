@@ -1,6 +1,6 @@
 ---
 name: tdd-workflows-tdd-cycle
-description: "Use when working with tdd workflows tdd cycle"
+description: "Coordinate the test-driven development cycle from requirements and failing tests through implementation, refactoring, and validation. Use when building a feature with a structured TDD workflow."
 ---
 
 ## Use this skill when

@@ -1,6 +1,6 @@
 ---
 name: framework-migration-deps-upgrade
-description: "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa"
+description: "Plan incremental dependency upgrades with breaking-change analysis, migration guidance, and regression testing. Use when updating packages while controlling compatibility risk."
 ---
 
 # Dependency Upgrade Strategy

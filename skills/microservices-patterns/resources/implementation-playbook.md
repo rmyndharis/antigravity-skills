@@ -574,16 +574,6 @@ async def call_payment_service(payment_data: dict):
         payment_data
     )
 ```
-
-## Resources
-
-- **references/service-decomposition-guide.md**: Breaking down monoliths
-- **references/communication-patterns.md**: Sync vs async patterns
-- **references/saga-implementation.md**: Distributed transactions
-- **assets/circuit-breaker.py**: Production circuit breaker
-- **assets/event-bus-template.py**: Kafka event bus implementation
-- **assets/api-gateway-template.py**: Complete API gateway
-
 ## Best Practices
 
 1. **Service Boundaries**: Align with business capabilities

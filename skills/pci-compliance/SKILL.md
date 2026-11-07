@@ -443,18 +443,6 @@ PCI_COMPLIANCE_CHECKLIST = {
     ]
 }
 ```
-
-## Resources
-
-- **references/data-minimization.md**: Never store prohibited data
-- **references/tokenization.md**: Tokenization strategies
-- **references/encryption.md**: Encryption requirements
-- **references/access-control.md**: Role-based access
-- **references/audit-logging.md**: Comprehensive logging
-- **assets/pci-compliance-checklist.md**: Complete checklist
-- **assets/encrypted-storage.py**: Encryption utilities
-- **scripts/audit-payment-system.sh**: Compliance audit script
-
 ## Common Violations
 
 1. **Storing CVV**: Never store card verification codes

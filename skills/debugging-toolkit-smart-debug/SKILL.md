@@ -1,6 +1,6 @@
 ---
 name: debugging-toolkit-smart-debug
-description: "Use when working with debugging toolkit smart debug"
+description: "Diagnose software failures using observability data, ranked hypotheses, and targeted instrumentation. Use when the cause is unclear or an issue requires systematic investigation."
 ---
 
 ## Use this skill when

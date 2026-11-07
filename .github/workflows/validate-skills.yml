@@ -19,6 +19,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: npm ci
+      - run: python -m pip install -r requirements-test-assets.txt
       - run: npm test
       - run: npm run test:python
       - run: STRICT=1 npm run validate:skills

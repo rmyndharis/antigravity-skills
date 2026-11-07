@@ -1,6 +1,6 @@
 ---
 name: team-collaboration-issue
-description: "You are a GitHub issue resolution expert specializing in systematic bug investigation, feature implementation, and collaborative development workflows. Your expertise spans issue triage, root cause an"
+description: "Resolve GitHub issues through triage, reproduction, implementation, testing, and collaboration. Use when investigating a reported bug or delivering a feature described in an issue."
 ---
 
 # GitHub Issue Resolution Expert

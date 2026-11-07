@@ -1,15 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('yaml');
-const { listSkillIds, parseFrontmatter } = require('../lib/skill-utils');
+const { listSkillIds, parseFrontmatter, isPlainObject } = require('../lib/skill-utils');
 const { ALLOWED_FIELDS, FIELD_ORDER } = require('../lib/skill-schema');
 
 const ROOT = path.resolve(__dirname, '..');
 const SKILLS_DIR = path.join(ROOT, 'skills');
-
-function isPlainObject(value) {
-  return value && typeof value === 'object' && !Array.isArray(value);
-}
 
 function coerceToString(value) {
   if (value === null || value === undefined) return '';
@@ -59,11 +55,12 @@ function collectAllowedTools(value, toolSet) {
   }
 }
 
-function normalizeSkill(skillId) {
-  const skillPath = path.join(SKILLS_DIR, skillId, 'SKILL.md');
+function normalizeSkill(skillId, skillsDir = SKILLS_DIR) {
+  const skillPath = path.join(skillsDir, skillId, 'SKILL.md');
   const content = fs.readFileSync(skillPath, 'utf8');
-  const { data, body, hasFrontmatter } = parseFrontmatter(content);
+  const { data, body, hasFrontmatter, errors } = parseFrontmatter(content);
 
+  if (errors.length) throw new Error(`Cannot normalize ${skillId}: ${errors.join('; ')}`);
   if (!hasFrontmatter) return false;
 
   let modified = false;
@@ -144,4 +141,4 @@ if (require.main === module) {
   run();
 }
 
-module.exports = { run };
+module.exports = { run, normalizeSkill };
