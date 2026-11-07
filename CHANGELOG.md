@@ -4,28 +4,40 @@ All notable changes to this project are documented here. This project adheres to
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-07
+
+### Added
+
+- `ai-core` bundle with the LLM and ML skills previously in `data-core`.
+
 ### Changed
 
-- `--global` installs to `~/.gemini/config/skills`, which the Antigravity App, CLI, and IDE read, instead of the IDE-only `~/.gemini/antigravity/skills`. Skills already in the old directory stay there; `doctor`, `installed --global`, and `update --global` point to it.
-- Declare Node.js 22 or later in `engines`; CI tests Node 22 and 24.
-- Catalog artifacts no longer carry a `generatedAt` timestamp, so rebuilding without skill changes produces no diff.
+- `--global` installs to `~/.gemini/config/skills`, which the Antigravity App, CLI, and IDE all read.
+- Skills in the old `~/.gemini/antigravity/skills` stay in place; `doctor`, `installed --global`, and `update --global` point to them.
+- Bundles are hand-picked, with at most 10 skills each.
+- `core-dev` is language-agnostic; install language skills with `--tag`.
+- Node.js 22 or later is declared in `engines`; CI tests Node 22 and 24.
+- Catalog artifacts drop the `generatedAt` timestamp, so rebuilds without skill changes produce no diff.
 - `npm run validate:skills` runs strict validation, matching CI.
-- Bundles are hand-picked and hold at most 10 skills. `core-dev` is language-agnostic (add language skills with `--tag`), and the new `ai-core` takes the LLM and ML skills out of `data-core`.
+- Validation rejects persona and "PROACTIVELY" descriptions, `$ARGUMENTS`, and Task tool steps.
 
 ### Removed
 
-- `skills_cli.py`, the Python CLI. Use the npm CLI to search, install, and update skills.
+- `skills_cli.py`, the Python CLI; use the npm CLI instead.
 - `scripts/` and `validation-baseline.json` from the npm package; the CLI never used them.
 
 ### Fixed
 
-- `search` matches whole words, so short queries such as `ai` and `go` no longer match fragments of unrelated words.
+- `search` matches whole words, so short queries such as `ai` and `go` stop matching fragments of other words.
 - Linkerd, Flux, and uv install snippets pin a release and verify its SHA-256 instead of piping a script into a shell.
 - Workflow examples use `actions/upload-artifact@v4`; v3 no longer runs on GitHub.com.
-- `linkerd-patterns` uses HTTPRoute and AuthorizationPolicy instead of the deprecated TrafficSplit and ServerAuthorization, and `k8s-security-policies` no longer advertises the removed PodSecurityPolicy.
+- `linkerd-patterns` uses HTTPRoute and AuthorizationPolicy instead of the deprecated TrafficSplit and ServerAuthorization.
+- `k8s-security-policies` no longer advertises PodSecurityPolicy, which Kubernetes removed in 1.25.
 - Python examples use `datetime.now(timezone.utc)` instead of the deprecated `datetime.utcnow()`.
+- Persona and "PROACTIVELY" descriptions now say what the skill does and when to use it.
+- `$ARGUMENTS` placeholders and Task tool steps become instructions Antigravity can follow.
 - Skill text no longer carries year stamps such as "2024/2025".
-- Skills drop Claude Code-only syntax: persona and "PROACTIVELY" descriptions now say what the skill does and when to use it, `$ARGUMENTS` placeholders and Task tool steps become plain instructions, and validation rejects all of them.
+- `LICENSE` includes the upstream copyright notice for content ported from wshobson/agents.
 
 ## [1.3.1] - 2026-10-14
 
@@ -91,7 +103,8 @@ All notable changes to this project are documented here. This project adheres to
 - `normalize-frontmatter` deduplicates metadata at token granularity (no duplicates for comma-containing values); `validate-skills` and `normalize-frontmatter` now share a single frontmatter field-set.
 - Removed dead code: the `parseInlineList`/`stripQuotes` exports and the unreachable `name !== id` alias branch.
 
-[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v1.3.1...HEAD
+[Unreleased]: https://github.com/rmyndharis/antigravity-skills/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v2.0.0
 [1.3.1]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.3.1
 [1.3.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.3.0
 [1.2.0]: https://github.com/rmyndharis/antigravity-skills/releases/tag/v1.2.0
