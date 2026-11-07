@@ -8,7 +8,8 @@ const CLI = path.resolve(__dirname, '..', 'bin', 'cli.js');
 function runCli(args, opts = {}) {
   const res = spawnSync('node', [CLI, ...args], {
     encoding: 'utf8',
-    env: { ...process.env, AG_SKILLS_DIR: '', ...(opts.env || {}) },
+    // node --test sets FORCE_COLOR=1 when it reports to a terminal; keep CLI output plain for assertions.
+    env: { ...process.env, AG_SKILLS_DIR: '', FORCE_COLOR: '0', ...(opts.env || {}) },
     cwd: opts.cwd || process.cwd(),
   });
   return {
