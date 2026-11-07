@@ -56,9 +56,9 @@ Production patterns for Linkerd service mesh - the lightweight, security-first s
 | Resource | Purpose |
 |----------|---------|
 | **ServiceProfile** | Per-route metrics, retries, timeouts |
-| **TrafficSplit** | Canary deployments, A/B testing |
+| **HTTPRoute** | Canary deployments, A/B testing, request routing |
 | **Server** | Define server-side policies |
-| **ServerAuthorization** | Access control policies |
+| **AuthorizationPolicy** | Access control, with MeshTLSAuthentication or NetworkAuthentication |
 
 ## Templates
 
@@ -159,25 +159,33 @@ spec:
 ### Template 4: Traffic Split (Canary)
 
 ```yaml
-apiVersion: split.smi-spec.io/v1alpha1
-kind: TrafficSplit
+# Weighted HTTPRoute; SMI TrafficSplit and the linkerd-smi extension are deprecated
+apiVersion: policy.linkerd.io/v1beta2
+kind: HTTPRoute
 metadata:
   name: my-service-canary
   namespace: my-namespace
 spec:
-  service: my-service
-  backends:
-    - service: my-service-stable
-      weight: 900m  # 90%
-    - service: my-service-canary
-      weight: 100m  # 10%
+  parentRefs:
+    - name: my-service
+      kind: Service
+      group: core
+      port: 8080
+  rules:
+    - backendRefs:
+        - name: my-service-stable
+          port: 8080
+          weight: 90
+        - name: my-service-canary
+          port: 8080
+          weight: 10
 ```
 
-### Template 5: Server Authorization Policy
+### Template 5: Authorization Policy
 
 ```yaml
 # Define the server
-apiVersion: policy.linkerd.io/v1beta1
+apiVersion: policy.linkerd.io/v1beta3
 kind: Server
 metadata:
   name: my-service-http
@@ -189,34 +197,56 @@ spec:
   port: http
   proxyProtocol: HTTP/1
 ---
-# Allow traffic from specific clients
-apiVersion: policy.linkerd.io/v1beta1
-kind: ServerAuthorization
+# Allow meshed traffic from the frontend service account
+apiVersion: policy.linkerd.io/v1alpha1
+kind: MeshTLSAuthentication
+metadata:
+  name: frontend
+  namespace: my-namespace
+spec:
+  identityRefs:
+    - kind: ServiceAccount
+      name: frontend
+---
+apiVersion: policy.linkerd.io/v1alpha1
+kind: AuthorizationPolicy
 metadata:
   name: allow-frontend
   namespace: my-namespace
 spec:
-  server:
+  targetRef:
+    group: policy.linkerd.io
+    kind: Server
     name: my-service-http
-  client:
-    meshTLS:
-      serviceAccounts:
-        - name: frontend
-          namespace: my-namespace
+  requiredAuthenticationRefs:
+    - name: frontend
+      kind: MeshTLSAuthentication
+      group: policy.linkerd.io
 ---
-# Allow unauthenticated traffic (e.g., from ingress)
-apiVersion: policy.linkerd.io/v1beta1
-kind: ServerAuthorization
+# Allow unauthenticated traffic from the cluster network (e.g., from ingress)
+apiVersion: policy.linkerd.io/v1alpha1
+kind: NetworkAuthentication
+metadata:
+  name: cluster-network
+  namespace: my-namespace
+spec:
+  networks:
+    - cidr: 10.0.0.0/8
+---
+apiVersion: policy.linkerd.io/v1alpha1
+kind: AuthorizationPolicy
 metadata:
   name: allow-ingress
   namespace: my-namespace
 spec:
-  server:
+  targetRef:
+    group: policy.linkerd.io
+    kind: Server
     name: my-service-http
-  client:
-    unauthenticated: true
-    networks:
-      - cidr: 10.0.0.0/8
+  requiredAuthenticationRefs:
+    - name: cluster-network
+      kind: NetworkAuthentication
+      group: policy.linkerd.io
 ```
 
 ### Template 6: HTTPRoute for Advanced Routing

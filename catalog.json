@@ -4026,7 +4026,7 @@
     {
       "id": "k8s-security-policies",
       "name": "k8s-security-policies",
-      "description": "Implement Kubernetes security policies including NetworkPolicy, PodSecurityPolicy, and RBAC for production-grade security. Use when securing Kubernetes clusters, implementing network isolation, or enforcing pod security standards.",
+      "description": "Implement Kubernetes security policies including NetworkPolicy, Pod Security Admission, and RBAC for production-grade security. Use when securing Kubernetes clusters, implementing network isolation, or enforcing pod security standards.",
       "category": "security",
       "tags": [
         "k8s",
@@ -4040,12 +4040,12 @@
         "kubernetes",
         "including",
         "networkpolicy",
-        "podsecuritypolicy",
+        "pod",
+        "admission",
         "rbac",
         "grade",
         "securing",
-        "clusters",
-        "implementing"
+        "clusters"
       ],
       "path": "skills/k8s-security-policies/SKILL.md"
     },
