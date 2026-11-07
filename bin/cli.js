@@ -569,9 +569,6 @@ program
 
     console.log(chalk.bold('\nCatalog Stats:\n'));
     console.log(`Total skills: ${total}`);
-    if (catalog.generatedAt) {
-      console.log(`Catalog generated at: ${catalog.generatedAt}`);
-    }
     console.log('');
 
     console.log('Category counts:');

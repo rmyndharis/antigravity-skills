@@ -1,7 +1,5 @@
 # Skill Catalog
 
-Generated at: 2026-10-14T11:52:04.843Z
-
 Total skills: 307
 
 ## architecture (18)

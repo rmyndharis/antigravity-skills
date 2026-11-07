@@ -21,24 +21,19 @@ function readDiskArtifacts(root = ROOT) {
   }
 }
 
-function stripGeneratedAt(obj) {
-  const clone = JSON.parse(JSON.stringify(obj));
-  delete clone.generatedAt;
-  return JSON.stringify(clone);
-}
-
-function stripMarkdownTimestamp(md) {
-  return md.replace(/\r\n/g, '\n').replace(/^Generated at: .*$/m, 'Generated at: <timestamp>');
+// Windows checkouts may convert CATALOG.md to CRLF.
+function toLf(md) {
+  return md.replace(/\r\n/g, '\n');
 }
 
 // Pure comparison: returns the list of artifact names that differ between the
-// freshly computed artifacts and the on-disk ones, ignoring the generatedAt timestamp.
+// freshly computed artifacts and the on-disk ones.
 function findDrift(fresh, disk) {
   const checks = [
-    ['catalog.json', stripGeneratedAt(fresh.catalog), stripGeneratedAt(disk.catalog)],
-    ['bundles.json', stripGeneratedAt(fresh.bundles), stripGeneratedAt(disk.bundles)],
-    ['aliases.json', stripGeneratedAt(fresh.aliases), stripGeneratedAt(disk.aliases)],
-    ['CATALOG.md', stripMarkdownTimestamp(fresh.catalogMarkdown), stripMarkdownTimestamp(disk.catalogMarkdown)],
+    ['catalog.json', JSON.stringify(fresh.catalog), JSON.stringify(disk.catalog)],
+    ['bundles.json', JSON.stringify(fresh.bundles), JSON.stringify(disk.bundles)],
+    ['aliases.json', JSON.stringify(fresh.aliases), JSON.stringify(disk.aliases)],
+    ['CATALOG.md', toLf(fresh.catalogMarkdown), toLf(disk.catalogMarkdown)],
   ];
   const drift = [];
   for (const [name, freshValue, diskValue] of checks) {

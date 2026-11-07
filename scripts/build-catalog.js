@@ -261,8 +261,6 @@ function renderCatalogMarkdown(catalog) {
   const lines = [];
   lines.push('# Skill Catalog');
   lines.push('');
-  lines.push(`Generated at: ${catalog.generatedAt}`);
-  lines.push('');
   lines.push(`Total skills: ${catalog.total}`);
   lines.push('');
 
@@ -316,21 +314,17 @@ function computeArtifacts() {
     });
   }
 
-  const generatedAt = new Date().toISOString();
+  // No build timestamp: identical inputs must produce identical bytes, or parallel branches conflict.
   const catalog = {
-    generatedAt,
     total: catalogSkills.length,
     skills: catalogSkills.sort((a, b) => a.id.localeCompare(b.id)),
   };
 
-  const aliases = buildAliases(catalog.skills);
-  const bundleData = buildBundles(catalog.skills);
-
   return {
     catalog,
     catalogMarkdown: renderCatalogMarkdown(catalog),
-    bundles: { generatedAt, ...bundleData },
-    aliases: { generatedAt, aliases },
+    bundles: buildBundles(catalog.skills),
+    aliases: { aliases: buildAliases(catalog.skills) },
   };
 }
 
