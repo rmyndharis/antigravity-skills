@@ -39,6 +39,9 @@
   ],
   "author": "rmyndharis",
   "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "bugs": {
     "url": "https://github.com/rmyndharis/antigravity-skills/issues"
   },
