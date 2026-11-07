@@ -313,7 +313,7 @@ Edit the canonical manager skill at `skills/antigravity-skills-manager/SKILL.md`
 ### Authoring Guidelines
 
 - Keep `SKILL.md` concise; move long examples to `resources/` or `examples/`.
-- Use narrow descriptions (for example: "Use when you need to ...") and include "Do not use" to reduce over-activation.
+- Use narrow descriptions (for example: "Use when you need to ...") and include "Do not use" to reduce over-activation. Validation rejects descriptions that open with "You are" or ask for "PROACTIVELY" use, and Claude Code-only syntax such as `$ARGUMENTS` or Task tool steps anywhere in a skill.
 - Add a "Safety" section for skills that propose terminal or infrastructure changes.
 - Regenerate catalog files with `npm run build:catalog`, then run `npm run prepublishOnly` for the complete local gate. CI runs the same Node, Python, validation, and catalog checks.
 - `npm run validate:skills` runs the same strict validation as CI, using `validation-baseline.json` for existing gaps; new skills must include the required sections outside code examples. Helper paths under `resources/`, `references/`, `assets/`, `scripts/`, and `examples/` are checked in every Markdown file, including links and bold paths. Use paths relative to the skill directory and include the referenced files.

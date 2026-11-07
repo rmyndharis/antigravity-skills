@@ -152,6 +152,10 @@ for (const skillId of skillIds) {
     addError(`${descError} (${skillId})`);
   } else if (/\$ARGUMENTS|\[Extended thinking:/i.test(data.description)) {
     addError(`description must describe the skill without command placeholders. (${skillId})`);
+  } else if (/^\s*you are\b/i.test(data.description)) {
+    addError(`description must say what the skill does and when to use it, not address the agent. (${skillId})`);
+  } else if (/\bPROACTIVELY\b/.test(data.description)) {
+    addError(`description must say when to use the skill instead of asking for proactive activation. (${skillId})`);
   }
 
   if (data.license !== undefined) {
@@ -226,6 +230,10 @@ for (const skillId of skillIds) {
         checkReferences(file);
       } else if (entry.isFile() && entry.name.endsWith('.md')) {
         const document = file === skillPath ? body : fs.readFileSync(file, 'utf8');
+        // Claude Code substitutes $ARGUMENTS and provides a Task tool; Antigravity does neither.
+        if (/\$ARGUMENTS|subagent_type|\bTask tool\b/.test(document)) {
+          addError(`Claude Code-only syntax ($ARGUMENTS, Task tool, subagent_type) in ${path.relative(ROOT, file)}`);
+        }
         for (const rel of findHelperReferences(document)) {
           const target = path.resolve(skillDir, rel);
           if (!target.startsWith(skillDir + path.sep) || !fs.existsSync(target)) {

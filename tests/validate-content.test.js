@@ -95,3 +95,24 @@ test('normalizing invalid frontmatter leaves the original bytes unchanged', t =>
   assert.throws(() => normalizeSkill('sample', path.join(f.root, 'skills')), /Cannot normalize/);
   assert.deepEqual(fs.readFileSync(file), before);
 });
+
+test('persona and proactive-activation descriptions fail validation', t => {
+  for (const [description, message] of [
+    ['You are an expert code reviewer.', /not address the agent/],
+    ['Review code for defects. Use PROACTIVELY for code quality.', /proactive activation/],
+  ]) {
+    const result = fixture(t, `---\nname: sample\ndescription: ${description}\n---\n` + BODY).run();
+    assert.equal(result.status, 1, description);
+    assert.match(result.stderr, message);
+  }
+});
+
+test('Claude Code-only syntax fails validation in entrypoints and playbooks', t => {
+  const f = fixture(t, '---\nname: sample\ndescription: Example.\n---\n' + BODY + '\nTarget: $ARGUMENTS\n');
+  fs.mkdirSync(path.join(f.skill, 'resources'));
+  fs.writeFileSync(path.join(f.skill, 'resources', 'playbook.md'), '- Use Task tool with subagent_type="debugger"\n');
+  const result = f.run();
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /Claude Code-only syntax.*SKILL\.md/);
+  assert.match(result.stderr, /Claude Code-only syntax.*playbook\.md/);
+});
