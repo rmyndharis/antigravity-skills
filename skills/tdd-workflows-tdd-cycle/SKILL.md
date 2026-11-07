@@ -23,6 +23,8 @@ Execute a comprehensive Test-Driven Development (TDD) workflow with strict red-g
 
 [Extended thinking: This workflow enforces test-first development through coordinated agent orchestration. Each phase of the TDD cycle is strictly enforced with fail-first verification, incremental implementation, and continuous refactoring. The workflow supports both single test and test suite approaches with configurable coverage thresholds.]
 
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
+
 ## Configuration
 
 ### Coverage Thresholds
@@ -39,84 +41,84 @@ Execute a comprehensive Test-Driven Development (TDD) workflow with strict red-g
 ## Phase 1: Test Specification and Design
 
 ### 1. Requirements Analysis
-- Use Task tool with subagent_type="comprehensive-review::architect-review"
-- Prompt: "Analyze requirements for: $ARGUMENTS. Define acceptance criteria, identify edge cases, and create test scenarios. Output a comprehensive test specification."
+- Role: `architect-review`
+- Prompt: "Analyze requirements for: [user request]. Define acceptance criteria, identify edge cases, and create test scenarios. Output a comprehensive test specification."
 - Output: Test specification, acceptance criteria, edge case matrix
 - Validation: Ensure all requirements have corresponding test scenarios
 
 ### 2. Test Architecture Design
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Design test architecture for: $ARGUMENTS based on test specification. Define test structure, fixtures, mocks, and test data strategy. Ensure testability and maintainability."
+- Role: `test-automator`
+- Prompt: "Design test architecture for: [user request] based on test specification. Define test structure, fixtures, mocks, and test data strategy. Ensure testability and maintainability."
 - Output: Test architecture, fixture design, mock strategy
 - Validation: Architecture supports isolated, fast, reliable tests
 
 ## Phase 2: RED - Write Failing Tests
 
 ### 3. Write Unit Tests (Failing)
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Write FAILING unit tests for: $ARGUMENTS. Tests must fail initially. Include edge cases, error scenarios, and happy paths. DO NOT implement production code."
+- Role: `test-automator`
+- Prompt: "Write FAILING unit tests for: [user request]. Tests must fail initially. Include edge cases, error scenarios, and happy paths. DO NOT implement production code."
 - Output: Failing unit tests, test documentation
 - **CRITICAL**: Verify all tests fail with expected error messages
 
 ### 4. Verify Test Failure
-- Use Task tool with subagent_type="tdd-workflows::code-reviewer"
-- Prompt: "Verify that all tests for: $ARGUMENTS are failing correctly. Ensure failures are for the right reasons (missing implementation, not test errors). Confirm no false positives."
+- Role: `code-reviewer`
+- Prompt: "Verify that all tests for: [user request] are failing correctly. Ensure failures are for the right reasons (missing implementation, not test errors). Confirm no false positives."
 - Output: Test failure verification report
 - **GATE**: Do not proceed until all tests fail appropriately
 
 ## Phase 3: GREEN - Make Tests Pass
 
 ### 5. Minimal Implementation
-- Use Task tool with subagent_type="backend-development::backend-architect"
-- Prompt: "Implement MINIMAL code to make tests pass for: $ARGUMENTS. Focus only on making tests green. Do not add extra features or optimizations. Keep it simple."
+- Role: `backend-architect`
+- Prompt: "Implement MINIMAL code to make tests pass for: [user request]. Focus only on making tests green. Do not add extra features or optimizations. Keep it simple."
 - Output: Minimal working implementation
 - Constraint: No code beyond what's needed to pass tests
 
 ### 6. Verify Test Success
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Run all tests for: $ARGUMENTS and verify they pass. Check test coverage metrics. Ensure no tests were accidentally broken."
+- Role: `test-automator`
+- Prompt: "Run all tests for: [user request] and verify they pass. Check test coverage metrics. Ensure no tests were accidentally broken."
 - Output: Test execution report, coverage metrics
 - **GATE**: All tests must pass before proceeding
 
 ## Phase 4: REFACTOR - Improve Code Quality
 
 ### 7. Code Refactoring
-- Use Task tool with subagent_type="tdd-workflows::code-reviewer"
-- Prompt: "Refactor implementation for: $ARGUMENTS while keeping tests green. Apply SOLID principles, remove duplication, improve naming, and optimize performance. Run tests after each refactoring."
+- Role: `code-reviewer`
+- Prompt: "Refactor implementation for: [user request] while keeping tests green. Apply SOLID principles, remove duplication, improve naming, and optimize performance. Run tests after each refactoring."
 - Output: Refactored code, refactoring report
 - Constraint: Tests must remain green throughout
 
 ### 8. Test Refactoring
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Refactor tests for: $ARGUMENTS. Remove test duplication, improve test names, extract common fixtures, and enhance test readability. Ensure tests still provide same coverage."
+- Role: `test-automator`
+- Prompt: "Refactor tests for: [user request]. Remove test duplication, improve test names, extract common fixtures, and enhance test readability. Ensure tests still provide same coverage."
 - Output: Refactored tests, improved test structure
 - Validation: Coverage metrics unchanged or improved
 
 ## Phase 5: Integration and System Tests
 
 ### 9. Write Integration Tests (Failing First)
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Write FAILING integration tests for: $ARGUMENTS. Test component interactions, API contracts, and data flow. Tests must fail initially."
+- Role: `test-automator`
+- Prompt: "Write FAILING integration tests for: [user request]. Test component interactions, API contracts, and data flow. Tests must fail initially."
 - Output: Failing integration tests
 - Validation: Tests fail due to missing integration logic
 
 ### 10. Implement Integration
-- Use Task tool with subagent_type="backend-development::backend-architect"
-- Prompt: "Implement integration code for: $ARGUMENTS to make integration tests pass. Focus on component interaction and data flow."
+- Role: `backend-architect`
+- Prompt: "Implement integration code for: [user request] to make integration tests pass. Focus on component interaction and data flow."
 - Output: Integration implementation
 - Validation: All integration tests pass
 
 ## Phase 6: Continuous Improvement Cycle
 
 ### 11. Performance and Edge Case Tests
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Add performance tests and additional edge case tests for: $ARGUMENTS. Include stress tests, boundary tests, and error recovery tests."
+- Role: `test-automator`
+- Prompt: "Add performance tests and additional edge case tests for: [user request]. Include stress tests, boundary tests, and error recovery tests."
 - Output: Extended test suite
 - Metric: Increased test coverage and scenario coverage
 
 ### 12. Final Code Review
-- Use Task tool with subagent_type="comprehensive-review::architect-review"
-- Prompt: "Perform comprehensive review of: $ARGUMENTS. Verify TDD process was followed, check code quality, test quality, and coverage. Suggest improvements."
+- Role: `architect-review`
+- Prompt: "Perform comprehensive review of: [user request]. Verify TDD process was followed, check code quality, test quality, and coverage. Suggest improvements."
 - Output: Review report, improvement suggestions
 - Action: Implement critical suggestions while maintaining green tests
 
@@ -217,4 +219,4 @@ Track and report:
 - Keep test execution fast
 - Tests should be independent and isolated
 
-TDD implementation for: $ARGUMENTS
+TDD implementation for: [user request]

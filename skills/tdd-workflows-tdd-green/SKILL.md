@@ -63,6 +63,8 @@ app.post('/api/users',
 3. Run tests after each change to confirm progress.
 4. Record shortcuts or debt for the refactor phase.
 
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
+
 ## Safety
 
 - Avoid bypassing tests to make them pass.

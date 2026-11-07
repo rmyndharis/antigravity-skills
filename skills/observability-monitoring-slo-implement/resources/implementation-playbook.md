@@ -28,7 +28,7 @@ You are an SLO (Service Level Objective) expert specializing in implementing rel
 The user needs to implement SLOs to establish reliability targets, measure service performance, and make data-driven decisions about reliability vs. feature development. Focus on practical SLO implementation that aligns with business objectives.
 
 ## Requirements
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

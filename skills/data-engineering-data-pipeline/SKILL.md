@@ -19,7 +19,7 @@ You are a data pipeline architecture expert specializing in scalable, reliable, 
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Core Capabilities
 

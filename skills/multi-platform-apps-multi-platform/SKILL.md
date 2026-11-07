@@ -25,11 +25,13 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
 
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
+
 ## Phase 1: Architecture and API Design (Sequential)
 
 ### 1. Define Feature Requirements and API Contracts
-- Use Task tool with subagent_type="backend-architect"
-- Prompt: "Design the API contract for feature: $ARGUMENTS. Create OpenAPI 3.1 specification with:
+- Role: `backend-architect`
+- Prompt: "Design the API contract for feature: [user request]. Create OpenAPI 3.1 specification with:
   - RESTful endpoints with proper HTTP methods and status codes
   - GraphQL schema if applicable for complex data queries
   - WebSocket events for real-time features
@@ -41,7 +43,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Complete API specification, data models, and integration guidelines
 
 ### 2. Design System and UI/UX Consistency
-- Use Task tool with subagent_type="ui-ux-designer"
+- Role: `ui-ux-designer`
 - Prompt: "Create cross-platform design system for feature using API spec: [previous output]. Include:
   - Component specifications for each platform (Material Design, iOS HIG, Fluent)
   - Responsive layouts for web (mobile-first approach)
@@ -54,7 +56,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Design system documentation, component library specs, platform guidelines
 
 ### 3. Shared Business Logic Architecture
-- Use Task tool with subagent_type="comprehensive-review::architect-review"
+- Role: `architect-review`
 - Prompt: "Design shared business logic architecture for cross-platform feature. Define:
   - Core domain models and entities (platform-agnostic)
   - Business rules and validation logic
@@ -69,7 +71,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 ## Phase 2: Parallel Platform Implementation
 
 ### 4a. Web Implementation (React/Next.js)
-- Use Task tool with subagent_type="frontend-developer"
+- Role: `frontend-developer`
 - Prompt: "Implement web version of feature using:
   - React 18+ with Next.js 14+ App Router
   - TypeScript for type safety
@@ -84,7 +86,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Complete web implementation with tests
 
 ### 4b. iOS Implementation (SwiftUI)
-- Use Task tool with subagent_type="ios-developer"
+- Role: `ios-developer`
 - Prompt: "Implement iOS version using:
   - SwiftUI with iOS 17+ features
   - Swift 5.9+ with async/await
@@ -99,7 +101,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Native iOS implementation with unit/UI tests
 
 ### 4c. Android Implementation (Kotlin/Compose)
-- Use Task tool with subagent_type="mobile-developer"
+- Role: `mobile-developer`
 - Prompt: "Implement Android version using:
   - Jetpack Compose with Material 3
   - Kotlin coroutines and Flow
@@ -114,7 +116,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Native Android implementation with tests
 
 ### 4d. Desktop Implementation (Optional - Electron/Tauri)
-- Use Task tool with subagent_type="frontend-mobile-development::frontend-developer"
+- Role: `frontend-developer`
 - Prompt: "Implement desktop version using Tauri 2.0 or Electron with:
   - Shared web codebase where possible
   - Native OS integration (system tray, notifications)
@@ -130,7 +132,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 ## Phase 3: Integration and Validation
 
 ### 5. API Documentation and Testing
-- Use Task tool with subagent_type="documentation-generation::api-documenter"
+- Role: `api-documenter`
 - Prompt: "Create comprehensive API documentation including:
   - Interactive OpenAPI/Swagger documentation
   - Platform-specific integration guides
@@ -146,7 +148,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Complete API documentation portal, test results
 
 ### 6. Cross-Platform Testing and Feature Parity
-- Use Task tool with subagent_type="unit-testing::test-automator"
+- Role: `test-automator`
 - Prompt: "Validate feature parity across all platforms:
   - Functional testing matrix (features work identically)
   - UI consistency verification (follows design system)
@@ -161,7 +163,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Test report, parity matrix, performance metrics
 
 ### 7. Platform-Specific Optimizations
-- Use Task tool with subagent_type="application-performance::performance-engineer"
+- Role: `performance-engineer`
 - Prompt: "Optimize each platform implementation:
   - Web: Bundle size, lazy loading, CDN setup, SEO
   - iOS: App size, launch time, memory usage, battery
@@ -199,4 +201,4 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 **Android**: Play Store requirements, Android App Bundles, device fragmentation
 **Desktop**: Code signing, auto-updates, OS-specific installers
 
-Initial feature specification: $ARGUMENTS
+Initial feature specification: [user request]

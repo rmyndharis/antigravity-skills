@@ -8,13 +8,13 @@ This file contains detailed patterns, checklists, and code samples referenced by
 
 ## Phase 1: Issue Analysis - Error Detection and Context Gathering
 
-Use Task tool with subagent_type="error-debugging::error-detective" followed by subagent_type="error-debugging::debugger":
+Roles: `error-detective`, then `debugger`:
 
 **First: Error-Detective Analysis**
 
 **Prompt:**
 ```
-Analyze error traces, logs, and observability data for: $ARGUMENTS
+Analyze error traces, logs, and observability data for: [user request]
 
 Deliverables:
 1. Error signature analysis: exception type, message patterns, frequency, first occurrence
@@ -93,7 +93,7 @@ TESTING_REQUIREMENTS: [scenarios that must be covered]
 
 ## Phase 2: Root Cause Investigation - Deep Code Analysis
 
-Use Task tool with subagent_type="error-debugging::debugger" and subagent_type="comprehensive-review::code-reviewer" for systematic investigation:
+Roles: `debugger` and `code-reviewer` for systematic investigation:
 
 **First: Debugger Code Analysis**
 
@@ -182,16 +182,16 @@ ARCHITECTURAL_CONCERNS: {if systemic issues exist}
 
 ## Phase 3: Fix Implementation - Domain-Specific Agent Execution
 
-Based on Phase 2 output, route to appropriate domain agent using Task tool:
+Based on Phase 2 output, apply the matching domain role:
 
 **Routing Logic:**
-- Python issues → subagent_type="python-development::python-pro"
-- TypeScript/JavaScript → subagent_type="javascript-typescript::typescript-pro"
-- Go → subagent_type="systems-programming::golang-pro"
-- Rust → subagent_type="systems-programming::rust-pro"
-- SQL/Database → subagent_type="database-cloud-optimization::database-optimizer"
-- Performance → subagent_type="application-performance::performance-engineer"
-- Security → subagent_type="security-scanning::security-auditor"
+- Python issues → `python-pro`
+- TypeScript/JavaScript → `typescript-pro`
+- Go → `golang-pro`
+- Rust → `rust-pro`
+- SQL/Database → `database-optimizer`
+- Performance → `performance-engineer`
+- Security → `security-auditor`
 
 **Prompt Template (adapt for language):**
 ```
@@ -269,7 +269,7 @@ BACKWARD_COMPATIBILITY: {maintained | breaking with mitigation}
 
 ## Phase 4: Verification - Automated Testing and Performance Validation
 
-Use Task tool with subagent_type="unit-testing::test-automator" and subagent_type="application-performance::performance-engineer":
+Roles: `test-automator` and `performance-engineer`:
 
 **First: Test-Automator Regression Suite**
 
@@ -497,7 +497,7 @@ FINAL_VERDICT: {
 
 ## Phase 5: Documentation and Prevention - Long-term Resilience
 
-Use Task tool with subagent_type="comprehensive-review::code-reviewer" for prevention strategies:
+Role: `code-reviewer` for prevention strategies:
 
 **Prompt:**
 ```
@@ -613,13 +613,13 @@ For issues spanning multiple domains, orchestrate specialized agents sequentiall
 
 **Sequence:**
 1. **Phase 1-2**: error-detective + debugger identify slow database queries
-2. **Phase 3a**: Task(subagent_type="database-cloud-optimization::database-optimizer")
+2. **Phase 3a**: `database-optimizer` role
    - Optimize query with proper indexes
    - Context: "Query execution taking 5s, missing index on user_id column, N+1 query pattern detected"
-3. **Phase 3b**: Task(subagent_type="application-performance::performance-engineer")
+3. **Phase 3b**: `performance-engineer` role
    - Add caching layer for frequently accessed data
    - Context: "Database query optimized from 5s to 50ms by adding index on user_id column. Application still experiencing 2s response times due to N+1 query pattern loading 100+ user records per request. Add Redis caching with 5-minute TTL for user profiles."
-4. **Phase 3c**: Task(subagent_type="incident-response::devops-troubleshooter")
+4. **Phase 3c**: `devops-troubleshooter` role
    - Configure monitoring for query performance and cache hit rates
    - Context: "Cache layer added with Redis. Need monitoring for: query p95 latency (threshold: 100ms), cache hit rate (threshold: >80%), cache memory usage (alert at 80%)."
 
@@ -630,11 +630,11 @@ For issues spanning multiple domains, orchestrate specialized agents sequentiall
    - Context: "TypeError: Cannot read property 'map' of undefined, 500+ occurrences in last hour, affects Safari users on iOS 14"
 2. **Phase 2**: debugger + code-reviewer investigate
    - Context: "API response sometimes returns null instead of empty array when no results. Frontend assumes array."
-3. **Phase 3a**: Task(subagent_type="javascript-typescript::typescript-pro")
+3. **Phase 3a**: `typescript-pro` role
    - Fix frontend with proper null checks
    - Add type guards
    - Context: "Backend API /api/users endpoint returning null instead of [] when no results. Fix frontend to handle both. Add TypeScript strict null checks."
-4. **Phase 3b**: Task(subagent_type="backend-development::backend-architect")
+4. **Phase 3b**: `backend-architect` role
    - Fix backend to always return array
    - Update API contract
    - Context: "Frontend now handles null, but API should follow contract and return [] not null. Update OpenAPI spec to document this."
@@ -648,7 +648,7 @@ For issues spanning multiple domains, orchestrate specialized agents sequentiall
    - Context: "SQL injection vulnerability in login endpoint, Snyk severity: HIGH"
 2. **Phase 2**: debugger + security-auditor investigate
    - Context: "User input not sanitized in SQL WHERE clause, allows authentication bypass"
-3. **Phase 3**: Task(subagent_type="security-scanning::security-auditor")
+3. **Phase 3**: `security-auditor` role
    - Implement parameterized queries
    - Add input validation
    - Add rate limiting
@@ -835,4 +835,4 @@ A fix is considered complete when ALL of the following are met:
 - Test coverage: No decrease, ideally increase
 - Deployment success rate: > 95% (rollback rate < 5%)
 
-Issue to resolve: $ARGUMENTS
+Issue to resolve: [user request]

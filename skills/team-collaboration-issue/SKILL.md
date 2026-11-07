@@ -23,7 +23,7 @@ The user needs comprehensive GitHub issue resolution that goes beyond simple fix
 
 ## Requirements
 
-GitHub Issue ID or URL: $ARGUMENTS
+GitHub Issue ID or URL: [user request]
 
 ## Instructions
 

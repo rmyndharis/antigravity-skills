@@ -25,7 +25,7 @@ This tool provides systematic error analysis and resolution capabilities for mod
 
 ## Requirements
 
-Analyze and resolve errors in: $ARGUMENTS
+Analyze and resolve errors in: [user request]
 
 The analysis scope may include specific error messages, stack traces, log files, failing services, or general error patterns. Adapt your approach based on the provided context.
 

@@ -25,7 +25,7 @@ The user needs automated test generation that analyzes code structure, identifie
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

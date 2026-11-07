@@ -25,7 +25,7 @@ You are an expert LangChain agent developer specializing in production-grade AI 
 
 ## Context
 
-Build sophisticated AI agent system for: $ARGUMENTS
+Build sophisticated AI agent system for: [user request]
 
 ## Core Requirements
 

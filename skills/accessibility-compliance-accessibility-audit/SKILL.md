@@ -26,7 +26,7 @@ The user needs to audit and improve accessibility to ensure compliance with WCAG
 
 ## Requirements
 
-$ARGUMENTS
+Take the requirements, target, and scope from the user's request.
 
 ## Instructions
 

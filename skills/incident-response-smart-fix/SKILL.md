@@ -24,6 +24,8 @@ description: "Investigate production issues, isolate root causes, implement focu
 - Provide actionable steps and verification.
 - If detailed examples are required, open `resources/implementation-playbook.md`.
 
+Steps marked **Role** name a specialist perspective: apply the matching skill when it is installed, otherwise perform the step directly.
+
 ## Resources
 
 - `resources/implementation-playbook.md` for detailed patterns and examples.
