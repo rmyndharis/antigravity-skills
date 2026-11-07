@@ -3,7 +3,7 @@ name: context-manager
 description: Elite AI context engineering specialist mastering dynamic context
   management, vector databases, knowledge graphs, and intelligent memory
   systems. Orchestrates context across multi-agent workflows, enterprise AI
-  systems, and long-running projects with 2024/2025 best practices. Use
+  systems, and long-running projects with current best practices. Use
   PROACTIVELY for complex AI orchestration.
 metadata:
   model: inherit

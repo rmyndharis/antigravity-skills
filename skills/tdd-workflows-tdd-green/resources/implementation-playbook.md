@@ -731,7 +731,7 @@ def calculate_discount(price, customer_type):
 - ✓ Commit after each successful refactor
 - ✓ No behavior changes, only structure
 
-## Modern Development Practices (2024/2025)
+## Modern Development Practices
 
 ### Type-Driven Development
 
