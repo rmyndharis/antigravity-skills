@@ -39,14 +39,20 @@ test('findDrift detects a drifting artifact without touching any file', () => {
   assert.ok(drift.includes('catalog.json'), `expected catalog.json drift, got ${JSON.stringify(drift)}`);
 });
 
-test('findDrift ignores the generatedAt timestamp', () => {
+test('artifacts carry no build timestamp, so a rebuild without skill changes is byte-identical', () => {
+  const fresh = computeArtifacts();
+  for (const name of ['catalog', 'bundles', 'aliases']) {
+    assert.ok(!('generatedAt' in fresh[name]), `${name} must not include generatedAt`);
+  }
+  assert.doesNotMatch(fresh.catalogMarkdown, /Generated at/);
+  assert.deepStrictEqual(computeArtifacts(), fresh);
+});
+
+test('findDrift tolerates CRLF line endings in CATALOG.md', () => {
   const fresh = computeArtifacts();
   const disk = readDiskArtifacts();
-  const tampered = JSON.parse(JSON.stringify(disk));
-  tampered.catalog.generatedAt = '1999-01-01T00:00:00.000Z';
-  tampered.bundles.generatedAt = '1999-01-01T00:00:00.000Z';
-  tampered.aliases.generatedAt = '1999-01-01T00:00:00.000Z';
-  assert.deepStrictEqual(findDrift(fresh, tampered), []);
+  disk.catalogMarkdown = disk.catalogMarkdown.replace(/\n/g, '\r\n');
+  assert.deepStrictEqual(findDrift(fresh, disk), []);
 });
 
 test('findDrift detects CATALOG.md drift (markdown path)', () => {
