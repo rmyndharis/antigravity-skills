@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const { computeArtifacts } = require('../scripts/build-catalog');
+const { buildBundles, computeArtifacts } = require('../scripts/build-catalog');
 
 test('computeArtifacts returns all four artifacts without writing files', () => {
   const a = computeArtifacts();
@@ -44,18 +44,27 @@ test('categories follow the skill domain before incidental description words', (
   })) assert.strictEqual(categories.get(id), category, id);
 });
 
-test('bundles include their domain skills without incidental description matches', () => {
+test('bundles stay small and focused on their domain', () => {
   const { bundles } = computeArtifacts().bundles;
   for (const [name, included, excluded] of [
-    ['core-dev', ['python-pro', 'dotnet-backend-patterns'], ['legal-advisor']],
-    ['k8s-core', ['kubernetes-architect', 'helm-chart-scaffolding'], ['legal-advisor', 'ios-developer', 'unity-developer']],
-    ['data-core', ['data-engineer', 'machine-learning-ops-ml-pipeline'], ['content-marketer', 'legal-advisor', 'ios-developer']],
-    ['security-core', ['security-auditor', 'sast-configuration'], ['risk-manager', 'accessibility-compliance-accessibility-audit']],
-    ['ops-core', ['observability-engineer', 'terraform-specialist'], ['flutter-expert', 'data-engineer', 'unity-developer']],
+    ['core-dev', ['api-design-principles', 'debugger'], ['python-pro', 'php-pro', 'legal-advisor']],
+    ['k8s-core', ['kubernetes-architect', 'helm-chart-scaffolding'], ['legal-advisor', 'ios-developer']],
+    ['data-core', ['data-engineer', 'sql-pro'], ['ml-engineer', 'content-marketer']],
+    ['ai-core', ['rag-implementation', 'prompt-engineering-patterns'], ['data-engineer']],
+    ['security-core', ['security-auditor', 'sast-configuration'], ['malware-analyst', 'risk-manager']],
+    ['ops-core', ['observability-engineer', 'terraform-specialist'], ['flutter-expert', 'data-engineer']],
   ]) {
     for (const id of included) assert.ok(bundles[name].skills.includes(id), `${name} should include ${id}`);
     for (const id of excluded) assert.ok(!bundles[name].skills.includes(id), `${name} should exclude ${id}`);
   }
+  for (const [name, bundle] of Object.entries(bundles)) assert.ok(bundle.skills.length <= 10, name);
+});
+
+test('a bundle naming an unknown skill or exceeding the size limit fails the build', () => {
+  const skills = [{ id: 'known-skill' }];
+  assert.throws(() => buildBundles(skills, { sample: { description: 'x', skills: ['known-skill', 'renamed-skill'] } }), /unknown skills: renamed-skill/);
+  const many = Array.from({ length: 11 }, (_, i) => ({ id: `skill-${i}` }));
+  assert.throws(() => buildBundles(many, { sample: { description: 'x', skills: many.map(s => s.id) } }), /limit is 10/);
 });
 
 test('public skill IDs remain available without duplicating equivalent bundle instructions', () => {

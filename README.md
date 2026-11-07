@@ -154,7 +154,7 @@ npx @rmyndharis/antigravity-skills install --tag kubernetes
 npx @rmyndharis/antigravity-skills install --bundle core-dev
 ```
 
-Available bundles: `core-dev`, `security-core`, `k8s-core`, `data-core`, `ops-core`.
+Available bundles: `core-dev`, `security-core`, `k8s-core`, `data-core`, `ai-core`, `ops-core`. Each holds at most 10 hand-picked skills. `core-dev` is language-agnostic; add language skills by tag, for example `install --tag python`.
 
 **5. Install a skill globally:**
 
