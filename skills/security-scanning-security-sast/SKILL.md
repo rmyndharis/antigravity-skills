@@ -451,7 +451,7 @@ jobs:
           semgrep --config=auto --json --output=semgrep.json || true
 
       - name: Upload reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sast-reports
           path: |
