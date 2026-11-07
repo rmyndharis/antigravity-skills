@@ -12,6 +12,10 @@ All notable changes to this project are documented here. This project adheres to
 
 - `skills_cli.py`, the Python CLI. Use the npm CLI to search, install, and update skills.
 
+### Fixed
+
+- `search` matches whole words, so short queries such as `ai` and `go` no longer match fragments of unrelated words.
+
 ## [1.3.1] - 2026-10-14
 
 ### Changed
