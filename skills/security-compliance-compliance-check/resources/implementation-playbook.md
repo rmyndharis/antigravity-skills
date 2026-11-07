@@ -159,7 +159,7 @@ class ConsentManager:
             'user_id': user_id,
             'consent_type': consent_type,
             'granted': granted,
-            'timestamp': datetime.utcnow(),
+            'timestamp': datetime.now(timezone.utc),
             'ip_address': request.remote_addr,
             'user_agent': request.headers.get('User-Agent'),
             'version': self.get_current_privacy_policy_version(),
@@ -195,7 +195,7 @@ class DataErasureService:
         
         erasure_log = {
             'user_id': user_id,
-            'requested_at': datetime.utcnow(),
+            'requested_at': datetime.now(timezone.utc),
             'data_categories': []
         }
         
@@ -236,7 +236,7 @@ class DataPortabilityService:
         GDPR Article 20 - Data portability
         """
         user_data = {
-            'export_date': datetime.utcnow().isoformat(),
+            'export_date': datetime.now(timezone.utc).isoformat(),
             'user_id': user_id,
             'format_version': '2.0',
             'data': {}
@@ -460,7 +460,7 @@ class ComplianceAuditLogger:
         """
         log_entry = {
             'id': str(uuid.uuid4()),
-            'timestamp': datetime.utcnow().isoformat(),
+            'timestamp': datetime.now(timezone.utc).isoformat(),
             'event_type': event_type,
             'user_id': details.get('user_id'),
             'ip_address': self._get_ip_address(),
@@ -504,7 +504,7 @@ def generate_compliance_report(self, regulation, period):
     report = {
         'regulation': regulation,
         'period': period,
-        'generated_at': datetime.utcnow(),
+        'generated_at': datetime.now(timezone.utc),
         'sections': {}
     }
     
@@ -572,7 +572,7 @@ class PHIAccessControl:
             'patient_id': patient_id,
             'scope': access_scope,
             'purpose': purpose,
-            'expires_at': datetime.utcnow() + timedelta(hours=24),
+            'expires_at': datetime.now(timezone.utc) + timedelta(hours=24),
             'audit_id': str(uuid.uuid4())
         }
         
@@ -645,7 +645,7 @@ class HIPAATraining:
         
         for module in required_modules:
             completion = self._check_module_completion(employee.id, module)
-            if completion and completion['date'] > datetime.now() - timedelta(days=365):
+            if completion and completion['date'] > datetime.now(timezone.utc) - timedelta(days=365):
                 training_status['completed_modules'].append(module)
             else:
                 training_status['pending_modules'].append(module)
@@ -796,7 +796,7 @@ class ComplianceDashboard:
         Real-time compliance status dashboard
         """
         dashboard = {
-            'timestamp': datetime.utcnow(),
+            'timestamp': datetime.now(timezone.utc),
             'overall_compliance_score': 0,
             'regulations': {}
         }

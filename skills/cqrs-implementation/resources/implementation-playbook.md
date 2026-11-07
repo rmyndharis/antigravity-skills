@@ -51,7 +51,7 @@ This file contains detailed patterns, checklists, and code samples referenced by
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import TypeVar, Generic, Dict, Any, Type
-from datetime import datetime
+from datetime import datetime, timezone
 import uuid
 
 # Command base
@@ -62,7 +62,7 @@ class Command:
 
     def __post_init__(self):
         self.command_id = self.command_id or str(uuid.uuid4())
-        self.timestamp = self.timestamp or datetime.utcnow()
+        self.timestamp = self.timestamp or datetime.now(timezone.utc)
 
 
 # Concrete commands

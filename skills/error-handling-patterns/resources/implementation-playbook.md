@@ -51,13 +51,16 @@ Build resilient applications with robust error handling strategies that graceful
 
 **Custom Exception Hierarchy:**
 ```python
+from datetime import datetime, timezone
+
+
 class ApplicationError(Exception):
     """Base exception for all application errors."""
     def __init__(self, message: str, code: str = None, details: dict = None):
         super().__init__(message)
         self.code = code
         self.details = details or {}
-        self.timestamp = datetime.utcnow()
+        self.timestamp = datetime.now(timezone.utc)
 
 class ValidationError(ApplicationError):
     """Raised when validation fails."""
