@@ -8,11 +8,9 @@
   "files": [
     "bin",
     "lib",
-    "scripts",
     "skills",
     "catalog.json",
     "CATALOG.md",
-    "validation-baseline.json",
     "bundles.json",
     "aliases.json",
     "plugins",
