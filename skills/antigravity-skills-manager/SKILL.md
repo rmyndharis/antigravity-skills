@@ -55,14 +55,13 @@ npx @rmyndharis/antigravity-skills update flutter-expert
 ## Installation scope
 
 - The default workspace destination is `<current-directory>/.agent/skills/`. Antigravity also supports `.agents/skills/`; set `AG_SKILLS_DIR` to select it explicitly.
-- `--global` selects `~/.gemini/antigravity/skills/`, the legacy global location supported by the standalone Antigravity IDE. Use the same flag with `installed` and `update` for that scope.
-- `AG_SKILLS_DIR` overrides both workspace and global destinations. A leading `~` is expanded. Antigravity CLI uses `~/.gemini/antigravity-cli/skills/`; the app and current IDE use `~/.gemini/config/skills/`.
+- `--global` selects `~/.gemini/config/skills/`, the global location read by the Antigravity App, CLI, and IDE. Use the same flag with `installed` and `update` for that scope.
+- `AG_SKILLS_DIR` overrides both workspace and global destinations. A leading `~` is expanded. Earlier versions installed global skills to `~/.gemini/antigravity/skills/`, which only the standalone IDE reads; set `AG_SKILLS_DIR` to that path to list or update those skills.
 
-For example, install and inspect a global skill for Antigravity CLI:
+For example, list global skills left by an earlier version:
 
 ```bash
-AG_SKILLS_DIR="$HOME/.gemini/antigravity-cli/skills" npx @rmyndharis/antigravity-skills install flutter-expert
-AG_SKILLS_DIR="$HOME/.gemini/antigravity-cli/skills" npx @rmyndharis/antigravity-skills installed
+AG_SKILLS_DIR="$HOME/.gemini/antigravity/skills" npx @rmyndharis/antigravity-skills installed
 ```
 
 ## Safety

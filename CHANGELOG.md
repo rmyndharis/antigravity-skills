@@ -4,6 +4,10 @@ All notable changes to this project are documented here. This project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- `--global` installs to `~/.gemini/config/skills`, which the Antigravity App, CLI, and IDE read, instead of the IDE-only `~/.gemini/antigravity/skills`. Skills already in the old directory stay there; `doctor`, `installed --global`, and `update --global` point to it.
+
 ### Removed
 
 - `skills_cli.py`, the Python CLI. Use the npm CLI to search, install, and update skills.

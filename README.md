@@ -89,15 +89,15 @@ ANTIGRAVITY automatically activates a skill when your request matches its descri
 The npm CLI provides two default installation scopes:
 
 -   **Workspace scope** (project-specific): `<workspace-root>/.agent/skills/`
--   **Global scope** (`--global`, legacy IDE location): `~/.gemini/antigravity/skills/`
+-   **Global scope** (`--global`): `~/.gemini/config/skills/`, read by the Antigravity App, CLI, and IDE
 
-`AG_SKILLS_DIR` overrides either destination and expands a leading `~`. Antigravity supports the CLI's `.agent/skills/` workspace path for backward compatibility; the current default is `.agents/skills/`. Global locations vary by host: Antigravity CLI uses `~/.gemini/antigravity-cli/skills/`, while the app and current IDE use `~/.gemini/config/skills/`. See the official [skill locations](https://www.antigravity.google/docs/skills/).
+`AG_SKILLS_DIR` overrides either destination and expands a leading `~`. Antigravity supports the CLI's `.agent/skills/` workspace path for backward compatibility; the current default is `.agents/skills/`. Earlier versions installed global skills to `~/.gemini/antigravity/skills/`, which only the standalone IDE still reads; `doctor` reports that directory when it exists. See the official [skill locations](https://www.antigravity.google/docs/skills/).
 
-For example, select the current workspace convention or the Antigravity CLI global directory:
+For example, select the current workspace convention, or manage global skills left by an earlier version:
 
 ```bash
 AG_SKILLS_DIR=.agents/skills npx @rmyndharis/antigravity-skills install bash-pro
-AG_SKILLS_DIR="$HOME/.gemini/antigravity-cli/skills" npx @rmyndharis/antigravity-skills install bash-pro
+AG_SKILLS_DIR="$HOME/.gemini/antigravity/skills" npx @rmyndharis/antigravity-skills installed
 ```
 
 Use the same override with `installed`, `update`, and `doctor` when inspecting or changing that installation.
@@ -227,7 +227,7 @@ npm install --global @rmyndharis/antigravity-skills
 ag-skills install antigravity-skills-manager
 ```
 
-`npm install --global` installs the executable. It does not select a global skill destination. Use `ag-skills install <skill-name> --global` for the CLI's legacy global skill directory, or `AG_SKILLS_DIR` for the location used by your Antigravity host.
+`npm install --global` installs the executable. It does not select a global skill destination. Use `ag-skills install <skill-name> --global` for the global skill directory, or `AG_SKILLS_DIR` for another location.
 
 ### Using a source checkout
 
@@ -276,8 +276,8 @@ cp -R /path/to/antigravity-skills/skills/<skill-name> .agent/skills/
 **Option B — Install globally**
 
 ```bash
-mkdir -p ~/.gemini/antigravity/skills
-cp -R /path/to/antigravity-skills/skills/<skill-name> ~/.gemini/antigravity/skills/
+mkdir -p ~/.gemini/config/skills
+cp -R /path/to/antigravity-skills/skills/<skill-name> ~/.gemini/config/skills/
 ```
 
 > **Note:** After copying skills, restart your agent session so Antigravity re-detects them.

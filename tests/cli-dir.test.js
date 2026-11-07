@@ -42,6 +42,26 @@ test('doctor reports the AG_SKILLS_DIR override when set', () => {
   }
 });
 
+test('--global installs where Antigravity reads global skills and points to the legacy directory', () => {
+  const home = tmpDir();
+  const cwd = tmpDir();
+  const env = { HOME: home, USERPROFILE: home };
+  try {
+    assert.strictEqual(runCli(['install', 'python-pro', '--global'], { cwd, env }).code, 0);
+    assert.ok(fs.existsSync(path.join(home, '.gemini', 'config', 'skills', 'python-pro', 'SKILL.md')));
+    assert.doesNotMatch(runCli(['installed', '--global'], { cwd, env }).stdout, /earlier versions/);
+
+    fs.mkdirSync(path.join(home, '.gemini', 'antigravity', 'skills'), { recursive: true });
+    const installed = runCli(['installed', '--global'], { cwd, env });
+    assert.match(installed.stdout, /earlier versions remain in .*antigravity/);
+    assert.match(installed.stdout, /python-pro/);
+    assert.match(runCli(['doctor'], { cwd, env }).stdout, /Legacy global dir/);
+  } finally {
+    rmDir(home);
+    rmDir(cwd);
+  }
+});
+
 test('resolveTargetDir expands a leading ~ in AG_SKILLS_DIR', () => {
   const os = require('node:os');
   const { resolveTargetDir } = require('../bin/cli.js');
