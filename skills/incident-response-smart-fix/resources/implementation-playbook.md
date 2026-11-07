@@ -4,7 +4,7 @@ This file contains detailed patterns, checklists, and code samples referenced by
 
 # Intelligent Issue Resolution with Multi-Agent Orchestration
 
-[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and resolve production issues. The intelligent debugging strategy combines automated root cause analysis with human expertise, using modern 2024/2025 practices including AI code assistants (GitHub Copilot, Claude Code), observability platforms (Sentry, DataDog, OpenTelemetry), git bisect automation for regression tracking, and production-safe debugging techniques like distributed tracing and structured logging. The process follows a rigorous four-phase approach: (1) Issue Analysis Phase - error-detective and debugger agents analyze error traces, logs, reproduction steps, and observability data to understand the full context of the failure including upstream/downstream impacts, (2) Root Cause Investigation Phase - debugger and code-reviewer agents perform deep code analysis, automated git bisect to identify introducing commit, dependency compatibility checks, and state inspection to isolate the exact failure mechanism, (3) Fix Implementation Phase - domain-specific agents (python-pro, typescript-pro, rust-expert, etc.) implement minimal fixes with comprehensive test coverage including unit, integration, and edge case tests while following production-safe practices, (4) Verification Phase - test-automator and performance-engineer agents run regression suites, performance benchmarks, security scans, and verify no new issues are introduced. Complex issues spanning multiple systems require orchestrated coordination between specialist agents (database-optimizer → performance-engineer → devops-troubleshooter) with explicit context passing and state sharing. The workflow emphasizes understanding root causes over treating symptoms, implementing lasting architectural improvements, automating detection through enhanced monitoring and alerting, and preventing future occurrences through type system enhancements, static analysis rules, and improved error handling patterns. Success is measured not just by issue resolution but by reduced mean time to recovery (MTTR), prevention of similar issues, and improved system resilience.]
+[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and resolve production issues. The intelligent debugging strategy combines automated root cause analysis with human expertise, using modern practices including AI code assistants (GitHub Copilot, Claude Code), observability platforms (Sentry, DataDog, OpenTelemetry), git bisect automation for regression tracking, and production-safe debugging techniques like distributed tracing and structured logging. The process follows a rigorous four-phase approach: (1) Issue Analysis Phase - error-detective and debugger agents analyze error traces, logs, reproduction steps, and observability data to understand the full context of the failure including upstream/downstream impacts, (2) Root Cause Investigation Phase - debugger and code-reviewer agents perform deep code analysis, automated git bisect to identify introducing commit, dependency compatibility checks, and state inspection to isolate the exact failure mechanism, (3) Fix Implementation Phase - domain-specific agents (python-pro, typescript-pro, rust-expert, etc.) implement minimal fixes with comprehensive test coverage including unit, integration, and edge case tests while following production-safe practices, (4) Verification Phase - test-automator and performance-engineer agents run regression suites, performance benchmarks, security scans, and verify no new issues are introduced. Complex issues spanning multiple systems require orchestrated coordination between specialist agents (database-optimizer → performance-engineer → devops-troubleshooter) with explicit context passing and state sharing. The workflow emphasizes understanding root causes over treating symptoms, implementing lasting architectural improvements, automating detection through enhanced monitoring and alerting, and preventing future occurrences through type system enhancements, static analysis rules, and improved error handling patterns. Success is measured not just by issue resolution but by reduced mean time to recovery (MTTR), prevention of similar issues, and improved system resilience.]
 
 ## Phase 1: Issue Analysis - Error Detection and Context Gathering
 
@@ -226,7 +226,7 @@ Deliverables:
    - Monitoring hooks for fix verification
    - Structured logging for debugging
 
-Modern implementation techniques (2024/2025):
+Modern implementation techniques:
 - AI pair programming (GitHub Copilot, Claude Code) for test generation
 - Type-driven development (leverage TypeScript, mypy, clippy)
 - Contract-first APIs (OpenAPI, gRPC schemas)
@@ -311,7 +311,7 @@ Deliverables:
    - Property-based testing for complex logic
    - Fuzzing for input validation
 
-Modern testing practices (2024/2025):
+Modern testing practices:
 - AI-generated test cases (GitHub Copilot, Claude Code)
 - Snapshot testing for UI/API contracts
 - Visual regression testing for frontend
@@ -546,7 +546,7 @@ Deliverables:
    - Add chaos engineering tests
    - Document testing strategy gaps
 
-Modern prevention practices (2024/2025):
+Modern prevention practices:
 - AI-assisted code review rules (GitHub Copilot, Claude Code)
 - Continuous security scanning (Snyk, Dependabot)
 - Infrastructure as Code validation (Terraform validate, CloudFormation Linter)
@@ -736,7 +736,7 @@ Config:
 
 ## Modern Debugging Tools Integration
 
-This workflow leverages modern 2024/2025 tools:
+This workflow leverages modern tools:
 
 **Observability Platforms:**
 - Sentry (error tracking, release tracking, performance monitoring)

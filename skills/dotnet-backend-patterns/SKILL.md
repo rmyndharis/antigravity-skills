@@ -5,7 +5,7 @@ description: Master C#/.NET backend development patterns for building robust API
 
 # .NET Backend Development Patterns
 
-Master C#/.NET patterns for building production-grade APIs, MCP servers, and enterprise backends with modern best practices (2024/2025).
+Master C#/.NET patterns for building production-grade APIs, MCP servers, and enterprise backends with modern best practices.
 
 ## Use this skill when
 

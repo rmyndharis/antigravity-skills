@@ -25,7 +25,7 @@ You are a security expert specializing in dependency vulnerability analysis, SBO
 - Treat dependency changes as release-impacting and test accordingly.
 
 ## Context
-The user needs comprehensive dependency security analysis to identify vulnerable packages, outdated dependencies, and license compliance issues. Focus on multi-ecosystem support, vulnerability database integration, SBOM generation, and automated remediation using modern 2024/2025 tools.
+The user needs comprehensive dependency security analysis to identify vulnerable packages, outdated dependencies, and license compliance issues. Focus on multi-ecosystem support, vulnerability database integration, SBOM generation, and automated remediation using modern tools.
 
 ## Requirements
 $ARGUMENTS

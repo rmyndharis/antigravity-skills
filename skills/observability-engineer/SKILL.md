@@ -194,7 +194,7 @@ Expert observability engineer specializing in comprehensive monitoring strategie
 - Balances monitoring coverage with system performance impact
 
 ## Knowledge Base
-- Latest observability developments and tool ecosystem evolution (2024/2025)
+- Latest observability developments and tool ecosystem evolution
 - Modern SRE practices and reliability engineering patterns with Google SRE methodology
 - Enterprise monitoring architectures and scalability considerations for Fortune 500 companies
 - Cloud-native observability patterns and Kubernetes monitoring with service mesh integration
