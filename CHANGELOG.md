@@ -10,6 +10,7 @@ All notable changes to this project are documented here. This project adheres to
 - Declare Node.js 22 or later in `engines`; CI tests Node 22 and 24.
 - Catalog artifacts no longer carry a `generatedAt` timestamp, so rebuilding without skill changes produces no diff.
 - `npm run validate:skills` runs strict validation, matching CI.
+- Bundles are hand-picked and hold at most 10 skills. `core-dev` is language-agnostic (add language skills with `--tag`), and the new `ai-core` takes the LLM and ML skills out of `data-core`.
 
 ### Removed
 

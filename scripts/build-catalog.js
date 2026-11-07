@@ -92,38 +92,54 @@ const CATEGORY_RULES = [
   },
 ];
 
-const BUNDLE_RULES = {
+// Hand-picked and small: every installed skill adds its metadata to each session.
+// Language-specific skills are installed with --tag <language> instead.
+const MAX_BUNDLE_SIZE = 10;
+const BUNDLES = {
   'core-dev': {
-    description: 'Core development skills across languages, frameworks, and backend/frontend fundamentals.',
-    keywords: [
-      'python', 'javascript', 'typescript', 'go', 'golang', 'rust', 'java', 'node', 'frontend', 'backend',
-      'react', 'fastapi', 'django', 'nextjs', 'api', 'mobile', 'ios', 'android', 'flutter', 'php', 'ruby',
-      'dotnet', 'csharp', 'openapi', 'uv',
+    description: 'Language-agnostic development essentials: design, review, refactoring, debugging, testing, and Git. Add language skills with --tag <language>.',
+    skills: [
+      'api-design-principles', 'architecture-patterns', 'backend-architect', 'code-refactoring-refactor-clean',
+      'code-review-excellence', 'debugger', 'error-handling-patterns', 'frontend-developer', 'git-advanced-workflows',
+      'test-automator',
     ],
   },
   'security-core': {
-    description: 'Security, privacy, and compliance essentials.',
-    keywords: [
-      'security', 'sast', 'threat', 'privacy', 'secrets', 'owasp', 'gdpr', 'pci',
-      'vulnerability', 'auth', 'attack', 'stride', 'malware', 'reverse', 'firmware',
+    description: 'Security essentials: auditing, threat modeling, scanning, secrets, authentication, and secure coding.',
+    skills: [
+      'auth-implementation-patterns', 'backend-security-coder', 'frontend-security-coder', 'sast-configuration',
+      'secrets-management', 'security-auditor', 'security-scanning-security-dependencies',
+      'security-scanning-security-hardening', 'threat-modeling-expert',
     ],
   },
   'k8s-core': {
-    description: 'Kubernetes and service mesh essentials.',
-    keywords: ['kubernetes', 'k8s', 'helm', 'istio', 'linkerd', 'mesh', 'gitops', 'mtls'],
+    description: 'Kubernetes essentials: architecture, manifests, Helm, security policies, GitOps, and service mesh.',
+    skills: [
+      'gitops-workflow', 'helm-chart-scaffolding', 'k8s-manifest-generator', 'k8s-security-policies',
+      'kubernetes-architect', 'service-mesh-expert',
+    ],
   },
   'data-core': {
-    description: 'Data engineering and analytics foundations.',
-    keywords: [
-      'data', 'database', 'sql', 'dbt', 'airflow', 'spark', 'analytics', 'etl', 'warehouse', 'postgres',
-      'mysql', 'kafka', 'postgresql', 'ml', 'mlops', 'llm', 'vector', 'embedding',
+    description: 'Data engineering, SQL, and database foundations.',
+    skills: [
+      'airflow-dag-patterns', 'data-engineer', 'data-quality-frameworks', 'database-architect',
+      'database-migrations-sql-migrations', 'database-optimizer', 'dbt-transformation-patterns', 'postgresql',
+      'spark-optimization', 'sql-pro',
+    ],
+  },
+  'ai-core': {
+    description: 'LLM application, retrieval, evaluation, and ML engineering essentials.',
+    skills: [
+      'ai-engineer', 'embedding-strategies', 'langchain-architecture', 'llm-evaluation', 'ml-engineer',
+      'prompt-engineering-patterns', 'rag-implementation', 'vector-database-engineer',
     ],
   },
   'ops-core': {
-    description: 'Operations, observability, and delivery pipelines.',
-    keywords: [
-      'observability', 'monitoring', 'logging', 'tracing', 'prometheus', 'grafana', 'devops', 'gitops',
-      'deployment', 'cicd', 'slo', 'sre', 'incident', 'ci', 'cd', 'terraform', 'kubernetes', 'k8s', 'postmortem',
+    description: 'Operations essentials: observability, SLOs, incident response, deployment, and infrastructure as code.',
+    skills: [
+      'deployment-engineer', 'devops-troubleshooter', 'distributed-tracing', 'grafana-dashboards',
+      'incident-responder', 'observability-engineer', 'postmortem-writing', 'prometheus-configuration',
+      'slo-implementation', 'terraform-specialist',
     ],
   },
 };
@@ -223,36 +239,26 @@ function buildAliases(skills) {
   return aliases;
 }
 
-function buildBundles(skills) {
+function buildBundles(skills, definitions = BUNDLES) {
+  const ids = new Set(skills.map(skill => skill.id));
   const bundles = {};
-  const skillTokens = new Map();
 
-  for (const skill of skills) {
-    const tokens = normalizeTokens([
-      ...skill.tags,
-      ...tokenize(skill.name),
-    ]);
-    skillTokens.set(skill.id, new Set(tokens));
-  }
-
-  for (const [bundleName, rule] of Object.entries(BUNDLE_RULES)) {
-    const bundleSkills = [];
-    const keywords = rule.keywords.map(keyword => keyword.toLowerCase());
-
-    for (const skill of skills) {
-      const tokenSet = skillTokens.get(skill.id) || new Set();
-      if (keywords.some(keyword => tokenSet.has(keyword))) {
-        bundleSkills.push(skill.id);
-      }
+  for (const [bundleName, rule] of Object.entries(definitions)) {
+    // Fail the build, and so the drift check, when a bundled skill is renamed or removed.
+    const unknown = rule.skills.filter(skillId => !ids.has(skillId));
+    if (unknown.length) {
+      throw new Error(`Bundle '${bundleName}' lists unknown skills: ${unknown.join(', ')}`);
     }
-
+    if (rule.skills.length > MAX_BUNDLE_SIZE) {
+      throw new Error(`Bundle '${bundleName}' has ${rule.skills.length} skills; the limit is ${MAX_BUNDLE_SIZE}.`);
+    }
     bundles[bundleName] = {
       description: rule.description,
-      skills: bundleSkills.sort(),
+      skills: [...rule.skills].sort(),
     };
   }
 
-  const common = CURATED_COMMON.filter(skillId => skillTokens.has(skillId));
+  const common = CURATED_COMMON.filter(skillId => ids.has(skillId));
 
   return { bundles, common };
 }
@@ -345,6 +351,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildBundles,
   buildCatalog,
   computeArtifacts,
 };
