@@ -290,6 +290,8 @@ cp -R /path/to/antigravity-skills/skills/<skill-name> ~/.gemini/config/skills/
 2.  Add `SKILL.md` (required)
 3.  (Optional) Add helpers: `scripts/`, `references/`, `assets/`
 
+Skills must work with the files in their own directory and publicly available tools; skills that need unpublished software or a path from one machine are not accepted. Skills about a specific tool are welcome when they teach a reusable workflow, but not when their main purpose is to promote a project.
+
 ### Development checks
 
 Install the Node dependencies and Python test dependencies before running the complete checks:
