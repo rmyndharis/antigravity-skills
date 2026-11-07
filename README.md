@@ -302,7 +302,7 @@ python3 -m pip install -r requirements-test-assets.txt
 npm run build:catalog
 npm test
 npm run test:python
-npm run validate:skills -- --strict
+npm run validate:skills
 npm run check:catalog
 ```
 
@@ -316,7 +316,7 @@ Edit the canonical manager skill at `skills/antigravity-skills-manager/SKILL.md`
 - Use narrow descriptions (for example: "Use when you need to ...") and include "Do not use" to reduce over-activation.
 - Add a "Safety" section for skills that propose terminal or infrastructure changes.
 - Regenerate catalog files with `npm run build:catalog`, then run `npm run prepublishOnly` for the complete local gate. CI runs the same Node, Python, validation, and catalog checks.
-- CI runs strict validation using `validation-baseline.json` for existing gaps; new skills must include the required sections outside code examples. Helper paths under `resources/`, `references/`, `assets/`, `scripts/`, and `examples/` are checked in every Markdown file, including links and bold paths. Use paths relative to the skill directory and include the referenced files.
+- `npm run validate:skills` runs the same strict validation as CI, using `validation-baseline.json` for existing gaps; new skills must include the required sections outside code examples. Helper paths under `resources/`, `references/`, `assets/`, `scripts/`, and `examples/` are checked in every Markdown file, including links and bold paths. Use paths relative to the skill directory and include the referenced files.
 - The baseline is intentionally empty. Refreshing it (`node scripts/validate-skills.js --write-baseline --yes`) grandfathers — and thus silences — current soft violations, so avoid it unless you truly need to; without `--yes` the command only previews what it would grandfather.
 
 ### SKILL.md Template
